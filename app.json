@@ -1,0 +1,41 @@
+{
+  "expo": {
+    "name": "GreenView Residences",
+    "slug": "pms-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "greenview",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      ["expo-splash-screen", { "backgroundColor": "#F3F6FB" }],
+      "expo-localization",
+      "expo-font",
+      "expo-status-bar",
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "GreenView uses the camera to photograph an issue for a maintenance request.",
+          "photosPermission": "GreenView opens your photos so you can attach them to a maintenance request.",
+          "microphonePermission": false
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
