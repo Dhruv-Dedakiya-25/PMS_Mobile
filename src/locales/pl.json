@@ -8,7 +8,10 @@
     "submit": "Wyślij",
     "call": "Zadzwoń",
     "email": "E-mail",
-    "sample": "Aplikacja demonstracyjna: zadziała po podłączeniu systemu."
+    "sample": "Aplikacja demonstracyjna: zadziała po podłączeniu systemu.",
+    "loading": "Ładowanie…",
+    "errorLoad": "Nie udało się załadować danych. Spróbuj ponownie.",
+    "retry": "Spróbuj ponownie"
   },
   "tabs": {
     "dashboard": "Pulpit",
@@ -17,7 +20,6 @@
     "announcements": "Ogłoszenia"
   },
   "auth": {
-    "tagline": "Twój dom, nasz priorytet",
     "signIn": "Zaloguj się",
     "createAccount": "Utwórz konto",
     "welcomeBack": "Witaj ponownie",
@@ -40,7 +42,11 @@
     "sendRequest": "Wyślij prośbę",
     "requestSent": "Prośba wysłana",
     "requestSentDetail": "Administracja sprawdzi Twoją umowę i wyśle SMS na numer +968 {{mobile}}, gdy konto będzie gotowe.",
-    "backToSignIn": "Wróć do logowania"
+    "backToSignIn": "Wróć do logowania",
+    "residentsOnly": "Ta aplikacja jest przeznaczona dla mieszkańców. Pracowników prosimy o korzystanie ze strony PMS.",
+    "notLinked": "Twoje konto nie jest jeszcze powiązane z najmem. Skontaktuj się z biurem administracji.",
+    "usernameLive": "Nazwa użytkownika",
+    "invalidCredentials": "Nieprawidłowa nazwa użytkownika lub hasło."
   },
   "home": {
     "morning": "Dzień dobry",
@@ -197,7 +203,6 @@
     "money": "Czynsz i kaucja",
     "monthlyRent": "Czynsz miesięczny",
     "frequency": "Częstotliwość płatności",
-    "monthly": "Co miesiąc",
     "notice": "Okres wypowiedzenia",
     "days_one": "{{count}} dzień",
     "days_few": "{{count}} dni",
@@ -263,7 +268,14 @@
     "refundTitle": "Jak odzyskać kaucję",
     "refundStep1": "Złóż wypowiedzenie i ustal datę wyprowadzki z administracją.",
     "refundStep2": "Administracja sprawdza lokal razem z Tobą i zapisuje naprawy.",
-    "refundStep3": "Kaucja, pomniejszona o uzgodnione naprawy, wraca w ciągu 30 dni od oddania kluczy."
+    "refundStep3": "Kaucja, pomniejszona o uzgodnione naprawy, wraca w ciągu 30 dni od oddania kluczy.",
+    "frequencies": {
+      "Monthly": "Miesięczna",
+      "Quarterly": "Kwartalna",
+      "HalfYearly": "Półroczna",
+      "Annual": "Roczna",
+      "Custom": "Niestandardowa"
+    }
   },
   "pay": {
     "title": "Czynsz i płatności",
@@ -414,7 +426,8 @@
     "photosOptional": "Zdjęcia są opcjonalne.",
     "photos": "Zdjęcia",
     "review": "Sprawdź zgłoszenie",
-    "reviewNote": "Wysyłając, zgadzasz się na wejście technika do lokalu w uzgodnionym czasie."
+    "reviewNote": "Wysyłając, zgadzasz się na wejście technika do lokalu w uzgodnionym czasie.",
+    "photosNotUploadedNote": "Zdjęcia nie są jeszcze przesyłane: serwer nie obsługuje jeszcze załączników."
   },
   "visit": {
     "title": "Zarządzanie gośćmi",

@@ -5,34 +5,41 @@ import { View } from 'react-native';
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Card, Details, IconTile, Pill } from '@/components/ui';
+import { useLease } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { longDate, omr } from '@/lib/format';
-import { lease } from '@/mock/data';
 import { space } from '@/theme/tokens';
 
 /** The security deposit: how much is held, since when, and how it comes back. */
 export default function Deposit() {
   const { t } = useTranslation();
   const { language } = useLanguage();
+  const { depositInfo, loading, refreshing, error, refresh } = useLease();
   const code = language.code;
   return (
-    <Page title={t('lease.deposit')}>
+    <Page
+      title={t('lease.deposit')}
+      loading={loading}
+      error={error}
+      onRetry={() => void refresh()}
+      refreshing={refreshing}
+      onRefresh={() => void refresh()}>
       <Card style={{ alignItems: 'center', paddingVertical: space.xl }}>
         <IconTile icon={IconShieldCheck} accent="success" size={56} />
         <AppText variant="caption" tone="secondary">
           {t('lease.depositHeld')}
         </AppText>
         <AppText variant="heading" weight="bold">
-          {omr(lease.deposit, code, true)}
+          {omr(depositInfo.amount, code, true)}
         </AppText>
         <Pill label={t('lease.held')} accent="success" />
       </Card>
       <Details
         rows={[
-          [t('lease.paidOn'), longDate(lease.start, code)],
-          [t('lease.receiptNo'), 'RCP-DEP-2024-0412'],
-          [t('lease.heldBy'), 'GreenView Development LLC'],
-          [t('lease.deductions'), omr(0, code, true)],
+          [t('lease.paidOn'), depositInfo.paidOn ? longDate(depositInfo.paidOn, code) : '—'],
+          [t('lease.receiptNo'), depositInfo.receiptNo ?? '—'],
+          [t('lease.heldBy'), depositInfo.heldBy],
+          [t('lease.deductions'), omr(depositInfo.deductions, code, true)],
         ]}
       />
       <Card>

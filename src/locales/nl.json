@@ -8,7 +8,10 @@
     "submit": "Versturen",
     "call": "Bellen",
     "email": "E-mail",
-    "sample": "Voorbeeldapp: dit werkt zodra het systeem gekoppeld is."
+    "sample": "Voorbeeldapp: dit werkt zodra het systeem gekoppeld is.",
+    "loading": "Laden…",
+    "errorLoad": "Uw gegevens konden niet worden geladen. Probeer het opnieuw.",
+    "retry": "Opnieuw proberen"
   },
   "tabs": {
     "dashboard": "Overzicht",
@@ -17,7 +20,6 @@
     "announcements": "Mededelingen"
   },
   "auth": {
-    "tagline": "Uw thuis, onze prioriteit",
     "signIn": "Inloggen",
     "createAccount": "Account aanmaken",
     "welcomeBack": "Welkom terug",
@@ -40,7 +42,11 @@
     "sendRequest": "Verzoek versturen",
     "requestSent": "Verzoek verstuurd",
     "requestSentDetail": "De beheerder controleert uw huurcontract en stuurt een sms naar +968 {{mobile}} zodra uw account klaar is.",
-    "backToSignIn": "Terug naar inloggen"
+    "backToSignIn": "Terug naar inloggen",
+    "residentsOnly": "Deze app is voor bewoners. Medewerkers kunnen de PMS-website gebruiken.",
+    "notLinked": "Uw account is nog niet gekoppeld aan een huurovereenkomst. Neem contact op met het beheerkantoor.",
+    "usernameLive": "Gebruikersnaam",
+    "invalidCredentials": "Gebruikersnaam of wachtwoord is onjuist."
   },
   "home": {
     "morning": "Goedemorgen",
@@ -183,7 +189,6 @@
     "money": "Huur en borg",
     "monthlyRent": "Maandhuur",
     "frequency": "Betaalfrequentie",
-    "monthly": "Maandelijks",
     "notice": "Opzegtermijn",
     "days_one": "{{count}} dag",
     "days_other": "{{count}} dagen",
@@ -241,7 +246,14 @@
     "refundTitle": "Zo krijgt u de borg terug",
     "refundStep1": "Zeg op en spreek uw vertrekdatum af met de beheerder.",
     "refundStep2": "De beheerder inspecteert de woning met u en noteert reparaties.",
-    "refundStep3": "De borg, min afgesproken reparaties, wordt binnen 30 dagen na het inleveren van de sleutels terugbetaald."
+    "refundStep3": "De borg, min afgesproken reparaties, wordt binnen 30 dagen na het inleveren van de sleutels terugbetaald.",
+    "frequencies": {
+      "Monthly": "Maandelijks",
+      "Quarterly": "Per kwartaal",
+      "HalfYearly": "Halfjaarlijks",
+      "Annual": "Jaarlijks",
+      "Custom": "Aangepast"
+    }
   },
   "pay": {
     "title": "Huur en betalingen",
@@ -382,7 +394,8 @@
     "photosOptional": "Foto’s zijn optioneel.",
     "photos": "Foto’s",
     "review": "Controleer uw verzoek",
-    "reviewNote": "Door te versturen geeft u de monteur toegang tot de woning op het afgesproken tijdstip."
+    "reviewNote": "Door te versturen geeft u de monteur toegang tot de woning op het afgesproken tijdstip.",
+    "photosNotUploadedNote": "Foto's worden nog niet geüpload: de server ondersteunt nog geen bijlagen."
   },
   "visit": {
     "title": "Bezoekersbeheer",

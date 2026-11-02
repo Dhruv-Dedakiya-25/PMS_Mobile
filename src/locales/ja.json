@@ -8,7 +8,10 @@
     "submit": "送信",
     "call": "電話",
     "email": "メール",
-    "sample": "サンプルアプリ：システム接続後に利用できます。"
+    "sample": "サンプルアプリ：システム接続後に利用できます。",
+    "loading": "読み込み中…",
+    "errorLoad": "情報を読み込めませんでした。もう一度お試しください。",
+    "retry": "再試行"
   },
   "tabs": {
     "dashboard": "ホーム",
@@ -17,7 +20,6 @@
     "announcements": "お知らせ"
   },
   "auth": {
-    "tagline": "あなたの住まいを第一に",
     "signIn": "ログイン",
     "createAccount": "アカウント作成",
     "welcomeBack": "おかえりなさい",
@@ -40,7 +42,11 @@
     "sendRequest": "申請を送信",
     "requestSent": "申請を送信しました",
     "requestSentDetail": "管理事務所が賃貸契約を確認し、アカウントの準備ができたら +968 {{mobile}} にSMSを送ります。",
-    "backToSignIn": "ログインに戻る"
+    "backToSignIn": "ログインに戻る",
+    "residentsOnly": "このアプリは入居者専用です。スタッフの方はPMSウェブサイトをご利用ください。",
+    "notLinked": "アカウントがまだ賃貸契約に紐付けられていません。管理事務所までお問い合わせください。",
+    "usernameLive": "ユーザー名",
+    "invalidCredentials": "ユーザー名またはパスワードが正しくありません。"
   },
   "home": {
     "morning": "おはようございます",
@@ -183,7 +189,6 @@
     "money": "家賃と敷金",
     "monthlyRent": "月額家賃",
     "frequency": "支払い頻度",
-    "monthly": "毎月",
     "notice": "予告期間",
     "days_one": "{{count}}日",
     "days_other": "{{count}}日",
@@ -241,7 +246,14 @@
     "refundTitle": "敷金の返還方法",
     "refundStep1": "予告を出し、退去日を管理事務所と決めます。",
     "refundStep2": "管理事務所が一緒に部屋を点検し、修繕箇所を記録します。",
-    "refundStep3": "合意した修繕費を差し引いた敷金が、鍵の返却後30日以内に返還されます。"
+    "refundStep3": "合意した修繕費を差し引いた敷金が、鍵の返却後30日以内に返還されます。",
+    "frequencies": {
+      "Monthly": "月次",
+      "Quarterly": "四半期ごと",
+      "HalfYearly": "半年ごと",
+      "Annual": "年次",
+      "Custom": "カスタム"
+    }
   },
   "pay": {
     "title": "家賃と支払い",
@@ -382,7 +394,8 @@
     "photosOptional": "写真は任意です。",
     "photos": "写真",
     "review": "依頼内容の確認",
-    "reviewNote": "送信すると、約束の時間に担当者が入室することに同意したものとみなされます。"
+    "reviewNote": "送信すると、約束の時間に担当者が入室することに同意したものとみなされます。",
+    "photosNotUploadedNote": "写真はまだアップロードされません（サーバーが添付ファイルに未対応のため）。"
   },
   "visit": {
     "title": "来客管理",

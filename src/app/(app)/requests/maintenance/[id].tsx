@@ -8,9 +8,9 @@ import { categoryIcon } from '@/components/category-look';
 import { Page } from '@/components/page';
 import { StageTracker, stageAccent } from '@/components/request-stage';
 import { Avatar, Button, Card, Details, IconTile, Pill } from '@/components/ui';
+import { useRequestDetail } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { longDate, ltr } from '@/lib/format';
-import { useMockState } from '@/mock/store';
 import { radius, space } from '@/theme/tokens';
 
 /** One repair request: what was reported, who is coming and when, and how far the work has got. */
@@ -18,17 +18,23 @@ export default function MaintenanceRequest() {
   const { t } = useTranslation();
   const { language } = useLanguage();
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { requests } = useMockState();
-  const r = requests.find((x) => x.id === id) ?? requests[0];
+  const { request: r, loading, refreshing, error, refresh } = useRequestDetail(id ?? '');
   const code = language.code;
 
   return (
-    <Page title={r.requestNo} right={<Pill label={t(`maint.stage.${r.stage}`)} accent={stageAccent[r.stage]} />}>
+    <Page
+      title={r.requestNo}
+      right={<Pill label={t(`maint.stage.${r.stage}`)} accent={stageAccent[r.stage]} />}
+      loading={loading}
+      error={error}
+      onRetry={() => void refresh()}
+      refreshing={refreshing}
+      onRefresh={() => void refresh()}>
       <Card>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.md }}>
           <IconTile icon={categoryIcon[r.category]} accent={stageAccent[r.stage]} size={44} />
           <View style={{ flex: 1 }}>
-            <AppText weight="semibold">{t(`maint.category.${r.category}`)}</AppText>
+            <AppText weight="semibold">{r.categoryLabel ?? t(`maint.category.${r.category}`)}</AppText>
             <AppText variant="caption" tone="muted">
               {t('maint.raisedOn', { date: longDate(r.raisedOn, code) })}
             </AppText>
@@ -47,7 +53,7 @@ export default function MaintenanceRequest() {
       <Details
         rows={[
           [t('maint.priority'), t(`maint.priorities.${r.priority}`)],
-          [t('maint.unit'), t('property.unitNo', { unit: '1204' })],
+          [t('maint.unit'), t('property.unitNo', { unit: r.unitCode ?? '1204' })],
         ]}
       />
 
@@ -61,10 +67,24 @@ export default function MaintenanceRequest() {
             <View style={{ flex: 1 }}>
               <AppText weight="semibold">{r.technician.name}</AppText>
               <AppText variant="caption" tone="muted">
-                {r.technician.visit && r.stage !== 'completed' ? t('maint.visitOn', { date: longDate(r.technician.visit, code) }) : ltr(r.technician.mobile)}
+                {r.technician.visit && r.stage !== 'completed'
+                  ? /^\d{4}-\d{2}-\d{2}/.test(r.technician.visit)
+                    ? t('maint.visitOn', { date: longDate(r.technician.visit, code) })
+                    : r.technician.visit
+                  : r.technician.mobile
+                    ? ltr(r.technician.mobile)
+                    : ''}
               </AppText>
             </View>
-            {r.stage !== 'completed' ? <Button label={t('common.call')} icon={IconPhone} tone="outline" compact onPress={() => Linking.openURL(`tel:${r.technician!.mobile.replace(/\s/g, '')}`)} /> : null}
+            {r.stage !== 'completed' && r.technician.mobile ? (
+              <Button
+                label={t('common.call')}
+                icon={IconPhone}
+                tone="outline"
+                compact
+                onPress={() => Linking.openURL(`tel:${r.technician!.mobile.replace(/\s/g, '')}`)}
+              />
+            ) : null}
           </View>
         </Card>
       ) : null}

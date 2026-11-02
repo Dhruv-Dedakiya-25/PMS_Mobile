@@ -8,7 +8,10 @@
     "submit": "Enviar",
     "call": "Ligar",
     "email": "E-mail",
-    "sample": "App de demonstração: isto funciona quando o sistema estiver ligado."
+    "sample": "App de demonstração: isto funciona quando o sistema estiver ligado.",
+    "loading": "Carregando…",
+    "errorLoad": "Não foi possível carregar suas informações. Tente novamente.",
+    "retry": "Tentar novamente"
   },
   "tabs": {
     "dashboard": "Início",
@@ -17,7 +20,6 @@
     "announcements": "Avisos"
   },
   "auth": {
-    "tagline": "A sua casa, a nossa prioridade",
     "signIn": "Entrar",
     "createAccount": "Criar conta",
     "welcomeBack": "Bem-vindo de volta",
@@ -40,7 +42,11 @@
     "sendRequest": "Enviar pedido",
     "requestSent": "Pedido enviado",
     "requestSentDetail": "A administração confirmará o seu arrendamento e enviará um SMS para +968 {{mobile}} quando a conta estiver pronta.",
-    "backToSignIn": "Voltar a entrar"
+    "backToSignIn": "Voltar a entrar",
+    "residentsOnly": "Este aplicativo é para moradores. Funcionários, por favor, usem o site do PMS.",
+    "notLinked": "Sua conta ainda não está vinculada a uma locação. Entre em contato com a administração.",
+    "usernameLive": "Nome de utilizador",
+    "invalidCredentials": "Nome de utilizador ou palavra-passe incorretos."
   },
   "home": {
     "morning": "Bom dia",
@@ -183,7 +189,6 @@
     "money": "Renda e caução",
     "monthlyRent": "Renda mensal",
     "frequency": "Periodicidade",
-    "monthly": "Mensal",
     "notice": "Pré-aviso",
     "days_one": "{{count}} dia",
     "days_other": "{{count}} dias",
@@ -241,7 +246,14 @@
     "refundTitle": "Como recebe a caução",
     "refundStep1": "Dê o pré-aviso e combine a data de saída com a administração.",
     "refundStep2": "A administração vistoria a fração consigo e regista reparações.",
-    "refundStep3": "A caução, menos reparações acordadas, é devolvida em 30 dias após a entrega das chaves."
+    "refundStep3": "A caução, menos reparações acordadas, é devolvida em 30 dias após a entrega das chaves.",
+    "frequencies": {
+      "Monthly": "Mensal",
+      "Quarterly": "Trimestral",
+      "HalfYearly": "Semestral",
+      "Annual": "Anual",
+      "Custom": "Personalizado"
+    }
   },
   "pay": {
     "title": "Renda e pagamentos",
@@ -382,7 +394,8 @@
     "photosOptional": "As fotos são opcionais.",
     "photos": "Fotos",
     "review": "Reveja o pedido",
-    "reviewNote": "Ao enviar, autoriza o técnico a entrar na fração à hora combinada."
+    "reviewNote": "Ao enviar, autoriza o técnico a entrar na fração à hora combinada.",
+    "photosNotUploadedNote": "As fotos ainda não são enviadas: o servidor ainda não suporta anexos."
   },
   "visit": {
     "title": "Gestão de visitas",

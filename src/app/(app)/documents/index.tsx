@@ -1,3 +1,4 @@
+import { IconFolder } from '@tabler/icons-react-native';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -6,10 +7,11 @@ import { View } from 'react-native';
 import { AppText } from '@/components/app-text';
 import { documentLook } from '@/components/document-look';
 import { Page } from '@/components/page';
-import { Card, Chips, IconTile, Onward } from '@/components/ui';
+import { Card, Chips, Empty, IconTile, Onward } from '@/components/ui';
+import { useDocuments } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { longDate } from '@/lib/format';
-import { documents, type DocumentKind } from '@/mock/data';
+import type { DocumentKind } from '@/mock/data';
 import { space } from '@/theme/tokens';
 
 type Filter = 'all' | DocumentKind;
@@ -18,10 +20,17 @@ type Filter = 'all' | DocumentKind;
 export default function Documents() {
   const { t } = useTranslation();
   const { language } = useLanguage();
+  const { documents, loading, refreshing, error, refresh } = useDocuments();
   const [filter, setFilter] = useState<Filter>('all');
   const shown = documents.filter((d) => filter === 'all' || d.kind === filter).sort((a, b) => b.date.localeCompare(a.date));
   return (
-    <Page title={t('docs.title')}>
+    <Page
+      title={t('docs.title')}
+      loading={loading}
+      error={error}
+      onRetry={() => void refresh()}
+      refreshing={refreshing}
+      onRefresh={() => void refresh()}>
       <Chips<Filter>
         value={filter}
         onChange={setFilter}
@@ -33,6 +42,7 @@ export default function Documents() {
           { value: 'letter', label: t('docs.kinds.letter') },
         ]}
       />
+      {shown.length === 0 ? <Empty icon={IconFolder} title={t('maint.none')} /> : null}
       {shown.map((d) => {
         const look = documentLook[d.kind];
         return (

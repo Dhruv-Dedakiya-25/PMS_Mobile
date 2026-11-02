@@ -8,7 +8,10 @@
     "submit": "Enviar",
     "call": "Llamar",
     "email": "Correo",
-    "sample": "App de muestra: esto funcionará cuando el sistema esté conectado."
+    "sample": "App de muestra: esto funcionará cuando el sistema esté conectado.",
+    "loading": "Cargando…",
+    "errorLoad": "No se pudo cargar su información. Inténtelo de nuevo.",
+    "retry": "Reintentar"
   },
   "tabs": {
     "dashboard": "Inicio",
@@ -17,7 +20,6 @@
     "announcements": "Avisos"
   },
   "auth": {
-    "tagline": "Tu hogar, nuestra prioridad",
     "signIn": "Iniciar sesión",
     "createAccount": "Crear cuenta",
     "welcomeBack": "Bienvenido de nuevo",
@@ -40,7 +42,11 @@
     "sendRequest": "Enviar solicitud",
     "requestSent": "Solicitud enviada",
     "requestSentDetail": "La administración comprobará tu contrato y enviará un SMS al +968 {{mobile}} cuando tu cuenta esté lista.",
-    "backToSignIn": "Volver a iniciar sesión"
+    "backToSignIn": "Volver a iniciar sesión",
+    "residentsOnly": "Esta aplicación es para residentes. El personal debe usar el sitio web de PMS.",
+    "notLinked": "Su cuenta aún no está vinculada a un contrato de arrendamiento. Comuníquese con la oficina de administración.",
+    "usernameLive": "Nombre de usuario",
+    "invalidCredentials": "Nombre de usuario o contraseña incorrectos."
   },
   "home": {
     "morning": "Buenos días",
@@ -183,7 +189,6 @@
     "money": "Alquiler y fianza",
     "monthlyRent": "Alquiler mensual",
     "frequency": "Frecuencia de pago",
-    "monthly": "Mensual",
     "notice": "Preaviso",
     "days_one": "{{count}} día",
     "days_other": "{{count}} días",
@@ -241,7 +246,14 @@
     "refundTitle": "Cómo se devuelve la fianza",
     "refundStep1": "Da el preaviso y acuerda la fecha de salida con la administración.",
     "refundStep2": "La administración revisa la vivienda contigo y anota las reparaciones.",
-    "refundStep3": "La fianza, menos las reparaciones acordadas, se devuelve en 30 días tras entregar las llaves."
+    "refundStep3": "La fianza, menos las reparaciones acordadas, se devuelve en 30 días tras entregar las llaves.",
+    "frequencies": {
+      "Monthly": "Mensual",
+      "Quarterly": "Trimestral",
+      "HalfYearly": "Semestral",
+      "Annual": "Anual",
+      "Custom": "Personalizado"
+    }
   },
   "pay": {
     "title": "Alquiler y pagos",
@@ -382,7 +394,8 @@
     "photosOptional": "Las fotos son opcionales.",
     "photos": "Fotos",
     "review": "Revisa tu solicitud",
-    "reviewNote": "Al enviarla, permites que el técnico entre en la vivienda a la hora acordada."
+    "reviewNote": "Al enviarla, permites que el técnico entre en la vivienda a la hora acordada.",
+    "photosNotUploadedNote": "Las fotos aún no se suben: el servidor todavía no admite archivos adjuntos."
   },
   "visit": {
     "title": "Gestión de visitas",

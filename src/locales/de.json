@@ -8,7 +8,10 @@
     "submit": "Senden",
     "call": "Anrufen",
     "email": "E-Mail",
-    "sample": "Beispiel-App: Dies funktioniert, sobald das System angebunden ist."
+    "sample": "Beispiel-App: Dies funktioniert, sobald das System angebunden ist.",
+    "loading": "Wird geladen…",
+    "errorLoad": "Ihre Daten konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
+    "retry": "Erneut versuchen"
   },
   "tabs": {
     "dashboard": "Übersicht",
@@ -17,7 +20,6 @@
     "announcements": "Mitteilungen"
   },
   "auth": {
-    "tagline": "Ihr Zuhause, unsere Priorität",
     "signIn": "Anmelden",
     "createAccount": "Konto erstellen",
     "welcomeBack": "Willkommen zurück",
@@ -40,7 +42,11 @@
     "sendRequest": "Anfrage senden",
     "requestSent": "Anfrage gesendet",
     "requestSentDetail": "Die Verwaltung prüft Ihren Mietvertrag und sendet eine SMS an +968 {{mobile}}, sobald Ihr Konto bereit ist.",
-    "backToSignIn": "Zurück zur Anmeldung"
+    "backToSignIn": "Zurück zur Anmeldung",
+    "residentsOnly": "Diese App ist nur für Bewohner. Mitarbeiter nutzen bitte die PMS-Website.",
+    "notLinked": "Ihr Konto ist noch keinem Mietverhältnis zugeordnet. Bitte wenden Sie sich an die Hausverwaltung.",
+    "usernameLive": "Benutzername",
+    "invalidCredentials": "Benutzername oder Passwort ist falsch."
   },
   "home": {
     "morning": "Guten Morgen",
@@ -183,7 +189,6 @@
     "money": "Miete und Kaution",
     "monthlyRent": "Monatsmiete",
     "frequency": "Zahlungsweise",
-    "monthly": "Monatlich",
     "notice": "Kündigungsfrist",
     "days_one": "{{count}} Tag",
     "days_other": "{{count}} Tage",
@@ -241,7 +246,14 @@
     "refundTitle": "So erhalten Sie die Kaution zurück",
     "refundStep1": "Kündigen Sie und vereinbaren Sie den Auszugstermin mit der Verwaltung.",
     "refundStep2": "Die Verwaltung besichtigt die Wohnung mit Ihnen und notiert nötige Reparaturen.",
-    "refundStep3": "Die Kaution wird abzüglich vereinbarter Reparaturen innerhalb von 30 Tagen nach Schlüsselübergabe erstattet."
+    "refundStep3": "Die Kaution wird abzüglich vereinbarter Reparaturen innerhalb von 30 Tagen nach Schlüsselübergabe erstattet.",
+    "frequencies": {
+      "Monthly": "Monatlich",
+      "Quarterly": "Vierteljährlich",
+      "HalfYearly": "Halbjährlich",
+      "Annual": "Jährlich",
+      "Custom": "Benutzerdefiniert"
+    }
   },
   "pay": {
     "title": "Miete & Zahlungen",
@@ -382,7 +394,8 @@
     "photosOptional": "Fotos sind optional.",
     "photos": "Fotos",
     "review": "Anfrage prüfen",
-    "reviewNote": "Mit dem Senden erlauben Sie dem Techniker, die Wohnung zum vereinbarten Termin zu betreten."
+    "reviewNote": "Mit dem Senden erlauben Sie dem Techniker, die Wohnung zum vereinbarten Termin zu betreten.",
+    "photosNotUploadedNote": "Fotos werden noch nicht hochgeladen: Die API unterstützt noch keine Anhänge."
   },
   "visit": {
     "title": "Besucherverwaltung",

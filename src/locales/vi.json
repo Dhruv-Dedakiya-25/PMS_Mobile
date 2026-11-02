@@ -8,7 +8,10 @@
     "submit": "Gửi",
     "call": "Gọi",
     "email": "Email",
-    "sample": "Ứng dụng mẫu: tính năng này hoạt động khi hệ thống được kết nối."
+    "sample": "Ứng dụng mẫu: tính năng này hoạt động khi hệ thống được kết nối.",
+    "loading": "Đang tải…",
+    "errorLoad": "Không thể tải thông tin của bạn. Vui lòng thử lại.",
+    "retry": "Thử lại"
   },
   "tabs": {
     "dashboard": "Trang chủ",
@@ -17,7 +20,6 @@
     "announcements": "Thông báo"
   },
   "auth": {
-    "tagline": "Ngôi nhà của bạn, ưu tiên của chúng tôi",
     "signIn": "Đăng nhập",
     "createAccount": "Tạo tài khoản",
     "welcomeBack": "Chào mừng trở lại",
@@ -40,7 +42,11 @@
     "sendRequest": "Gửi yêu cầu",
     "requestSent": "Đã gửi yêu cầu",
     "requestSentDetail": "Ban quản lý sẽ kiểm tra hợp đồng thuê và gửi SMS tới +968 {{mobile}} khi tài khoản sẵn sàng.",
-    "backToSignIn": "Quay lại đăng nhập"
+    "backToSignIn": "Quay lại đăng nhập",
+    "residentsOnly": "Ứng dụng này dành cho cư dân. Nhân viên vui lòng sử dụng trang web PMS.",
+    "notLinked": "Tài khoản của bạn chưa được liên kết với hợp đồng thuê. Vui lòng liên hệ văn phòng quản lý.",
+    "usernameLive": "Tên đăng nhập",
+    "invalidCredentials": "Tên đăng nhập hoặc mật khẩu không đúng."
   },
   "home": {
     "morning": "Chào buổi sáng",
@@ -183,7 +189,6 @@
     "money": "Tiền thuê và đặt cọc",
     "monthlyRent": "Tiền thuê hằng tháng",
     "frequency": "Kỳ thanh toán",
-    "monthly": "Hằng tháng",
     "notice": "Thời gian báo trước",
     "days_one": "{{count}} ngày",
     "days_other": "{{count}} ngày",
@@ -241,7 +246,14 @@
     "refundTitle": "Cách nhận lại tiền cọc",
     "refundStep1": "Báo trước và thống nhất ngày dọn đi với ban quản lý.",
     "refundStep2": "Ban quản lý kiểm tra căn hộ cùng bạn và ghi lại sửa chữa.",
-    "refundStep3": "Tiền cọc, trừ chi phí sửa chữa đã thống nhất, được hoàn trong 30 ngày sau khi bàn giao chìa khóa."
+    "refundStep3": "Tiền cọc, trừ chi phí sửa chữa đã thống nhất, được hoàn trong 30 ngày sau khi bàn giao chìa khóa.",
+    "frequencies": {
+      "Monthly": "Hàng tháng",
+      "Quarterly": "Hàng quý",
+      "HalfYearly": "Nửa năm",
+      "Annual": "Hàng năm",
+      "Custom": "Tùy chỉnh"
+    }
   },
   "pay": {
     "title": "Tiền thuê & thanh toán",
@@ -382,7 +394,8 @@
     "photosOptional": "Ảnh là không bắt buộc.",
     "photos": "Ảnh",
     "review": "Kiểm tra yêu cầu",
-    "reviewNote": "Khi gửi, bạn cho phép kỹ thuật viên vào căn hộ vào giờ đã hẹn."
+    "reviewNote": "Khi gửi, bạn cho phép kỹ thuật viên vào căn hộ vào giờ đã hẹn.",
+    "photosNotUploadedNote": "Ảnh chưa được tải lên: máy chủ hiện chưa hỗ trợ tệp đính kèm."
   },
   "visit": {
     "title": "Quản lý khách",

@@ -7,10 +7,9 @@ import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Avatar, Button, Card, Details, ListRow, Pill, Segmented } from '@/components/ui';
 import { setThemeChoice, useThemeChoice, type ThemeChoice } from '@/hooks/use-color-scheme';
+import { useProfile, useSession } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { ltr } from '@/lib/format';
-import { property, tenant } from '@/mock/data';
-import { signOut } from '@/mock/store';
 import { space, usePalette } from '@/theme/tokens';
 
 /** Who is signed in, the app's language and look, and signing out. */
@@ -19,8 +18,18 @@ export default function Profile() {
   const { language } = useLanguage();
   const palette = usePalette();
   const theme = useThemeChoice();
+  const { signOut } = useSession();
+  const { tenant, property, loading, refreshing, error, refresh } = useProfile();
+
   return (
-    <Page title={t('profile.title')} footer={<Button label={t('profile.signOut')} icon={IconLogout} tone="danger" onPress={signOut} />}>
+    <Page
+      title={t('profile.title')}
+      loading={loading}
+      error={error}
+      onRetry={() => void refresh()}
+      refreshing={refreshing}
+      onRefresh={() => void refresh()}
+      footer={<Button label={t('profile.signOut')} icon={IconLogout} tone="danger" onPress={() => void signOut()} />}>
       <View style={{ alignItems: 'center', gap: space.xs, paddingVertical: space.md }}>
         <Avatar name={tenant.name} size={80} />
         <AppText variant="title" weight="bold" align="center">

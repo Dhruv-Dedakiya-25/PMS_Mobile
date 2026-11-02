@@ -8,7 +8,10 @@
     "submit": "Gönder",
     "call": "Ara",
     "email": "E-posta",
-    "sample": "Örnek uygulama: sistem bağlandığında bu çalışacak."
+    "sample": "Örnek uygulama: sistem bağlandığında bu çalışacak.",
+    "loading": "Yükleniyor…",
+    "errorLoad": "Bilgileriniz yüklenemedi. Lütfen tekrar deneyin.",
+    "retry": "Tekrar Dene"
   },
   "tabs": {
     "dashboard": "Ana sayfa",
@@ -17,7 +20,6 @@
     "announcements": "Duyurular"
   },
   "auth": {
-    "tagline": "Eviniz, önceliğimiz",
     "signIn": "Giriş yap",
     "createAccount": "Hesap oluştur",
     "welcomeBack": "Tekrar hoş geldiniz",
@@ -40,7 +42,11 @@
     "sendRequest": "Talep gönder",
     "requestSent": "Talep gönderildi",
     "requestSentDetail": "Yönetim kira sözleşmenizi kontrol edecek ve hesabınız hazır olduğunda +968 {{mobile}} numarasına SMS gönderecek.",
-    "backToSignIn": "Girişe dön"
+    "backToSignIn": "Girişe dön",
+    "residentsOnly": "Bu uygulama bina sakinleri içindir. Personel lütfen PMS web sitesini kullansın.",
+    "notLinked": "Hesabınız henüz bir kira sözleşmesine bağlı değil. Lütfen yönetim ofisiyle iletişime geçin.",
+    "usernameLive": "Kullanıcı Adı",
+    "invalidCredentials": "Kullanıcı adı veya parola hatalı."
   },
   "home": {
     "morning": "Günaydın",
@@ -183,7 +189,6 @@
     "money": "Kira ve depozito",
     "monthlyRent": "Aylık kira",
     "frequency": "Ödeme sıklığı",
-    "monthly": "Aylık",
     "notice": "Bildirim süresi",
     "days_one": "{{count}} gün",
     "days_other": "{{count}} gün",
@@ -241,7 +246,14 @@
     "refundTitle": "Depozito nasıl iade edilir",
     "refundStep1": "Bildirim verin ve çıkış tarihini yönetimle belirleyin.",
     "refundStep2": "Yönetim daireyi sizinle kontrol eder ve onarımları not eder.",
-    "refundStep3": "Depozito, kararlaştırılan onarımlar düşülerek anahtar tesliminden sonraki 30 gün içinde iade edilir."
+    "refundStep3": "Depozito, kararlaştırılan onarımlar düşülerek anahtar tesliminden sonraki 30 gün içinde iade edilir.",
+    "frequencies": {
+      "Monthly": "Aylık",
+      "Quarterly": "Üç aylık",
+      "HalfYearly": "Altı aylık",
+      "Annual": "Yıllık",
+      "Custom": "Özel"
+    }
   },
   "pay": {
     "title": "Kira ve ödemeler",
@@ -382,7 +394,8 @@
     "photosOptional": "Fotoğraf isteğe bağlıdır.",
     "photos": "Fotoğraflar",
     "review": "Talebinizi kontrol edin",
-    "reviewNote": "Göndererek teknisyenin kararlaştırılan saatte daireye girmesine izin verirsiniz."
+    "reviewNote": "Göndererek teknisyenin kararlaştırılan saatte daireye girmesine izin verirsiniz.",
+    "photosNotUploadedNote": "Fotoğraflar henüz yüklenmemektedir: sunucu henüz dosya eklerini desteklemiyor."
   },
   "visit": {
     "title": "Ziyaretçi yönetimi",

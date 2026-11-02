@@ -1,47 +1,62 @@
+import { IconCalendarStats } from '@tabler/icons-react-native';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
-import { Card, Pill } from '@/components/ui';
+import { Card, Empty, Pill } from '@/components/ui';
+import { usePayments } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { monthYear, omr } from '@/lib/format';
-import { lease, rentalSchedule } from '@/mock/data';
-import { nextRentMonth, useMockState } from '@/mock/store';
 import { space, usePalette } from '@/theme/tokens';
 
-/** The lease's final year month by month: paid, due next, or still to come. */
+/**
+ * Each rent payment: paid, due next, or still to come. The sample lease's final year is month
+ * by month; a live lease lists its installments at its own payment frequency.
+ */
 export default function RentalSchedule() {
   const { t } = useTranslation();
   const palette = usePalette();
   const { language } = useLanguage();
-  const state = useMockState();
+  const { scheduleRows, scheduleYear, scheduleFrequency, loading, refreshing, error, refresh } = usePayments();
   const code = language.code;
-  const paid = new Set(state.payments.map((p) => p.forMonth));
-  const next = nextRentMonth(state);
   return (
-    <Page title={t('pay.schedule')}>
-      <AppText tone="secondary">{t('pay.scheduleIntro', { year: lease.end.slice(0, 4) })}</AppText>
-      <Card padded={false} style={{ gap: 0, overflow: 'hidden' }}>
-        {rentalSchedule.map((month, i) => {
-          const status = paid.has(month) ? 'paid' : month === next ? 'due' : 'upcoming';
-          return (
-            <View
-              key={month}
-              style={{ flexDirection: 'row', alignItems: 'center', gap: space.md, paddingHorizontal: space.lg, paddingVertical: space.md, borderTopWidth: i ? 1 : 0, borderTopColor: palette.border, backgroundColor: status === 'due' ? palette.primarySoft : 'transparent' }}>
-              <AppText weight={status === 'due' ? 'semibold' : 'regular'} style={{ flex: 1 }}>
-                {monthYear(month, code)}
-              </AppText>
-              <AppText variant="small" weight="medium" tone={status === 'upcoming' ? 'muted' : 'default'}>
-                {omr(lease.rent, code)}
-              </AppText>
-              <View style={{ width: 96, alignItems: 'flex-end' }}>
-                <Pill label={t(`pay.scheduleStatus.${status}`)} accent={status === 'paid' ? 'success' : status === 'due' ? 'primary' : 'warning'} />
+    <Page
+      title={t('pay.schedule')}
+      loading={loading}
+      error={error}
+      onRetry={() => void refresh()}
+      refreshing={refreshing}
+      onRefresh={() => void refresh()}>
+      <AppText tone="secondary">
+        {scheduleFrequency
+          ? `${t('lease.frequency')}: ${t(`lease.frequencies.${scheduleFrequency}`, { defaultValue: scheduleFrequency })}`
+          : t('pay.scheduleIntro', { year: scheduleYear })}
+      </AppText>
+      {scheduleRows.length === 0 ? (
+        <Empty icon={IconCalendarStats} title={t('maint.none')} />
+      ) : (
+        <Card padded={false} style={{ gap: 0, overflow: 'hidden' }}>
+          {scheduleRows.map((row, i) => {
+            const { status } = row;
+            return (
+              <View
+                key={row.key}
+                style={{ flexDirection: 'row', alignItems: 'center', gap: space.md, paddingHorizontal: space.lg, paddingVertical: space.md, borderTopWidth: i ? 1 : 0, borderTopColor: palette.border, backgroundColor: status === 'due' ? palette.primarySoft : 'transparent' }}>
+                <AppText weight={status === 'due' ? 'semibold' : 'regular'} style={{ flex: 1 }}>
+                  {monthYear(row.month, code)}
+                </AppText>
+                <AppText variant="small" weight="medium" tone={status === 'upcoming' ? 'muted' : 'default'}>
+                  {omr(row.amount, code)}
+                </AppText>
+                <View style={{ width: 96, alignItems: 'flex-end' }}>
+                  <Pill label={t(`pay.scheduleStatus.${status}`)} accent={status === 'paid' ? 'success' : status === 'due' ? 'primary' : 'warning'} />
+                </View>
               </View>
-            </View>
-          );
-        })}
-      </Card>
+            );
+          })}
+        </Card>
+      )}
     </Page>
   );
 }

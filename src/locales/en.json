@@ -8,7 +8,10 @@
     "submit": "Submit",
     "call": "Call",
     "email": "Email",
-    "sample": "Sample app: this works once the system is connected."
+    "sample": "Sample app: this works once the system is connected.",
+    "loading": "Loading…",
+    "errorLoad": "Could not load your information. Please try again.",
+    "retry": "Retry"
   },
   "tabs": {
     "dashboard": "Dashboard",
@@ -17,7 +20,6 @@
     "announcements": "Announcements"
   },
   "auth": {
-    "tagline": "Your Home, Our Priority",
     "signIn": "Sign In",
     "createAccount": "Create Account",
     "welcomeBack": "Welcome back",
@@ -40,7 +42,11 @@
     "sendRequest": "Send Request",
     "requestSent": "Request sent",
     "requestSentDetail": "The management office will check your tenancy and send an SMS to +968 {{mobile}} when your account is ready.",
-    "backToSignIn": "Back to Sign In"
+    "backToSignIn": "Back to Sign In",
+    "residentsOnly": "This app is for residents. Staff, please use the PMS website.",
+    "notLinked": "Your account isn't linked to a tenancy yet. Please contact the management office.",
+    "usernameLive": "Username",
+    "invalidCredentials": "Invalid username or password."
   },
   "home": {
     "morning": "Good Morning",
@@ -183,7 +189,6 @@
     "money": "Rent and deposit",
     "monthlyRent": "Monthly rent",
     "frequency": "Payment frequency",
-    "monthly": "Monthly",
     "notice": "Notice period",
     "days_one": "{{count}} day",
     "days_other": "{{count}} days",
@@ -241,7 +246,14 @@
     "refundTitle": "How the deposit comes back",
     "refundStep1": "Give notice and agree your move-out date with the office.",
     "refundStep2": "The office inspects the unit with you and lists any repairs.",
-    "refundStep3": "The deposit, less any agreed repairs, is paid back within 30 days of handing over the keys."
+    "refundStep3": "The deposit, less any agreed repairs, is paid back within 30 days of handing over the keys.",
+    "frequencies": {
+      "Monthly": "Monthly",
+      "Quarterly": "Quarterly",
+      "HalfYearly": "Half-Yearly",
+      "Annual": "Annual",
+      "Custom": "Custom"
+    }
   },
   "pay": {
     "title": "Rent & Payments",
@@ -382,7 +394,8 @@
     "photosOptional": "Photos are optional.",
     "photos": "Photos",
     "review": "Check your request",
-    "reviewNote": "By submitting, you allow the technician to enter the unit at the agreed visit time."
+    "reviewNote": "By submitting, you allow the technician to enter the unit at the agreed visit time.",
+    "photosNotUploadedNote": "Photos are not uploaded yet: the server does not store request attachments yet."
   },
   "visit": {
     "title": "Visitor Management",

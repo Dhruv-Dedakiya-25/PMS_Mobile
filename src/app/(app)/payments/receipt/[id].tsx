@@ -8,10 +8,9 @@ import { AppText } from '@/components/app-text';
 import { GreenViewMark } from '@/components/art';
 import { Page } from '@/components/page';
 import { Button, Note } from '@/components/ui';
+import { useReceiptDetail } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { longDate, monthYear, omr } from '@/lib/format';
-import { property, tenant } from '@/mock/data';
-import { useMockState } from '@/mock/store';
 import { space } from '@/theme/tokens';
 
 /** A rent receipt as printed: white paper in either theme. */
@@ -19,9 +18,8 @@ export default function Receipt() {
   const { t } = useTranslation();
   const { language } = useLanguage();
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { payments } = useMockState();
+  const { payment, tenant, property, loading, refreshing, error, refresh } = useReceiptDetail(id ?? '');
   const [saved, setSaved] = useState(false);
-  const payment = payments.find((p) => p.id === id) ?? payments[0];
   const code = language.code;
   const ink = '#14213D';
   const faint = '#5B6A82';
@@ -35,7 +33,14 @@ export default function Receipt() {
     [t('pay.unit'), `${property.unitNo} · ${property.building}`],
   ];
   return (
-    <Page title={t('pay.receipt')} footer={<Button label={t('pay.download')} icon={IconDownload} tone="outline" onPress={() => setSaved(true)} />}>
+    <Page
+      title={t('pay.receipt')}
+      loading={loading}
+      error={error}
+      onRetry={() => void refresh()}
+      refreshing={refreshing}
+      onRefresh={() => void refresh()}
+      footer={<Button label={t('pay.download')} icon={IconDownload} tone="outline" onPress={() => setSaved(true)} />}>
       <View style={{ backgroundColor: '#FFFFFF', borderRadius: 6, borderWidth: 1, borderColor: '#DCE3EC', padding: space.xl, gap: space.md }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.md }}>
           <GreenViewMark size={40} />

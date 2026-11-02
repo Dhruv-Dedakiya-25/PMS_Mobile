@@ -7,9 +7,9 @@ import { AppText } from '@/components/app-text';
 import { BuildingScene } from '@/components/art';
 import { Page } from '@/components/page';
 import { Button, Card, Details, IconTile, Note, Pill } from '@/components/ui';
+import { useProfile } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { longDate, num } from '@/lib/format';
-import { lease, parking, property, tenant, unit } from '@/mock/data';
 import { radius, space } from '@/theme/tokens';
 
 type Section = 'unit' | 'building' | 'parking';
@@ -19,14 +19,21 @@ export default function PropertySection() {
   const { t } = useTranslation();
   const { language } = useLanguage();
   const { section } = useLocalSearchParams<{ section: Section }>();
+  const { tenant, property, unit, lease, parking, loading, refreshing, error, refresh } = useProfile();
   const code = language.code;
   const yes = (v: boolean) => t(v ? 'property.yes' : 'property.no');
 
   if (section === 'parking')
     return (
-      <Page title={t('property.parking')}>
+      <Page
+        title={t('property.parking')}
+        loading={loading}
+        error={error}
+        onRetry={() => void refresh()}
+        refreshing={refreshing}
+        onRefresh={() => void refresh()}>
         {parking.map((p) => (
-          <Card key={p.bay}>
+          <Card key={`${p.bay}-${p.plate}`}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.md }}>
               <IconTile icon={IconParking} size={48} />
               <View style={{ flex: 1 }}>
@@ -63,7 +70,13 @@ export default function PropertySection() {
 
   if (section === 'building')
     return (
-      <Page title={t('property.propertyDetails')}>
+      <Page
+        title={t('property.propertyDetails')}
+        loading={loading}
+        error={error}
+        onRetry={() => void refresh()}
+        refreshing={refreshing}
+        onRefresh={() => void refresh()}>
         <BuildingScene style={{ height: 180, borderRadius: radius.xl }} />
         <View>
           <AppText variant="title" weight="bold">
@@ -86,7 +99,13 @@ export default function PropertySection() {
     );
 
   return (
-    <Page title={t('property.unitInfo')}>
+    <Page
+      title={t('property.unitInfo')}
+      loading={loading}
+      error={error}
+      onRetry={() => void refresh()}
+      refreshing={refreshing}
+      onRefresh={() => void refresh()}>
       <Card style={{ flexDirection: 'row', alignItems: 'center' }}>
         <View style={{ flex: 1 }}>
           <AppText variant="caption" tone="muted">

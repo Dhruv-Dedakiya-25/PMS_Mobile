@@ -8,17 +8,16 @@ import { AppText } from '@/components/app-text';
 import { PaperThumb } from '@/components/art';
 import { Page } from '@/components/page';
 import { Button, Card, IconTile, ListRow, Note, Pill } from '@/components/ui';
+import { useLease } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { daysUntil, longDate, omr } from '@/lib/format';
-import { lease } from '@/mock/data';
-import { useMockState } from '@/mock/store';
 import { space, type Accent } from '@/theme/tokens';
 
 /** The tenancy agreement and everything done under it: renewing, ending, rent rises and the deposit. */
 export default function LeaseManagement() {
   const { t } = useTranslation();
   const { language } = useLanguage();
-  const { renewal } = useMockState();
+  const { lease, renewal, loading, refreshing, error, refresh } = useLease();
   const [downloaded, setDownloaded] = useState(false);
   const code = language.code;
 
@@ -26,12 +25,24 @@ export default function LeaseManagement() {
     { icon: IconFileDescription, accent: 'success', label: t('lease.details'), detail: lease.leaseNo, href: '/lease/details' },
     { icon: IconRefresh, accent: 'primary', label: t('lease.renewal'), detail: t(`lease.renewalStatus.${renewal}`), href: '/lease/renewal' },
     { icon: IconCalendarX, accent: 'orange', label: t('lease.termination'), detail: t('lease.terminationDetail', { days: lease.noticeDays }), href: '/lease/termination' },
-    { icon: IconTrendingUp, accent: 'danger', label: t('lease.escalation'), detail: t('lease.escalationDetail', { percent: lease.escalationPercent }), href: '/lease/escalation' },
+    {
+      icon: IconTrendingUp,
+      accent: 'danger',
+      label: t('lease.escalation'),
+      detail: lease.escalationText || (lease.escalationStated ? t('lease.escalationDetail', { percent: lease.escalationPercent }) : '—'),
+      href: '/lease/escalation',
+    },
     { icon: IconShieldCheck, accent: 'primary', label: t('lease.deposit'), detail: omr(lease.deposit, code), href: '/lease/deposit' },
   ];
 
   return (
-    <Page title={t('lease.title')}>
+    <Page
+      title={t('lease.title')}
+      loading={loading}
+      error={error}
+      onRetry={() => void refresh()}
+      refreshing={refreshing}
+      onRefresh={() => void refresh()}>
       <Card>
         <View style={{ flexDirection: 'row', gap: space.lg }}>
           <PaperThumb width={70} />

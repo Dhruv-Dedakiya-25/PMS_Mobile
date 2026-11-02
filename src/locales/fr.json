@@ -8,7 +8,10 @@
     "submit": "Envoyer",
     "call": "Appeler",
     "email": "E-mail",
-    "sample": "Application de démonstration : cela fonctionnera une fois le système connecté."
+    "sample": "Application de démonstration : cela fonctionnera une fois le système connecté.",
+    "loading": "Chargement…",
+    "errorLoad": "Impossible de charger vos informations. Veuillez réessayer.",
+    "retry": "Réessayer"
   },
   "tabs": {
     "dashboard": "Accueil",
@@ -17,7 +20,6 @@
     "announcements": "Annonces"
   },
   "auth": {
-    "tagline": "Votre foyer, notre priorité",
     "signIn": "Se connecter",
     "createAccount": "Créer un compte",
     "welcomeBack": "Bon retour",
@@ -40,7 +42,11 @@
     "sendRequest": "Envoyer la demande",
     "requestSent": "Demande envoyée",
     "requestSentDetail": "La gérance vérifiera votre bail et enverra un SMS au +968 {{mobile}} quand votre compte sera prêt.",
-    "backToSignIn": "Retour à la connexion"
+    "backToSignIn": "Retour à la connexion",
+    "residentsOnly": "Cette application est réservée aux résidents. Le personnel est invité à utiliser le site web PMS.",
+    "notLinked": "Votre compte n'est pas encore lié à une location. Veuillez contacter le bureau de gestion.",
+    "usernameLive": "Nom d'utilisateur",
+    "invalidCredentials": "Nom d'utilisateur ou mot de passe incorrect."
   },
   "home": {
     "morning": "Bonjour",
@@ -183,7 +189,6 @@
     "money": "Loyer et dépôt",
     "monthlyRent": "Loyer mensuel",
     "frequency": "Périodicité",
-    "monthly": "Mensuel",
     "notice": "Préavis",
     "days_one": "{{count}} jour",
     "days_other": "{{count}} jours",
@@ -241,7 +246,14 @@
     "refundTitle": "Comment récupérer le dépôt",
     "refundStep1": "Donnez votre préavis et convenez de la date de départ avec la gérance.",
     "refundStep2": "La gérance inspecte le logement avec vous et note les réparations.",
-    "refundStep3": "Le dépôt, moins les réparations convenues, est remboursé sous 30 jours après la remise des clés."
+    "refundStep3": "Le dépôt, moins les réparations convenues, est remboursé sous 30 jours après la remise des clés.",
+    "frequencies": {
+      "Monthly": "Mensuel",
+      "Quarterly": "Trimestriel",
+      "HalfYearly": "Semestriel",
+      "Annual": "Annuel",
+      "Custom": "Personnalisé"
+    }
   },
   "pay": {
     "title": "Loyer et paiements",
@@ -382,7 +394,8 @@
     "photosOptional": "Les photos sont facultatives.",
     "photos": "Photos",
     "review": "Vérifiez votre demande",
-    "reviewNote": "En l’envoyant, vous autorisez le technicien à entrer dans le logement à l’heure convenue."
+    "reviewNote": "En l’envoyant, vous autorisez le technicien à entrer dans le logement à l’heure convenue.",
+    "photosNotUploadedNote": "Les photos ne sont pas encore envoyées : le serveur ne prend pas encore en charge les pièces jointes."
   },
   "visit": {
     "title": "Gestion des visiteurs",

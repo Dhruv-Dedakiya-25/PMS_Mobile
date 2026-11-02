@@ -8,7 +8,10 @@
     "submit": "제출",
     "call": "전화",
     "email": "이메일",
-    "sample": "샘플 앱: 시스템이 연결되면 작동합니다."
+    "sample": "샘플 앱: 시스템이 연결되면 작동합니다.",
+    "loading": "불러오는 중…",
+    "errorLoad": "정보를 불러올 수 없습니다. 다시 시도해 주세요.",
+    "retry": "다시 시도"
   },
   "tabs": {
     "dashboard": "홈",
@@ -17,7 +20,6 @@
     "announcements": "공지"
   },
   "auth": {
-    "tagline": "당신의 집, 우리의 우선순위",
     "signIn": "로그인",
     "createAccount": "계정 만들기",
     "welcomeBack": "다시 오신 것을 환영합니다",
@@ -40,7 +42,11 @@
     "sendRequest": "요청 보내기",
     "requestSent": "요청을 보냈습니다",
     "requestSentDetail": "관리사무소가 임대 계약을 확인한 뒤 계정이 준비되면 +968 {{mobile}}(으)로 문자를 보냅니다.",
-    "backToSignIn": "로그인으로 돌아가기"
+    "backToSignIn": "로그인으로 돌아가기",
+    "residentsOnly": "이 앱은 입주민 전용입니다. 직원은 PMS 웹사이트를 이용해 주세요.",
+    "notLinked": "계정이 아직 임대 계약에 연결되지 않았습니다. 관리 사무소에 문의해 주세요.",
+    "usernameLive": "사용자명",
+    "invalidCredentials": "사용자 이름 또는 비밀번호가 올바르지 않습니다."
   },
   "home": {
     "morning": "좋은 아침입니다",
@@ -183,7 +189,6 @@
     "money": "월세와 보증금",
     "monthlyRent": "월세",
     "frequency": "납부 주기",
-    "monthly": "매월",
     "notice": "통보 기간",
     "days_one": "{{count}}일",
     "days_other": "{{count}}일",
@@ -241,7 +246,14 @@
     "refundTitle": "보증금 반환 방법",
     "refundStep1": "통보하고 관리사무소와 퇴거일을 정합니다.",
     "refundStep2": "관리사무소가 함께 세대를 점검하고 수리 항목을 기록합니다.",
-    "refundStep3": "합의한 수리비를 뺀 보증금은 열쇠 반납 후 30일 이내에 반환됩니다."
+    "refundStep3": "합의한 수리비를 뺀 보증금은 열쇠 반납 후 30일 이내에 반환됩니다.",
+    "frequencies": {
+      "Monthly": "월별",
+      "Quarterly": "분기별",
+      "HalfYearly": "반기별",
+      "Annual": "연간",
+      "Custom": "사용자 지정"
+    }
   },
   "pay": {
     "title": "월세 및 납부",
@@ -382,7 +394,8 @@
     "photosOptional": "사진은 선택 사항입니다.",
     "photos": "사진",
     "review": "요청 확인",
-    "reviewNote": "제출하면 약속한 방문 시간에 기사가 세대에 들어가는 것에 동의하게 됩니다."
+    "reviewNote": "제출하면 약속한 방문 시간에 기사가 세대에 들어가는 것에 동의하게 됩니다.",
+    "photosNotUploadedNote": "사진은 아직 업로드되지 않습니다(서버 첨부 파일 미지원)."
   },
   "visit": {
     "title": "방문객 관리",

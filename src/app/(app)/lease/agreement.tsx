@@ -4,9 +4,9 @@ import { View } from 'react-native';
 import { AppText } from '@/components/app-text';
 import { GreenViewMark } from '@/components/art';
 import { Page } from '@/components/page';
+import { useLease } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { longDate, omr } from '@/lib/format';
-import { lease, property, tenant } from '@/mock/data';
 import { space } from '@/theme/tokens';
 
 // The agreement's own wording: a record, as the signed contract holds it, so it stays in English.
@@ -23,6 +23,7 @@ const clauses = [
 export default function Agreement() {
   const { t } = useTranslation();
   const { language } = useLanguage();
+  const { lease, tenant, property, loading, refreshing, error, refresh } = useLease();
   const code = language.code;
   const ink = '#14213D';
   const faint = '#5B6A82';
@@ -34,10 +35,16 @@ export default function Agreement() {
     ['Term', `${longDate(lease.start, 'en')} to ${longDate(lease.end, 'en')}`],
     ['Monthly rent', omr(lease.rent, 'en')],
     ['Security deposit', omr(lease.deposit, 'en')],
-    ['Escalation', `${lease.escalationPercent}% per year`],
+    ['Escalation', lease.escalationText || (lease.escalationStated ? `${lease.escalationPercent}% per year` : '—')],
   ];
   return (
-    <Page title={t('lease.agreement')}>
+    <Page
+      title={t('lease.agreement')}
+      loading={loading}
+      error={error}
+      onRetry={() => void refresh()}
+      refreshing={refreshing}
+      onRefresh={() => void refresh()}>
       <View style={{ backgroundColor: '#FFFFFF', borderRadius: 6, padding: space.xl, gap: space.md, borderWidth: 1, borderColor: '#DCE3EC' }}>
         <View style={{ alignItems: 'center', gap: space.xs }}>
           <GreenViewMark size={44} />

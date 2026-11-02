@@ -8,7 +8,10 @@
     "submit": "Invia",
     "call": "Chiama",
     "email": "Email",
-    "sample": "App dimostrativa: funzionerà quando il sistema sarà collegato."
+    "sample": "App dimostrativa: funzionerà quando il sistema sarà collegato.",
+    "loading": "Caricamento…",
+    "errorLoad": "Impossibile caricare le informazioni. Riprova.",
+    "retry": "Riprova"
   },
   "tabs": {
     "dashboard": "Home",
@@ -17,7 +20,6 @@
     "announcements": "Avvisi"
   },
   "auth": {
-    "tagline": "La tua casa, la nostra priorità",
     "signIn": "Accedi",
     "createAccount": "Crea account",
     "welcomeBack": "Bentornato",
@@ -40,7 +42,11 @@
     "sendRequest": "Invia richiesta",
     "requestSent": "Richiesta inviata",
     "requestSentDetail": "L’amministrazione verificherà il tuo contratto e invierà un SMS al +968 {{mobile}} quando l’account sarà pronto.",
-    "backToSignIn": "Torna all’accesso"
+    "backToSignIn": "Torna all’accesso",
+    "residentsOnly": "Questa app è riservata ai residenti. Il personale è pregato di usare il sito web PMS.",
+    "notLinked": "Il tuo account non è ancora collegato a una locazione. Contatta l'ufficio di gestione.",
+    "usernameLive": "Nome utente",
+    "invalidCredentials": "Nome utente o password non validi."
   },
   "home": {
     "morning": "Buongiorno",
@@ -183,7 +189,6 @@
     "money": "Affitto e deposito",
     "monthlyRent": "Canone mensile",
     "frequency": "Frequenza di pagamento",
-    "monthly": "Mensile",
     "notice": "Preavviso",
     "days_one": "{{count}} giorno",
     "days_other": "{{count}} giorni",
@@ -241,7 +246,14 @@
     "refundTitle": "Come riavere il deposito",
     "refundStep1": "Dai la disdetta e concorda la data di uscita con l’amministrazione.",
     "refundStep2": "L’amministrazione controlla l’appartamento con te e annota le riparazioni.",
-    "refundStep3": "Il deposito, meno le riparazioni concordate, viene rimborsato entro 30 giorni dalla consegna delle chiavi."
+    "refundStep3": "Il deposito, meno le riparazioni concordate, viene rimborsato entro 30 giorni dalla consegna delle chiavi.",
+    "frequencies": {
+      "Monthly": "Mensile",
+      "Quarterly": "Trimestrale",
+      "HalfYearly": "Semestrale",
+      "Annual": "Annuale",
+      "Custom": "Personalizzato"
+    }
   },
   "pay": {
     "title": "Affitto e pagamenti",
@@ -382,7 +394,8 @@
     "photosOptional": "Le foto sono facoltative.",
     "photos": "Foto",
     "review": "Controlla la richiesta",
-    "reviewNote": "Inviando, autorizzi il tecnico a entrare nell’appartamento all’orario concordato."
+    "reviewNote": "Inviando, autorizzi il tecnico a entrare nell’appartamento all’orario concordato.",
+    "photosNotUploadedNote": "Le foto non vengono ancora caricate: il server non supporta ancora gli allegati."
   },
   "visit": {
     "title": "Gestione visitatori",

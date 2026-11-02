@@ -8,13 +8,14 @@ import { Pressable, View } from 'react-native';
 
 import { AppText } from '@/components/app-text';
 import { BuildingScene } from '@/components/art';
+import { stageAccent } from '@/components/request-stage';
 import { Screen } from '@/components/screen';
 import { Avatar, Button, Card, IconTile, Onward, Pill, RoundIcon } from '@/components/ui';
-import { stageAccent } from '@/components/request-stage';
+import { usePayments, useProfile, useRequests } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { daysUntil, longDate, omr } from '@/lib/format';
-import { announcements, lease, property, tenant } from '@/mock/data';
-import { nextRentMonth, useMockState } from '@/mock/store';
+import { announcements } from '@/mock/data';
+import { useMockState } from '@/mock/store';
 import { radius, space, usePalette, type Accent } from '@/theme/tokens';
 
 const greetingKey = () => {
@@ -28,14 +29,26 @@ export default function Dashboard() {
   const palette = usePalette();
   const { language } = useLanguage();
   const state = useMockState();
+  const profile = useProfile();
+  const payments = usePayments();
+  const requests = useRequests();
   const code = language.code;
 
+  const { tenant, property, lease } = profile;
   const unread = state.notifications.filter((n) => !n.read).length;
-  const active = state.requests.filter((r) => r.stage !== 'completed');
+  const active = requests.requests.filter((r) => r.stage !== 'completed');
   const leaseDays = daysUntil(lease.end);
-  // Overdue means a bill whose due date has passed unpaid; bills not yet due are not outstanding.
-  const outstanding = state.utilities.filter((u) => !u.paid && daysUntil(u.due) < 0).reduce((sum, u) => sum + u.amount, 0);
+  const outstanding = payments.outstandingTotal;
   const notice = announcements.find((a) => a.needsAck && !state.acknowledged.includes(a.id)) ?? announcements[0];
+
+  const loading = profile.loading || payments.loading || requests.loading;
+  const refreshing = profile.refreshing || payments.refreshing || requests.refreshing;
+  const error = profile.error || payments.error || requests.error;
+  const refreshAll = () => {
+    void profile.refresh();
+    void payments.refresh();
+    void requests.refresh();
+  };
 
   const quick: { icon: Icon; accent: Accent; label: string; href: Href }[] = [
     { icon: IconCreditCard, accent: 'primary', label: t('home.quickPayments'), href: '/payments' },
@@ -45,7 +58,7 @@ export default function Dashboard() {
   ];
 
   return (
-    <Screen>
+    <Screen loading={loading} error={error} onRetry={refreshAll} refreshing={refreshing} onRefresh={refreshAll}>
       <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.md }}>
         <Pressable onPress={() => router.push('/profile')} accessibilityRole="button" accessibilityLabel={t('profile.title')}>
           <Avatar name={tenant.name} />
@@ -81,10 +94,10 @@ export default function Dashboard() {
             {t('home.nextRentDue')}
           </AppText>
           <AppText variant="title" weight="bold" style={{ color: palette.heroText }}>
-            {omr(lease.rent, code)}
+            {omr(payments.nextDueAmount, code)}
           </AppText>
           <AppText variant="caption" style={{ color: palette.heroMuted }}>
-            {longDate(nextRentMonth(state), code)}
+            {longDate(payments.nextDueDate, code)}
           </AppText>
         </View>
         <Button label={t('pay.payNow')} tone="light" compact onPress={() => router.push('/payments/pay')} />
@@ -143,7 +156,7 @@ export default function Dashboard() {
             style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: space.md, paddingHorizontal: space.lg, paddingVertical: space.md, borderTopWidth: 1, borderTopColor: palette.border, backgroundColor: pressed ? palette.surface : 'transparent' })}>
             <View style={{ flex: 1 }}>
               <AppText variant="small" weight="medium" numberOfLines={1}>
-                {t(`maint.category.${r.category}`)}
+                {r.categoryLabel ?? t(`maint.category.${r.category}`)}
               </AppText>
               <AppText variant="caption" tone="muted">
                 {r.requestNo}

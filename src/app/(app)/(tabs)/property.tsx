@@ -9,10 +9,10 @@ import { AppText } from '@/components/app-text';
 import { BuildingScene } from '@/components/art';
 import { Screen } from '@/components/screen';
 import { Card, Details, IconTile, ListRow, Onward } from '@/components/ui';
+import { usePayments, useProfile } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { longDate, num, omr } from '@/lib/format';
-import { lease, parking, property, unit } from '@/mock/data';
-import { nextRentMonth, unpaidUtilities, useMockState } from '@/mock/store';
+import { unpaidUtilities, useMockState } from '@/mock/store';
 import { radius, space, type Accent } from '@/theme/tokens';
 
 /** The tenant's home: the building, the unit's facts, and the lease, rent, bills and papers that go with it. */
@@ -20,8 +20,11 @@ export default function MyProperty() {
   const { t } = useTranslation();
   const { language } = useLanguage();
   const state = useMockState();
+  const profile = useProfile();
+  const payments = usePayments();
   const code = language.code;
 
+  const { property, unit, lease, parking } = profile;
   const tiles: { icon: Icon; label: string; href: Href }[] = [
     { icon: IconHome, label: t('property.unitInfo'), href: '/property/unit' },
     { icon: IconBuildingCommunity, label: t('property.propertyDetails'), href: '/property/building' },
@@ -31,7 +34,13 @@ export default function MyProperty() {
   const unpaid = unpaidUtilities(state);
   const manage: { icon: Icon; accent: Accent; label: string; detail: string; href: Href }[] = [
     { icon: IconFileText, accent: 'success', label: t('lease.title'), detail: t('property.leaseDetail', { date: longDate(lease.end, code) }), href: '/lease' },
-    { icon: IconCreditCard, accent: 'primary', label: t('pay.title'), detail: t('property.rentDetail', { amount: omr(lease.rent, code), date: longDate(nextRentMonth(state), code) }), href: '/payments' },
+    {
+      icon: IconCreditCard,
+      accent: 'primary',
+      label: t('pay.title'),
+      detail: t('property.rentDetail', { amount: omr(payments.nextDueAmount, code), date: longDate(payments.nextDueDate, code) }),
+      href: '/payments',
+    },
     {
       icon: IconBolt, accent: 'orange', label: t('util.title'),
       detail: unpaid.length ? t('property.billsDue', { count: unpaid.length }) : t('property.billsPaid'), href: '/utilities',
@@ -39,8 +48,19 @@ export default function MyProperty() {
     { icon: IconFolder, accent: 'teal', label: t('docs.title'), detail: t('property.docsDetail'), href: '/documents' },
   ];
 
+  const refreshAll = () => {
+    void profile.refresh();
+    void payments.refresh();
+  };
+
   return (
-    <Screen title={t('tabs.property')}>
+    <Screen
+      title={t('tabs.property')}
+      loading={profile.loading}
+      error={profile.error}
+      onRetry={refreshAll}
+      refreshing={profile.refreshing || payments.refreshing}
+      onRefresh={refreshAll}>
       <Card padded={false} onPress={() => router.push('/property/building')} style={{ overflow: 'hidden', gap: 0 }}>
         <BuildingScene style={{ height: 150 }} />
         <View style={{ flexDirection: 'row', alignItems: 'center', padding: space.lg, gap: space.md }}>
@@ -70,7 +90,7 @@ export default function MyProperty() {
         rows={[
           [t('property.unitType'), t(`property.type.${unit.type}`)],
           [t('property.area'), `${num(unit.areaSqm, code)} m²`],
-          [t('property.parking'), parking.map((p) => t('property.parkingLine', { level: p.level, bay: p.bay })).join(', ')],
+          [t('property.parking'), parking.length ? parking.map((p) => t('property.parkingLine', { level: p.level, bay: p.bay })).join(', ') : '—'],
           [t('property.moveIn'), longDate(unit.moveIn, code)],
         ]}
       />
@@ -88,4 +108,3 @@ export default function MyProperty() {
     </Screen>
   );
 }
-

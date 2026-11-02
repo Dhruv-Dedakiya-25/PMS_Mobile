@@ -8,7 +8,10 @@
     "submit": "提交",
     "call": "致电",
     "email": "邮件",
-    "sample": "示例应用：系统接入后即可使用。"
+    "sample": "示例应用：系统接入后即可使用。",
+    "loading": "加载中…",
+    "errorLoad": "无法加载您的信息，请重试。",
+    "retry": "重试"
   },
   "tabs": {
     "dashboard": "首页",
@@ -17,7 +20,6 @@
     "announcements": "公告"
   },
   "auth": {
-    "tagline": "您的家，我们的首要",
     "signIn": "登录",
     "createAccount": "创建账户",
     "welcomeBack": "欢迎回来",
@@ -40,7 +42,11 @@
     "sendRequest": "提交申请",
     "requestSent": "申请已提交",
     "requestSentDetail": "物业办公室会核实您的租约，账户就绪后会发送短信至 +968 {{mobile}}。",
-    "backToSignIn": "返回登录"
+    "backToSignIn": "返回登录",
+    "residentsOnly": "此应用仅供住户使用。工作人员请使用 PMS 网站。",
+    "notLinked": "您的账号尚未关联租约，请联系物业管理处。",
+    "usernameLive": "用户名",
+    "invalidCredentials": "用户名或密码不正确。"
   },
   "home": {
     "morning": "早上好",
@@ -183,7 +189,6 @@
     "money": "租金与押金",
     "monthlyRent": "月租金",
     "frequency": "缴费周期",
-    "monthly": "每月",
     "notice": "通知期",
     "days_one": "{{count}} 天",
     "days_other": "{{count}} 天",
@@ -241,7 +246,14 @@
     "refundTitle": "押金如何退还",
     "refundStep1": "提交通知并与物业确定搬离日期。",
     "refundStep2": "物业与您一起检查房屋并记录维修项目。",
-    "refundStep3": "押金在扣除约定的维修费后，于交还钥匙后 30 天内退还。"
+    "refundStep3": "押金在扣除约定的维修费后，于交还钥匙后 30 天内退还。",
+    "frequencies": {
+      "Monthly": "月付",
+      "Quarterly": "季付",
+      "HalfYearly": "半年付",
+      "Annual": "年付",
+      "Custom": "自定义"
+    }
   },
   "pay": {
     "title": "租金与缴费",
@@ -382,7 +394,8 @@
     "photosOptional": "照片为选填。",
     "photos": "照片",
     "review": "核对申请",
-    "reviewNote": "提交即表示您同意技师在约定时间进入房屋。"
+    "reviewNote": "提交即表示您同意技师在约定时间进入房屋。",
+    "photosNotUploadedNote": "照片暂不上传：服务器尚不支持工单附件。"
   },
   "visit": {
     "title": "访客管理",

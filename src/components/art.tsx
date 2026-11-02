@@ -65,14 +65,13 @@ function Palm({ x, y, h, lean = 4 }: { x: number; y: number; h: number; lean?: n
 
 /**
  * GreenView Residences: three towers in a garden with palms and a pool, under a morning sky.
- * Drawn to fill any box: it crops at the sides and keeps the ground in view. `sky` adds that
- * much open sky above the towers, room for a title on a full-screen welcome.
+ * Drawn to fill any box: it crops at the sides and keeps the ground in view.
  */
-export function BuildingScene({ style, sky = 0 }: { style?: ViewStyle; sky?: number }) {
+export function BuildingScene({ style }: { style?: ViewStyle }) {
   const id = useIds();
   return (
     <View style={[{ overflow: 'hidden' }, style]} accessibilityIgnoresInvertColors>
-      <Svg width="100%" height="100%" viewBox={`0 ${-sky} 400 ${240 + sky}`} preserveAspectRatio="xMidYMax slice">
+      <Svg width="100%" height="100%" viewBox="0 0 400 240" preserveAspectRatio="xMidYMax slice">
         <Defs>
           <LinearGradient id={`sky${id}`} x1="0" y1="0" x2="0" y2="1">
             <Stop offset="0" stopColor="#7DB6EC" />
@@ -99,7 +98,7 @@ export function BuildingScene({ style, sky = 0 }: { style?: ViewStyle; sky?: num
             <Stop offset="1" stopColor="#3BA9D6" />
           </LinearGradient>
         </Defs>
-        <Rect x={0} y={-sky} width={400} height={240 + sky} fill={`url(#sky${id})`} />
+        <Rect x={0} y={0} width={400} height={240} fill={`url(#sky${id})`} />
         <Ellipse cx={330} cy={46} rx={90} ry={70} fill={`url(#sun${id})`} />
         <Ellipse cx={70} cy={40} rx={34} ry={9} fill="#FFFFFF" opacity={0.7} />
         <Ellipse cx={96} cy={34} rx={22} ry={8} fill="#FFFFFF" opacity={0.6} />

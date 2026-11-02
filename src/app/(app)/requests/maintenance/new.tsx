@@ -1,4 +1,4 @@
-import { IconCamera, IconPhoto, IconX } from '@tabler/icons-react-native';
+import { IconAlertCircle, IconCamera, IconInfoCircle, IconPhoto, IconX } from '@tabler/icons-react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { router } from 'expo-router';
 import { useState } from 'react';
@@ -7,9 +7,9 @@ import { Image, Platform, Pressable, View } from 'react-native';
 
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
-import { Button, Details, Field, Select } from '@/components/ui';
+import { Button, Details, Field, Note, Select } from '@/components/ui';
+import { useRequests } from '@/hooks/use-tenancy';
 import type { RequestCategory, RequestPriority } from '@/mock/data';
-import { raiseRequest } from '@/mock/store';
 import { radius, space, usePalette } from '@/theme/tokens';
 
 const categories: RequestCategory[] = ['airConditioning', 'plumbing', 'electrical', 'appliance', 'carpentry', 'pestControl', 'cleaning', 'other'];
@@ -51,11 +51,14 @@ function Steps({ current }: { current: number }) {
 export default function NewMaintenanceRequest() {
   const { t } = useTranslation();
   const palette = usePalette();
+  const { isDemo, submitRequest } = useRequests();
   const [step, setStep] = useState(0);
   const [category, setCategory] = useState<RequestCategory>('airConditioning');
   const [priority, setPriority] = useState<RequestPriority>('normal');
   const [description, setDescription] = useState('');
   const [photos, setPhotos] = useState<string[]>([]);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const addPhoto = async (camera: boolean) => {
     if (camera && Platform.OS !== 'web') {
@@ -67,9 +70,18 @@ export default function NewMaintenanceRequest() {
     if (!result.canceled) setPhotos((p) => [...p, result.assets[0].uri].slice(0, MAX_PHOTOS));
   };
 
-  const submit = () => {
-    const request = raiseRequest({ category, priority, description: description.trim(), photos });
-    router.replace({ pathname: '/done', params: { kind: 'maintenance', ref: request.requestNo } });
+  const submit = async () => {
+    if (submitting) return;
+    setSubmitError(null);
+    setSubmitting(true);
+    try {
+      const created = await submitRequest({ category, priority, description: description.trim(), photos });
+      router.replace({ pathname: '/done', params: { kind: 'maintenance', ref: created.requestNo } });
+    } catch (e) {
+      setSubmitError(e instanceof Error ? e.message : t('common.errorLoad'));
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const footer =
@@ -78,10 +90,14 @@ export default function NewMaintenanceRequest() {
     ) : (
       <View style={{ flexDirection: 'row', gap: space.sm }}>
         <View style={{ flex: 1 }}>
-          <Button label={t('common.back')} tone="outline" onPress={() => setStep(step - 1)} />
+          <Button label={t('common.back')} tone="outline" disabled={submitting} onPress={() => setStep(step - 1)} />
         </View>
         <View style={{ flex: 2 }}>
-          {step === 1 ? <Button label={t('common.next')} onPress={() => setStep(2)} /> : <Button label={t('common.submit')} onPress={submit} />}
+          {step === 1 ? (
+            <Button label={t('common.next')} onPress={() => setStep(2)} />
+          ) : (
+            <Button label={t('common.submit')} disabled={submitting} onPress={() => void submit()} />
+          )}
         </View>
       </View>
     );
@@ -89,6 +105,7 @@ export default function NewMaintenanceRequest() {
   return (
     <Page title={t('maint.newTitle')} footer={footer}>
       <Steps current={step} />
+      {submitError ? <Note icon={IconAlertCircle} accent="danger" text={submitError} /> : null}
 
       {step === 0 ? (
         <>
@@ -146,6 +163,7 @@ export default function NewMaintenanceRequest() {
           <AppText variant="caption" tone="muted">
             {t('maint.photosOptional')}
           </AppText>
+          {!isDemo ? <Note icon={IconInfoCircle} text={t('maint.photosNotUploadedNote')} /> : null}
         </>
       ) : null}
 
@@ -159,6 +177,7 @@ export default function NewMaintenanceRequest() {
               [t('maint.photos'), String(photos.length)],
             ]}
           />
+          {!isDemo && photos.length > 0 ? <Note icon={IconInfoCircle} text={t('maint.photosNotUploadedNote')} /> : null}
           <View style={{ gap: 6 }}>
             <AppText variant="small" weight="medium" tone="secondary">
               {t('maint.description')}

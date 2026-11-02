@@ -6,8 +6,8 @@ import { useEffect, useState } from 'react';
 import { Platform, View } from 'react-native';
 
 import { restoreThemeChoice, useColorScheme } from '@/hooks/use-color-scheme';
+import { useSession } from '@/hooks/use-tenancy';
 import { restoreLanguage } from '@/i18n';
-import { useMockState } from '@/mock/store';
 import { usePalette } from '@/theme/tokens';
 
 SplashScreen.preventAutoHideAsync();
@@ -17,14 +17,14 @@ export default function RootLayout() {
   const [settingsReady, setSettingsReady] = useState(false);
   const scheme = useColorScheme();
   const palette = usePalette();
-  const { signedIn } = useMockState();
+  const { signedIn, ready: authReady, restore } = useSession();
 
   useEffect(() => {
-    Promise.all([restoreLanguage(), restoreThemeChoice()]).finally(() => setSettingsReady(true));
-  }, []);
+    Promise.all([restoreLanguage(), restoreThemeChoice(), restore()]).finally(() => setSettingsReady(true));
+  }, [restore]);
 
   // A font that fails to load falls back to the system font rather than holding the splash screen.
-  const ready = (fontsLoaded || fontError != null) && settingsReady;
+  const ready = (fontsLoaded || fontError != null) && settingsReady && authReady;
   useEffect(() => {
     if (ready) SplashScreen.hideAsync();
   }, [ready]);

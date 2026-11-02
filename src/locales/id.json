@@ -8,7 +8,10 @@
     "submit": "Kirim",
     "call": "Telepon",
     "email": "Email",
-    "sample": "Aplikasi contoh: fitur ini aktif setelah sistem terhubung."
+    "sample": "Aplikasi contoh: fitur ini aktif setelah sistem terhubung.",
+    "loading": "Memuat…",
+    "errorLoad": "Tidak dapat memuat informasi Anda. Silakan coba lagi.",
+    "retry": "Coba Lagi"
   },
   "tabs": {
     "dashboard": "Beranda",
@@ -17,7 +20,6 @@
     "announcements": "Pengumuman"
   },
   "auth": {
-    "tagline": "Rumah Anda, prioritas kami",
     "signIn": "Masuk",
     "createAccount": "Buat akun",
     "welcomeBack": "Selamat datang kembali",
@@ -40,7 +42,11 @@
     "sendRequest": "Kirim permintaan",
     "requestSent": "Permintaan terkirim",
     "requestSentDetail": "Kantor pengelola akan memeriksa sewa Anda dan mengirim SMS ke +968 {{mobile}} saat akun Anda siap.",
-    "backToSignIn": "Kembali ke halaman masuk"
+    "backToSignIn": "Kembali ke halaman masuk",
+    "residentsOnly": "Aplikasi ini khusus untuk penghuni. Staf, silakan gunakan situs web PMS.",
+    "notLinked": "Akun Anda belum ditautkan ke masa sewa. Silakan hubungi kantor manajemen.",
+    "usernameLive": "Nama pengguna",
+    "invalidCredentials": "Nama pengguna atau kata sandi salah."
   },
   "home": {
     "morning": "Selamat pagi",
@@ -183,7 +189,6 @@
     "money": "Sewa dan deposit",
     "monthlyRent": "Sewa bulanan",
     "frequency": "Frekuensi pembayaran",
-    "monthly": "Bulanan",
     "notice": "Masa pemberitahuan",
     "days_one": "{{count}} hari",
     "days_other": "{{count}} hari",
@@ -241,7 +246,14 @@
     "refundTitle": "Cara deposit dikembalikan",
     "refundStep1": "Beri pemberitahuan dan sepakati tanggal pindah dengan kantor.",
     "refundStep2": "Kantor memeriksa unit bersama Anda dan mencatat perbaikan.",
-    "refundStep3": "Deposit, dikurangi perbaikan yang disepakati, dikembalikan dalam 30 hari setelah kunci diserahkan."
+    "refundStep3": "Deposit, dikurangi perbaikan yang disepakati, dikembalikan dalam 30 hari setelah kunci diserahkan.",
+    "frequencies": {
+      "Monthly": "Bulanan",
+      "Quarterly": "Triwulanan",
+      "HalfYearly": "Setengah tahunan",
+      "Annual": "Tahunan",
+      "Custom": "Khusus"
+    }
   },
   "pay": {
     "title": "Sewa & Pembayaran",
@@ -382,7 +394,8 @@
     "photosOptional": "Foto bersifat opsional.",
     "photos": "Foto",
     "review": "Periksa permintaan Anda",
-    "reviewNote": "Dengan mengirim, Anda mengizinkan teknisi masuk ke unit pada waktu kunjungan yang disepakati."
+    "reviewNote": "Dengan mengirim, Anda mengizinkan teknisi masuk ke unit pada waktu kunjungan yang disepakati.",
+    "photosNotUploadedNote": "Foto belum diunggah: server belum mendukung lampiran permintaan."
   },
   "visit": {
     "title": "Manajemen tamu",

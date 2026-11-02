@@ -8,7 +8,10 @@
     "submit": "Hantar",
     "call": "Panggil",
     "email": "E-mel",
-    "sample": "Aplikasi contoh: ciri ini berfungsi selepas sistem disambungkan."
+    "sample": "Aplikasi contoh: ciri ini berfungsi selepas sistem disambungkan.",
+    "loading": "Memuatkan…",
+    "errorLoad": "Tidak dapat memuatkan maklumat anda. Sila cuba lagi.",
+    "retry": "Cuba Lagi"
   },
   "tabs": {
     "dashboard": "Utama",
@@ -17,7 +20,6 @@
     "announcements": "Pengumuman"
   },
   "auth": {
-    "tagline": "Rumah anda, keutamaan kami",
     "signIn": "Log masuk",
     "createAccount": "Cipta akaun",
     "welcomeBack": "Selamat kembali",
@@ -40,7 +42,11 @@
     "sendRequest": "Hantar permohonan",
     "requestSent": "Permohonan dihantar",
     "requestSentDetail": "Pejabat pengurusan akan menyemak penyewaan anda dan menghantar SMS ke +968 {{mobile}} apabila akaun anda sedia.",
-    "backToSignIn": "Kembali ke log masuk"
+    "backToSignIn": "Kembali ke log masuk",
+    "residentsOnly": "Aplikasi ini adalah untuk penghuni sahaja. Kakitangan, sila gunakan laman web PMS.",
+    "notLinked": "Akaun anda belum dipautkan kepada penyewaan. Sila hubungi pejabat pengurusan.",
+    "usernameLive": "Nama pengguna",
+    "invalidCredentials": "Nama pengguna atau kata laluan salah."
   },
   "home": {
     "morning": "Selamat pagi",
@@ -183,7 +189,6 @@
     "money": "Sewa dan deposit",
     "monthlyRent": "Sewa bulanan",
     "frequency": "Kekerapan bayaran",
-    "monthly": "Bulanan",
     "notice": "Tempoh notis",
     "days_one": "{{count}} hari",
     "days_other": "{{count}} hari",
@@ -241,7 +246,14 @@
     "refundTitle": "Cara deposit dipulangkan",
     "refundStep1": "Beri notis dan persetujui tarikh keluar dengan pejabat.",
     "refundStep2": "Pejabat memeriksa unit bersama anda dan mencatat pembaikan.",
-    "refundStep3": "Deposit, tolak pembaikan yang dipersetujui, dipulangkan dalam 30 hari selepas kunci diserahkan."
+    "refundStep3": "Deposit, tolak pembaikan yang dipersetujui, dipulangkan dalam 30 hari selepas kunci diserahkan.",
+    "frequencies": {
+      "Monthly": "Bulanan",
+      "Quarterly": "Suku tahunan",
+      "HalfYearly": "Setengah tahunan",
+      "Annual": "Tahunan",
+      "Custom": "Tersuai"
+    }
   },
   "pay": {
     "title": "Sewa & Bayaran",
@@ -382,7 +394,8 @@
     "photosOptional": "Foto adalah pilihan.",
     "photos": "Foto",
     "review": "Semak permohonan anda",
-    "reviewNote": "Dengan menghantar, anda membenarkan juruteknik masuk ke unit pada masa lawatan yang dipersetujui."
+    "reviewNote": "Dengan menghantar, anda membenarkan juruteknik masuk ke unit pada masa lawatan yang dipersetujui.",
+    "photosNotUploadedNote": "Foto belum dimuat naik lagi: pelayan belum menyokong lampiran."
   },
   "visit": {
     "title": "Pengurusan pelawat",

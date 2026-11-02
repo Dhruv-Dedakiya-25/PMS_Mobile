@@ -6,6 +6,7 @@ import { View } from 'react-native';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
 import { Card, IconTile } from '@/components/ui';
+import { useRequests } from '@/hooks/use-tenancy';
 import { daysUntil } from '@/lib/format';
 import { useMockState } from '@/mock/store';
 import { space } from '@/theme/tokens';
@@ -14,7 +15,8 @@ import { space } from '@/theme/tokens';
 export default function Requests() {
   const { t } = useTranslation();
   const state = useMockState();
-  const open = state.requests.filter((r) => r.stage !== 'completed').length;
+  const { requests, loading, refreshing, error, refresh } = useRequests();
+  const open = requests.filter((r) => r.stage !== 'completed').length;
   const expected = state.visitors.filter((v) => v.status === 'expected').length;
   const upcoming = state.bookings.filter((b) => daysUntil(b.date) >= 0).length;
 
@@ -22,12 +24,18 @@ export default function Requests() {
     { icon: IconTool, label: t('maint.title'), detail: t('requests.openCount', { count: open }), href: '/requests/maintenance' },
     { icon: IconUsers, label: t('visit.title'), detail: t('requests.expectedCount', { count: expected }), href: '/requests/visitors' },
     { icon: IconCalendarEvent, label: t('fac.title'), detail: t('requests.bookingCount', { count: upcoming }), href: '/requests/facilities' },
-    { icon: IconBox, label: t('move.title'), detail: t('requests.moveDetail'), href: '/requests/move' },
+    { icon: IconBox, label: t('requests.moveDetail') ? t('move.title') : '', detail: t('requests.moveDetail'), href: '/requests/move' },
     { icon: IconKey, label: t('access.title'), detail: t('requests.accessDetail'), href: '/requests/access' },
   ];
 
   return (
-    <Screen title={t('tabs.requests')}>
+    <Screen
+      title={t('tabs.requests')}
+      loading={loading}
+      error={error}
+      onRetry={() => void refresh()}
+      refreshing={refreshing}
+      onRefresh={() => void refresh()}>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.md }}>
         {tiles.map((tile) => (
           <Card key={tile.label} onPress={() => router.push(tile.href)} style={{ width: '47%', alignItems: 'center', paddingVertical: space.xl, gap: space.sm }}>
