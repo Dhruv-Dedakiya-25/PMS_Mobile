@@ -6,13 +6,13 @@ import { Pressable, View } from 'react-native';
 
 import { SignInError } from '@/auth/session';
 import { AppText } from '@/components/app-text';
-import { GreenViewMark } from '@/components/art';
+import { BuildingScene, GreenViewMark } from '@/components/art';
 import { Page } from '@/components/page';
 import { Button, Field, Note } from '@/components/ui';
 import { brand } from '@/config';
 import { useSession } from '@/hooks/use-tenancy';
 import { tenant } from '@/mock/data';
-import { space, usePalette } from '@/theme/tokens';
+import { radius, space, usePalette } from '@/theme/tokens';
 
 export default function SignIn() {
   const { t } = useTranslation();
@@ -34,9 +34,7 @@ export default function SignIn() {
       await signIn(username, password);
     } catch (e) {
       if (e instanceof SignInError) {
-        if (e.reason === 'residentsOnly') {
-          setErrorMessage(t('auth.residentsOnly'));
-        } else if (e.reason === 'noApi') {
+        if (e.reason === 'noApi') {
           setErrorMessage(t('common.errorLoad'));
         } else {
           setErrorMessage(e.message && e.message !== 'invalid' ? e.message : t('auth.invalidCredentials'));
@@ -60,14 +58,26 @@ export default function SignIn() {
           onPress={() => void handlePress()}
         />
       }>
-      <View style={{ alignItems: 'center', gap: space.xs, paddingVertical: space.lg }}>
-        <GreenViewMark size={56} color={palette.primary} />
-        <AppText variant="heading" weight="bold" align="center" style={{ marginTop: space.sm }}>
-          {t('auth.welcomeBack')}
+      {/* The residence itself, with its mark, so the page is GreenView's before anything is typed. */}
+      <View>
+        <BuildingScene style={{ height: 180, borderRadius: radius.xl }} />
+        <View
+          style={{
+            position: 'absolute',
+            top: space.md,
+            left: space.md,
+            padding: space.sm,
+            borderRadius: radius.lg,
+            backgroundColor: palette.card,
+          }}>
+          <GreenViewMark size={32} color={palette.primary} />
+        </View>
+      </View>
+      <View style={{ gap: space.xs }}>
+        <AppText variant="heading" weight="bold" accessibilityRole="header">
+          {t('auth.signIn')}
         </AppText>
-        <AppText tone="secondary" align="center">
-          {t('auth.signInTo', { name: `${brand.name} ${brand.subtitle}` })}
-        </AppText>
+        <AppText tone="secondary">{t('auth.signInFor', { name: `${brand.name} ${brand.subtitle}` })}</AppText>
       </View>
       {errorMessage ? <Note icon={IconAlertCircle} accent="danger" text={errorMessage} /> : null}
       <Field

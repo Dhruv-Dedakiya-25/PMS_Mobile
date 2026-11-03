@@ -3,6 +3,7 @@ import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
+import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Avatar, Button, Card, Details, ListRow, Pill, Segmented } from '@/components/ui';
@@ -11,9 +12,9 @@ import { useProfile, useSession } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { ltr } from '@/lib/format';
 import { space, usePalette } from '@/theme/tokens';
+import StaffProfile from './staff/profile';
 
-/** Who is signed in, the app's language and look, and signing out. */
-export default function Profile() {
+function TenantProfile() {
   const { t } = useTranslation();
   const { language } = useLanguage();
   const palette = usePalette();
@@ -67,4 +68,13 @@ export default function Profile() {
       </Card>
     </Page>
   );
+}
+
+/** Who is signed in, the app's language and look, and signing out. */
+export default function Profile() {
+  const { isStaff } = useAppSession();
+  if (isStaff) {
+    return <StaffProfile />;
+  }
+  return <TenantProfile />;
 }

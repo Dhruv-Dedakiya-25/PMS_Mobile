@@ -27,7 +27,7 @@ export type AuthState =
 
 export class SignInError extends Error {
   constructor(
-    public readonly reason: 'invalid' | 'residentsOnly' | 'noApi',
+    public readonly reason: 'invalid' | 'noApi',
     message?: string,
   ) {
     super(message ?? reason);
@@ -135,7 +135,8 @@ async function keep(session: LoginResponse, rtFromHeader: string | null) {
   const user: AuthUser = me ? { ...session.user, ...me } : session.user;
   setCurrencyCode(user.currencyCode);
   await AsyncStorage.setItem(USER_KEY, JSON.stringify(user)).catch(() => undefined);
-  setState({ status: 'signedIn', user, notLinked: !user.tenantId });
+  const isTenant = String(user.role) === 'Tenant';
+  setState({ status: 'signedIn', user, notLinked: isTenant && !user.tenantId });
 }
 
 /** Ends the session on this device only. */
@@ -150,7 +151,7 @@ export async function signOutHere() {
 
 /** Marks the signed-in tenant account as not yet linked to a tenancy record (HTTP 403 from /api/My). */
 export function markNotLinked() {
-  if (state.status === 'signedIn' && !state.notLinked) {
+  if (state.status === 'signedIn' && String(state.user.role) === 'Tenant' && !state.notLinked) {
     setState({ ...state, notLinked: true });
   }
 }
@@ -170,18 +171,15 @@ export async function restoreSession() {
   const saved = await AsyncStorage.getItem(USER_KEY).catch(() => null);
   if ((refreshToken || Platform.OS === 'web') && saved) {
     const user = JSON.parse(saved) as AuthUser;
-    if (String(user.role) !== 'Tenant') {
-      await signOutHere();
-      return;
-    }
     setCurrencyCode(user.currencyCode);
-    setState({ status: 'signedIn', user, notLinked: !user.tenantId });
+    const isTenant = String(user.role) === 'Tenant';
+    setState({ status: 'signedIn', user, notLinked: isTenant && !user.tenantId });
   } else {
     setState({ status: 'signedOut' });
   }
 }
 
-/** Signs in with username and password. Refuses non-Tenant accounts immediately before any tenant screen renders. */
+/** Signs in with username and password. Supports all user roles. */
 export async function login(username: string, password: string): Promise<void> {
   const res = await postAuth('login', { username: username.trim(), password, rememberMe: true });
   if (!res.ok) {
@@ -193,13 +191,6 @@ export async function login(username: string, password: string): Promise<void> {
 
   const rtHeader = cookieRefreshToken(res);
   const body = (await res.json()) as LoginResponse;
-  const tokenForLogout = body.refreshToken || rtHeader;
-
-  if (String(body.user?.role) !== 'Tenant') {
-    await postAuth('logout', tokenForLogout ? { refreshToken: tokenForLogout } : {}).catch(() => undefined);
-    await signOutHere();
-    throw new SignInError('residentsOnly');
-  }
 
   await keep(body, rtHeader);
 }
@@ -220,11 +211,6 @@ export function refreshSession(): Promise<boolean> {
       }
       const rtHeader = cookieRefreshToken(res);
       const body = (await res.json()) as LoginResponse;
-      if (String(body.user?.role) !== 'Tenant') {
-        await postAuth('logout', refreshToken ? { refreshToken } : {}).catch(() => undefined);
-        await signOutHere();
-        return false;
-      }
       await keep(body, rtHeader);
       return true;
     } catch {

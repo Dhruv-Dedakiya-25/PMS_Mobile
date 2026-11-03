@@ -97,3 +97,5 @@ async function request<T>(method: string, path: string, body?: unknown, timeoutM
 
 export const apiGet = <T>(path: string, timeoutMs?: number) => request<T>('GET', path, undefined, timeoutMs);
 export const apiPost = <T>(path: string, body?: unknown, timeoutMs?: number) => request<T>('POST', path, body, timeoutMs);
+export const apiPut = <T>(path: string, body?: unknown, timeoutMs?: number) => request<T>('PUT', path, body, timeoutMs);
+export const apiDelete = <T>(path: string, timeoutMs?: number) => request<T>('DELETE', path, undefined, timeoutMs);

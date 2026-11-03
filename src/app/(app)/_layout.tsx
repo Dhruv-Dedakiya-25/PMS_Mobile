@@ -1,19 +1,23 @@
 import { IconAlertCircle, IconLogout } from '@tabler/icons-react-native';
-import { Stack } from 'expo-router';
+import { Redirect, Stack, usePathname } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
+import { accessTo, homeFor } from '@/auth/page-access';
+import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Button, Card, IconTile } from '@/components/ui';
 import { useSession } from '@/hooks/use-tenancy';
 import { space, usePalette } from '@/theme/tokens';
 
-/** Everything a signed-in tenant sees: the four tabs, and the pages they open. */
+/** Everything a signed-in user sees: the four tabs, and the pages they open. */
 export default function AppLayout() {
   const { t } = useTranslation();
   const palette = usePalette();
   const { notLinked, signOut } = useSession();
+  const { role } = useAppSession();
+  const pathname = usePathname();
 
   if (notLinked) {
     return (
@@ -29,6 +33,15 @@ export default function AppLayout() {
         </View>
       </Page>
     );
+  }
+
+  // Page guard: redirect to homeFor(role) when accessTo(pathname) is null
+  const access = accessTo(pathname, role);
+  if (access === null) {
+    const target = homeFor(role);
+    if (pathname !== target) {
+      return <Redirect href={target as any} />;
+    }
   }
 
   return (
