@@ -1,6 +1,6 @@
 import { useColorScheme } from '@/hooks/use-color-scheme';
 
-/** GreenView's palette, taken from the manager's design (deep blue #1F5BB8 on a cool grey ground), with a matching dark set. */
+/** EstateFlow's palette: the website's blue (#3B6FF6) on a cool grey ground, with a matching dark set. */
 const light = {
   bg: '#F3F6FB',
   card: '#FFFFFF',
@@ -10,9 +10,9 @@ const light = {
   text: '#14213D',
   textSecondary: '#4E5D78',
   textMuted: '#69788F',
-  primary: '#1F5BB8',
-  primaryPressed: '#174A99',
-  primarySoft: '#EAF1FC',
+  primary: '#3B6FF6',
+  primaryPressed: '#2E5FE0',
+  primarySoft: '#EEF3FF',
   onPrimary: '#FFFFFF',
   success: '#15803D',
   successSoft: '#DCF5E5',
@@ -28,7 +28,8 @@ const light = {
   orangeSoft: '#FFF1E4',
   shadow: '#0F1B33',
   // The rent card on the dashboard and the payment screens' summary.
-  hero: '#1F5BB8',
+  // A shade darker than primary so the card's smaller text keeps its contrast.
+  hero: '#2E5FE0',
   heroText: '#FFFFFF',
   heroMuted: '#D6E3F8',
   heroAccent: 'rgba(255,255,255,0.16)',

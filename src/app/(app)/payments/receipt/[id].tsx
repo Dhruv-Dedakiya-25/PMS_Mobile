@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { AppText } from '@/components/app-text';
-import { GreenViewMark } from '@/components/art';
+import { EstateFlowMark } from '@/components/art';
 import { Page } from '@/components/page';
 import { Button, Note } from '@/components/ui';
 import { useReceiptDetail } from '@/hooks/use-tenancy';
@@ -43,7 +43,7 @@ export default function Receipt() {
       footer={<Button label={t('pay.download')} icon={IconDownload} tone="outline" onPress={() => setSaved(true)} />}>
       <View style={{ backgroundColor: '#FFFFFF', borderRadius: 6, borderWidth: 1, borderColor: '#DCE3EC', padding: space.xl, gap: space.md }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.md }}>
-          <GreenViewMark size={40} />
+          <EstateFlowMark size={40} />
           <View style={{ flex: 1 }}>
             <AppText weight="bold" style={{ color: ink }}>
               {property.name}

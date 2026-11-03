@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "साइन इन",
+    "secureSignIn": "सुरक्षित साइन इन",
+    "welcomeBack": "पुनः स्वागत है",
+    "signInDashboard": "अपने EstateFlow डैशबोर्ड में साइन इन करें",
+    "signingIn": "साइन इन हो रहा है...",
     "createAccount": "खाता बनाएँ",
-    "signInFor": "{{name}} के निवासियों और कर्मचारियों के लिए।",
     "username": "मोबाइल नंबर या ईमेल",
     "password": "पासवर्ड",
     "showPassword": "पासवर्ड दिखाएँ",
@@ -156,7 +159,7 @@
     "announcement": "घोषणा",
     "acknowledge": "पुष्टि करें",
     "acknowledged": "आपने इस सूचना की पुष्टि की।",
-    "from": "GreenView प्रबंधन कार्यालय से",
+    "from": "EstateFlow प्रबंधन कार्यालय से",
     "kind": {
       "notice": "सूचना",
       "event": "कार्यक्रम",

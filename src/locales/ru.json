@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "Войти",
+    "secureSignIn": "Защищённый вход",
+    "welcomeBack": "С возвращением",
+    "signInDashboard": "Войдите в свою панель EstateFlow",
+    "signingIn": "Выполняется вход...",
     "createAccount": "Создать аккаунт",
-    "signInFor": "Для жильцов и сотрудников {{name}}.",
     "username": "Телефон или почта",
     "password": "Пароль",
     "showPassword": "Показать пароль",
@@ -166,7 +169,7 @@
     "announcement": "Объявление",
     "acknowledge": "Подтвердить",
     "acknowledged": "Вы подтвердили это уведомление.",
-    "from": "От управляющей компании GreenView",
+    "from": "От управляющей компании EstateFlow",
     "kind": {
       "notice": "Уведомление",
       "event": "Событие",

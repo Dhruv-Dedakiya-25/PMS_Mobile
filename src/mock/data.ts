@@ -22,12 +22,12 @@ export const tenant = {
 
 // ── Property, building and unit · Property, Building, Unit APIs ──────────────
 export const property = {
-  name: 'GreenView Residences',
+  name: 'EstateFlow Residences',
   building: 'Building A',
   floor: 12,
   unitNo: '1204',
   address: 'Al Mouj, Muscat, Oman',
-  developer: 'GreenView Development LLC',
+  developer: 'EstateFlow Development LLC',
   completed: 2021,
   floors: 18,
   units: 216,
@@ -125,8 +125,8 @@ export interface UtilityBill {
 export const initialUtilities: UtilityBill[] = [
   { kind: 'electricity', account: 'EL-7781204', provider: 'Muscat Electricity Distribution', unit: 'kWh', amount: 24.6, due: dateDaysAgo(-9), paid: false, usage: [612, 655, 740, 868, 902, 820] },
   { kind: 'water', account: 'WT-5531204', provider: 'Nama Water Services', unit: 'm³', amount: 8.4, due: dateDaysAgo(-9), paid: false, usage: [14, 15, 17, 18, 19, 16] },
-  { kind: 'cooling', account: 'DC-1204', provider: 'GreenView District Cooling', unit: 'TRh', amount: 38.25, due: dateDaysAgo(-14), paid: false, usage: [310, 342, 395, 461, 488, 430] },
-  { kind: 'service', account: 'SC-A-1204', provider: 'GreenView Owners Association', unit: '', amount: 15, due: dateDaysAgo(-14), paid: true, usage: [15, 15, 15, 15, 15, 15] },
+  { kind: 'cooling', account: 'DC-1204', provider: 'EstateFlow District Cooling', unit: 'TRh', amount: 38.25, due: dateDaysAgo(-14), paid: false, usage: [310, 342, 395, 461, 488, 430] },
+  { kind: 'service', account: 'SC-A-1204', provider: 'EstateFlow Owners Association', unit: '', amount: 15, due: dateDaysAgo(-14), paid: true, usage: [15, 15, 15, 15, 15, 15] },
 ];
 
 // ── Documents · TenantDocument API ───────────────────────────────────────────
@@ -333,9 +333,9 @@ export const initialNotifications = [
 export type ContactRole = 'propertyManager' | 'maintenanceDesk' | 'security' | 'reception' | 'emergency';
 
 export const contacts = [
-  { role: 'propertyManager' as ContactRole, name: 'Salim Al Rashdi', phone: '+968 2449 1100', email: 'manager@greenview.om', hours: 'Sun–Thu · 08:00–17:00' },
-  { role: 'maintenanceDesk' as ContactRole, name: 'GreenView Maintenance', phone: '+968 2449 1122', email: 'maintenance@greenview.om', hours: '24/7' },
-  { role: 'reception' as ContactRole, name: 'Lobby Reception', phone: '+968 2449 1101', email: 'reception@greenview.om', hours: '24/7' },
-  { role: 'security' as ContactRole, name: 'Security Control Room', phone: '+968 2449 1199', email: 'security@greenview.om', hours: '24/7' },
+  { role: 'propertyManager' as ContactRole, name: 'Salim Al Rashdi', phone: '+968 2449 1100', email: 'manager@estateflow.om', hours: 'Sun–Thu · 08:00–17:00' },
+  { role: 'maintenanceDesk' as ContactRole, name: 'EstateFlow Maintenance', phone: '+968 2449 1122', email: 'maintenance@estateflow.om', hours: '24/7' },
+  { role: 'reception' as ContactRole, name: 'Lobby Reception', phone: '+968 2449 1101', email: 'reception@estateflow.om', hours: '24/7' },
+  { role: 'security' as ContactRole, name: 'Security Control Room', phone: '+968 2449 1199', email: 'security@estateflow.om', hours: '24/7' },
   { role: 'emergency' as ContactRole, name: 'Royal Oman Police', phone: '9999', email: '', hours: '24/7' },
 ];

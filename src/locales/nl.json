@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "Inloggen",
+    "secureSignIn": "Veilig inloggen",
+    "welcomeBack": "Welkom terug",
+    "signInDashboard": "Log in op je EstateFlow-dashboard",
+    "signingIn": "Bezig met inloggen...",
     "createAccount": "Account aanmaken",
-    "signInFor": "Voor bewoners en medewerkers van {{name}}.",
     "username": "Mobiel nummer of e-mail",
     "password": "Wachtwoord",
     "showPassword": "Wachtwoord tonen",
@@ -156,7 +159,7 @@
     "announcement": "Mededeling",
     "acknowledge": "Bevestigen",
     "acknowledged": "U hebt dit bericht bevestigd.",
-    "from": "Van het GreenView-beheer",
+    "from": "Van het EstateFlow-beheer",
     "kind": {
       "notice": "Bericht",
       "event": "Evenement",

@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "පුරන්න",
+    "secureSignIn": "ආරක්ෂිත පිවිසුම",
+    "welcomeBack": "යළි සාදරයෙන් පිළිගනිමු",
+    "signInDashboard": "ඔබේ EstateFlow උපකරණ පුවරුවට පිවිසෙන්න",
+    "signingIn": "පිවිසෙමින්...",
     "createAccount": "ගිණුමක් සාදන්න",
-    "signInFor": "{{name}} හි පදිංචිකරුවන් සහ කාර්ය මණ්ඩලය සඳහා.",
     "username": "ජංගම අංකය හෝ ඊමේල්",
     "password": "මුරපදය",
     "showPassword": "මුරපදය පෙන්වන්න",
@@ -156,7 +159,7 @@
     "announcement": "නිවේදනය",
     "acknowledge": "තහවුරු කරන්න",
     "acknowledged": "ඔබ මෙම දැනුම්දීම තහවුරු කළා.",
-    "from": "GreenView කළමනාකරණ කාර්යාලයෙන්",
+    "from": "EstateFlow කළමනාකරණ කාර්යාලයෙන්",
     "kind": {
       "notice": "දැනුම්දීම",
       "event": "උත්සවය",

@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "ログイン",
+    "secureSignIn": "安全なログイン",
+    "welcomeBack": "おかえりなさい",
+    "signInDashboard": "EstateFlow のダッシュボードにログイン",
+    "signingIn": "ログインしています…",
     "createAccount": "アカウント作成",
-    "signInFor": "{{name}}の居住者とスタッフ向けです。",
     "username": "携帯番号またはメール",
     "password": "パスワード",
     "showPassword": "パスワードを表示",
@@ -156,7 +159,7 @@
     "announcement": "お知らせ",
     "acknowledge": "確認しました",
     "acknowledged": "このお知らせを確認済みです。",
-    "from": "GreenView 管理事務所より",
+    "from": "EstateFlow 管理事務所より",
     "kind": {
       "notice": "お知らせ",
       "event": "イベント",

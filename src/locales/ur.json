@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "سائن ان",
+    "secureSignIn": "محفوظ لاگ اِن",
+    "welcomeBack": "خوش آمدید",
+    "signInDashboard": "اپنے EstateFlow ڈیش بورڈ میں لاگ اِن کریں",
+    "signingIn": "لاگ اِن ہو رہا ہے...",
     "createAccount": "اکاؤنٹ بنائیں",
-    "signInFor": "{{name}} کے رہائشیوں اور عملے کے لیے۔",
     "username": "موبائل نمبر یا ای میل",
     "password": "پاس ورڈ",
     "showPassword": "پاس ورڈ دکھائیں",
@@ -156,7 +159,7 @@
     "announcement": "اعلان",
     "acknowledge": "تصدیق کریں",
     "acknowledged": "آپ نے اس نوٹس کی تصدیق کر دی۔",
-    "from": "GreenView انتظامی دفتر کی جانب سے",
+    "from": "EstateFlow انتظامی دفتر کی جانب سے",
     "kind": {
       "notice": "نوٹس",
       "event": "تقریب",

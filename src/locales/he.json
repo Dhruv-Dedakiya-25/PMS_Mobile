@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "כניסה",
+    "secureSignIn": "התחברות מאובטחת",
+    "welcomeBack": "ברוכים השבים",
+    "signInDashboard": "התחברו ללוח המחוונים שלכם ב-EstateFlow",
+    "signingIn": "מתחבר...",
     "createAccount": "יצירת חשבון",
-    "signInFor": "לדיירים ולצוות של {{name}}.",
     "username": "נייד או אימייל",
     "password": "סיסמה",
     "showPassword": "הצגת סיסמה",
@@ -156,7 +159,7 @@
     "announcement": "הודעה",
     "acknowledge": "אישור קריאה",
     "acknowledged": "אישרת את ההודעה.",
-    "from": "ממשרד הניהול של GreenView",
+    "from": "ממשרד הניהול של EstateFlow",
     "kind": {
       "notice": "הודעה",
       "event": "אירוע",

@@ -7,7 +7,6 @@ import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { QrCode } from '@/components/qr-code';
 import { Button, Card, Details, IconTile, Note, Pill } from '@/components/ui';
-import { brand } from '@/config';
 import { useLanguage } from '@/i18n';
 import { longDate } from '@/lib/format';
 import { accessCards, parking, property, tenant } from '@/mock/data';
@@ -30,7 +29,7 @@ export default function DigitalAccess() {
     return () => clearInterval(timer);
   }, []);
   const left = REFRESH_SECONDS - (tick % REFRESH_SECONDS);
-  const key = `GV-${property.unitNo}-${Math.floor(tick / REFRESH_SECONDS)}`;
+  const key = `EF-${property.unitNo}-${Math.floor(tick / REFRESH_SECONDS)}`;
 
   return (
     <Page title={t('access.title')}>
@@ -38,7 +37,7 @@ export default function DigitalAccess() {
         <View style={{ flexDirection: 'row', alignItems: 'center', alignSelf: 'stretch' }}>
           <View style={{ flex: 1 }}>
             <AppText variant="caption" style={{ color: palette.heroMuted }}>
-              {brand.name} {brand.subtitle}
+              {property.name}
             </AppText>
             <AppText weight="bold" style={{ color: palette.heroText }}>
               {t('access.mobileKey')}

@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "تسجيل الدخول",
+    "secureSignIn": "تسجيل دخول آمن",
+    "welcomeBack": "مرحبًا بعودتك",
+    "signInDashboard": "سجّل الدخول إلى لوحة EstateFlow",
+    "signingIn": "جارٍ تسجيل الدخول...",
     "createAccount": "إنشاء حساب",
-    "signInFor": "للسكان والموظفين في {{name}}.",
     "username": "رقم الهاتف أو البريد الإلكتروني",
     "password": "كلمة المرور",
     "showPassword": "إظهار كلمة المرور",
@@ -164,7 +167,7 @@
     "announcement": "إعلان",
     "acknowledge": "إقرار",
     "acknowledged": "لقد أقررت بهذا التنبيه.",
-    "from": "من مكتب إدارة GreenView",
+    "from": "من مكتب إدارة EstateFlow",
     "kind": {
       "notice": "تنبيه",
       "event": "فعالية",

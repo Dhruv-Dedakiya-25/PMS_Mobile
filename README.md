@@ -1,4 +1,4 @@
-# GreenView Residences — tenant app
+# EstateFlow — resident and staff app
 
 The PMS tenant app for iPhone, Android, and Web, built with React Native and Expo (SDK 57).
 

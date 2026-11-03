@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "เข้าสู่ระบบ",
+    "secureSignIn": "เข้าสู่ระบบอย่างปลอดภัย",
+    "welcomeBack": "ยินดีต้อนรับกลับมา",
+    "signInDashboard": "เข้าสู่แดชบอร์ด EstateFlow ของคุณ",
+    "signingIn": "กำลังเข้าสู่ระบบ...",
     "createAccount": "สร้างบัญชี",
-    "signInFor": "สำหรับผู้พักอาศัยและเจ้าหน้าที่ของ {{name}}",
     "username": "เบอร์มือถือหรืออีเมล",
     "password": "รหัสผ่าน",
     "showPassword": "แสดงรหัสผ่าน",
@@ -156,7 +159,7 @@
     "announcement": "ประกาศ",
     "acknowledge": "ยืนยันการอ่าน",
     "acknowledged": "คุณยืนยันการอ่านประกาศนี้แล้ว",
-    "from": "จากสำนักงานนิติบุคคล GreenView",
+    "from": "จากสำนักงานนิติบุคคล EstateFlow",
     "kind": {
       "notice": "แจ้งเตือน",
       "event": "กิจกรรม",

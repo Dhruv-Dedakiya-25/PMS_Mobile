@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "Masuk",
+    "secureSignIn": "Masuk dengan aman",
+    "welcomeBack": "Selamat datang kembali",
+    "signInDashboard": "Masuk ke dasbor EstateFlow Anda",
+    "signingIn": "Sedang masuk...",
     "createAccount": "Buat akun",
-    "signInFor": "Untuk penghuni dan staf {{name}}.",
     "username": "Nomor ponsel atau email",
     "password": "Kata sandi",
     "showPassword": "Tampilkan kata sandi",
@@ -156,7 +159,7 @@
     "announcement": "Pengumuman",
     "acknowledge": "Konfirmasi",
     "acknowledged": "Anda telah mengonfirmasi pemberitahuan ini.",
-    "from": "Dari kantor pengelola GreenView",
+    "from": "Dari kantor pengelola EstateFlow",
     "kind": {
       "notice": "Pemberitahuan",
       "event": "Acara",

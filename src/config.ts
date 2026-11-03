@@ -1,11 +1,8 @@
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
-/**
- * The property this app is branded for. Each residence gets its own copy of the app under its
- * own name, so this is the one place to change it.
- */
-export const brand = { name: 'GreenView', subtitle: 'Residences' };
+/** The app's name, which also stands in for a property the API has not named. */
+export const brand = { name: 'EstateFlow' };
 
 /**
  * Demo mode shows sample data and never calls the server; live mode talks to the PMS API.

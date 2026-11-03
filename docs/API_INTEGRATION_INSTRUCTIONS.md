@@ -1,6 +1,6 @@
 # Tenant app: connect to the PMS API
 
-The GreenView tenant app (`PMS_Mobile`, Expo SDK 57 + Expo Router) was built from the
+The EstateFlow app (`PMS_Mobile`, Expo SDK 57 + Expo Router) was built from the
 manager's design with sample data only. This task makes it read and write real data from
 the PMS API for a signed-in **Tenant**. Three projects in the `Sactech` folder are touched:
 

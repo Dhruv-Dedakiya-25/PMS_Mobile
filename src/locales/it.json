@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "Accedi",
+    "secureSignIn": "Accesso sicuro",
+    "welcomeBack": "Bentornato",
+    "signInDashboard": "Accedi al tuo cruscotto EstateFlow",
+    "signingIn": "Accesso in corso...",
     "createAccount": "Crea account",
-    "signInFor": "Per residenti e personale di {{name}}.",
     "username": "Cellulare o email",
     "password": "Password",
     "showPassword": "Mostra password",
@@ -156,7 +159,7 @@
     "announcement": "Avviso",
     "acknowledge": "Conferma lettura",
     "acknowledged": "Hai confermato questo avviso.",
-    "from": "Dall’amministrazione GreenView",
+    "from": "Dall’amministrazione EstateFlow",
     "kind": {
       "notice": "Avviso",
       "event": "Evento",

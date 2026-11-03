@@ -8,7 +8,6 @@ import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { QrCode } from '@/components/qr-code';
 import { Button, Card, Details, Note, Pill } from '@/components/ui';
-import { brand } from '@/config';
 import { useLanguage } from '@/i18n';
 import { longDate, ltr } from '@/lib/format';
 import { property } from '@/mock/data';
@@ -29,7 +28,7 @@ export default function VisitorPass() {
     <Page title={t('visit.pass')} footer={<Button label={t('visit.sharePass')} icon={IconShare} onPress={() => setShared(true)} />}>
       <Card style={{ alignItems: 'center', paddingVertical: space.xl, gap: space.md }}>
         <AppText variant="small" weight="semibold" tone="primary">
-          {brand.name} {brand.subtitle}
+          {property.name}
         </AppText>
         <View style={{ padding: space.sm, backgroundColor: '#FFFFFF', borderRadius: 12, borderWidth: 1, borderColor: palette.border }}>
           <QrCode value={`${v.passNo}|${property.unitNo}|${v.date}`} size={200} />

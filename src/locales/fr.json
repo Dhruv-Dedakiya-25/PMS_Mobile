@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "Se connecter",
+    "secureSignIn": "Connexion sécurisée",
+    "welcomeBack": "Bon retour",
+    "signInDashboard": "Connectez-vous à votre tableau de bord EstateFlow",
+    "signingIn": "Connexion en cours...",
     "createAccount": "Créer un compte",
-    "signInFor": "Pour les résidents et le personnel de {{name}}.",
     "username": "Mobile ou e-mail",
     "password": "Mot de passe",
     "showPassword": "Afficher le mot de passe",
@@ -156,7 +159,7 @@
     "announcement": "Annonce",
     "acknowledge": "Confirmer la lecture",
     "acknowledged": "Vous avez confirmé cet avis.",
-    "from": "De la gérance GreenView",
+    "from": "De la gérance EstateFlow",
     "kind": {
       "notice": "Avis",
       "event": "Événement",

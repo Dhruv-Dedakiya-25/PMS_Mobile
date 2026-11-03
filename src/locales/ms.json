@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "Log masuk",
+    "secureSignIn": "Log masuk selamat",
+    "welcomeBack": "Selamat kembali",
+    "signInDashboard": "Log masuk ke papan pemuka EstateFlow anda",
+    "signingIn": "Sedang log masuk...",
     "createAccount": "Cipta akaun",
-    "signInFor": "Untuk penghuni dan kakitangan {{name}}.",
     "username": "Nombor telefon bimbit atau e-mel",
     "password": "Kata laluan",
     "showPassword": "Tunjukkan kata laluan",
@@ -156,7 +159,7 @@
     "announcement": "Pengumuman",
     "acknowledge": "Akui",
     "acknowledged": "Anda telah mengakui notis ini.",
-    "from": "Daripada pejabat pengurusan GreenView",
+    "from": "Daripada pejabat pengurusan EstateFlow",
     "kind": {
       "notice": "Notis",
       "event": "Acara",

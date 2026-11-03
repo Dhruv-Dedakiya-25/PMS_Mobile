@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { AppText } from '@/components/app-text';
-import { GreenViewMark } from '@/components/art';
+import { EstateFlowMark } from '@/components/art';
 import { Page } from '@/components/page';
 import { useLease } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
@@ -47,7 +47,7 @@ export default function Agreement() {
       onRefresh={() => void refresh()}>
       <View style={{ backgroundColor: '#FFFFFF', borderRadius: 6, padding: space.xl, gap: space.md, borderWidth: 1, borderColor: '#DCE3EC' }}>
         <View style={{ alignItems: 'center', gap: space.xs }}>
-          <GreenViewMark size={44} />
+          <EstateFlowMark size={44} />
           <AppText variant="bodyLarge" weight="bold" align="center" style={{ color: ink }}>
             {lease.title.toUpperCase()}
           </AppText>

@@ -1,5 +1,4 @@
-// Drawn artwork in place of photographs: the residence, the GreenView mark and the facility
-// tiles. A real photo can replace any of them later by swapping the component for an <Image>.
+// Drawn artwork in place of photographs: the residence, the EstateFlow mark and the facility tiles. A real photo can replace any of them later by swapping the component for an <Image>.
 import {
   IconBallTennis, IconBarbell, IconBuildingCommunity, IconGrill, IconParking, IconPresentation, IconSwimming, type Icon,
 } from '@tabler/icons-react-native';
@@ -64,7 +63,7 @@ function Palm({ x, y, h, lean = 4 }: { x: number; y: number; h: number; lean?: n
 }
 
 /**
- * GreenView Residences: three towers in a garden with palms and a pool, under a morning sky.
+ * The residence: three towers in a garden with palms and a pool, under a morning sky.
  * Drawn to fill any box: it crops at the sides and keeps the ground in view.
  */
 export function BuildingScene({ style }: { style?: ViewStyle }) {
@@ -134,20 +133,23 @@ export function BuildingScene({ style }: { style?: ViewStyle }) {
   );
 }
 
-/** GreenView's mark: three towers drawn in navy line, with a leaf for the gardens. */
-export function GreenViewMark({ size = 72, color = '#1D3F7A' }: { size?: number; color?: string }) {
+/** EstateFlow's mark, drawn as on the website: a roofline above two flowing currents. */
+export function EstateFlowMark({ size = 40 }: { size?: number }) {
+  const id = useIds();
   return (
-    <Svg width={size} height={size * 0.875} viewBox="0 0 64 56" accessibilityLabel="GreenView">
-      <G stroke={color} strokeWidth={2.4} fill="none" strokeLinejoin="round" strokeLinecap="round">
-        <Path d="M6 52 H58" />
-        <Path d="M12 52 V22 H24" />
-        <Path d="M24 52 V8 H40 V52" />
-        <Path d="M40 18 H52 V52" />
-        <Path d="M29 14 V46 M35 14 V46" />
-        <Path d="M17 28 V46 M46 24 V46" />
+    <Svg width={size} height={size} viewBox="0 0 44 44" accessibilityLabel="EstateFlow">
+      <Defs>
+        <LinearGradient id={`ef${id}`} x1="0" y1="0" x2="1" y2="1">
+          <Stop offset="0" stopColor="#3B6FF6" />
+          <Stop offset="1" stopColor="#0D9BA8" />
+        </LinearGradient>
+      </Defs>
+      <Rect x={2} y={2} width={40} height={40} rx={11.5} fill={`url(#ef${id})`} />
+      <G stroke="#FFFFFF" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <Path d="M12 20.5 L22 12 L32 20.5" strokeWidth={3} />
+        <Path d="M12.5 26.5q4.75-3.4 9.5 0t9.5 0" strokeWidth={2.8} />
+        <Path d="M12.5 32.5q4.75-3.4 9.5 0t9.5 0" strokeWidth={2.8} strokeOpacity={0.5} />
       </G>
-      <Path d="M45 13 C46 6 52 3 58 4 C57 10 52 14 45 13 Z" fill="#3E9460" />
-      <Path d="M45 13 L53 7" stroke="#FFFFFF" strokeWidth={1} strokeLinecap="round" />
     </Svg>
   );
 }

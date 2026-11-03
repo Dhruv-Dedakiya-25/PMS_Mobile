@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "Sign In",
+    "secureSignIn": "Secure Sign In",
+    "welcomeBack": "Welcome back",
+    "signInDashboard": "Sign in to your EstateFlow dashboard",
+    "signingIn": "Signing in...",
     "createAccount": "Create Account",
-    "signInFor": "For residents and staff of {{name}}.",
     "username": "Mobile number or email",
     "password": "Password",
     "showPassword": "Show password",
@@ -156,7 +159,7 @@
     "announcement": "Announcement",
     "acknowledge": "Acknowledge",
     "acknowledged": "You acknowledged this notice.",
-    "from": "From the GreenView management office",
+    "from": "From the EstateFlow management office",
     "kind": {
       "notice": "Notice",
       "event": "Event",

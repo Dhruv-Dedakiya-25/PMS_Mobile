@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "Đăng nhập",
+    "secureSignIn": "Đăng nhập an toàn",
+    "welcomeBack": "Chào mừng trở lại",
+    "signInDashboard": "Đăng nhập vào bảng điều khiển EstateFlow của bạn",
+    "signingIn": "Đang đăng nhập...",
     "createAccount": "Tạo tài khoản",
-    "signInFor": "Dành cho cư dân và nhân viên của {{name}}.",
     "username": "Số điện thoại hoặc email",
     "password": "Mật khẩu",
     "showPassword": "Hiện mật khẩu",
@@ -156,7 +159,7 @@
     "announcement": "Thông báo",
     "acknowledge": "Xác nhận đã đọc",
     "acknowledged": "Bạn đã xác nhận thông báo này.",
-    "from": "Từ ban quản lý GreenView",
+    "from": "Từ ban quản lý EstateFlow",
     "kind": {
       "notice": "Thông báo",
       "event": "Sự kiện",

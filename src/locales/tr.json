@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "Giriş yap",
+    "secureSignIn": "Güvenli giriş",
+    "welcomeBack": "Tekrar hoş geldiniz",
+    "signInDashboard": "EstateFlow panonuza giriş yapın",
+    "signingIn": "Giriş yapılıyor...",
     "createAccount": "Hesap oluştur",
-    "signInFor": "{{name}} sakinleri ve çalışanları için.",
     "username": "Cep telefonu veya e-posta",
     "password": "Şifre",
     "showPassword": "Şifreyi göster",
@@ -156,7 +159,7 @@
     "announcement": "Duyuru",
     "acknowledge": "Okudum, onaylıyorum",
     "acknowledged": "Bu duyuruyu onayladınız.",
-    "from": "GreenView yönetiminden",
+    "from": "EstateFlow yönetiminden",
     "kind": {
       "notice": "Bildirim",
       "event": "Etkinlik",

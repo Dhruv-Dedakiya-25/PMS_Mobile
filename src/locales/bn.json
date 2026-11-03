@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "সাইন ইন",
+    "secureSignIn": "নিরাপদ লগইন",
+    "welcomeBack": "আবার স্বাগতম",
+    "signInDashboard": "আপনার EstateFlow ড্যাশবোর্ডে লগইন করুন",
+    "signingIn": "লগইন হচ্ছে...",
     "createAccount": "অ্যাকাউন্ট তৈরি করুন",
-    "signInFor": "{{name}}-এর বাসিন্দা ও কর্মীদের জন্য।",
     "username": "মোবাইল নম্বর বা ইমেল",
     "password": "পাসওয়ার্ড",
     "showPassword": "পাসওয়ার্ড দেখান",
@@ -156,7 +159,7 @@
     "announcement": "ঘোষণা",
     "acknowledge": "নিশ্চিত করুন",
     "acknowledged": "আপনি এই নোটিশ নিশ্চিত করেছেন।",
-    "from": "GreenView ব্যবস্থাপনা অফিস থেকে",
+    "from": "EstateFlow ব্যবস্থাপনা অফিস থেকে",
     "kind": {
       "notice": "নোটিশ",
       "event": "অনুষ্ঠান",

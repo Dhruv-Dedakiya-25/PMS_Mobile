@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "登录",
+    "secureSignIn": "安全登录",
+    "welcomeBack": "欢迎回来",
+    "signInDashboard": "登录您的 EstateFlow 工作台",
+    "signingIn": "正在登录…",
     "createAccount": "创建账户",
-    "signInFor": "供{{name}}的住户和员工使用。",
     "username": "手机号或邮箱",
     "password": "密码",
     "showPassword": "显示密码",
@@ -156,7 +159,7 @@
     "announcement": "公告",
     "acknowledge": "确认已读",
     "acknowledged": "您已确认此通知。",
-    "from": "来自 GreenView 物业办公室",
+    "from": "来自 EstateFlow 物业办公室",
     "kind": {
       "notice": "通知",
       "event": "活动",

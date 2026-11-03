@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "로그인",
+    "secureSignIn": "안전한 로그인",
+    "welcomeBack": "다시 오신 것을 환영합니다",
+    "signInDashboard": "EstateFlow 대시보드에 로그인하세요",
+    "signingIn": "로그인 중…",
     "createAccount": "계정 만들기",
-    "signInFor": "{{name}} 입주민과 직원을 위한 앱입니다.",
     "username": "휴대폰 번호 또는 이메일",
     "password": "비밀번호",
     "showPassword": "비밀번호 표시",
@@ -156,7 +159,7 @@
     "announcement": "공지",
     "acknowledge": "확인",
     "acknowledged": "이 안내를 확인했습니다.",
-    "from": "GreenView 관리사무소",
+    "from": "EstateFlow 관리사무소",
     "kind": {
       "notice": "안내",
       "event": "행사",

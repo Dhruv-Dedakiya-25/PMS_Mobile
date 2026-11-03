@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { AppText } from '@/components/app-text';
-import { GreenViewMark } from '@/components/art';
+import { EstateFlowMark } from '@/components/art';
 import { documentLook } from '@/components/document-look';
 import { Page } from '@/components/page';
 import { Button, IconTile, Note } from '@/components/ui';
@@ -68,7 +68,7 @@ export default function DocumentView() {
       </View>
       <View style={{ backgroundColor: '#FFFFFF', borderRadius: 6, borderWidth: 1, borderColor: '#DCE3EC', padding: space.xl, gap: space.md, minHeight: 360 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.md }}>
-          <GreenViewMark size={36} />
+          <EstateFlowMark size={36} />
           <AppText variant="small" weight="bold" style={{ color: ink, flex: 1 }}>
             {property.name}
           </AppText>

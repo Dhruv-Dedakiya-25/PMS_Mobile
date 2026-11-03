@@ -28,8 +28,11 @@
   },
   "auth": {
     "signIn": "ورود",
+    "secureSignIn": "ورود امن",
+    "welcomeBack": "خوش آمدید",
+    "signInDashboard": "به داشبورد EstateFlow خود وارد شوید",
+    "signingIn": "در حال ورود...",
     "createAccount": "ساخت حساب",
-    "signInFor": "برای ساکنان و کارکنان {{name}}.",
     "username": "شماره موبایل یا ایمیل",
     "password": "رمز عبور",
     "showPassword": "نمایش رمز عبور",
@@ -156,7 +159,7 @@
     "announcement": "اطلاعیه",
     "acknowledge": "تأیید",
     "acknowledged": "این اطلاعیه را تأیید کرده‌اید.",
-    "from": "از دفتر مدیریت GreenView",
+    "from": "از دفتر مدیریت EstateFlow",
     "kind": {
       "notice": "اطلاعیه",
       "event": "رویداد",
