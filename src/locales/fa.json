@@ -11,7 +11,8 @@
     "sample": "برنامه نمونه: پس از اتصال سامانه کار می‌کند.",
     "loading": "در حال بارگذاری…",
     "errorLoad": "بارگذاری اطلاعات شما ممکن نشد. لطفاً دوباره تلاش کنید.",
-    "retry": "تلاش مجدد"
+    "retry": "تلاش مجدد",
+    "select": "انتخاب…"
   },
   "tabs": {
     "dashboard": "خانه",
@@ -261,6 +262,16 @@
       "HalfYearly": "شش‌ماهه",
       "Annual": "سالانه",
       "Custom": "سفارشی"
+    },
+    "statuses": {
+      "Active": "فعال",
+      "Draft": "پیش‌نویس",
+      "PendingApproval": "در انتظار تأیید",
+      "Expired": "منقضی‌شده",
+      "Terminated": "فسخ‌شده",
+      "NoticePeriod": "دوره اخطار",
+      "Cancelled": "لغو شده",
+      "Renewed": "تمدید شده"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "دستورهای کار",
     "assets": "دارایی‌ها",
     "inspections": "بازرسی‌ها",
-    "approvals": "Approvals",
+    "approvals": "تأییدها",
     "openTickets": "درخواست‌های باز",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "در جریان",
@@ -672,7 +683,11 @@
       "Tenant": "مستأجر"
     },
     "property": "ملک",
-    "unit": "واحد"
+    "unit": "واحد",
+    "general": "عمومی",
+    "buildingWide": "سرتاسر ساختمان",
+    "noAnnouncements": "هیچ اعلانی یافت نشد",
+    "userType": "نوع کاربر"
   },
   "inventory": {
     "subtitle": "مصالح تعمیرات، سطح موجودی و درخواست‌های کالا",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "درخواست‌های کالایی که ارسال می‌کنید اینجا نمایش داده می‌شوند.",
     "approvalNote": "مدیر ملک هر درخواست را پیش از صدور کالا تأیید می‌کند.",
     "requestMaterials": "درخواست مصالح"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "بازپرداخت ودیعه",
+      "leaseDiscount": "تخفیف اجاره",
+      "workOrderCost": "هزینه دستور کار",
+      "contractAward": "واگذاری قرارداد",
+      "violationWaiver": "بخشودگی تخلف",
+      "materialRequisition": "درخواست مواد"
+    },
+    "status": {
+      "inApproval": "در حال تأیید",
+      "approved": "تأیید شده",
+      "returned": "برگشت‌خورده",
+      "rejected": "رد شده"
+    },
+    "approve": "تأیید کردن",
+    "return": "برگشت برای اصلاح",
+    "reject": "رد",
+    "comment": "توضیح (برای برگشت یا رد لازم است)",
+    "placeholder": "درخواست‌کننده چه چیزی را باید بداند یا اصلاح کند؟",
+    "reasonNeeded": "برای برگشت یا رد دلیلی بنویسید. درخواست‌کننده آن را می‌بیند.",
+    "othersTurn": "منتظر {{names}} در گام {{n}}. می‌توانید اینجا آن را دنبال کنید؛ فقط آن‌ها می‌توانند تصمیم بگیرند.",
+    "empty": "هیچ چیز منتظر تصمیم شما نیست."
   }
 }

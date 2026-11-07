@@ -11,7 +11,8 @@
     "sample": "Aplikasi contoh: fitur ini aktif setelah sistem terhubung.",
     "loading": "Memuat…",
     "errorLoad": "Tidak dapat memuat informasi Anda. Silakan coba lagi.",
-    "retry": "Coba Lagi"
+    "retry": "Coba Lagi",
+    "select": "Pilih…"
   },
   "tabs": {
     "dashboard": "Beranda",
@@ -261,6 +262,16 @@
       "HalfYearly": "Setengah tahunan",
       "Annual": "Tahunan",
       "Custom": "Khusus"
+    },
+    "statuses": {
+      "Active": "Aktif",
+      "Draft": "Draf",
+      "PendingApproval": "Menunggu Persetujuan",
+      "Expired": "Kedaluwarsa",
+      "Terminated": "Dihentikan",
+      "NoticePeriod": "Masa Pemberitahuan",
+      "Cancelled": "Dibatalkan",
+      "Renewed": "Diperbarui"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "Perintah kerja",
     "assets": "Aset",
     "inspections": "Inspeksi",
-    "approvals": "Approvals",
+    "approvals": "Persetujuan",
     "openTickets": "Tiket terbuka",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "Sedang berjalan",
@@ -672,7 +683,11 @@
       "Tenant": "Penyewa"
     },
     "property": "Properti",
-    "unit": "Unit"
+    "unit": "Unit",
+    "general": "Umum",
+    "buildingWide": "Seluruh Gedung",
+    "noAnnouncements": "Tidak ada pengumuman",
+    "userType": "Jenis pengguna"
   },
   "inventory": {
     "subtitle": "Bahan perbaikan, tingkat stok, dan permintaan barang",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "Permintaan bahan yang Anda kirim muncul di sini.",
     "approvalNote": "Property Manager menyetujui setiap permintaan sebelum stok dikeluarkan.",
     "requestMaterials": "Minta Bahan"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "Pengembalian deposit",
+      "leaseDiscount": "Diskon sewa",
+      "workOrderCost": "Biaya perintah kerja",
+      "contractAward": "Pemberian kontrak",
+      "violationWaiver": "Pembebasan pelanggaran",
+      "materialRequisition": "Permintaan material"
+    },
+    "status": {
+      "inApproval": "Dalam Persetujuan",
+      "approved": "Disetujui",
+      "returned": "Dikembalikan",
+      "rejected": "Ditolak"
+    },
+    "approve": "Setujui",
+    "return": "Kembalikan untuk Perbaikan",
+    "reject": "Tolak",
+    "comment": "Komentar (wajib untuk mengembalikan atau menolak)",
+    "placeholder": "Apa yang perlu diketahui atau diperbaiki pemohon?",
+    "reasonNeeded": "Berikan alasan untuk mengembalikan atau menolak. Pemohon akan melihatnya.",
+    "othersTurn": "Menunggu {{names}} di langkah {{n}}. Anda dapat memantaunya di sini; hanya mereka yang dapat memutuskan.",
+    "empty": "Tidak ada yang menunggu keputusan Anda."
   }
 }

@@ -3,7 +3,7 @@ import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
-import { useAppSession } from '@/auth/use-app-session';
+import { accountLabel, useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Avatar, Button, Card, Details, ListRow, Pill, Segmented } from '@/components/ui';
@@ -21,7 +21,8 @@ export default function StaffProfile() {
   const { user } = useAppSession();
 
   const displayName = user?.displayName || user?.username || 'Staff';
-  const roleName = user ? t(`staff.roles.${user.role}`, { defaultValue: user.role }) : '—';
+  const roleName = accountLabel(user, t, language.code) || '—';
+  const typeName = user ? t(`staff.roles.${user.userType}`, { defaultValue: user.userType }) : '—';
 
   return (
     <Page
@@ -37,7 +38,9 @@ export default function StaffProfile() {
 
       <Details
         rows={[
-          [t('staff.role'), roleName],
+          [t('staff.userType'), typeName],
+          // Shown only for an account with a company role; otherwise it is the user type above.
+          ...(user?.roleId ? [[t('staff.role'), roleName] as [string, string]] : []),
           [t('auth.usernameLive'), user?.username || '—'],
           [t('auth.email'), user?.email || '—'],
         ]}

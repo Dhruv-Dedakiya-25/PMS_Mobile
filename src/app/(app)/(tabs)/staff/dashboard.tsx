@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, View } from 'react-native';
 
 import { getStaffDashboardSummary, type StaffDashboardSummary } from '@/api/staff';
-import { useAppSession } from '@/auth/use-app-session';
+import { accountLabel, useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
 import { Avatar, Button, Card, IconTile, Onward, Pill } from '@/components/ui';
@@ -96,7 +96,7 @@ export default function StaffDashboard() {
         </Pressable>
         <View style={{ flex: 1 }}>
           <AppText variant="small" tone="secondary">
-            {user ? t(`staff.roles.${user.role}`, { defaultValue: user.role }) : null}
+            {accountLabel(user, t, language.code) || null}
           </AppText>
           <AppText variant="bodyLarge" weight="bold" numberOfLines={1}>
             {staffName}

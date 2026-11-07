@@ -12,6 +12,8 @@ import type {
   MyReceiptDetailDto,
   MyReceiptDto,
   MyServiceRequestDto,
+  MyAnnouncementDto,
+  MyNotificationDto,
 } from '@/api/types';
 
 export const getMyProfile = () => apiGet<MyProfileDto>('/My/getMyProfile');
@@ -43,3 +45,18 @@ export const getMyServiceRequest = (id: string) => apiGet<MyServiceRequestDto>(`
 
 export const createMyServiceRequest = (request: CreateMyServiceRequestDto) =>
   apiPost<MyServiceRequestDto>('/My/createMyServiceRequest', request);
+
+export const getMyAnnouncements = () => apiGet<MyAnnouncementDto[]>('/My/getMyAnnouncements');
+
+export const getMyAnnouncement = (id: string) => apiGet<MyAnnouncementDto>(`/My/getMyAnnouncement/${id}`);
+
+export const acknowledgeAnnouncement = (id: string) =>
+  apiPost<{ success: boolean }>(`/My/acknowledgeAnnouncement/${id}`, {});
+
+export const getMyNotifications = () => apiGet<MyNotificationDto[]>('/My/getMyNotifications');
+
+export const markNotificationRead = (id: string) =>
+  apiPost<{ success: boolean }>(`/My/markNotificationRead/${id}`, {});
+
+export const markAllNotificationsRead = () =>
+  apiPost<{ success: boolean }>('/My/markAllNotificationsRead', {});

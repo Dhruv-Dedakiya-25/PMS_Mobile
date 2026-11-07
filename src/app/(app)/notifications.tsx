@@ -7,9 +7,9 @@ import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Card, Empty, IconTile } from '@/components/ui';
 import { useLanguage } from '@/i18n';
+import { useNotifications } from '@/hooks/use-tenancy';
 import { daysUntil, shortDate } from '@/lib/format';
 import type { NotificationKind } from '@/mock/data';
-import { markAllRead, markRead, useMockState } from '@/mock/store';
 import { space, usePalette, type Accent } from '@/theme/tokens';
 
 const look: Record<NotificationKind, { icon: Icon; accent: Accent }> = {
@@ -25,18 +25,20 @@ export default function Notifications() {
   const { t } = useTranslation();
   const palette = usePalette();
   const { language } = useLanguage();
-  const notifications = [...useMockState().notifications].sort((a, b) => b.at.localeCompare(a.at));
-  const unread = notifications.some((n) => !n.read);
+  const { notifications, unread, markRead, markAllRead } = useNotifications();
+
   const when = (date: string) => {
+    if (!date) return '';
     const ago = -daysUntil(date);
     return ago === 0 ? t('notifications.today') : ago === 1 ? t('notifications.yesterday') : shortDate(date, language.code);
   };
+
   return (
     <Page
       title={t('notifications.title')}
       right={
         unread ? (
-          <Pressable onPress={markAllRead} accessibilityRole="button" hitSlop={8}>
+          <Pressable onPress={() => markAllRead()} accessibilityRole="button" hitSlop={8}>
             <AppText variant="small" weight="semibold" tone="primary">
               {t('notifications.markAllRead')}
             </AppText>
@@ -46,13 +48,13 @@ export default function Notifications() {
       {notifications.length === 0 ? <Empty icon={IconBell} title={t('notifications.none')} /> : null}
       <Card padded={false} style={{ gap: 0, overflow: 'hidden' }}>
         {notifications.map((n, i) => {
-          const l = look[n.kind];
+          const l = look[n.kind as NotificationKind] || look.announcement;
           return (
             <Pressable
               key={n.id}
               onPress={() => {
                 markRead(n.id);
-                router.push(n.href as Href);
+                if (n.href) router.push(n.href as Href);
               }}
               accessibilityRole="button"
               style={({ pressed }) => ({

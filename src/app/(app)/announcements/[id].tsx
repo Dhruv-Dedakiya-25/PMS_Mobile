@@ -8,9 +8,8 @@ import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Button, Card, IconTile, Note, Pill } from '@/components/ui';
 import { useLanguage } from '@/i18n';
+import { useAnnouncementDetail } from '@/hooks/use-tenancy';
 import { longDate } from '@/lib/format';
-import { announcements } from '@/mock/data';
-import { acknowledge, useMockState } from '@/mock/store';
 import { space } from '@/theme/tokens';
 
 /** One announcement in full; a notice the office needs read is acknowledged here. */
@@ -18,14 +17,26 @@ export default function AnnouncementView() {
   const { t } = useTranslation();
   const { language } = useLanguage();
   const { id } = useLocalSearchParams<{ id: string }>();
-  const { acknowledged } = useMockState();
-  const a = announcements.find((x) => x.id === id) ?? announcements[0];
-  const look = announcementLook[a.icon];
-  const done = acknowledged.includes(a.id);
+  const { announcement: a, acknowledged: done, acknowledge } = useAnnouncementDetail(id || '');
+
+  if (!a) {
+    return (
+      <Page title={t('ann.announcement')}>
+        <Card>
+          <AppText tone="muted">{t('common.empty')}</AppText>
+        </Card>
+      </Page>
+    );
+  }
+
+  const look = announcementLook[a.icon] || announcementLook.maintenance;
+  const title = (language.code === 'ar' && (a as any).titleAr) ? (a as any).titleAr : a.title;
+  const body = (language.code === 'ar' && (a as any).bodyAr) ? (a as any).bodyAr : a.body;
+
   return (
     <Page
       title={t('ann.announcement')}
-      footer={a.needsAck && !done ? <Button label={t('ann.acknowledge')} icon={IconCircleCheck} onPress={() => acknowledge(a.id)} /> : undefined}>
+      footer={a.needsAck && !done ? <Button label={t('ann.acknowledge')} icon={IconCircleCheck} onPress={() => acknowledge()} /> : undefined}>
       <Card>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.md }}>
           <IconTile icon={look.icon} accent={look.accent} size={48} />
@@ -37,9 +48,9 @@ export default function AnnouncementView() {
           </View>
         </View>
         <AppText variant="title" weight="bold">
-          {a.title}
+          {title}
         </AppText>
-        <AppText style={{ lineHeight: 24 }}>{a.body}</AppText>
+        <AppText style={{ lineHeight: 24 }}>{body}</AppText>
         <AppText variant="caption" tone="muted">
           {t('ann.from')}
         </AppText>

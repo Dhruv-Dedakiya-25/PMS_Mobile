@@ -8,7 +8,14 @@ export interface AuthUser {
   displayName?: string | null;
   email?: string | null;
   isActive: boolean;
-  role: string;
+  /** SuperAdmin, PropertyManager, Maintenance or Tenant: the most the account may do. */
+  userType: string;
+  /** The company role under the user type, when the account has one. */
+  roleId?: string | null;
+  roleNameEn?: string | null;
+  roleNameAr?: string | null;
+  /** Module to actions the role leaves of its user type; the API checks the same. */
+  permissions?: Record<string, string[]>;
   companyId?: string | null;
   tenantId?: string | null;
   currencyCode?: string | null;
@@ -281,4 +288,30 @@ export interface CreateMyServiceRequestDto {
   priority: ApiServicePriority;
   description: string;
   preferredVisitTime?: string | null;
+}
+
+export interface MyAnnouncementDto {
+  id: string;
+  title: string;
+  titleAr?: string | null;
+  body: string;
+  bodyAr?: string | null;
+  date: string;
+  category: string;
+  kind: 'notice' | 'event' | 'rule';
+  icon: 'maintenance' | 'fire' | 'event' | 'hours' | 'rule' | 'water';
+  priority: string;
+  needsAck: boolean;
+  acknowledged: boolean;
+  propertyId?: string | null;
+}
+
+export interface MyNotificationDto {
+  id: string;
+  kind: 'payment' | 'lease' | 'maintenance' | 'visitor' | 'announcement';
+  title: string;
+  body: string;
+  at: string;
+  read: boolean;
+  href?: string | null;
 }

@@ -11,7 +11,8 @@
     "sample": "Beispiel-App: Dies funktioniert, sobald das System angebunden ist.",
     "loading": "Wird geladen…",
     "errorLoad": "Ihre Daten konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
-    "retry": "Erneut versuchen"
+    "retry": "Erneut versuchen",
+    "select": "Auswählen…"
   },
   "tabs": {
     "dashboard": "Übersicht",
@@ -261,6 +262,16 @@
       "HalfYearly": "Halbjährlich",
       "Annual": "Jährlich",
       "Custom": "Benutzerdefiniert"
+    },
+    "statuses": {
+      "Active": "Aktiv",
+      "Draft": "Entwurf",
+      "PendingApproval": "Ausstehende Genehmigung",
+      "Expired": "Abgelaufen",
+      "Terminated": "Gekündigt",
+      "NoticePeriod": "Kündigungsfrist",
+      "Cancelled": "Storniert",
+      "Renewed": "Verlängert"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "Arbeitsaufträge",
     "assets": "Anlagen",
     "inspections": "Inspektionen",
-    "approvals": "Approvals",
+    "approvals": "Freigaben",
     "openTickets": "Offene Tickets",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "In Bearbeitung",
@@ -672,7 +683,11 @@
       "Tenant": "Mieter"
     },
     "property": "Immobilie",
-    "unit": "Einheit"
+    "unit": "Einheit",
+    "general": "Allgemein",
+    "buildingWide": "Gebäudeweit",
+    "noAnnouncements": "Keine Mitteilungen gefunden",
+    "userType": "Benutzertyp"
   },
   "inventory": {
     "subtitle": "Reparaturmaterial, Bestände und Materialanforderungen",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "Ihre Materialanforderungen erscheinen hier.",
     "approvalNote": "Ein Property Manager genehmigt jede Anforderung, bevor Material ausgegeben wird.",
     "requestMaterials": "Material anfordern"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "Kautionsrückzahlung",
+      "leaseDiscount": "Mietnachlass",
+      "workOrderCost": "Kosten des Arbeitsauftrags",
+      "contractAward": "Auftragsvergabe",
+      "violationWaiver": "Erlass eines Verstoßes",
+      "materialRequisition": "Materialanforderung"
+    },
+    "status": {
+      "inApproval": "In Genehmigung",
+      "approved": "Genehmigt",
+      "returned": "Zurückgegeben",
+      "rejected": "Abgelehnt"
+    },
+    "approve": "Genehmigen",
+    "return": "Zur Korrektur zurückgeben",
+    "reject": "Ablehnen",
+    "comment": "Kommentar (für Rückgabe oder Ablehnung erforderlich)",
+    "placeholder": "Was soll der Antragsteller wissen oder korrigieren?",
+    "reasonNeeded": "Geben Sie einen Grund für Rückgabe oder Ablehnung an. Der Antragsteller sieht ihn.",
+    "othersTurn": "Wartet auf {{names}} in Schritt {{n}}. Sie können es hier verfolgen; nur sie können entscheiden.",
+    "empty": "Nichts wartet auf Ihre Entscheidung."
   }
 }

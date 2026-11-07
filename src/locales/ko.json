@@ -11,7 +11,8 @@
     "sample": "샘플 앱: 시스템이 연결되면 작동합니다.",
     "loading": "불러오는 중…",
     "errorLoad": "정보를 불러올 수 없습니다. 다시 시도해 주세요.",
-    "retry": "다시 시도"
+    "retry": "다시 시도",
+    "select": "선택…"
   },
   "tabs": {
     "dashboard": "홈",
@@ -261,6 +262,16 @@
       "HalfYearly": "반기별",
       "Annual": "연간",
       "Custom": "사용자 지정"
+    },
+    "statuses": {
+      "Active": "활성",
+      "Draft": "초안",
+      "PendingApproval": "승인 대기 중",
+      "Expired": "만료됨",
+      "Terminated": "해지됨",
+      "NoticePeriod": "통지 기간",
+      "Cancelled": "취소됨",
+      "Renewed": "갱신됨"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "작업 지시서",
     "assets": "자산",
     "inspections": "점검",
-    "approvals": "Approvals",
+    "approvals": "승인",
     "openTickets": "미처리 티켓",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "진행 중",
@@ -672,7 +683,11 @@
       "Tenant": "임차인"
     },
     "property": "부동산",
-    "unit": "세대"
+    "unit": "세대",
+    "general": "일반",
+    "buildingWide": "건물 전체",
+    "noAnnouncements": "공지사항이 없습니다",
+    "userType": "사용자 유형"
   },
   "inventory": {
     "subtitle": "수리 자재, 재고 수준 및 자재 요청",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "보낸 자재 요청이 여기에 표시됩니다.",
     "approvalNote": "재고가 출고되기 전에 부동산 관리자가 각 요청을 승인합니다.",
     "requestMaterials": "자재 요청"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "보증금 환불",
+      "leaseDiscount": "임대료 할인",
+      "workOrderCost": "작업 지시 비용",
+      "contractAward": "계약 체결",
+      "violationWaiver": "위반 면제",
+      "materialRequisition": "자재 요청"
+    },
+    "status": {
+      "inApproval": "승인 중",
+      "approved": "승인됨",
+      "returned": "반려됨",
+      "rejected": "반려됨"
+    },
+    "approve": "승인",
+    "return": "수정 요청 반려",
+    "reject": "반려",
+    "comment": "의견(반려 또는 거부 시 필수)",
+    "placeholder": "요청자가 알아야 하거나 수정할 사항은?",
+    "reasonNeeded": "반려 또는 거부 사유를 입력하세요. 요청자에게 표시됩니다.",
+    "othersTurn": "{{n}}단계에서 {{names}}의 결정을 기다립니다. 여기서 진행 상황을 볼 수 있으며, 결정은 그들만 할 수 있습니다.",
+    "empty": "결정을 기다리는 항목이 없습니다."
   }
 }

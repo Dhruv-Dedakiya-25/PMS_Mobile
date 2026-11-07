@@ -11,7 +11,8 @@
     "sample": "सैंपल ऐप: सिस्टम जुड़ने के बाद यह काम करेगा।",
     "loading": "लोड हो रहा है…",
     "errorLoad": "आपकी जानकारी लोड नहीं हो सकी। कृपया पुनः प्रयास करें।",
-    "retry": "पुनः प्रयास करें"
+    "retry": "पुनः प्रयास करें",
+    "select": "चुनें…"
   },
   "tabs": {
     "dashboard": "डैशबोर्ड",
@@ -261,6 +262,16 @@
       "HalfYearly": "अर्धवार्षिक",
       "Annual": "वार्षिक",
       "Custom": "कस्टम"
+    },
+    "statuses": {
+      "Active": "सक्रिय",
+      "Draft": "प्रारूप",
+      "PendingApproval": "स्वीकृति लंबित",
+      "Expired": "समाप्त",
+      "Terminated": "रद्द",
+      "NoticePeriod": "नोटिस अवधि",
+      "Cancelled": "रद्द",
+      "Renewed": "नवीनीकृत"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "कार्य आदेश",
     "assets": "संपत्तियाँ",
     "inspections": "निरीक्षण",
-    "approvals": "Approvals",
+    "approvals": "अनुमोदन",
     "openTickets": "खुले टिकट",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "प्रगति पर",
@@ -672,7 +683,11 @@
       "Tenant": "किरायेदार"
     },
     "property": "संपत्ति",
-    "unit": "इकाई"
+    "unit": "इकाई",
+    "general": "सामान्य",
+    "buildingWide": "पूरी इमारत",
+    "noAnnouncements": "कोई सूचना नहीं मिली",
+    "userType": "उपयोगकर्ता प्रकार"
   },
   "inventory": {
     "subtitle": "मरम्मत सामग्री, स्टॉक स्तर और अधियाचन",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "आपके भेजे गए सामग्री अधियाचन यहाँ दिखेंगे।",
     "approvalNote": "स्टॉक जारी होने से पहले प्रॉपर्टी मैनेजर हर अधियाचन स्वीकृत करते हैं।",
     "requestMaterials": "सामग्री मँगाएँ"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "जमा राशि वापसी",
+      "leaseDiscount": "किराए में छूट",
+      "workOrderCost": "कार्य आदेश लागत",
+      "contractAward": "अनुबंध प्रदान",
+      "violationWaiver": "उल्लंघन माफी",
+      "materialRequisition": "सामग्री अनुरोध"
+    },
+    "status": {
+      "inApproval": "स्वीकृति में",
+      "approved": "स्वीकृत",
+      "returned": "लौटाया गया",
+      "rejected": "अस्वीकृत"
+    },
+    "approve": "स्वीकृत करें",
+    "return": "सुधार के लिए लौटाएँ",
+    "reject": "अस्वीकार करें",
+    "comment": "टिप्पणी (लौटाने या अस्वीकार करने के लिए आवश्यक)",
+    "placeholder": "अनुरोधकर्ता को क्या जानना या सुधारना चाहिए?",
+    "reasonNeeded": "लौटाने या अस्वीकार करने का कारण दें। अनुरोधकर्ता इसे देखेगा।",
+    "othersTurn": "चरण {{n}} पर {{names}} की प्रतीक्षा। आप इसे यहाँ देख सकते हैं; निर्णय केवल वही ले सकते हैं।",
+    "empty": "आपके निर्णय की प्रतीक्षा में कुछ नहीं है।"
   }
 }

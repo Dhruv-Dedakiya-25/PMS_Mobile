@@ -3,7 +3,6 @@ import { Redirect, Stack, usePathname } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
-import { accessTo, homeFor } from '@/auth/page-access';
 import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
@@ -16,7 +15,7 @@ export default function AppLayout() {
   const { t } = useTranslation();
   const palette = usePalette();
   const { notLinked, signOut } = useSession();
-  const { role } = useAppSession();
+  const { accessTo, home } = useAppSession();
   const pathname = usePathname();
 
   if (notLinked) {
@@ -35,13 +34,9 @@ export default function AppLayout() {
     );
   }
 
-  // Page guard: redirect to homeFor(role) when accessTo(pathname) is null
-  const access = accessTo(pathname, role);
-  if (access === null) {
-    const target = homeFor(role);
-    if (pathname !== target) {
-      return <Redirect href={target as any} />;
-    }
+  // Page guard: a screen the account may not open sends it to its home
+  if (accessTo(pathname) === null && pathname !== home) {
+    return <Redirect href={home as any} />;
   }
 
   return (

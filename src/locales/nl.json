@@ -11,7 +11,8 @@
     "sample": "Voorbeeldapp: dit werkt zodra het systeem gekoppeld is.",
     "loading": "Laden…",
     "errorLoad": "Uw gegevens konden niet worden geladen. Probeer het opnieuw.",
-    "retry": "Opnieuw proberen"
+    "retry": "Opnieuw proberen",
+    "select": "Selecteren…"
   },
   "tabs": {
     "dashboard": "Overzicht",
@@ -261,6 +262,16 @@
       "HalfYearly": "Halfjaarlijks",
       "Annual": "Jaarlijks",
       "Custom": "Aangepast"
+    },
+    "statuses": {
+      "Active": "Actief",
+      "Draft": "Concept",
+      "PendingApproval": "Wacht op goedkeuring",
+      "Expired": "Verlopen",
+      "Terminated": "Beëindigd",
+      "NoticePeriod": "Opzegtermijn",
+      "Cancelled": "Geannuleerd",
+      "Renewed": "Verlengd"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "Werkorders",
     "assets": "Activa",
     "inspections": "Inspecties",
-    "approvals": "Approvals",
+    "approvals": "Goedkeuringen",
     "openTickets": "Openstaande tickets",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "Loopt",
@@ -672,7 +683,11 @@
       "Tenant": "Huurder"
     },
     "property": "Pand",
-    "unit": "Eenheid"
+    "unit": "Eenheid",
+    "general": "Algemeen",
+    "buildingWide": "Hele gebouw",
+    "noAnnouncements": "Geen berichten gevonden",
+    "userType": "Gebruikerstype"
   },
   "inventory": {
     "subtitle": "Reparatiematerialen, voorraadniveaus en aanvragen",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "Materiaalaanvragen die je verstuurt, verschijnen hier.",
     "approvalNote": "Een property manager keurt elke aanvraag goed voordat de voorraad wordt uitgegeven.",
     "requestMaterials": "Materiaal aanvragen"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "Terugbetaling borg",
+      "leaseDiscount": "Huurkorting",
+      "workOrderCost": "Kosten werkorder",
+      "contractAward": "Gunning contract",
+      "violationWaiver": "Kwijtschelding overtreding",
+      "materialRequisition": "Materiaalaanvraag"
+    },
+    "status": {
+      "inApproval": "In goedkeuring",
+      "approved": "Goedgekeurd",
+      "returned": "Teruggestuurd",
+      "rejected": "Afgewezen"
+    },
+    "approve": "Goedkeuren",
+    "return": "Terugsturen ter correctie",
+    "reject": "Afwijzen",
+    "comment": "Opmerking (nodig om terug te sturen of af te wijzen)",
+    "placeholder": "Wat moet de aanvrager weten of corrigeren?",
+    "reasonNeeded": "Geef een reden om terug te sturen of af te wijzen. De aanvrager ziet die.",
+    "othersTurn": "Wacht op {{names}} bij stap {{n}}. U kunt het hier volgen; alleen zij kunnen beslissen.",
+    "empty": "Er wacht niets op uw beslissing."
   }
 }

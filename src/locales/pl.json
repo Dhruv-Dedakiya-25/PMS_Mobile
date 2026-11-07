@@ -11,7 +11,8 @@
     "sample": "Aplikacja demonstracyjna: zadziała po podłączeniu systemu.",
     "loading": "Ładowanie…",
     "errorLoad": "Nie udało się załadować danych. Spróbuj ponownie.",
-    "retry": "Spróbuj ponownie"
+    "retry": "Spróbuj ponownie",
+    "select": "Wybierz…"
   },
   "tabs": {
     "dashboard": "Pulpit",
@@ -283,6 +284,16 @@
       "HalfYearly": "Półroczna",
       "Annual": "Roczna",
       "Custom": "Niestandardowa"
+    },
+    "statuses": {
+      "Active": "Aktywny",
+      "Draft": "Szkic",
+      "PendingApproval": "Oczekuje na zatwierdzenie",
+      "Expired": "Wygasła",
+      "Terminated": "Rozwiązana",
+      "NoticePeriod": "Okres wypowiedzenia",
+      "Cancelled": "Anulowano",
+      "Renewed": "Odnowiono"
     }
   },
   "pay": {
@@ -641,7 +652,7 @@
     "workOrders": "Zlecenia pracy",
     "assets": "Aktywa",
     "inspections": "Inspekcje",
-    "approvals": "Approvals",
+    "approvals": "Zatwierdzenia",
     "openTickets": "Otwarte zgłoszenia",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "W toku",
@@ -708,7 +719,11 @@
       "Tenant": "Najemca"
     },
     "property": "Nieruchomość",
-    "unit": "Lokal"
+    "unit": "Lokal",
+    "general": "Ogólne",
+    "buildingWide": "Cały budynek",
+    "noAnnouncements": "Nie znaleziono ogłoszeń",
+    "userType": "Typ użytkownika"
   },
   "inventory": {
     "subtitle": "Materiały naprawcze, stany magazynowe i zapotrzebowania",
@@ -744,5 +759,29 @@
     "noRequestsDetail": "Tutaj pojawią się wysłane zapotrzebowania na materiały.",
     "approvalNote": "Kierownik nieruchomości zatwierdza każde zapotrzebowanie przed wydaniem materiałów.",
     "requestMaterials": "Zamów materiały"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "Zwrot kaucji",
+      "leaseDiscount": "Rabat od czynszu",
+      "workOrderCost": "Koszt zlecenia pracy",
+      "contractAward": "Udzielenie zamówienia",
+      "violationWaiver": "Umorzenie naruszenia",
+      "materialRequisition": "Zapotrzebowanie na materiały"
+    },
+    "status": {
+      "inApproval": "W zatwierdzaniu",
+      "approved": "Zatwierdzony",
+      "returned": "Zwrócony",
+      "rejected": "Odrzucony"
+    },
+    "approve": "Zatwierdź",
+    "return": "Zwróć do poprawy",
+    "reject": "Odrzuć",
+    "comment": "Komentarz (wymagany przy zwrocie lub odrzuceniu)",
+    "placeholder": "Co wnioskodawca powinien wiedzieć lub poprawić?",
+    "reasonNeeded": "Podaj powód zwrotu lub odrzucenia. Wnioskodawca go zobaczy.",
+    "othersTurn": "Czeka na {{names}} w kroku {{n}}. Możesz to śledzić tutaj; decydować mogą tylko oni.",
+    "empty": "Nic nie czeka na Twoją decyzję."
   }
 }

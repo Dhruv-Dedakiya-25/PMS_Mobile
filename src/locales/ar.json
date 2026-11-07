@@ -11,7 +11,8 @@
     "sample": "تطبيق تجريبي: تعمل هذه الميزة بعد ربط النظام.",
     "loading": "جارٍ التحميل…",
     "errorLoad": "تعذّر تحميل بياناتك. يرجى المحاولة مرة أخرى.",
-    "retry": "إعادة المحاولة"
+    "retry": "إعادة المحاولة",
+    "select": "اختر…"
   },
   "tabs": {
     "dashboard": "الرئيسية",
@@ -293,6 +294,16 @@
       "HalfYearly": "نصف سنوي",
       "Annual": "سنوي",
       "Custom": "مخصص"
+    },
+    "statuses": {
+      "Active": "نشط",
+      "Draft": "مسودة",
+      "PendingApproval": "قيد الموافقة",
+      "Expired": "منتهي",
+      "Terminated": "مفسوخ",
+      "NoticePeriod": "فترة الإخطار",
+      "Cancelled": "ملغى",
+      "Renewed": "مجدد"
     }
   },
   "pay": {
@@ -665,7 +676,7 @@
     "workOrders": "أوامر العمل",
     "assets": "الأصول",
     "inspections": "عمليات التفتيش",
-    "approvals": "Approvals",
+    "approvals": "الموافقات",
     "openTickets": "التذاكر المفتوحة",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "قيد التنفيذ",
@@ -732,7 +743,11 @@
       "Tenant": "مستأجر"
     },
     "property": "العقار",
-    "unit": "الوحدة"
+    "unit": "الوحدة",
+    "general": "عام",
+    "buildingWide": "لكامل المبنى",
+    "noAnnouncements": "لا توجد إعلانات",
+    "userType": "نوع المستخدم"
   },
   "inventory": {
     "subtitle": "مواد الإصلاح ومستويات المخزون وطلبات الصرف",
@@ -768,5 +783,29 @@
     "noRequestsDetail": "تظهر هنا طلبات صرف المواد التي ترسلها.",
     "approvalNote": "يعتمد مدير العقار كل طلب صرف قبل صرف المخزون.",
     "requestMaterials": "طلب مواد"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "استرداد التأمين",
+      "leaseDiscount": "خصم الإيجار",
+      "workOrderCost": "تكلفة أمر العمل",
+      "contractAward": "ترسية العقد",
+      "violationWaiver": "الإعفاء من المخالفة",
+      "materialRequisition": "طلب المواد"
+    },
+    "status": {
+      "inApproval": "قيد الاعتماد",
+      "approved": "موافق عليه",
+      "returned": "مُعاد",
+      "rejected": "مرفوض"
+    },
+    "approve": "موافقة",
+    "return": "إعادة للتصحيح",
+    "reject": "رفض",
+    "comment": "تعليق (مطلوب للإعادة أو الرفض)",
+    "placeholder": "ما الذي يجب أن يعرفه مقدّم الطلب أو يصححه؟",
+    "reasonNeeded": "اذكر سببًا للإعادة أو الرفض. سيراه مقدّم الطلب.",
+    "othersTurn": "بانتظار {{names}} في الخطوة {{n}}. يمكنك متابعته هنا؛ وهم وحدهم من يقررونه.",
+    "empty": "لا يوجد ما ينتظر قرارك."
   }
 }

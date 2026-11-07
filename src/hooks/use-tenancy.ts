@@ -6,23 +6,31 @@
 import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 
 import {
+  acknowledgeAnnouncement as apiAcknowledgeAnnouncement,
   createMyServiceRequest,
+  getMyAnnouncement,
+  getMyAnnouncements,
   getMyDocuments,
   getMyInstallments,
   getMyInvoices,
   getMyLease,
+  getMyNotifications,
   getMyProfile,
   getMyReceipt,
   getMyReceipts,
   getMyServiceRequest,
   getMyServiceRequests,
+  markAllNotificationsRead as apiMarkAllNotificationsRead,
+  markNotificationRead as apiMarkNotificationRead,
 } from '@/api/my';
 import type {
   ApiServicePriority,
+  MyAnnouncementDto,
   MyDocumentDto,
   MyInstallmentDto,
   MyInvoiceDto,
   MyLeaseDto,
+  MyNotificationDto,
   MyProfileDto,
   MyReceiptDetailDto,
   MyReceiptDto,
@@ -34,6 +42,7 @@ import { useLanguage } from '@/i18n';
 import { daysUntil } from '@/lib/format';
 import { omanToday } from '@/mock/clock';
 import {
+  announcements as mockAnnouncements,
   documents as mockDocuments,
   lease as mockLease,
   parking as mockParking,
@@ -50,6 +59,9 @@ import {
   type RequestStage,
 } from '@/mock/data';
 import {
+  acknowledge as mockAcknowledge,
+  markAllRead as mockMarkAllRead,
+  markRead as mockMarkRead,
   nextRentMonth,
   raiseRequest,
   signIn as mockSignIn,
@@ -92,11 +104,15 @@ interface LiveCache {
   documents?: MyDocumentDto[];
   requests?: MyServiceRequestDto[];
   requestDetails: Record<string, MyServiceRequestDto>;
+  announcements?: MyAnnouncementDto[];
+  announcementDetails: Record<string, MyAnnouncementDto>;
+  notifications?: MyNotificationDto[];
 }
 
 let cache: LiveCache = {
   receiptDetails: {},
   requestDetails: {},
+  announcementDetails: {},
 };
 const cacheListeners = new Set<() => void>();
 
@@ -106,7 +122,7 @@ function notifyCache() {
 }
 
 export function clearTenancyCache() {
-  cache = { receiptDetails: {}, requestDetails: {} };
+  cache = { receiptDetails: {}, requestDetails: {}, announcementDetails: {} };
   cacheListeners.forEach((l) => l());
 }
 
@@ -952,6 +968,224 @@ export function useRequestDetail(id: string) {
 
   return {
     request: mapped,
+    ...status,
+  };
+}
+
+/** Resident announcements hook. */
+export function useAnnouncements() {
+  const isDemo = authMode === 'demo';
+  const mock = useMockState();
+  const live = useLiveCache();
+
+  const fetchAnnouncements = useCallback(async () => {
+    const data = await getMyAnnouncements();
+    cache.announcements = data;
+    notifyCache();
+  }, []);
+
+  const status = useResource(Boolean(live.announcements), fetchAnnouncements);
+
+  const acknowledge = useCallback(
+    async (id: string) => {
+      if (isDemo) {
+        mockAcknowledge(id);
+        return;
+      }
+      await apiAcknowledgeAnnouncement(id);
+      if (cache.announcements) {
+        cache.announcements = cache.announcements.map((a) =>
+          a.id === id ? { ...a, acknowledged: true } : a,
+        );
+      }
+      if (cache.announcementDetails[id]) {
+        cache.announcementDetails[id] = { ...cache.announcementDetails[id], acknowledged: true };
+      }
+      notifyCache();
+    },
+    [isDemo],
+  );
+
+  if (isDemo) {
+    return {
+      isDemo: true,
+      announcements: mockAnnouncements,
+      acknowledged: mock.acknowledged,
+      acknowledge,
+      loading: false,
+      refreshing: false,
+      error: null,
+      refresh: () => Promise.resolve(),
+    };
+  }
+
+  const list = live.announcements ?? [];
+  return {
+    isDemo: false,
+    announcements: list.map((a) => ({
+      id: a.id,
+      kind: a.kind,
+      title: a.title,
+      titleAr: a.titleAr,
+      body: a.body,
+      bodyAr: a.bodyAr,
+      date: typeof a.date === 'string' ? a.date.slice(0, 10) : '',
+      icon: a.icon,
+      needsAck: a.needsAck,
+    })),
+    acknowledged: list.filter((a) => a.acknowledged).map((a) => a.id),
+    acknowledge,
+    ...status,
+  };
+}
+
+/** Single announcement detail hook. */
+export function useAnnouncementDetail(id: string) {
+  const isDemo = authMode === 'demo';
+  const mock = useMockState();
+  const live = useLiveCache();
+  const cachedDetail = live.announcementDetails[id];
+
+  const fetchDetail = useCallback(async () => {
+    if (!id) return;
+    const detail = await getMyAnnouncement(id);
+    cache.announcementDetails = { ...cache.announcementDetails, [id]: detail };
+    notifyCache();
+  }, [id]);
+
+  const status = useResource(Boolean(cachedDetail), fetchDetail);
+
+  const acknowledge = useCallback(async () => {
+    if (isDemo) {
+      mockAcknowledge(id);
+      return;
+    }
+    await apiAcknowledgeAnnouncement(id);
+    if (cache.announcementDetails[id]) {
+      cache.announcementDetails[id] = { ...cache.announcementDetails[id], acknowledged: true };
+    }
+    if (cache.announcements) {
+      cache.announcements = cache.announcements.map((a) =>
+        a.id === id ? { ...a, acknowledged: true } : a,
+      );
+    }
+    notifyCache();
+  }, [id, isDemo]);
+
+  if (isDemo) {
+    const found = mockAnnouncements.find((x) => x.id === id) ?? mockAnnouncements[0];
+    return {
+      isDemo: true,
+      announcement: found,
+      acknowledged: mock.acknowledged.includes(found.id),
+      acknowledge,
+      loading: false,
+      refreshing: false,
+      error: null,
+      refresh: () => Promise.resolve(),
+    };
+  }
+
+  const detail = cachedDetail ?? live.announcements?.find((x) => x.id === id);
+  const isDone = detail ? detail.acknowledged : false;
+
+  return {
+    isDemo: false,
+    announcement: detail
+      ? {
+          id: detail.id,
+          kind: detail.kind,
+          title: detail.title,
+          titleAr: detail.titleAr,
+          body: detail.body,
+          bodyAr: detail.bodyAr,
+          date: typeof detail.date === 'string' ? detail.date.slice(0, 10) : '',
+          icon: detail.icon,
+          needsAck: detail.needsAck,
+        }
+      : undefined,
+    acknowledged: isDone,
+    acknowledge,
+    ...status,
+  };
+}
+
+/** Resident notifications hook. */
+export function useNotifications() {
+  const isDemo = authMode === 'demo';
+  const mock = useMockState();
+  const live = useLiveCache();
+
+  const fetchNotifications = useCallback(async () => {
+    const data = await getMyNotifications();
+    cache.notifications = data;
+    notifyCache();
+  }, []);
+
+  const status = useResource(Boolean(live.notifications), fetchNotifications);
+
+  const markRead = useCallback(
+    async (id: string) => {
+      if (isDemo) {
+        mockMarkRead(id);
+        return;
+      }
+      await apiMarkNotificationRead(id);
+      if (cache.notifications) {
+        cache.notifications = cache.notifications.map((n) =>
+          n.id === id ? { ...n, read: true } : n,
+        );
+        notifyCache();
+      }
+    },
+    [isDemo],
+  );
+
+  const markAllRead = useCallback(async () => {
+    if (isDemo) {
+      mockMarkAllRead();
+      return;
+    }
+    await apiMarkAllNotificationsRead();
+    if (cache.notifications) {
+      cache.notifications = cache.notifications.map((n) => ({ ...n, read: true }));
+      notifyCache();
+    }
+  }, [isDemo]);
+
+  if (isDemo) {
+    const list = [...mock.notifications].sort((a, b) => b.at.localeCompare(a.at));
+    return {
+      isDemo: true,
+      notifications: list,
+      unread: list.some((n) => !n.read),
+      markRead,
+      markAllRead,
+      loading: false,
+      refreshing: false,
+      error: null,
+      refresh: () => Promise.resolve(),
+    };
+  }
+
+  const list = [...(live.notifications ?? [])]
+    .sort((a, b) => String(b.at).localeCompare(String(a.at)))
+    .map((n) => ({
+      id: n.id,
+      kind: n.kind,
+      title: n.title,
+      body: n.body,
+      at: typeof n.at === 'string' ? n.at.slice(0, 10) : '',
+      read: n.read,
+      href: n.href || '/announcements',
+    }));
+
+  return {
+    isDemo: false,
+    notifications: list,
+    unread: list.some((n) => !n.read),
+    markRead,
+    markAllRead,
     ...status,
   };
 }

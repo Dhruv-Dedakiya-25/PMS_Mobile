@@ -11,7 +11,8 @@
     "sample": "示例应用：系统接入后即可使用。",
     "loading": "加载中…",
     "errorLoad": "无法加载您的信息，请重试。",
-    "retry": "重试"
+    "retry": "重试",
+    "select": "选择…"
   },
   "tabs": {
     "dashboard": "首页",
@@ -261,6 +262,16 @@
       "HalfYearly": "半年付",
       "Annual": "年付",
       "Custom": "自定义"
+    },
+    "statuses": {
+      "Active": "生效中",
+      "Draft": "草稿",
+      "PendingApproval": "待审批",
+      "Expired": "已到期",
+      "Terminated": "已终止",
+      "NoticePeriod": "通知期",
+      "Cancelled": "已取消",
+      "Renewed": "已续签"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "工单",
     "assets": "资产",
     "inspections": "巡检",
-    "approvals": "Approvals",
+    "approvals": "审批",
     "openTickets": "待办工单",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "进行中",
@@ -672,7 +683,11 @@
       "Tenant": "租户"
     },
     "property": "物业",
-    "unit": "单元"
+    "unit": "单元",
+    "general": "常规",
+    "buildingWide": "整栋大楼",
+    "noAnnouncements": "未找到公告",
+    "userType": "用户类型"
   },
   "inventory": {
     "subtitle": "维修材料、库存水平和领料申请",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "你提交的领料申请会显示在这里。",
     "approvalNote": "每份领料申请需经物业经理批准后才会发放库存。",
     "requestMaterials": "申请材料"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "押金退还",
+      "leaseDiscount": "租金折扣",
+      "workOrderCost": "工单费用",
+      "contractAward": "合同授予",
+      "violationWaiver": "违规豁免",
+      "materialRequisition": "物料申请"
+    },
+    "status": {
+      "inApproval": "审批中",
+      "approved": "已批准",
+      "returned": "已退回",
+      "rejected": "已拒绝"
+    },
+    "approve": "批准",
+    "return": "退回修改",
+    "reject": "驳回",
+    "comment": "意见（退回或驳回时必填）",
+    "placeholder": "申请人需要了解或修改什么？",
+    "reasonNeeded": "请填写退回或驳回的原因。申请人会看到。",
+    "othersTurn": "在第 {{n}} 步等待 {{names}}。您可以在此跟进；只有他们可以决定。",
+    "empty": "没有等待您决定的事项。"
   }
 }

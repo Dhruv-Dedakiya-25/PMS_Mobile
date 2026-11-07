@@ -11,7 +11,8 @@
     "sample": "Sample app: this works once the system is connected.",
     "loading": "Loading…",
     "errorLoad": "Could not load your information. Please try again.",
-    "retry": "Retry"
+    "retry": "Retry",
+    "select": "Select…"
   },
   "tabs": {
     "dashboard": "Dashboard",
@@ -261,6 +262,16 @@
       "HalfYearly": "Half-Yearly",
       "Annual": "Annual",
       "Custom": "Custom"
+    },
+    "statuses": {
+      "Active": "Active",
+      "Draft": "Draft",
+      "PendingApproval": "Pending Approval",
+      "Expired": "Expired",
+      "Terminated": "Terminated",
+      "NoticePeriod": "Notice Period",
+      "Cancelled": "Cancelled",
+      "Renewed": "Renewed"
     }
   },
   "pay": {
@@ -672,7 +683,11 @@
       "Tenant": "Tenant"
     },
     "property": "Property",
-    "unit": "Unit"
+    "unit": "Unit",
+    "general": "General",
+    "buildingWide": "Building Wide",
+    "noAnnouncements": "No notices found",
+    "userType": "User Type"
   },
   "inventory": {
     "subtitle": "Repair materials, stock levels and requisitions",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "Requisitions you send for materials show here.",
     "approvalNote": "A Property Manager approves each requisition before the stock is issued.",
     "requestMaterials": "Request Materials"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "Deposit Refund",
+      "leaseDiscount": "Lease Discount",
+      "workOrderCost": "Work Order Cost",
+      "contractAward": "Contract Award",
+      "violationWaiver": "Violation Waiver",
+      "materialRequisition": "Material Requisition"
+    },
+    "status": {
+      "inApproval": "In Approval",
+      "approved": "Approved",
+      "returned": "Returned",
+      "rejected": "Rejected"
+    },
+    "approve": "Approve",
+    "return": "Return for Correction",
+    "reject": "Reject",
+    "comment": "Comment (needed to return or reject)",
+    "placeholder": "What should the requester know, or correct?",
+    "reasonNeeded": "Give a reason to return or reject. The requester will see it.",
+    "othersTurn": "Waiting for {{names}} at step {{n}}. You can follow it here; only they can decide it.",
+    "empty": "Nothing is waiting for your decision."
   }
 }

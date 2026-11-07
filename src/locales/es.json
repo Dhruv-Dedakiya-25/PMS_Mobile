@@ -11,7 +11,8 @@
     "sample": "App de muestra: esto funcionará cuando el sistema esté conectado.",
     "loading": "Cargando…",
     "errorLoad": "No se pudo cargar su información. Inténtelo de nuevo.",
-    "retry": "Reintentar"
+    "retry": "Reintentar",
+    "select": "Seleccionar…"
   },
   "tabs": {
     "dashboard": "Inicio",
@@ -261,6 +262,16 @@
       "HalfYearly": "Semestral",
       "Annual": "Anual",
       "Custom": "Personalizado"
+    },
+    "statuses": {
+      "Active": "Activo",
+      "Draft": "Borrador",
+      "PendingApproval": "Pendiente de aprobación",
+      "Expired": "Vencido",
+      "Terminated": "Rescindido",
+      "NoticePeriod": "Período de preaviso",
+      "Cancelled": "Cancelado",
+      "Renewed": "Renovado"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "Órdenes de trabajo",
     "assets": "Activos",
     "inspections": "Inspecciones",
-    "approvals": "Approvals",
+    "approvals": "Aprobaciones",
     "openTickets": "Tickets abiertos",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "En curso",
@@ -672,7 +683,11 @@
       "Tenant": "Inquilino"
     },
     "property": "Propiedad",
-    "unit": "Unidad"
+    "unit": "Unidad",
+    "general": "General",
+    "buildingWide": "Todo el edificio",
+    "noAnnouncements": "No se encontraron avisos",
+    "userType": "Tipo de usuario"
   },
   "inventory": {
     "subtitle": "Materiales de reparación, niveles de existencias y requisiciones",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "Aquí aparecen las requisiciones de materiales que envíes.",
     "approvalNote": "Un administrador de la propiedad aprueba cada requisición antes de entregar el material.",
     "requestMaterials": "Solicitar materiales"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "Reembolso de depósito",
+      "leaseDiscount": "Descuento de alquiler",
+      "workOrderCost": "Costo de orden de trabajo",
+      "contractAward": "Adjudicación de contrato",
+      "violationWaiver": "Condonación de infracción",
+      "materialRequisition": "Solicitud de materiales"
+    },
+    "status": {
+      "inApproval": "En aprobación",
+      "approved": "Aprobado",
+      "returned": "Devuelta",
+      "rejected": "Rechazado"
+    },
+    "approve": "Aprobar",
+    "return": "Devolver para corrección",
+    "reject": "Rechazar",
+    "comment": "Comentario (necesario para devolver o rechazar)",
+    "placeholder": "¿Qué debe saber o corregir el solicitante?",
+    "reasonNeeded": "Indique un motivo para devolver o rechazar. El solicitante lo verá.",
+    "othersTurn": "Espera a {{names}} en el paso {{n}}. Puede seguirla aquí; solo ellos pueden decidir.",
+    "empty": "Nada espera su decisión."
   }
 }

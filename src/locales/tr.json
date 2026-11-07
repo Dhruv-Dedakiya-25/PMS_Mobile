@@ -11,7 +11,8 @@
     "sample": "Örnek uygulama: sistem bağlandığında bu çalışacak.",
     "loading": "Yükleniyor…",
     "errorLoad": "Bilgileriniz yüklenemedi. Lütfen tekrar deneyin.",
-    "retry": "Tekrar Dene"
+    "retry": "Tekrar Dene",
+    "select": "Seçiniz…"
   },
   "tabs": {
     "dashboard": "Ana sayfa",
@@ -261,6 +262,16 @@
       "HalfYearly": "Altı aylık",
       "Annual": "Yıllık",
       "Custom": "Özel"
+    },
+    "statuses": {
+      "Active": "Aktif",
+      "Draft": "Taslak",
+      "PendingApproval": "Onay Bekliyor",
+      "Expired": "Süresi Doldu",
+      "Terminated": "Feshedildi",
+      "NoticePeriod": "İhbar Süresi",
+      "Cancelled": "İptal Edildi",
+      "Renewed": "Yenilendi"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "İş Emirleri",
     "assets": "Varlıklar",
     "inspections": "Denetimler",
-    "approvals": "Approvals",
+    "approvals": "Onaylar",
     "openTickets": "Açık talepler",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "Devam ediyor",
@@ -672,7 +683,11 @@
       "Tenant": "Kiracı"
     },
     "property": "Mülk",
-    "unit": "Birim"
+    "unit": "Birim",
+    "general": "Genel",
+    "buildingWide": "Bina Geneli",
+    "noAnnouncements": "Duyuru bulunamadı",
+    "userType": "Kullanıcı türü"
   },
   "inventory": {
     "subtitle": "Onarım malzemeleri, stok seviyeleri ve malzeme talepleri",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "Gönderdiğiniz malzeme talepleri burada görünür.",
     "approvalNote": "Malzeme çıkışından önce mülk yöneticisi her talebi onaylar.",
     "requestMaterials": "Malzeme Talep Et"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "Depozito iadesi",
+      "leaseDiscount": "Kira indirimi",
+      "workOrderCost": "İş emri maliyeti",
+      "contractAward": "Sözleşme ihalesi",
+      "violationWaiver": "İhlal affı",
+      "materialRequisition": "Malzeme talebi"
+    },
+    "status": {
+      "inApproval": "Onayda",
+      "approved": "Onaylandı",
+      "returned": "İade edildi",
+      "rejected": "Reddedildi"
+    },
+    "approve": "Onayla",
+    "return": "Düzeltme İçin İade Et",
+    "reject": "Reddet",
+    "comment": "Yorum (iade veya ret için gerekli)",
+    "placeholder": "Talep sahibi neyi bilmeli veya düzeltmeli?",
+    "reasonNeeded": "İade veya ret için bir neden yazın. Talep sahibi bunu görecek.",
+    "othersTurn": "{{n}}. adımda {{names}} bekleniyor. Buradan izleyebilirsiniz; yalnızca onlar karar verebilir.",
+    "empty": "Kararınızı bekleyen bir şey yok."
   }
 }

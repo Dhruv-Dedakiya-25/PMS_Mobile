@@ -11,7 +11,8 @@
     "sample": "نمونہ ایپ: سسٹم سے جڑنے کے بعد یہ کام کرے گا۔",
     "loading": "لوڈ ہو رہا ہے…",
     "errorLoad": "آپ کی معلومات لوڈ نہیں ہو سکیں۔ براہ کرم دوبارہ کوشش کریں۔",
-    "retry": "دوبارہ کوشش کریں"
+    "retry": "دوبارہ کوشش کریں",
+    "select": "منتخب کریں…"
   },
   "tabs": {
     "dashboard": "ہوم",
@@ -261,6 +262,16 @@
       "HalfYearly": "ششماہی",
       "Annual": "سالانہ",
       "Custom": "حسبِ ضرورت"
+    },
+    "statuses": {
+      "Active": "فعال",
+      "Draft": "مسودہ",
+      "PendingApproval": "منظوری کا انتظار",
+      "Expired": "میعاد ختم",
+      "Terminated": "منسوخ",
+      "NoticePeriod": "نوٹس کی مدت",
+      "Cancelled": "منسوخ",
+      "Renewed": "تجدید شدہ"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "ورک آرڈرز",
     "assets": "اثاثے",
     "inspections": "معائنہ جات",
-    "approvals": "Approvals",
+    "approvals": "منظوریاں",
     "openTickets": "کھلے ٹکٹ",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "زیرِ عمل",
@@ -672,7 +683,11 @@
       "Tenant": "کرایہ دار"
     },
     "property": "جائیداد",
-    "unit": "یونٹ"
+    "unit": "یونٹ",
+    "general": "عام",
+    "buildingWide": "پوری عمارت",
+    "noAnnouncements": "کوئی نوٹس نہیں ملا",
+    "userType": "صارف کی قسم"
   },
   "inventory": {
     "subtitle": "مرمت کا سامان، اسٹاک کی سطح اور طلبیاں",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "آپ کی بھیجی گئی سامان کی طلبیاں یہاں نظر آئیں گی۔",
     "approvalNote": "اسٹاک جاری ہونے سے پہلے پراپرٹی مینیجر ہر طلبی منظور کرتا ہے۔",
     "requestMaterials": "سامان طلب کریں"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "ڈپازٹ کی واپسی",
+      "leaseDiscount": "کرایے میں رعایت",
+      "workOrderCost": "ورک آرڈر کی لاگت",
+      "contractAward": "معاہدے کا اجرا",
+      "violationWaiver": "خلاف ورزی کی معافی",
+      "materialRequisition": "سامان کی درخواست"
+    },
+    "status": {
+      "inApproval": "منظوری میں",
+      "approved": "منظور شدہ",
+      "returned": "واپس کیا گیا",
+      "rejected": "مسترد شدہ"
+    },
+    "approve": "منظور کریں",
+    "return": "درستی کے لیے واپس کریں",
+    "reject": "مسترد کریں",
+    "comment": "تبصرہ (واپس یا مسترد کرنے کے لیے ضروری)",
+    "placeholder": "درخواست گزار کو کیا جاننا یا درست کرنا چاہیے؟",
+    "reasonNeeded": "واپس یا مسترد کرنے کی وجہ لکھیں۔ درخواست گزار اسے دیکھے گا۔",
+    "othersTurn": "مرحلہ {{n}} پر {{names}} کا منتظر۔ آپ یہاں اسے دیکھ سکتے ہیں؛ فیصلہ صرف وہی کر سکتے ہیں۔",
+    "empty": "کوئی چیز آپ کے فیصلے کی منتظر نہیں۔"
   }
 }

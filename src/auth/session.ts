@@ -135,7 +135,7 @@ async function keep(session: LoginResponse, rtFromHeader: string | null) {
   const user: AuthUser = me ? { ...session.user, ...me } : session.user;
   setCurrencyCode(user.currencyCode);
   await AsyncStorage.setItem(USER_KEY, JSON.stringify(user)).catch(() => undefined);
-  const isTenant = String(user.role) === 'Tenant';
+  const isTenant = String(user.userType) === 'Tenant';
   setState({ status: 'signedIn', user, notLinked: isTenant && !user.tenantId });
 }
 
@@ -151,7 +151,7 @@ export async function signOutHere() {
 
 /** Marks the signed-in tenant account as not yet linked to a tenancy record (HTTP 403 from /api/My). */
 export function markNotLinked() {
-  if (state.status === 'signedIn' && String(state.user.role) === 'Tenant' && !state.notLinked) {
+  if (state.status === 'signedIn' && String(state.user.userType) === 'Tenant' && !state.notLinked) {
     setState({ ...state, notLinked: true });
   }
 }
@@ -172,7 +172,7 @@ export async function restoreSession() {
   if ((refreshToken || Platform.OS === 'web') && saved) {
     const user = JSON.parse(saved) as AuthUser;
     setCurrencyCode(user.currencyCode);
-    const isTenant = String(user.role) === 'Tenant';
+    const isTenant = String(user.userType) === 'Tenant';
     setState({ status: 'signedIn', user, notLinked: isTenant && !user.tenantId });
   } else {
     setState({ status: 'signedOut' });

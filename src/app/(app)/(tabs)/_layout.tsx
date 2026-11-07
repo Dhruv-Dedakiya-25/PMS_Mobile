@@ -2,6 +2,7 @@ import {
   IconBuilding,
   IconClipboardList,
   IconLayoutDashboard,
+  IconChecklist,
   IconPackage,
   IconReceipt,
   IconSpeakerphone,
@@ -22,36 +23,51 @@ export default function TabLayout() {
   const palette = usePalette();
   const insets = useSafeAreaInsets();
   const { isRTL } = useLanguage();
-  const { isMaintenance, isPropertyManager, isSuperAdmin } = useAppSession();
+  const { isMaintenance, isPropertyManager, isSuperAdmin, isStaff, accessTo, home } = useAppSession();
   const pathname = usePathname();
 
-  // If a staff user lands on root '/', redirect them immediately to their role's home
-  if (isMaintenance && pathname === '/') {
-    return <Redirect href="/staff/facility" />;
+  // A staff account landing on root '/' goes straight to its own home
+  if (isStaff && pathname === '/') {
+    return <Redirect href={home as any} />;
   }
-  if ((isPropertyManager || isSuperAdmin) && pathname === '/') {
-    return <Redirect href="/staff/dashboard" />;
-  }
+
+  // A tab the account's role has taken away is left out rather than refusing on tap.
+  const can = (href: string) => accessTo(href) !== null;
 
   const renderTabs = () => {
     if (isMaintenance) {
       return (
         <>
-          <TabTrigger name="staff/facility" href="/staff/facility" asChild>
-            <TabButton icon={IconLayoutDashboard} label={t('tabs.facility')} />
-          </TabTrigger>
-          <TabTrigger name="staff/tickets" href="/staff/tickets" asChild>
-            <TabButton icon={IconTool} label={t('tabs.tickets')} />
-          </TabTrigger>
-          <TabTrigger name="staff/facilities" href="/staff/facilities" asChild>
-            <TabButton icon={IconBuilding} label={t('tabs.facilities')} />
-          </TabTrigger>
-          <TabTrigger name="staff/announcements" href="/staff/announcements" asChild>
-            <TabButton icon={IconSpeakerphone} label={t('tabs.announcements')} />
-          </TabTrigger>
-          <TabTrigger name="staff/inventory" href="/staff/inventory" asChild>
-            <TabButton icon={IconPackage} label={t('tabs.inventory')} />
-          </TabTrigger>
+          {can('/staff/facility') && (
+            <TabTrigger name="staff/facility" href="/staff/facility" asChild>
+              <TabButton icon={IconLayoutDashboard} label={t('tabs.facility')} />
+            </TabTrigger>
+          )}
+          {can('/staff/tickets') && (
+            <TabTrigger name="staff/tickets" href="/staff/tickets" asChild>
+              <TabButton icon={IconTool} label={t('tabs.tickets')} />
+            </TabTrigger>
+          )}
+          {can('/staff/facilities') && (
+            <TabTrigger name="staff/facilities" href="/staff/facilities" asChild>
+              <TabButton icon={IconBuilding} label={t('tabs.facilities')} />
+            </TabTrigger>
+          )}
+          {can('/staff/announcements') && (
+            <TabTrigger name="staff/announcements" href="/staff/announcements" asChild>
+              <TabButton icon={IconSpeakerphone} label={t('tabs.announcements')} />
+            </TabTrigger>
+          )}
+          {can('/staff/inventory') && (
+            <TabTrigger name="staff/inventory" href="/staff/inventory" asChild>
+              <TabButton icon={IconPackage} label={t('tabs.inventory')} />
+            </TabTrigger>
+          )}
+          {can('/staff/approvals') && (
+            <TabTrigger name="staff/approvals" href="/staff/approvals" asChild>
+              <TabButton icon={IconChecklist} label={t('staff.approvals')} />
+            </TabTrigger>
+          )}
         </>
       );
     }
@@ -59,18 +75,26 @@ export default function TabLayout() {
     if (isPropertyManager || isSuperAdmin) {
       return (
         <>
-          <TabTrigger name="staff/dashboard" href="/staff/dashboard" asChild>
-            <TabButton icon={IconLayoutDashboard} label={t('tabs.dashboard')} />
-          </TabTrigger>
-          <TabTrigger name="staff/properties" href="/staff/properties" asChild>
-            <TabButton icon={IconBuilding} label={t('tabs.properties')} />
-          </TabTrigger>
-          <TabTrigger name="staff/finance" href="/staff/finance" asChild>
-            <TabButton icon={IconReceipt} label={t('tabs.finance')} />
-          </TabTrigger>
-          <TabTrigger name="staff/operations" href="/staff/operations" asChild>
-            <TabButton icon={IconClipboardList} label={t('tabs.operations')} />
-          </TabTrigger>
+          {can('/staff/dashboard') && (
+            <TabTrigger name="staff/dashboard" href="/staff/dashboard" asChild>
+              <TabButton icon={IconLayoutDashboard} label={t('tabs.dashboard')} />
+            </TabTrigger>
+          )}
+          {can('/staff/properties') && (
+            <TabTrigger name="staff/properties" href="/staff/properties" asChild>
+              <TabButton icon={IconBuilding} label={t('tabs.properties')} />
+            </TabTrigger>
+          )}
+          {can('/staff/finance') && (
+            <TabTrigger name="staff/finance" href="/staff/finance" asChild>
+              <TabButton icon={IconReceipt} label={t('tabs.finance')} />
+            </TabTrigger>
+          )}
+          {can('/staff/operations') && (
+            <TabTrigger name="staff/operations" href="/staff/operations" asChild>
+              <TabButton icon={IconClipboardList} label={t('tabs.operations')} />
+            </TabTrigger>
+          )}
         </>
       );
     }

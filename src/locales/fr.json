@@ -11,7 +11,8 @@
     "sample": "Application de démonstration : cela fonctionnera une fois le système connecté.",
     "loading": "Chargement…",
     "errorLoad": "Impossible de charger vos informations. Veuillez réessayer.",
-    "retry": "Réessayer"
+    "retry": "Réessayer",
+    "select": "Sélectionner…"
   },
   "tabs": {
     "dashboard": "Accueil",
@@ -261,6 +262,16 @@
       "HalfYearly": "Semestriel",
       "Annual": "Annuel",
       "Custom": "Personnalisé"
+    },
+    "statuses": {
+      "Active": "Actif",
+      "Draft": "Brouillon",
+      "PendingApproval": "En attente d’approbation",
+      "Expired": "Expiré",
+      "Terminated": "Résilié",
+      "NoticePeriod": "Période de préavis",
+      "Cancelled": "Annulé",
+      "Renewed": "Renouvelé"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "Ordres de travail",
     "assets": "Actifs",
     "inspections": "Inspections",
-    "approvals": "Approvals",
+    "approvals": "Approbations",
     "openTickets": "Tickets ouverts",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "En cours",
@@ -672,7 +683,11 @@
       "Tenant": "Locataire"
     },
     "property": "Propriété",
-    "unit": "Unité"
+    "unit": "Unité",
+    "general": "Général",
+    "buildingWide": "Tout l'immeuble",
+    "noAnnouncements": "Aucun avis trouvé",
+    "userType": "Type d'utilisateur"
   },
   "inventory": {
     "subtitle": "Matériaux de réparation, niveaux de stock et demandes",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "Les demandes de matériel que vous envoyez apparaissent ici.",
     "approvalNote": "Un gestionnaire immobilier approuve chaque demande avant la sortie du stock.",
     "requestMaterials": "Demander du matériel"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "Remboursement de dépôt",
+      "leaseDiscount": "Remise sur loyer",
+      "workOrderCost": "Coût d'ordre de travail",
+      "contractAward": "Attribution de contrat",
+      "violationWaiver": "Annulation d'infraction",
+      "materialRequisition": "Demande de matériel"
+    },
+    "status": {
+      "inApproval": "En approbation",
+      "approved": "Approuvé",
+      "returned": "Retournée",
+      "rejected": "Rejeté"
+    },
+    "approve": "Approuver",
+    "return": "Retourner pour correction",
+    "reject": "Refuser",
+    "comment": "Commentaire (requis pour retourner ou rejeter)",
+    "placeholder": "Que doit savoir ou corriger le demandeur ?",
+    "reasonNeeded": "Indiquez un motif pour retourner ou rejeter. Le demandeur le verra.",
+    "othersTurn": "En attente de {{names}} à l'étape {{n}}. Vous pouvez la suivre ici ; seuls eux peuvent décider.",
+    "empty": "Rien n'attend votre décision."
   }
 }

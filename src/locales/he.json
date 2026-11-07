@@ -11,7 +11,8 @@
     "sample": "אפליקציית הדגמה: יפעל לאחר חיבור המערכת.",
     "loading": "טוען…",
     "errorLoad": "לא ניתן לטעון את המידע שלך. נא לנסות שוב.",
-    "retry": "נסה שוב"
+    "retry": "נסה שוב",
+    "select": "בחר…"
   },
   "tabs": {
     "dashboard": "ראשי",
@@ -261,6 +262,16 @@
       "HalfYearly": "חצי שנתי",
       "Annual": "שנתי",
       "Custom": "מותאם אישית"
+    },
+    "statuses": {
+      "Active": "פעיל",
+      "Draft": "טיוטה",
+      "PendingApproval": "ממתין לאישור",
+      "Expired": "פג תוקף",
+      "Terminated": "בוטל",
+      "NoticePeriod": "תקופת הודעה מוקדמת",
+      "Cancelled": "בוטל",
+      "Renewed": "חודש"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "הזמנות עבודה",
     "assets": "נכסים",
     "inspections": "בדיקות",
-    "approvals": "Approvals",
+    "approvals": "אישורים",
     "openTickets": "קריאות פתוחות",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "בביצוע",
@@ -672,7 +683,11 @@
       "Tenant": "דייר"
     },
     "property": "נכס",
-    "unit": "יחידה"
+    "unit": "יחידה",
+    "general": "כללי",
+    "buildingWide": "כל הבניין",
+    "noAnnouncements": "לא נמצאו הודעות",
+    "userType": "סוג משתמש"
   },
   "inventory": {
     "subtitle": "חומרי תיקון, רמות מלאי ודרישות",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "דרישות החומרים ששלחת יופיעו כאן.",
     "approvalNote": "מנהל הנכס מאשר כל דרישה לפני הנפקת המלאי.",
     "requestMaterials": "בקשת חומרים"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "החזר פיקדון",
+      "leaseDiscount": "הנחה בשכר הדירה",
+      "workOrderCost": "עלות הזמנת עבודה",
+      "contractAward": "הענקת חוזה",
+      "violationWaiver": "ויתור על הפרה",
+      "materialRequisition": "דרישת חומרים"
+    },
+    "status": {
+      "inApproval": "בתהליך אישור",
+      "approved": "אושר",
+      "returned": "הוחזר",
+      "rejected": "נדחה"
+    },
+    "approve": "אשר",
+    "return": "החזרה לתיקון",
+    "reject": "דחייה",
+    "comment": "הערה (נדרשת להחזרה או לדחייה)",
+    "placeholder": "מה המבקש צריך לדעת או לתקן?",
+    "reasonNeeded": "ציינו סיבה להחזרה או לדחייה. המבקש יראה אותה.",
+    "othersTurn": "ממתין ל{{names}} בשלב {{n}}. אפשר לעקוב כאן; רק הם יכולים להחליט.",
+    "empty": "אין דבר שממתין להחלטתך."
   }
 }

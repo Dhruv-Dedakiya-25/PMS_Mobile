@@ -11,7 +11,8 @@
     "sample": "App dimostrativa: funzionerà quando il sistema sarà collegato.",
     "loading": "Caricamento…",
     "errorLoad": "Impossibile caricare le informazioni. Riprova.",
-    "retry": "Riprova"
+    "retry": "Riprova",
+    "select": "Seleziona…"
   },
   "tabs": {
     "dashboard": "Home",
@@ -261,6 +262,16 @@
       "HalfYearly": "Semestrale",
       "Annual": "Annuale",
       "Custom": "Personalizzato"
+    },
+    "statuses": {
+      "Active": "Attivo",
+      "Draft": "Bozza",
+      "PendingApproval": "In attesa di approvazione",
+      "Expired": "Scaduto",
+      "Terminated": "Risolto",
+      "NoticePeriod": "Periodo di preavviso",
+      "Cancelled": "Annullato",
+      "Renewed": "Rinnovato"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "Ordini di lavoro",
     "assets": "Asset",
     "inspections": "Ispezioni",
-    "approvals": "Approvals",
+    "approvals": "Approvazioni",
     "openTickets": "Ticket aperti",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "In corso",
@@ -672,7 +683,11 @@
       "Tenant": "Inquilino"
     },
     "property": "Proprietà",
-    "unit": "Unità"
+    "unit": "Unità",
+    "general": "Generale",
+    "buildingWide": "Intero edificio",
+    "noAnnouncements": "Nessun avviso trovato",
+    "userType": "Tipo di utente"
   },
   "inventory": {
     "subtitle": "Materiali di riparazione, giacenze e richieste di prelievo",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "Qui compaiono le richieste di materiale che invii.",
     "approvalNote": "Un property manager approva ogni richiesta prima del prelievo dal magazzino.",
     "requestMaterials": "Richiedi materiale"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "Rimborso deposito",
+      "leaseDiscount": "Sconto sul canone",
+      "workOrderCost": "Costo ordine di lavoro",
+      "contractAward": "Aggiudicazione contratto",
+      "violationWaiver": "Condono violazione",
+      "materialRequisition": "Richiesta materiali"
+    },
+    "status": {
+      "inApproval": "In approvazione",
+      "approved": "Approvato",
+      "returned": "Restituita",
+      "rejected": "Respinto"
+    },
+    "approve": "Approva",
+    "return": "Restituisci per correzione",
+    "reject": "Rifiuta",
+    "comment": "Commento (necessario per restituire o respingere)",
+    "placeholder": "Cosa deve sapere o correggere il richiedente?",
+    "reasonNeeded": "Indica un motivo per restituire o respingere. Il richiedente lo vedrà.",
+    "othersTurn": "In attesa di {{names}} al passo {{n}}. Puoi seguirla qui; solo loro possono decidere.",
+    "empty": "Nulla attende la tua decisione."
   }
 }

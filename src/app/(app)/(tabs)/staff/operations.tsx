@@ -6,10 +6,8 @@ import { View } from 'react-native';
 
 import {
   getStaffTickets,
-  SAMPLE_APPROVALS,
   SAMPLE_STAFF_NOTICES,
   SAMPLE_WORK_ORDERS,
-  type SampleApproval,
   type SampleStaffNotice,
   type SampleWorkOrder,
   type StaffTicket,
@@ -17,6 +15,7 @@ import {
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
 import { Button, Card, Onward, Pill, Segmented } from '@/components/ui';
+import { StaffApprovals } from '@/components/staff-approvals';
 import { useLanguage } from '@/i18n';
 import { omr } from '@/lib/format';
 import { space } from '@/theme/tokens';
@@ -31,7 +30,6 @@ export default function StaffOperations() {
 
   const [tickets, setTickets] = useState<StaffTicket[]>([]);
   const [workOrders] = useState<SampleWorkOrder[]>(SAMPLE_WORK_ORDERS);
-  const [approvals] = useState<SampleApproval[]>(SAMPLE_APPROVALS);
   const [notices] = useState<SampleStaffNotice[]>(SAMPLE_STAFF_NOTICES);
 
   const [loading, setLoading] = useState(true);
@@ -180,38 +178,7 @@ export default function StaffOperations() {
         </View>
       )}
 
-      {section === 'approvals' && (
-        <View style={{ gap: space.sm }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
-            <Pill accent="primary" label={t('staff.sampleDataBadge')} />
-            <AppText variant="caption" tone="muted">
-              {t('staff.sampleDataNote')}
-            </AppText>
-          </View>
-          {approvals.map((ap) => (
-            <Card key={ap.id} style={{ gap: space.xs }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <AppText weight="bold">{ap.type}</AppText>
-                <Pill
-                  accent={ap.status === 'Approved' ? 'success' : 'warning'}
-                  label={ap.status}
-                />
-              </View>
-              <AppText tone="secondary">{ap.title}</AppText>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: space.xs }}>
-                <AppText variant="caption" tone="muted">
-                  {ap.requester} • {ap.requestedDate}
-                </AppText>
-                {ap.amount ? (
-                  <AppText variant="bodyLarge" weight="bold">
-                    {omr(ap.amount, code)}
-                  </AppText>
-                ) : null}
-              </View>
-            </Card>
-          ))}
-        </View>
-      )}
+      {section === 'approvals' && <StaffApprovals />}
 
       {section === 'notices' && (
         <View style={{ gap: space.sm }}>

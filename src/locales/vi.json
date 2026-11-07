@@ -11,7 +11,8 @@
     "sample": "Ứng dụng mẫu: tính năng này hoạt động khi hệ thống được kết nối.",
     "loading": "Đang tải…",
     "errorLoad": "Không thể tải thông tin của bạn. Vui lòng thử lại.",
-    "retry": "Thử lại"
+    "retry": "Thử lại",
+    "select": "Chọn…"
   },
   "tabs": {
     "dashboard": "Trang chủ",
@@ -261,6 +262,16 @@
       "HalfYearly": "Nửa năm",
       "Annual": "Hàng năm",
       "Custom": "Tùy chỉnh"
+    },
+    "statuses": {
+      "Active": "Hoạt động",
+      "Draft": "Bản nháp",
+      "PendingApproval": "Chờ phê duyệt",
+      "Expired": "Hết hạn",
+      "Terminated": "Đã chấm dứt",
+      "NoticePeriod": "Thời gian báo trước",
+      "Cancelled": "Đã huỷ",
+      "Renewed": "Đã gia hạn"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "Lệnh công việc",
     "assets": "Tài sản",
     "inspections": "Kiểm tra",
-    "approvals": "Approvals",
+    "approvals": "Phê duyệt",
     "openTickets": "Phiếu đang mở",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "Đang xử lý",
@@ -672,7 +683,11 @@
       "Tenant": "Khách thuê"
     },
     "property": "Bất động sản",
-    "unit": "Căn hộ"
+    "unit": "Căn hộ",
+    "general": "Chung",
+    "buildingWide": "Toàn bộ toà nhà",
+    "noAnnouncements": "Không có thông báo nào",
+    "userType": "Loại người dùng"
   },
   "inventory": {
     "subtitle": "Vật tư sửa chữa, mức tồn kho và phiếu đề nghị",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "Các phiếu đề nghị vật tư bạn gửi sẽ hiển thị tại đây.",
     "approvalNote": "Quản lý tòa nhà duyệt từng phiếu đề nghị trước khi xuất kho.",
     "requestMaterials": "Yêu cầu vật tư"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "Hoàn trả tiền đặt cọc",
+      "leaseDiscount": "Giảm giá thuê",
+      "workOrderCost": "Chi phí lệnh công việc",
+      "contractAward": "Trao hợp đồng",
+      "violationWaiver": "Miễn vi phạm",
+      "materialRequisition": "Yêu cầu vật tư"
+    },
+    "status": {
+      "inApproval": "Đang phê duyệt",
+      "approved": "Đã phê duyệt",
+      "returned": "Đã trả lại",
+      "rejected": "Đã từ chối"
+    },
+    "approve": "Phê duyệt",
+    "return": "Trả lại để sửa",
+    "reject": "Từ chối",
+    "comment": "Nhận xét (bắt buộc khi trả lại hoặc từ chối)",
+    "placeholder": "Người yêu cầu cần biết hoặc sửa điều gì?",
+    "reasonNeeded": "Nêu lý do trả lại hoặc từ chối. Người yêu cầu sẽ thấy lý do này.",
+    "othersTurn": "Đang chờ {{names}} ở bước {{n}}. Bạn có thể theo dõi tại đây; chỉ họ mới quyết định được.",
+    "empty": "Không có gì đang chờ bạn quyết định."
   }
 }

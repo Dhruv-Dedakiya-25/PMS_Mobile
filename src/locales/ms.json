@@ -11,7 +11,8 @@
     "sample": "Aplikasi contoh: ciri ini berfungsi selepas sistem disambungkan.",
     "loading": "Memuatkan…",
     "errorLoad": "Tidak dapat memuatkan maklumat anda. Sila cuba lagi.",
-    "retry": "Cuba Lagi"
+    "retry": "Cuba Lagi",
+    "select": "Pilih…"
   },
   "tabs": {
     "dashboard": "Utama",
@@ -261,6 +262,16 @@
       "HalfYearly": "Setengah tahunan",
       "Annual": "Tahunan",
       "Custom": "Tersuai"
+    },
+    "statuses": {
+      "Active": "Aktif",
+      "Draft": "Draf",
+      "PendingApproval": "Menunggu Kelulusan",
+      "Expired": "Tamat Tempoh",
+      "Terminated": "Ditamatkan",
+      "NoticePeriod": "Tempoh Notis",
+      "Cancelled": "Dibatalkan",
+      "Renewed": "Diperbaharui"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "Perintah kerja",
     "assets": "Aset",
     "inspections": "Pemeriksaan",
-    "approvals": "Approvals",
+    "approvals": "Kelulusan",
     "openTickets": "Tiket terbuka",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "Sedang berjalan",
@@ -672,7 +683,11 @@
       "Tenant": "Penyewa"
     },
     "property": "Hartanah",
-    "unit": "Unit"
+    "unit": "Unit",
+    "general": "Umum",
+    "buildingWide": "Seluruh Bangunan",
+    "noAnnouncements": "Tiada notis dijumpai",
+    "userType": "Jenis pengguna"
   },
   "inventory": {
     "subtitle": "Bahan pembaikan, paras stok dan permohonan barang",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "Permohonan bahan yang anda hantar dipaparkan di sini.",
     "approvalNote": "Pengurus Hartanah meluluskan setiap permohonan sebelum stok dikeluarkan.",
     "requestMaterials": "Mohon Bahan"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "Bayaran balik deposit",
+      "leaseDiscount": "Diskaun sewa",
+      "workOrderCost": "Kos arahan kerja",
+      "contractAward": "Penganugerahan kontrak",
+      "violationWaiver": "Pengecualian pelanggaran",
+      "materialRequisition": "Permintaan bahan"
+    },
+    "status": {
+      "inApproval": "Dalam Kelulusan",
+      "approved": "Diluluskan",
+      "returned": "Dikembalikan",
+      "rejected": "Ditolak"
+    },
+    "approve": "Luluskan",
+    "return": "Kembalikan untuk Pembetulan",
+    "reject": "Tolak",
+    "comment": "Ulasan (perlu untuk mengembalikan atau menolak)",
+    "placeholder": "Apakah yang perlu diketahui atau dibetulkan oleh pemohon?",
+    "reasonNeeded": "Berikan sebab untuk mengembalikan atau menolak. Pemohon akan melihatnya.",
+    "othersTurn": "Menunggu {{names}} pada langkah {{n}}. Anda boleh mengikutinya di sini; hanya mereka boleh membuat keputusan.",
+    "empty": "Tiada apa-apa yang menunggu keputusan anda."
   }
 }

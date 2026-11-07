@@ -154,6 +154,8 @@ export interface StaffReceipt {
   notes?: string;
   invoiceId?: string;
   tenantId?: string;
+  propertyId?: string;
+  leaseId?: string;
 }
 
 export interface StaffInstallment {
@@ -237,17 +239,6 @@ export interface SampleInspection {
   isSample: true;
 }
 
-export interface SampleApproval {
-  id: string;
-  type: string;
-  title: string;
-  requester: string;
-  amount?: number;
-  requestedDate: string;
-  status: 'Pending' | 'Approved' | 'Rejected';
-  isSample: true;
-}
-
 export interface SampleStaffNotice {
   id: string;
   title: string;
@@ -280,15 +271,105 @@ export const SAMPLE_INSPECTIONS: SampleInspection[] = [
   { id: '4', title: 'Emergency Lighting & Exit Sign Battery', scheduledDate: '2026-10-25', inspector: 'Safety Officer', status: 'ActionRequired', isSample: true },
 ];
 
-export const SAMPLE_APPROVALS: SampleApproval[] = [
-  { id: '1', type: 'Lease Renewal', title: 'Lease Renewal: Unit 304 - Salim Al-Balushi', requester: 'Property Manager', amount: 4800, requestedDate: '2026-11-02', status: 'Pending', isSample: true },
-  { id: '2', type: 'Expense Approval', title: 'Chiller Compressor Replacement Parts', requester: 'Maintenance Lead', amount: 650, requestedDate: '2026-11-01', status: 'Pending', isSample: true },
-  { id: '3', type: 'Deposit Refund', title: 'Security Deposit Refund: Unit 102 Move-out', requester: 'Finance Clerk', amount: 350, requestedDate: '2026-10-30', status: 'Approved', isSample: true },
-  { id: '4', type: 'Tenant Request', title: 'Commercial Unit Interior Fitout Permit', requester: 'Retail Tenant Corp', requestedDate: '2026-10-28', status: 'Pending', isSample: true },
-];
-
 export const SAMPLE_STAFF_NOTICES: SampleStaffNotice[] = [
   { id: '1', title: 'Scheduled Generator Maintenance (B2)', date: '2026-11-05', category: 'Facility', target: 'All Residents & Staff', body: 'Backup generators will be tested between 10:00 AM and 11:30 AM. No power disruption expected.', isSample: true },
   { id: '2', title: 'Annual Fire Drill Next Tuesday', date: '2026-11-10', category: 'Safety', target: 'Building Wide', body: 'Civil Defense will conduct the annual evacuation drill. All staff must report to assembly points.', isSample: true },
   { id: '3', title: 'Q4 Rent Collection Milestone Notice', date: '2026-11-01', category: 'Management', target: 'Management Staff', body: '92% of November rent installments have posted. Ensure follow-ups on 8 outstanding accounts.', isSample: true },
 ];
+
+export interface StaffAnnouncementDto {
+  id: string;
+  propertyId?: string | null;
+  propertyName?: string | null;
+  announcementNumber?: string;
+  category: string;
+  titleEn: string;
+  titleAr?: string | null;
+  bodyEn: string;
+  bodyAr?: string | null;
+  priority: string | number;
+  publishAtUtc: string;
+  expireAtUtc?: string | null;
+  requiresAcknowledgement: boolean;
+  status: string | number;
+  recipientCount?: number;
+  deliveredCount?: number;
+  readCount?: number;
+  acknowledgedCount?: number;
+}
+
+export interface StaffAnnouncementItem {
+  id: string;
+  title: string;
+  titleEn: string;
+  titleAr?: string | null;
+  date: string;
+  category: string;
+  target?: string | null;
+  body: string;
+  bodyEn: string;
+  bodyAr?: string | null;
+  isSample: boolean;
+}
+
+export async function getStaffAnnouncements(): Promise<StaffAnnouncementItem[]> {
+  const list = await apiGet<StaffAnnouncementDto[]>('/Announcement/getAnnouncement');
+  if (!list || list.length === 0) return [];
+  return list
+    .filter((a) => a.status === 'Published' || a.status === 3 || a.status === '3')
+    .map((a) => ({
+      id: a.id,
+      title: a.titleEn,
+      titleEn: a.titleEn,
+      titleAr: a.titleAr,
+      date: typeof a.publishAtUtc === 'string' ? a.publishAtUtc.slice(0, 10) : '',
+      category: a.category || '',
+      target: a.propertyName || null,
+      body: a.bodyEn,
+      bodyEn: a.bodyEn,
+      bodyAr: a.bodyAr,
+      isSample: false,
+    }));
+}
+
+export async function getStaffAnnouncement(id: string): Promise<StaffAnnouncementItem | undefined> {
+  const a = await apiGet<StaffAnnouncementDto>(`/Announcement/getAnnouncement/${id}`);
+  if (!a) return undefined;
+  return {
+    id: a.id,
+    title: a.titleEn,
+    titleEn: a.titleEn,
+    titleAr: a.titleAr,
+    date: typeof a.publishAtUtc === 'string' ? a.publishAtUtc.slice(0, 10) : '',
+    category: a.category || '',
+    target: a.propertyName || null,
+    body: a.bodyEn,
+    bodyEn: a.bodyEn,
+    bodyAr: a.bodyAr,
+    isSample: false,
+  };
+}
+
+/** A request in approval, as the Approval API returns it for the signed-in staff member. */
+export interface StaffApproval {
+  id: string;
+  reference: string;
+  requestType: 'DepositRefund' | 'LeaseDiscount' | 'WorkOrderCost' | 'ContractAward' | 'ViolationWaiver' | 'MaterialRequisition';
+  subject: string;
+  amount: number;
+  requesterName: string;
+  status: 'InApproval' | 'Approved' | 'Returned' | 'Rejected';
+  currentStep?: number | null;
+  submittedAtUtc: string;
+  /** The step it waits at is the signed-in person's to decide. */
+  canDecide: boolean;
+  route: { stepIndex: number; approverNames: string[]; state: string }[];
+  history: { action: string; actorName: string; atUtc: string; comment?: string | null }[];
+}
+
+/** Requests the signed-in person may decide, sent, or may see through their role. */
+export const getStaffApprovals = () => apiGet<StaffApproval[]>('/Approval/getApprovalRequest');
+
+/** Approve, Return or Reject the step waiting for the signed-in person; Return and Reject need a comment. */
+export const decideStaffApproval = (id: string, decision: 'Approve' | 'Return' | 'Reject', comment?: string) =>
+  apiPost<StaffApproval>(`/Approval/decideApprovalRequest/${id}`, { decision, comment });

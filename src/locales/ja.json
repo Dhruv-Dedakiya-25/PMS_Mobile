@@ -11,7 +11,8 @@
     "sample": "サンプルアプリ：システム接続後に利用できます。",
     "loading": "読み込み中…",
     "errorLoad": "情報を読み込めませんでした。もう一度お試しください。",
-    "retry": "再試行"
+    "retry": "再試行",
+    "select": "選択…"
   },
   "tabs": {
     "dashboard": "ホーム",
@@ -261,6 +262,16 @@
       "HalfYearly": "半年ごと",
       "Annual": "年次",
       "Custom": "カスタム"
+    },
+    "statuses": {
+      "Active": "有効",
+      "Draft": "下書き",
+      "PendingApproval": "承認待ち",
+      "Expired": "期限切れ",
+      "Terminated": "解除",
+      "NoticePeriod": "予告期間",
+      "Cancelled": "キャンセル済み",
+      "Renewed": "更新済み"
     }
   },
   "pay": {
@@ -605,7 +616,7 @@
     "workOrders": "作業指示書一覧",
     "assets": "資産",
     "inspections": "点検一覧",
-    "approvals": "Approvals",
+    "approvals": "承認",
     "openTickets": "未対応チケット",
     "urgentTickets": "Urgent Tickets",
     "inProgress": "対応中",
@@ -672,7 +683,11 @@
       "Tenant": "テナント"
     },
     "property": "物件",
-    "unit": "住戸"
+    "unit": "住戸",
+    "general": "一般",
+    "buildingWide": "建物全体",
+    "noAnnouncements": "お知らせはありません",
+    "userType": "ユーザー種別"
   },
   "inventory": {
     "subtitle": "修理資材、在庫水準、資材請求",
@@ -708,5 +723,29 @@
     "noRequestsDetail": "送信した資材請求がここに表示されます。",
     "approvalNote": "出庫の前に、物件管理者が各請求を承認します。",
     "requestMaterials": "資材を請求"
+  },
+  "approvals": {
+    "type": {
+      "depositRefund": "敷金返還",
+      "leaseDiscount": "賃料割引",
+      "workOrderCost": "作業指示の費用",
+      "contractAward": "契約の発注",
+      "violationWaiver": "違反の免除",
+      "materialRequisition": "資材請求"
+    },
+    "status": {
+      "inApproval": "承認中",
+      "approved": "承認済み",
+      "returned": "差し戻し",
+      "rejected": "却下"
+    },
+    "approve": "承認",
+    "return": "修正のため差し戻す",
+    "reject": "却下",
+    "comment": "コメント（差し戻し・却下の場合は必須）",
+    "placeholder": "申請者が知っておくべきこと、修正すべきことは？",
+    "reasonNeeded": "差し戻しまたは却下の理由を入力してください。申請者に表示されます。",
+    "othersTurn": "ステップ {{n}} で {{names}} を待っています。ここで経過を確認できます。判断できるのは担当者のみです。",
+    "empty": "あなたの判断を待っているものはありません。"
   }
 }
