@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "İş Emirleri",
+    "noWorkOrders": "Henüz iş emri yok",
+    "unassigned": "Atanmadı",
+    "woStatus": {
+      "Pending": "Beklemede",
+      "Scheduled": "Planlandı",
+      "InProgress": "Devam ediyor",
+      "Completed": "Tamamlandı",
+      "Cancelled": "İptal edildi"
+    },
     "assets": "Varlıklar",
+    "noAssets": "Henüz varlık yok",
+    "assetStatus": {
+      "Operational": "Çalışıyor",
+      "UnderMaintenance": "Bakımda",
+      "Faulty": "Arızalı",
+      "Retired": "Kullanım dışı"
+    },
     "inspections": "Denetimler",
     "approvals": "Onaylar",
     "openTickets": "Açık talepler",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "Tahsil edildi",
     "outstanding": "Ödenmemiş",
     "overdue": "Vadesi geçmiş",
+    "ticketOverdue": "Gecikmiş",
+    "respondBy": "Yanıt için son: {{time}}",
+    "resolveBy": "Çözüm için son: {{time}}",
     "expiringIn30Days": "30 gün içinde sona erecek",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

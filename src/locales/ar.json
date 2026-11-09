@@ -674,7 +674,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "أوامر العمل",
+    "noWorkOrders": "لا توجد أوامر عمل بعد",
+    "unassigned": "غير معيّن",
+    "woStatus": {
+      "Pending": "قيد الانتظار",
+      "Scheduled": "مجدول",
+      "InProgress": "قيد التنفيذ",
+      "Completed": "مكتمل",
+      "Cancelled": "ملغى"
+    },
     "assets": "الأصول",
+    "noAssets": "لا توجد أصول بعد",
+    "assetStatus": {
+      "Operational": "يعمل",
+      "UnderMaintenance": "قيد الصيانة",
+      "Faulty": "معطّل",
+      "Retired": "متقاعد"
+    },
     "inspections": "عمليات التفتيش",
     "approvals": "الموافقات",
     "openTickets": "التذاكر المفتوحة",
@@ -691,6 +707,9 @@
     "collectedThisMonth": "المحصَّل",
     "outstanding": "مستحق",
     "overdue": "متأخر السداد",
+    "ticketOverdue": "متأخر",
+    "respondBy": "الرد قبل {{time}}",
+    "resolveBy": "الحل قبل {{time}}",
     "expiringIn30Days": "تنتهي خلال 30 يومًا",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

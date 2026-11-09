@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "വർക്ക് ഓർഡറുകൾ",
+    "noWorkOrders": "ഇതുവരെ വർക്ക് ഓർഡറുകളൊന്നുമില്ല",
+    "unassigned": "ചുമതലപ്പെടുത്തിയിട്ടില്ല",
+    "woStatus": {
+      "Pending": "തീർപ്പാക്കാനുണ്ട്",
+      "Scheduled": "ഷെഡ്യൂൾ ചെയ്തു",
+      "InProgress": "പുരോഗമിക്കുന്നു",
+      "Completed": "പൂർത്തിയായി",
+      "Cancelled": "റദ്ദാക്കി"
+    },
     "assets": "ആസ്തികൾ",
+    "noAssets": "ഇതുവരെ ആസ്തികളൊന്നുമില്ല",
+    "assetStatus": {
+      "Operational": "പ്രവർത്തനത്തിൽ",
+      "UnderMaintenance": "അറ്റകുറ്റപ്പണിയിൽ",
+      "Faulty": "തകരാറിൽ",
+      "Retired": "ഒഴിവാക്കി"
+    },
     "inspections": "പരിശോധനകൾ",
     "approvals": "അംഗീകാരങ്ങൾ",
     "openTickets": "തീർപ്പാകാത്ത ടിക്കറ്റുകൾ",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "പിരിച്ചെടുത്തു",
     "outstanding": "ബാക്കിയുള്ളത്",
     "overdue": "കാലാവധി കഴിഞ്ഞത്",
+    "ticketOverdue": "വൈകി",
+    "respondBy": "{{time}}-നകം പ്രതികരിക്കുക",
+    "resolveBy": "{{time}}-നകം പരിഹരിക്കുക",
     "expiringIn30Days": "30 ദിവസത്തിനുള്ളിൽ കാലാവധി തീരുന്നവ",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

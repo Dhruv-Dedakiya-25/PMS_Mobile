@@ -650,7 +650,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "Наряды на работу",
+    "noWorkOrders": "Нарядов пока нет",
+    "unassigned": "Не назначен",
+    "woStatus": {
+      "Pending": "Ожидает",
+      "Scheduled": "Запланирован",
+      "InProgress": "В работе",
+      "Completed": "Выполнен",
+      "Cancelled": "Отменён"
+    },
     "assets": "Активы",
+    "noAssets": "Оборудования пока нет",
+    "assetStatus": {
+      "Operational": "Работает",
+      "UnderMaintenance": "На обслуживании",
+      "Faulty": "Неисправно",
+      "Retired": "Списано"
+    },
     "inspections": "Осмотры",
     "approvals": "Согласования",
     "openTickets": "Открытые заявки",
@@ -667,6 +683,9 @@
     "collectedThisMonth": "Собрано",
     "outstanding": "Непогашено",
     "overdue": "Просрочено",
+    "ticketOverdue": "Просрочено",
+    "respondBy": "Ответить до {{time}}",
+    "resolveBy": "Решить до {{time}}",
     "expiringIn30Days": "Истекают в течение 30 дней",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

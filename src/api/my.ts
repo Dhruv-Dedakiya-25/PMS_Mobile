@@ -1,7 +1,7 @@
 /**
  * One typed function per /api/My endpoint on PMS_API.
  */
-import { apiGet, apiPost, sendAuthed } from '@/api/client';
+import { apiGet, apiImage, apiPost, apiUploadPhoto, sendAuthed } from '@/api/client';
 import type {
   CreateMyServiceRequestDto,
   MyDocumentDto,
@@ -45,6 +45,16 @@ export const getMyServiceRequest = (id: string) => apiGet<MyServiceRequestDto>(`
 
 export const createMyServiceRequest = (request: CreateMyServiceRequestDto) =>
   apiPost<MyServiceRequestDto>('/My/createMyServiceRequest', request);
+
+/** Adds an already-shrunk JPEG to one of the tenant's own requests. */
+export const uploadMyServiceRequestPhoto = (id: string, uri: string) =>
+  apiUploadPhoto(`/My/uploadMyServiceRequestPhoto/${id}`, uri);
+
+/** The photos on one of the tenant's own requests, as data URIs ready to show. */
+export async function getMyServiceRequestPhotoUris(id: string): Promise<string[]> {
+  const list = await apiGet<{ id: string }[]>(`/My/getMyServiceRequestPhotos/${id}`);
+  return Promise.all(list.map((p) => apiImage(`/My/getMyServiceRequestPhotoFile/${p.id}`)));
+}
 
 export const getMyAnnouncements = () => apiGet<MyAnnouncementDto[]>('/My/getMyAnnouncements');
 

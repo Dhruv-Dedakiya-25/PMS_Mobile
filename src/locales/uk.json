@@ -650,7 +650,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "Наряди на роботу",
+    "noWorkOrders": "Нарядів поки немає",
+    "unassigned": "Не призначено",
+    "woStatus": {
+      "Pending": "Очікує",
+      "Scheduled": "Заплановано",
+      "InProgress": "У роботі",
+      "Completed": "Виконано",
+      "Cancelled": "Скасовано"
+    },
     "assets": "Активи",
+    "noAssets": "Обладнання поки немає",
+    "assetStatus": {
+      "Operational": "Працює",
+      "UnderMaintenance": "На обслуговуванні",
+      "Faulty": "Несправне",
+      "Retired": "Списано"
+    },
     "inspections": "Інспекції",
     "approvals": "Погодження",
     "openTickets": "Відкриті заявки",
@@ -667,6 +683,9 @@
     "collectedThisMonth": "Зібрано",
     "outstanding": "Заборгованість",
     "overdue": "Прострочено",
+    "ticketOverdue": "Прострочено",
+    "respondBy": "Відповісти до {{time}}",
+    "resolveBy": "Вирішити до {{time}}",
     "expiringIn30Days": "Спливають протягом 30 днів",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

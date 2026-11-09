@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "ورک آرڈرز",
+    "noWorkOrders": "ابھی تک کوئی ورک آرڈر نہیں",
+    "unassigned": "تفویض نہیں",
+    "woStatus": {
+      "Pending": "زیر التوا",
+      "Scheduled": "طے شدہ",
+      "InProgress": "جاری",
+      "Completed": "مکمل",
+      "Cancelled": "منسوخ"
+    },
     "assets": "اثاثے",
+    "noAssets": "ابھی تک کوئی اثاثہ نہیں",
+    "assetStatus": {
+      "Operational": "فعال",
+      "UnderMaintenance": "مرمت میں",
+      "Faulty": "خراب",
+      "Retired": "ریٹائرڈ"
+    },
     "inspections": "معائنہ جات",
     "approvals": "منظوریاں",
     "openTickets": "کھلے ٹکٹ",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "وصول شدہ",
     "outstanding": "باقی رقم",
     "overdue": "میعاد گزشتہ",
+    "ticketOverdue": "تاخیر",
+    "respondBy": "{{time}} تک جواب دیں",
+    "resolveBy": "{{time}} تک حل کریں",
     "expiringIn30Days": "30 دن میں ختم ہونے والے",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "Werkorders",
+    "noWorkOrders": "Nog geen werkorders",
+    "unassigned": "Niet toegewezen",
+    "woStatus": {
+      "Pending": "In afwachting",
+      "Scheduled": "Gepland",
+      "InProgress": "Bezig",
+      "Completed": "Voltooid",
+      "Cancelled": "Geannuleerd"
+    },
     "assets": "Activa",
+    "noAssets": "Nog geen activa",
+    "assetStatus": {
+      "Operational": "In bedrijf",
+      "UnderMaintenance": "In onderhoud",
+      "Faulty": "Defect",
+      "Retired": "Buiten gebruik"
+    },
     "inspections": "Inspecties",
     "approvals": "Goedkeuringen",
     "openTickets": "Openstaande tickets",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "Geïnd",
     "outstanding": "Openstaand",
     "overdue": "Achterstallig",
+    "ticketOverdue": "Te laat",
+    "respondBy": "Reageren vóór {{time}}",
+    "resolveBy": "Oplossen vóór {{time}}",
     "expiringIn30Days": "Verloopt binnen 30 dagen",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

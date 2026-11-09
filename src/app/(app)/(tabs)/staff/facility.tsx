@@ -12,13 +12,12 @@ import { Pressable, View } from 'react-native';
 
 import {
   getStaffTickets,
-  SAMPLE_WORK_ORDERS,
-  type SampleWorkOrder,
   type StaffTicket,
 } from '@/api/staff';
 import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
+import { StaffWorkOrders } from '@/components/staff-work-orders';
 import { Avatar, Button, Card, IconTile, Onward, Pill } from '@/components/ui';
 import { space } from '@/theme/tokens';
 
@@ -28,7 +27,7 @@ export default function FacilityDashboard() {
   const ticketPermissions = permissionsFor('staff/tickets');
 
   const [tickets, setTickets] = useState<StaffTicket[]>([]);
-  const [workOrders] = useState<SampleWorkOrder[]>(SAMPLE_WORK_ORDERS);
+  const [reloadKey, setReloadKey] = useState(0);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -78,6 +77,7 @@ export default function FacilityDashboard() {
 
   const onRefresh = () => {
     fetchTickets(true);
+    setReloadKey((k) => k + 1);
   };
 
   const openTickets = tickets.filter((tk) => tk.status === 'Open');
@@ -229,34 +229,11 @@ export default function FacilityDashboard() {
         )}
       </View>
 
-      {/* Work Orders (Sample) */}
       <View style={{ gap: space.sm, marginTop: space.sm }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
-            <AppText variant="bodyLarge" weight="bold">
-              {t('staff.workOrders')}
-            </AppText>
-            <Pill accent="primary" label={t('staff.sampleDataBadge')} />
-          </View>
-        </View>
-        <AppText variant="caption" tone="muted">
-          {t('staff.sampleDataNote')}
+        <AppText variant="bodyLarge" weight="bold">
+          {t('staff.workOrders')}
         </AppText>
-
-        {workOrders.map((wo) => (
-          <Card key={wo.id} style={{ gap: space.xs }}>
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-              <AppText weight="bold">{wo.ticketNumber} • {wo.assetName}</AppText>
-              <Pill
-                accent={wo.status === 'Completed' ? 'success' : wo.status === 'InProgress' ? 'teal' : 'warning'}
-                label={wo.status}
-              />
-            </View>
-            <AppText variant="caption" tone="secondary">
-              {t('staff.assignedTo')}: {wo.technicianName}
-            </AppText>
-          </Card>
-        ))}
+        <StaffWorkOrders reloadKey={reloadKey} />
       </View>
     </Screen>
   );

@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "Perintah kerja",
+    "noWorkOrders": "Belum ada pesanan kerja",
+    "unassigned": "Belum ditugaskan",
+    "woStatus": {
+      "Pending": "Belum selesai",
+      "Scheduled": "Dijadualkan",
+      "InProgress": "Sedang dijalankan",
+      "Completed": "Selesai",
+      "Cancelled": "Dibatalkan"
+    },
     "assets": "Aset",
+    "noAssets": "Belum ada aset",
+    "assetStatus": {
+      "Operational": "Beroperasi",
+      "UnderMaintenance": "Dalam penyelenggaraan",
+      "Faulty": "Rosak",
+      "Retired": "Dilupuskan"
+    },
     "inspections": "Pemeriksaan",
     "approvals": "Kelulusan",
     "openTickets": "Tiket terbuka",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "Dikutip",
     "outstanding": "Tertunggak",
     "overdue": "Lewat tempoh",
+    "ticketOverdue": "Lewat",
+    "respondBy": "Balas sebelum {{time}}",
+    "resolveBy": "Selesaikan sebelum {{time}}",
     "expiringIn30Days": "Tamat dalam 30 hari",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

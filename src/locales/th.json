@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "ใบสั่งงาน",
+    "noWorkOrders": "ยังไม่มีใบสั่งงาน",
+    "unassigned": "ยังไม่ได้มอบหมาย",
+    "woStatus": {
+      "Pending": "รอดำเนินการ",
+      "Scheduled": "กำหนดการแล้ว",
+      "InProgress": "กำลังดำเนินการ",
+      "Completed": "เสร็จสิ้น",
+      "Cancelled": "ยกเลิกแล้ว"
+    },
     "assets": "สินทรัพย์",
+    "noAssets": "ยังไม่มีทรัพย์สิน",
+    "assetStatus": {
+      "Operational": "ใช้งานได้",
+      "UnderMaintenance": "อยู่ระหว่างซ่อมบำรุง",
+      "Faulty": "ชำรุด",
+      "Retired": "ปลดระวาง"
+    },
     "inspections": "การตรวจสอบ",
     "approvals": "การอนุมัติ",
     "openTickets": "เรื่องแจ้งที่ค้างอยู่",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "เก็บได้",
     "outstanding": "ค้างชำระ",
     "overdue": "เกินกำหนดชำระ",
+    "ticketOverdue": "เกินกำหนด",
+    "respondBy": "ตอบกลับภายใน {{time}}",
+    "resolveBy": "แก้ไขภายใน {{time}}",
     "expiringIn30Days": "หมดอายุภายใน 30 วัน",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

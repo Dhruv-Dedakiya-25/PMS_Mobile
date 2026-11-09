@@ -650,7 +650,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "Zlecenia pracy",
+    "noWorkOrders": "Brak zleceń pracy",
+    "unassigned": "Nieprzypisane",
+    "woStatus": {
+      "Pending": "Oczekujące",
+      "Scheduled": "Zaplanowane",
+      "InProgress": "W toku",
+      "Completed": "Zakończone",
+      "Cancelled": "Anulowane"
+    },
     "assets": "Aktywa",
+    "noAssets": "Brak urządzeń",
+    "assetStatus": {
+      "Operational": "Sprawne",
+      "UnderMaintenance": "W konserwacji",
+      "Faulty": "Uszkodzone",
+      "Retired": "Wycofane"
+    },
     "inspections": "Inspekcje",
     "approvals": "Zatwierdzenia",
     "openTickets": "Otwarte zgłoszenia",
@@ -667,6 +683,9 @@
     "collectedThisMonth": "Pobrano",
     "outstanding": "Do zapłaty",
     "overdue": "Przeterminowana",
+    "ticketOverdue": "Po terminie",
+    "respondBy": "Odpowiedz do {{time}}",
+    "resolveBy": "Rozwiąż do {{time}}",
     "expiringIn30Days": "Wygasają w ciągu 30 dni",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

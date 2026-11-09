@@ -74,6 +74,16 @@ export const monthYear = (value: string, code: string) => dateFormat(code, { mon
 /** yyyy-mm-dd as "Sun". */
 export const weekday = (value: string, code: string) => dateFormat(code, { weekday: 'short' }).format(asDate(value));
 
+/** A moment such as an SLA due time, as "09 Nov, 16:30" on the Oman clock. */
+export const dateTime = (value: string, code: string) => {
+  const options: Intl.DateTimeFormatOptions = { timeZone: 'Asia/Muscat', day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hour12: false };
+  try {
+    return new Intl.DateTimeFormat(locale(code), options).format(new Date(value));
+  } catch {
+    return new Intl.DateTimeFormat('en', options).format(new Date(value));
+  }
+};
+
 /** Days from today (Oman) to a yyyy-mm-dd date; negative once it has passed. */
 export const daysUntil = (value: string) => Math.round((asDate(value).getTime() - asDate(omanToday()).getTime()) / 86_400_000);
 

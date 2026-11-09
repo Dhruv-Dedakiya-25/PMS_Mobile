@@ -11,11 +11,9 @@ import { BuildingScene } from '@/components/art';
 import { stageAccent } from '@/components/request-stage';
 import { Screen } from '@/components/screen';
 import { Avatar, Button, Card, IconTile, Onward, Pill, RoundIcon } from '@/components/ui';
-import { usePayments, useProfile, useRequests } from '@/hooks/use-tenancy';
+import { useAnnouncements, useNotifications, usePayments, useProfile, useRequests } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { daysUntil, longDate, omr } from '@/lib/format';
-import { announcements } from '@/mock/data';
-import { useMockState } from '@/mock/store';
 import { radius, space, usePalette, type Accent } from '@/theme/tokens';
 
 const greetingKey = () => {
@@ -28,18 +26,22 @@ export default function Dashboard() {
   const { t } = useTranslation();
   const palette = usePalette();
   const { language } = useLanguage();
-  const state = useMockState();
   const profile = useProfile();
   const payments = usePayments();
   const requests = useRequests();
+  const notices = useAnnouncements();
+  const notifications = useNotifications();
   const code = language.code;
 
   const { tenant, property, lease } = profile;
-  const unread = state.notifications.filter((n) => !n.read).length;
+  const unread = notifications.notifications.filter((n) => !n.read).length;
   const active = requests.requests.filter((r) => r.stage !== 'completed');
   const leaseDays = daysUntil(lease.end);
   const outstanding = payments.outstandingTotal;
-  const notice = announcements.find((a) => a.needsAck && !state.acknowledged.includes(a.id)) ?? announcements[0];
+  // The notice still waiting for an acknowledgement, else the newest. No card when there are none.
+  const newestFirst = [...notices.announcements].sort((a, b) => b.date.localeCompare(a.date));
+  const notice = newestFirst.find((a) => a.needsAck && !notices.acknowledged.includes(a.id)) ?? newestFirst[0];
+  const noticeTitle = notice && ((code === 'ar' && (notice as { titleAr?: string | null }).titleAr) || notice.title);
 
   const loading = profile.loading || payments.loading || requests.loading;
   const refreshing = profile.refreshing || payments.refreshing || requests.refreshing;
@@ -48,6 +50,8 @@ export default function Dashboard() {
     void profile.refresh();
     void payments.refresh();
     void requests.refresh();
+    void notices.refresh();
+    void notifications.refresh();
   };
 
   const quick: { icon: Icon; accent: Accent; label: string; href: Href }[] = [
@@ -167,21 +171,23 @@ export default function Dashboard() {
         ))}
       </Card>
 
-      <Pressable
-        onPress={() => router.push({ pathname: '/announcements/[id]', params: { id: notice.id } })}
-        accessibilityRole="button"
-        style={({ pressed }) => ({ flexDirection: 'row', gap: space.md, padding: space.lg, borderRadius: radius.xl, backgroundColor: palette.notice, borderWidth: 1, borderColor: palette.noticeBorder, opacity: pressed ? 0.85 : 1 })}>
-        <IconSpeakerphone size={26} color={palette.orange} strokeWidth={1.8} />
-        <View style={{ flex: 1, gap: 2 }}>
-          <AppText weight="semibold" style={{ color: palette.orange }}>
-            {t('home.buildingAnnouncement')}
-          </AppText>
-          <AppText variant="small">{t('home.announcementLine', { title: notice.title, date: longDate(notice.date, code) })}</AppText>
-          <AppText variant="small" tone="secondary">
-            {t('home.tapForDetails')}
-          </AppText>
-        </View>
-      </Pressable>
+      {notice ? (
+        <Pressable
+          onPress={() => router.push({ pathname: '/announcements/[id]', params: { id: notice.id } })}
+          accessibilityRole="button"
+          style={({ pressed }) => ({ flexDirection: 'row', gap: space.md, padding: space.lg, borderRadius: radius.xl, backgroundColor: palette.notice, borderWidth: 1, borderColor: palette.noticeBorder, opacity: pressed ? 0.85 : 1 })}>
+          <IconSpeakerphone size={26} color={palette.orange} strokeWidth={1.8} />
+          <View style={{ flex: 1, gap: 2 }}>
+            <AppText weight="semibold" style={{ color: palette.orange }}>
+              {t('home.buildingAnnouncement')}
+            </AppText>
+            <AppText variant="small">{t('home.announcementLine', { title: noticeTitle, date: longDate(notice.date, code) })}</AppText>
+            <AppText variant="small" tone="secondary">
+              {t('home.tapForDetails')}
+            </AppText>
+          </View>
+        </Pressable>
+      ) : null}
 
       <View style={{ gap: space.md }}>
         <AppText variant="bodyLarge" weight="semibold">

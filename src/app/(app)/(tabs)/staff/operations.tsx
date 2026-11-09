@@ -5,32 +5,32 @@ import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import {
+  getStaffAnnouncements,
   getStaffTickets,
-  SAMPLE_STAFF_NOTICES,
-  SAMPLE_WORK_ORDERS,
-  type SampleStaffNotice,
-  type SampleWorkOrder,
+  type StaffAnnouncementItem,
   type StaffTicket,
 } from '@/api/staff';
+import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
 import { Button, Card, Onward, Pill, Segmented } from '@/components/ui';
 import { StaffApprovals } from '@/components/staff-approvals';
-import { useLanguage } from '@/i18n';
-import { omr } from '@/lib/format';
+import { StaffNoticeCard } from '@/components/staff-notice-card';
+import { StaffWorkOrders } from '@/components/staff-work-orders';
 import { space } from '@/theme/tokens';
 
 type Section = 'tickets' | 'workOrders' | 'approvals' | 'notices';
 
 export default function StaffOperations() {
   const { t } = useTranslation();
-  const { language } = useLanguage();
-  const code = language.code;
   const [section, setSection] = useState<Section>('tickets');
 
   const [tickets, setTickets] = useState<StaffTicket[]>([]);
-  const [workOrders] = useState<SampleWorkOrder[]>(SAMPLE_WORK_ORDERS);
-  const [notices] = useState<SampleStaffNotice[]>(SAMPLE_STAFF_NOTICES);
+  const [reloadKey, setReloadKey] = useState(0);
+  const { accessTo } = useAppSession();
+  const canSeeNotices = accessTo('/staff/announcements') !== null;
+  const [notices, setNotices] = useState<StaffAnnouncementItem[]>([]);
+  const [noticesError, setNoticesError] = useState<string | null>(null);
 
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -79,8 +79,25 @@ export default function StaffOperations() {
     };
   }, [t]);
 
+  // Notices load on their own, so a role without them still sees its tickets.
+  const loadNotices = useCallback(() => {
+    if (!canSeeNotices) return;
+    getStaffAnnouncements()
+      .then((items) => {
+        setNotices(items);
+        setNoticesError(null);
+      })
+      .catch((e) => setNoticesError(e instanceof Error ? e.message : t('common.errorLoad')));
+  }, [canSeeNotices, t]);
+
+  useEffect(() => {
+    loadNotices();
+  }, [loadNotices]);
+
   const onRefresh = () => {
     fetchData(true);
+    loadNotices();
+    setReloadKey((k) => k + 1);
   };
 
   return (
@@ -109,7 +126,7 @@ export default function StaffOperations() {
           { value: 'tickets', label: t('tabs.tickets') },
           { value: 'workOrders', label: t('staff.workOrders') },
           { value: 'approvals', label: t('staff.approvals') },
-          { value: 'notices', label: t('staff.noticesTab') },
+          ...(canSeeNotices ? [{ value: 'notices' as const, label: t('staff.noticesTab') }] : []),
         ]}
       />
 
@@ -155,26 +172,7 @@ export default function StaffOperations() {
 
       {section === 'workOrders' && (
         <View style={{ gap: space.sm }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
-            <Pill accent="primary" label={t('staff.sampleDataBadge')} />
-            <AppText variant="caption" tone="muted">
-              {t('staff.sampleDataNote')}
-            </AppText>
-          </View>
-          {workOrders.map((wo) => (
-            <Card key={wo.id} style={{ gap: space.xs }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <AppText weight="bold">{wo.ticketNumber} • {wo.assetName}</AppText>
-                <Pill
-                  accent={wo.status === 'Completed' ? 'success' : 'warning'}
-                  label={wo.status}
-                />
-              </View>
-              <AppText variant="caption" tone="secondary">
-                {t('staff.assignedTo')}: {wo.technicianName} • {omr(wo.cost, code)}
-              </AppText>
-            </Card>
-          ))}
+          <StaffWorkOrders reloadKey={reloadKey} />
         </View>
       )}
 
@@ -182,32 +180,13 @@ export default function StaffOperations() {
 
       {section === 'notices' && (
         <View style={{ gap: space.sm }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
-            <Pill accent="primary" label={t('staff.sampleDataBadge')} />
-            <AppText variant="caption" tone="muted">
-              {t('staff.sampleDataNote')}
-            </AppText>
-          </View>
-          {notices.map((n) => (
-            <Card
-              key={n.id}
-              onPress={() => router.push(`/staff/announcement/${n.id}` as any)}
-              style={{ gap: space.xs }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <AppText weight="bold">{n.title}</AppText>
-                <Pill accent="teal" label={n.category} />
-              </View>
-              <AppText numberOfLines={2} tone="secondary">
-                {n.body}
-              </AppText>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: space.xs }}>
-                <AppText variant="caption" tone="muted">
-                  {n.date} • {n.target}
-                </AppText>
-                <Onward />
-              </View>
+          {noticesError || notices.length === 0 ? (
+            <Card style={{ alignItems: 'center', paddingVertical: space.xl }}>
+              <AppText tone={noticesError ? 'danger' : 'secondary'}>{noticesError ?? t('staff.noAnnouncements')}</AppText>
             </Card>
-          ))}
+          ) : (
+            notices.map((n) => <StaffNoticeCard key={n.id} notice={n} />)
+          )}
         </View>
       )}
     </Screen>

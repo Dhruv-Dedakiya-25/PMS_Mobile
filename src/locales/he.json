@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "הזמנות עבודה",
+    "noWorkOrders": "אין עדיין הזמנות עבודה",
+    "unassigned": "לא שובץ",
+    "woStatus": {
+      "Pending": "ממתין",
+      "Scheduled": "מתוזמן",
+      "InProgress": "בביצוע",
+      "Completed": "הושלם",
+      "Cancelled": "בוטל"
+    },
     "assets": "נכסים",
+    "noAssets": "אין עדיין נכסים",
+    "assetStatus": {
+      "Operational": "תקין",
+      "UnderMaintenance": "בתחזוקה",
+      "Faulty": "תקול",
+      "Retired": "הוצא משימוש"
+    },
     "inspections": "בדיקות",
     "approvals": "אישורים",
     "openTickets": "קריאות פתוחות",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "נגבה",
     "outstanding": "פתוח",
     "overdue": "באיחור",
+    "ticketOverdue": "באיחור",
+    "respondBy": "להגיב עד {{time}}",
+    "resolveBy": "לפתור עד {{time}}",
     "expiringIn30Days": "מסתיימים בתוך 30 יום",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

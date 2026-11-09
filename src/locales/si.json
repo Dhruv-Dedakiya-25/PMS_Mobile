@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "වැඩ නියෝග",
+    "noWorkOrders": "තවම වැඩ ඇණවුම් නැත",
+    "unassigned": "පවරා නැත",
+    "woStatus": {
+      "Pending": "පොරොත්තුවෙන්",
+      "Scheduled": "සැලසුම් කර ඇත",
+      "InProgress": "ක්‍රියාත්මකයි",
+      "Completed": "සම්පූර්ණයි",
+      "Cancelled": "අවලංගුයි"
+    },
     "assets": "වත්කම්",
+    "noAssets": "තවම වත්කම් නැත",
+    "assetStatus": {
+      "Operational": "ක්‍රියාත්මකයි",
+      "UnderMaintenance": "නඩත්තුවේ",
+      "Faulty": "දෝෂ සහිතයි",
+      "Retired": "ඉවත් කර ඇත"
+    },
     "inspections": "පරීක්ෂාවන්",
     "approvals": "අනුමැතීන්",
     "openTickets": "විවෘත ටිකට්පත්",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "එකතු කළා",
     "outstanding": "නොගෙවූ",
     "overdue": "කල් ඉකුත් වූ",
+    "ticketOverdue": "ප්‍රමාදයි",
+    "respondBy": "{{time}} ට පෙර ප්‍රතිචාර දක්වන්න",
+    "resolveBy": "{{time}} ට පෙර විසඳන්න",
     "expiringIn30Days": "දින 30ක් තුළ කල් ඉකුත් වන",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

@@ -4,9 +4,13 @@
  */
 import { getAccessToken, markNotLinked, refreshSession, signOutHere } from '@/auth/session';
 import { apiBaseUrl } from '@/config';
+import { Platform } from 'react-native';
+
 import i18n from '@/i18n';
 
 const TIMEOUT_MS = 30_000;
+/** A photo on a slow mobile link takes longer than a JSON call. */
+const UPLOAD_TIMEOUT_MS = 60_000;
 
 export class ApiError extends Error {
   constructor(
@@ -43,16 +47,18 @@ async function send(method: string, path: string, body: unknown, timeoutMs: numb
   const abort = new AbortController();
   const timer = setTimeout(() => abort.abort(), timeoutMs);
   const token = getAccessToken();
+  // A FormData body (a photo upload) sets its own Content-Type with the boundary.
+  const isForm = typeof FormData !== 'undefined' && body instanceof FormData;
   try {
     const res = await fetch(`${apiBaseUrl}${path}`, {
       method,
       credentials: 'include',
       headers: {
-        ...(body === undefined ? {} : { 'Content-Type': 'application/json' }),
+        ...(body === undefined || isForm ? {} : { 'Content-Type': 'application/json' }),
         ...(token ? { Authorization: `Bearer ${token}` } : {}),
         'Accept-Language': i18n.language,
       },
-      body: body === undefined ? undefined : JSON.stringify(body),
+      body: body === undefined ? undefined : isForm ? (body as FormData) : JSON.stringify(body),
       signal: abort.signal,
     });
     if (res.status === 502 || res.status === 503 || res.status === 504) throw noApi();
@@ -96,6 +102,25 @@ async function request<T>(method: string, path: string, body?: unknown, timeoutM
 }
 
 export const apiGet = <T>(path: string, timeoutMs?: number) => request<T>('GET', path, undefined, timeoutMs);
+
+/** Reads a protected image as a data URI, which an Image can show on every platform. */
+export async function apiImage(path: string): Promise<string> {
+  const blob = await (await sendAuthed('GET', path)).blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result));
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(blob);
+  });
+}
+
+/** Sends one JPEG photo as the "file" form field. On the web the uri is read into a Blob first. */
+export async function apiUploadPhoto(path: string, uri: string): Promise<void> {
+  const form = new FormData();
+  if (Platform.OS === 'web') form.append('file', await (await fetch(uri)).blob(), 'photo.jpg');
+  else form.append('file', { uri, name: 'photo.jpg', type: 'image/jpeg' } as unknown as Blob);
+  await sendAuthed('POST', path, form, UPLOAD_TIMEOUT_MS);
+}
 export const apiPost = <T>(path: string, body?: unknown, timeoutMs?: number) => request<T>('POST', path, body, timeoutMs);
 export const apiPut = <T>(path: string, body?: unknown, timeoutMs?: number) => request<T>('PUT', path, body, timeoutMs);
 export const apiDelete = <T>(path: string, timeoutMs?: number) => request<T>('DELETE', path, undefined, timeoutMs);

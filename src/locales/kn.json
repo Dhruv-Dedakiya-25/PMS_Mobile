@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "ಕೆಲಸದ ಆದೇಶಗಳು",
+    "noWorkOrders": "ಇನ್ನೂ ಯಾವುದೇ ಕೆಲಸದ ಆದೇಶಗಳಿಲ್ಲ",
+    "unassigned": "ನಿಯೋಜಿಸಲಾಗಿಲ್ಲ",
+    "woStatus": {
+      "Pending": "ಬಾಕಿ ಇದೆ",
+      "Scheduled": "ನಿಗದಿಯಾಗಿದೆ",
+      "InProgress": "ಪ್ರಗತಿಯಲ್ಲಿದೆ",
+      "Completed": "ಪೂರ್ಣಗೊಂಡಿದೆ",
+      "Cancelled": "ರದ್ದುಗೊಂಡಿದೆ"
+    },
     "assets": "ಆಸ್ತಿಗಳು",
+    "noAssets": "ಇನ್ನೂ ಯಾವುದೇ ಆಸ್ತಿಗಳಿಲ್ಲ",
+    "assetStatus": {
+      "Operational": "ಕಾರ್ಯನಿರತ",
+      "UnderMaintenance": "ನಿರ್ವಹಣೆಯಲ್ಲಿ",
+      "Faulty": "ದೋಷಯುಕ್ತ",
+      "Retired": "ನಿವೃತ್ತ"
+    },
     "inspections": "ತಪಾಸಣೆಗಳು",
     "approvals": "ಅನುಮೋದನೆಗಳು",
     "openTickets": "ಬಾಕಿ ಟಿಕೆಟ್‌ಗಳು",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "ಸಂಗ್ರಹಿಸಲಾಗಿದೆ",
     "outstanding": "ಬಾಕಿ ಇರುವ",
     "overdue": "ಮಿತಿ ಮೀರಿದ",
+    "ticketOverdue": "ತಡವಾಗಿದೆ",
+    "respondBy": "{{time}} ಒಳಗೆ ಪ್ರತಿಕ್ರಿಯಿಸಿ",
+    "resolveBy": "{{time}} ಒಳಗೆ ಪರಿಹರಿಸಿ",
     "expiringIn30Days": "30 ದಿನಗಳಲ್ಲಿ ಮುಕ್ತಾಯ",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "工单",
+    "noWorkOrders": "暂无工单",
+    "unassigned": "未分配",
+    "woStatus": {
+      "Pending": "待处理",
+      "Scheduled": "已排期",
+      "InProgress": "进行中",
+      "Completed": "已完成",
+      "Cancelled": "已取消"
+    },
     "assets": "资产",
+    "noAssets": "暂无资产",
+    "assetStatus": {
+      "Operational": "运行中",
+      "UnderMaintenance": "维护中",
+      "Faulty": "故障",
+      "Retired": "已报废"
+    },
     "inspections": "巡检",
     "approvals": "审批",
     "openTickets": "待办工单",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "已收款",
     "outstanding": "未付余额",
     "overdue": "逾期",
+    "ticketOverdue": "已逾期",
+    "respondBy": "请于 {{time}} 前响应",
+    "resolveBy": "请于 {{time}} 前解决",
     "expiringIn30Days": "30天内到期",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

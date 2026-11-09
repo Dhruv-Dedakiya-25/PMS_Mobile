@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "دستورهای کار",
+    "noWorkOrders": "هنوز دستور کاری وجود ندارد",
+    "unassigned": "تخصیص‌نیافته",
+    "woStatus": {
+      "Pending": "در انتظار",
+      "Scheduled": "زمان‌بندی‌شده",
+      "InProgress": "در حال انجام",
+      "Completed": "تکمیل‌شده",
+      "Cancelled": "لغوشده"
+    },
     "assets": "دارایی‌ها",
+    "noAssets": "هنوز دارایی‌ای وجود ندارد",
+    "assetStatus": {
+      "Operational": "فعال",
+      "UnderMaintenance": "در حال تعمیر",
+      "Faulty": "معیوب",
+      "Retired": "از رده خارج"
+    },
     "inspections": "بازرسی‌ها",
     "approvals": "تأییدها",
     "openTickets": "درخواست‌های باز",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "وصول‌شده",
     "outstanding": "مانده پرداخت‌نشده",
     "overdue": "سررسید گذشته",
+    "ticketOverdue": "دیرکرد",
+    "respondBy": "پاسخ تا {{time}}",
+    "resolveBy": "حل تا {{time}}",
     "expiringIn30Days": "انقضا تا ۳۰ روز آینده",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

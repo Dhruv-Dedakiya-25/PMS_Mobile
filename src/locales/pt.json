@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "Ordens de trabalho",
+    "noWorkOrders": "Ainda não há ordens de serviço",
+    "unassigned": "Não atribuída",
+    "woStatus": {
+      "Pending": "Pendente",
+      "Scheduled": "Agendada",
+      "InProgress": "Em andamento",
+      "Completed": "Concluída",
+      "Cancelled": "Cancelada"
+    },
     "assets": "Ativos",
+    "noAssets": "Ainda não há ativos",
+    "assetStatus": {
+      "Operational": "Em operação",
+      "UnderMaintenance": "Em manutenção",
+      "Faulty": "Avariado",
+      "Retired": "Desativado"
+    },
     "inspections": "Inspeções",
     "approvals": "Aprovações",
     "openTickets": "Tickets em aberto",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "Cobrado",
     "outstanding": "Pendente",
     "overdue": "Em atraso",
+    "ticketOverdue": "Em atraso",
+    "respondBy": "Responder até {{time}}",
+    "resolveBy": "Resolver até {{time}}",
     "expiringIn30Days": "Vencem em 30 dias",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

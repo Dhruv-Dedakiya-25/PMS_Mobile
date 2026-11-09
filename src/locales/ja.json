@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "作業指示書一覧",
+    "noWorkOrders": "作業指示はまだありません",
+    "unassigned": "未割り当て",
+    "woStatus": {
+      "Pending": "保留中",
+      "Scheduled": "予定済み",
+      "InProgress": "対応中",
+      "Completed": "完了",
+      "Cancelled": "キャンセル"
+    },
     "assets": "資産",
+    "noAssets": "資産はまだありません",
+    "assetStatus": {
+      "Operational": "稼働中",
+      "UnderMaintenance": "保守中",
+      "Faulty": "故障",
+      "Retired": "廃棄済み"
+    },
     "inspections": "点検一覧",
     "approvals": "承認",
     "openTickets": "未対応チケット",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "回収額",
     "outstanding": "未回収",
     "overdue": "延滞",
+    "ticketOverdue": "期限切れ",
+    "respondBy": "{{time}} までに対応",
+    "resolveBy": "{{time}} までに解決",
     "expiringIn30Days": "30日以内に満了",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

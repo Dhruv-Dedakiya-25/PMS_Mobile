@@ -19,9 +19,11 @@ import {
   getMyReceipt,
   getMyReceipts,
   getMyServiceRequest,
+  getMyServiceRequestPhotoUris,
   getMyServiceRequests,
   markAllNotificationsRead as apiMarkAllNotificationsRead,
   markNotificationRead as apiMarkNotificationRead,
+  uploadMyServiceRequestPhoto,
 } from '@/api/my';
 import type {
   ApiServicePriority,
@@ -104,6 +106,8 @@ interface LiveCache {
   documents?: MyDocumentDto[];
   requests?: MyServiceRequestDto[];
   requestDetails: Record<string, MyServiceRequestDto>;
+  /** A request's photos as data URIs, loaded with its detail. */
+  requestPhotos: Record<string, string[]>;
   announcements?: MyAnnouncementDto[];
   announcementDetails: Record<string, MyAnnouncementDto>;
   notifications?: MyNotificationDto[];
@@ -112,6 +116,7 @@ interface LiveCache {
 let cache: LiveCache = {
   receiptDetails: {},
   requestDetails: {},
+  requestPhotos: {},
   announcementDetails: {},
 };
 const cacheListeners = new Set<() => void>();
@@ -122,7 +127,7 @@ function notifyCache() {
 }
 
 export function clearTenancyCache() {
-  cache = { receiptDetails: {}, requestDetails: {}, announcementDetails: {} };
+  cache = { receiptDetails: {}, requestDetails: {}, requestPhotos: {}, announcementDetails: {} };
   cacheListeners.forEach((l) => l());
 }
 
@@ -901,6 +906,12 @@ export function useRequests() {
         priority: PRIORITY_TO_API[input.priority],
         description: input.description,
       });
+      // The request is already saved, so a photo that fails to send must not undo it.
+      for (const uri of input.photos) {
+        await uploadMyServiceRequestPhoto(created.id, uri).catch((e) => {
+          if (__DEV__) console.warn('A request photo was not sent:', e);
+        });
+      }
       cache.requests = [created, ...(cache.requests ?? [])];
       cache.requestDetails = { ...cache.requestDetails, [created.id]: created };
       notifyCache();
@@ -938,12 +949,15 @@ export function useRequestDetail(id: string) {
 
   const fetchDetail = useCallback(async () => {
     if (!id) return;
-    const [profileData, detail] = await Promise.all([
+    const [profileData, detail, photos] = await Promise.all([
       cache.profile ? Promise.resolve(cache.profile) : fetchProfileOnce(),
       getMyServiceRequest(id),
+      // The request still shows if its photos cannot be loaded.
+      getMyServiceRequestPhotoUris(id).catch(() => [] as string[]),
     ]);
     cache.profile = profileData;
     cache.requestDetails = { ...cache.requestDetails, [id]: detail };
+    cache.requestPhotos = { ...cache.requestPhotos, [id]: photos };
     notifyCache();
   }, [id]);
 
@@ -963,7 +977,7 @@ export function useRequestDetail(id: string) {
   const fallbackFromList = live.requests?.find((x) => x.id === id);
   const source = cachedDetail ?? fallbackFromList;
   const mapped = source
-    ? { ...mapServiceRequestDto(source), unitCode: live.profile?.unit?.unitCode || '—' }
+    ? { ...mapServiceRequestDto(source), unitCode: live.profile?.unit?.unitCode || '—', photos: live.requestPhotos[id] ?? [] }
     : ({ ...mock.requests[0], unitCode: live.profile?.unit?.unitCode || '—' } as MappedMaintenanceRequest);
 
   return {

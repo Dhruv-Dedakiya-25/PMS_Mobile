@@ -1,5 +1,4 @@
 import { IconAlertTriangle, IconRefresh } from '@tabler/icons-react-native';
-import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
@@ -7,12 +6,12 @@ import { View } from 'react-native';
 import { getStaffAnnouncements, type StaffAnnouncementItem } from '@/api/staff';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
-import { Button, Card, Onward, Pill } from '@/components/ui';
+import { StaffNoticeCard } from '@/components/staff-notice-card';
+import { Button, Card, Pill } from '@/components/ui';
 import { space } from '@/theme/tokens';
 
 export default function StaffAnnouncements() {
-  const { t, i18n } = useTranslation();
-  const isArabic = i18n.language.startsWith('ar');
+  const { t } = useTranslation();
   const [notices, setNotices] = useState<StaffAnnouncementItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -82,33 +81,9 @@ export default function StaffAnnouncements() {
           ) : null}
 
           <View style={{ gap: space.sm }}>
-            {notices.map((n) => {
-              const title = (isArabic && n.titleAr) ? n.titleAr : (n.titleEn || n.title || t('tabs.announcements'));
-              const body = (isArabic && n.bodyAr) ? n.bodyAr : (n.bodyEn || n.body || '');
-              const category = n.category || t('staff.general');
-              const target = n.target || t('staff.buildingWide');
-
-              return (
-                <Card
-                  key={n.id}
-                  onPress={() => router.push(`/staff/announcement/${n.id}` as any)}
-                  style={{ gap: space.xs }}>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <AppText weight="bold">{title}</AppText>
-                    <Pill accent="teal" label={category} />
-                  </View>
-                  <AppText numberOfLines={2} tone="secondary">
-                    {body}
-                  </AppText>
-                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: space.xs }}>
-                    <AppText variant="caption" tone="muted">
-                      {n.date} • {target}
-                    </AppText>
-                    <Onward />
-                  </View>
-                </Card>
-              );
-            })}
+            {notices.map((n) => (
+              <StaffNoticeCard key={n.id} notice={n} />
+            ))}
           </View>
         </>
       )}

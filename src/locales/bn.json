@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "কার্যাদেশসমূহ",
+    "noWorkOrders": "এখনো কোনো কাজের আদেশ নেই",
+    "unassigned": "নির্ধারিত হয়নি",
+    "woStatus": {
+      "Pending": "অপেক্ষমাণ",
+      "Scheduled": "নির্ধারিত",
+      "InProgress": "চলমান",
+      "Completed": "সম্পন্ন",
+      "Cancelled": "বাতিল"
+    },
     "assets": "সম্পদ",
+    "noAssets": "এখনো কোনো সম্পদ নেই",
+    "assetStatus": {
+      "Operational": "চালু",
+      "UnderMaintenance": "রক্ষণাবেক্ষণে",
+      "Faulty": "ত্রুটিপূর্ণ",
+      "Retired": "অবসরপ্রাপ্ত"
+    },
     "inspections": "পরিদর্শনসমূহ",
     "approvals": "অনুমোদন",
     "openTickets": "অনিষ্পন্ন টিকিট",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "আদায়কৃত",
     "outstanding": "বকেয়া",
     "overdue": "মেয়াদোত্তীর্ণ",
+    "ticketOverdue": "বিলম্বিত",
+    "respondBy": "{{time}}-এর মধ্যে সাড়া দিন",
+    "resolveBy": "{{time}}-এর মধ্যে সমাধান করুন",
     "expiringIn30Days": "৩০ দিনের মধ্যে মেয়াদ শেষ",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

@@ -3,19 +3,23 @@ import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import {
+  getStaffAssets,
   getStaffFacilities,
   getStaffUnits,
-  SAMPLE_ASSETS,
   SAMPLE_INSPECTIONS,
-  type SampleAsset,
   type SampleInspection,
+  type StaffAsset,
   type StaffFacility,
   type StaffUnit,
 } from '@/api/staff';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
 import { Card, Pill, Segmented } from '@/components/ui';
-import { space } from '@/theme/tokens';
+import { space, type Accent } from '@/theme/tokens';
+
+const assetAccent: Record<StaffAsset['status'], Accent> = {
+  Operational: 'success', UnderMaintenance: 'warning', Faulty: 'danger', Retired: 'primary',
+};
 
 type Section = 'facilities' | 'units' | 'assets' | 'inspections';
 
@@ -25,7 +29,8 @@ export default function StaffFacilities() {
 
   const [facilities, setFacilities] = useState<StaffFacility[]>([]);
   const [units, setUnits] = useState<StaffUnit[]>([]);
-  const [assets] = useState<SampleAsset[]>(SAMPLE_ASSETS);
+  const [assets, setAssets] = useState<StaffAsset[]>([]);
+  const [assetsError, setAssetsError] = useState<string | null>(null);
   const [inspections] = useState<SampleInspection[]>(SAMPLE_INSPECTIONS);
 
   const [loading, setLoading] = useState(true);
@@ -83,8 +88,23 @@ export default function StaffFacilities() {
     };
   }, [t]);
 
+  // Assets load on their own, so a role without them still sees facilities and units.
+  const loadAssets = useCallback(() => {
+    getStaffAssets()
+      .then((list) => {
+        setAssets(list);
+        setAssetsError(null);
+      })
+      .catch((e) => setAssetsError(e instanceof Error ? e.message : t('common.errorLoad')));
+  }, [t]);
+
+  useEffect(() => {
+    loadAssets();
+  }, [loadAssets]);
+
   const onRefresh = () => {
     fetchData(true);
+    loadAssets();
   };
 
   return (
@@ -166,26 +186,23 @@ export default function StaffFacilities() {
 
       {section === 'assets' && (
         <View style={{ gap: space.sm }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
-            <Pill accent="primary" label={t('staff.sampleDataBadge')} />
-            <AppText variant="caption" tone="muted">
-              {t('staff.sampleDataNote')}
-            </AppText>
-          </View>
-          {assets.map((ast) => (
-            <Card key={ast.id} style={{ gap: space.xs }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <AppText weight="bold">{ast.name}</AppText>
-                <Pill
-                  accent={ast.status === 'Operational' ? 'success' : 'danger'}
-                  label={ast.status}
-                />
-              </View>
-              <AppText variant="caption" tone="secondary">
-                {ast.code} • {ast.category} • {ast.location}
-              </AppText>
+          {assetsError || assets.length === 0 ? (
+            <Card style={{ alignItems: 'center', paddingVertical: space.xl }}>
+              <AppText tone={assetsError ? 'danger' : 'secondary'}>{assetsError ?? t('staff.noAssets')}</AppText>
             </Card>
-          ))}
+          ) : (
+            assets.map((ast) => (
+              <Card key={ast.id} style={{ gap: space.xs }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.sm }}>
+                  <AppText weight="bold" style={{ flexShrink: 1 }}>{ast.name}</AppText>
+                  <Pill accent={assetAccent[ast.status] ?? 'primary'} label={t(`staff.assetStatus.${ast.status}`)} />
+                </View>
+                <AppText variant="caption" tone="secondary">
+                  {[ast.assetTag, ast.category, ast.propertyName, ast.location].filter(Boolean).join(' • ')}
+                </AppText>
+              </Card>
+            ))
+          )}
         </View>
       )}
 

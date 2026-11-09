@@ -2,12 +2,13 @@ import { IconCheck, IconPackage, IconTrash } from '@tabler/icons-react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Alert, View } from 'react-native';
+import { Alert, Image, View } from 'react-native';
 
 import {
   deleteStaffTicket,
   getStaffProperties,
   getStaffTicket,
+  getStaffTicketPhotoUris,
   getStaffUnits,
   updateStaffTicket,
   type StaffProperty,
@@ -18,11 +19,14 @@ import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Button, Card, Field, Pill, Select } from '@/components/ui';
-import { space } from '@/theme/tokens';
+import { useLanguage } from '@/i18n';
+import { dateTime } from '@/lib/format';
+import { radius, space } from '@/theme/tokens';
 
 export default function TicketDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const { permissionsFor, isMaintenance } = useAppSession();
   const permissions = permissionsFor('staff/tickets');
 
@@ -31,6 +35,7 @@ export default function TicketDetail() {
   const [units, setUnits] = useState<StaffUnit[]>([]);
   const [status, setStatus] = useState<string>('Open');
   const [assignedTo, setAssignedTo] = useState<string>('');
+  const [photos, setPhotos] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -44,11 +49,13 @@ export default function TicketDetail() {
       getStaffTicket(id),
       getStaffProperties().catch(() => []),
       getStaffUnits().catch(() => []),
+      getStaffTicketPhotoUris(id).catch(() => [] as string[]),
     ])
-      .then(([data, allProps, allUnits]) => {
+      .then(([data, allProps, allUnits, ticketPhotos]) => {
         setTicket(data);
         setProperties(allProps);
         setUnits(allUnits);
+        setPhotos(ticketPhotos);
         setStatus(data.status || 'Open');
         setAssignedTo(data.assignedTo || '');
         setError(null);
@@ -68,12 +75,14 @@ export default function TicketDetail() {
       getStaffTicket(id),
       getStaffProperties().catch(() => []),
       getStaffUnits().catch(() => []),
+      getStaffTicketPhotoUris(id).catch(() => [] as string[]),
     ])
-      .then(([data, allProps, allUnits]) => {
+      .then(([data, allProps, allUnits, ticketPhotos]) => {
         if (!cancelled) {
           setTicket(data);
           setProperties(allProps);
           setUnits(allUnits);
+          setPhotos(ticketPhotos);
           setStatus(data.status || 'Open');
           setAssignedTo(data.assignedTo || '');
           setError(null);
@@ -209,6 +218,13 @@ export default function TicketDetail() {
               </AppText>
             ) : null}
             <AppText>{ticket.description}</AppText>
+            {photos.length ? (
+              <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.sm }}>
+                {photos.map((uri, i) => (
+                  <Image key={i} source={{ uri }} accessibilityLabel={t('maint.photos')} style={{ width: 72, height: 72, borderRadius: radius.md }} />
+                ))}
+              </View>
+            ) : null}
             {ticket.preferredVisitTime ? (
               <AppText variant="caption" tone="muted">
                 Visit: {ticket.preferredVisitTime}
@@ -217,6 +233,16 @@ export default function TicketDetail() {
             <AppText variant="caption" tone="muted">
               {ticket.createdAtUtc?.slice(0, 10)}
             </AppText>
+            {ticket.resolutionDueUtc ? (
+              <View style={{ flexDirection: 'row', alignItems: 'center', flexWrap: 'wrap', gap: space.sm }}>
+                <AppText variant="caption" tone={ticket.isOverdue ? 'danger' : 'secondary'}>
+                  {ticket.status === 'Open' && !ticket.firstResponseAtUtc && ticket.responseDueUtc
+                    ? t('staff.respondBy', { time: dateTime(ticket.responseDueUtc, language.code) })
+                    : t('staff.resolveBy', { time: dateTime(ticket.resolutionDueUtc, language.code) })}
+                </AppText>
+                {ticket.isOverdue ? <Pill accent="danger" label={t('staff.ticketOverdue')} /> : null}
+              </View>
+            ) : null}
           </Card>
 
           {permissions.canEdit ? (

@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "작업 지시서",
+    "noWorkOrders": "아직 작업 지시가 없습니다",
+    "unassigned": "미배정",
+    "woStatus": {
+      "Pending": "대기 중",
+      "Scheduled": "예정됨",
+      "InProgress": "진행 중",
+      "Completed": "완료",
+      "Cancelled": "취소됨"
+    },
     "assets": "자산",
+    "noAssets": "아직 자산이 없습니다",
+    "assetStatus": {
+      "Operational": "가동 중",
+      "UnderMaintenance": "정비 중",
+      "Faulty": "고장",
+      "Retired": "폐기"
+    },
     "inspections": "점검",
     "approvals": "승인",
     "openTickets": "미처리 티켓",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "수납액",
     "outstanding": "미수금",
     "overdue": "연체",
+    "ticketOverdue": "기한 초과",
+    "respondBy": "{{time}}까지 응답",
+    "resolveBy": "{{time}}까지 해결",
     "expiringIn30Days": "30일 이내 만료",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

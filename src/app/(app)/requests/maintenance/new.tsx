@@ -9,6 +9,7 @@ import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Button, Details, Field, Note, Select } from '@/components/ui';
 import { useRequests } from '@/hooks/use-tenancy';
+import { shrinkPhoto } from '@/lib/shrink-photo';
 import type { RequestCategory, RequestPriority } from '@/mock/data';
 import { radius, space, usePalette } from '@/theme/tokens';
 
@@ -67,7 +68,10 @@ export default function NewMaintenanceRequest() {
     }
     const options: ImagePicker.ImagePickerOptions = { mediaTypes: ['images'], quality: 0.6 };
     const result = camera && Platform.OS !== 'web' ? await ImagePicker.launchCameraAsync(options) : await ImagePicker.launchImageLibraryAsync(options);
-    if (!result.canceled) setPhotos((p) => [...p, result.assets[0].uri].slice(0, MAX_PHOTOS));
+    if (result.canceled) return;
+    // Shrunk as soon as it is picked, so the preview shows exactly what will be sent.
+    const uri = await shrinkPhoto(result.assets[0]).catch(() => result.assets[0].uri);
+    setPhotos((p) => [...p, uri].slice(0, MAX_PHOTOS));
   };
 
   const submit = async () => {

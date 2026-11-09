@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "Lệnh công việc",
+    "noWorkOrders": "Chưa có lệnh công việc",
+    "unassigned": "Chưa phân công",
+    "woStatus": {
+      "Pending": "Đang chờ",
+      "Scheduled": "Đã lên lịch",
+      "InProgress": "Đang thực hiện",
+      "Completed": "Hoàn thành",
+      "Cancelled": "Đã hủy"
+    },
     "assets": "Tài sản",
+    "noAssets": "Chưa có tài sản nào",
+    "assetStatus": {
+      "Operational": "Đang hoạt động",
+      "UnderMaintenance": "Đang bảo trì",
+      "Faulty": "Hỏng",
+      "Retired": "Ngừng sử dụng"
+    },
     "inspections": "Kiểm tra",
     "approvals": "Phê duyệt",
     "openTickets": "Phiếu đang mở",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "Đã thu",
     "outstanding": "Còn nợ",
     "overdue": "Quá hạn",
+    "ticketOverdue": "Quá hạn",
+    "respondBy": "Phản hồi trước {{time}}",
+    "resolveBy": "Xử lý trước {{time}}",
     "expiringIn30Days": "Hết hạn trong 30 ngày",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

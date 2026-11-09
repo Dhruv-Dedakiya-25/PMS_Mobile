@@ -1,4 +1,4 @@
-import { apiDelete, apiGet, apiPost, apiPut } from './client';
+import { apiDelete, apiGet, apiImage, apiPost, apiPut } from './client';
 
 export interface StaffDashboardServiceRequestItem {
   id: string;
@@ -60,6 +60,11 @@ export interface StaffTicket {
   resolvedOn?: string;
   createdAtUtc?: string;
   isActive: boolean;
+  // The SLA, worked out by the API; empty when no active policy covers the priority.
+  firstResponseAtUtc?: string;
+  responseDueUtc?: string;
+  resolutionDueUtc?: string;
+  isOverdue?: boolean;
 }
 
 export interface StaffProperty {
@@ -186,6 +191,40 @@ export const updateStaffTicket = (id: string, ticket: Partial<StaffTicket>) =>
   apiPut<void>(`/ServiceRequest/updateServiceRequest/${id}`, ticket);
 export const deleteStaffTicket = (id: string) => apiDelete(`/ServiceRequest/deleteServiceRequest/${id}`);
 
+/** A work order: the job that fixes one ticket. */
+export interface StaffWorkOrder {
+  id: string;
+  serviceRequestId: string;
+  ticketNumber?: string;
+  workOrderNumber: string;
+  status: 'Pending' | 'Scheduled' | 'InProgress' | 'Completed' | 'Cancelled';
+  contractorName?: string | null;
+  technicianName?: string | null;
+  scheduledStartUtc?: string | null;
+  cost?: number | null;
+}
+
+export const getStaffWorkOrders = () => apiGet<StaffWorkOrder[]>('/WorkOrder/getWorkOrder');
+
+/** A piece of equipment on one of the company's properties. */
+export interface StaffAsset {
+  id: string;
+  assetTag: string;
+  name: string;
+  category: string;
+  propertyName?: string | null;
+  location?: string | null;
+  status: 'Operational' | 'UnderMaintenance' | 'Faulty' | 'Retired';
+}
+
+export const getStaffAssets = () => apiGet<StaffAsset[]>('/Asset/getAsset');
+
+/** A ticket's photos, as data URIs ready to show. */
+export async function getStaffTicketPhotoUris(id: string): Promise<string[]> {
+  const list = await apiGet<{ id: string }[]>(`/ServiceRequest/getServiceRequestPhotos/${id}`);
+  return Promise.all(list.map((p) => apiImage(`/ServiceRequest/getServiceRequestPhotoFile/${p.id}`)));
+}
+
 /** Properties, Units, Facilities */
 export const getStaffProperties = () => apiGet<StaffProperty[]>('/Property/getProperty');
 export const getStaffUnits = () => apiGet<StaffUnit[]>('/Unit/getUnit');
@@ -207,28 +246,8 @@ export const getStaffInstallments = () =>
 
 // ==========================================
 // Sample data for areas with no live API yet
-// (Assets, Inspections, Work Orders, Approvals, Notices)
+// (Inspections)
 // ==========================================
-
-export interface SampleWorkOrder {
-  id: string;
-  ticketNumber: string;
-  assetName: string;
-  technicianName: string;
-  status: 'Pending' | 'Scheduled' | 'InProgress' | 'Completed';
-  cost: number;
-  isSample: true;
-}
-
-export interface SampleAsset {
-  id: string;
-  code: string;
-  name: string;
-  category: string;
-  location: string;
-  status: 'Operational' | 'Maintenance' | 'Critical';
-  isSample: true;
-}
 
 export interface SampleInspection {
   id: string;
@@ -239,42 +258,11 @@ export interface SampleInspection {
   isSample: true;
 }
 
-export interface SampleStaffNotice {
-  id: string;
-  title: string;
-  date: string;
-  category: string;
-  target: string;
-  body: string;
-  isSample: true;
-}
-
-export const SAMPLE_WORK_ORDERS: SampleWorkOrder[] = [
-  { id: '1', ticketNumber: 'TKT-1042', assetName: 'Main Chiller #2', technicianName: 'Rashid Al-Kiyumi', status: 'InProgress', cost: 120, isSample: true },
-  { id: '2', ticketNumber: 'TKT-1048', assetName: 'Water Pump Unit 4B', technicianName: 'Salim Al-Harthy', status: 'Scheduled', cost: 65, isSample: true },
-  { id: '3', ticketNumber: 'TKT-1051', assetName: 'Elevator Passenger #1', technicianName: 'Otis Tech Service', status: 'Pending', cost: 340, isSample: true },
-  { id: '4', ticketNumber: 'TKT-1039', assetName: 'Lobby Fire Damper', technicianName: 'Rashid Al-Kiyumi', status: 'Completed', cost: 45, isSample: true },
-];
-
-export const SAMPLE_ASSETS: SampleAsset[] = [
-  { id: '1', code: 'AST-CHL-01', name: 'Rooftop Chiller 1', category: 'HVAC', location: 'Tower A Roof', status: 'Operational', isSample: true },
-  { id: '2', code: 'AST-CHL-02', name: 'Rooftop Chiller 2', category: 'HVAC', location: 'Tower A Roof', status: 'Maintenance', isSample: true },
-  { id: '3', code: 'AST-PMP-01', name: 'Booster Water Pump A', category: 'Plumbing', location: 'Basement 1', status: 'Operational', isSample: true },
-  { id: '4', code: 'AST-GEN-01', name: 'Backup Generator 500kVA', category: 'Electrical', location: 'Power Room B2', status: 'Operational', isSample: true },
-  { id: '5', code: 'AST-LOB-01', name: 'Lobby Automatic Doors', category: 'Access', location: 'Ground Floor', status: 'Operational', isSample: true },
-];
-
 export const SAMPLE_INSPECTIONS: SampleInspection[] = [
   { id: '1', title: 'Quarterly Fire Safety System Check', scheduledDate: '2026-11-15', inspector: 'Civil Defense Team', status: 'Scheduled', isSample: true },
   { id: '2', title: 'HVAC Seasonal Filter & Pressure Audit', scheduledDate: '2026-11-08', inspector: 'Facility Team A', status: 'Scheduled', isSample: true },
   { id: '3', title: 'Swimming Pool Water Chemistry & Pump', scheduledDate: '2026-11-01', inspector: 'Rashid Al-Kiyumi', status: 'Passed', isSample: true },
   { id: '4', title: 'Emergency Lighting & Exit Sign Battery', scheduledDate: '2026-10-25', inspector: 'Safety Officer', status: 'ActionRequired', isSample: true },
-];
-
-export const SAMPLE_STAFF_NOTICES: SampleStaffNotice[] = [
-  { id: '1', title: 'Scheduled Generator Maintenance (B2)', date: '2026-11-05', category: 'Facility', target: 'All Residents & Staff', body: 'Backup generators will be tested between 10:00 AM and 11:30 AM. No power disruption expected.', isSample: true },
-  { id: '2', title: 'Annual Fire Drill Next Tuesday', date: '2026-11-10', category: 'Safety', target: 'Building Wide', body: 'Civil Defense will conduct the annual evacuation drill. All staff must report to assembly points.', isSample: true },
-  { id: '3', title: 'Q4 Rent Collection Milestone Notice', date: '2026-11-01', category: 'Management', target: 'Management Staff', body: '92% of November rent installments have posted. Ensure follow-ups on 8 outstanding accounts.', isSample: true },
 ];
 
 export interface StaffAnnouncementDto {

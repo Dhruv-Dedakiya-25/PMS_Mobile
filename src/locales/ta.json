@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "பணி உத்தரவுகள்",
+    "noWorkOrders": "இன்னும் பணி ஆணைகள் இல்லை",
+    "unassigned": "ஒதுக்கப்படவில்லை",
+    "woStatus": {
+      "Pending": "நிலுவையில்",
+      "Scheduled": "திட்டமிடப்பட்டது",
+      "InProgress": "நடைபெறுகிறது",
+      "Completed": "முடிந்தது",
+      "Cancelled": "ரத்துசெய்யப்பட்டது"
+    },
     "assets": "சொத்துகள்",
+    "noAssets": "இன்னும் சொத்துகள் இல்லை",
+    "assetStatus": {
+      "Operational": "இயங்குகிறது",
+      "UnderMaintenance": "பராமரிப்பில்",
+      "Faulty": "பழுதானது",
+      "Retired": "ஓய்வுபெற்றது"
+    },
     "inspections": "ஆய்வுகள்",
     "approvals": "ஒப்புதல்கள்",
     "openTickets": "நிலுவைக் கோரிக்கைகள்",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "வசூலிக்கப்பட்டது",
     "outstanding": "நிலுவை",
     "overdue": "தாமதமான",
+    "ticketOverdue": "தாமதம்",
+    "respondBy": "{{time}}க்குள் பதிலளிக்கவும்",
+    "resolveBy": "{{time}}க்குள் தீர்க்கவும்",
     "expiringIn30Days": "30 நாட்களில் காலாவதியாகும்",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",

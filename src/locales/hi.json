@@ -614,7 +614,23 @@
     "operations": "Operations",
     "announcements": "Building Notices",
     "workOrders": "कार्य आदेश",
+    "noWorkOrders": "अभी तक कोई कार्य आदेश नहीं",
+    "unassigned": "असाइन नहीं",
+    "woStatus": {
+      "Pending": "लंबित",
+      "Scheduled": "निर्धारित",
+      "InProgress": "प्रगति में",
+      "Completed": "पूर्ण",
+      "Cancelled": "रद्द"
+    },
     "assets": "संपत्तियाँ",
+    "noAssets": "अभी तक कोई एसेट नहीं",
+    "assetStatus": {
+      "Operational": "चालू",
+      "UnderMaintenance": "रखरखाव में",
+      "Faulty": "खराब",
+      "Retired": "सेवानिवृत्त"
+    },
     "inspections": "निरीक्षण",
     "approvals": "अनुमोदन",
     "openTickets": "खुले टिकट",
@@ -631,6 +647,9 @@
     "collectedThisMonth": "वसूल किया गया",
     "outstanding": "बकाया",
     "overdue": "अतिदेय",
+    "ticketOverdue": "विलंबित",
+    "respondBy": "{{time}} तक जवाब दें",
+    "resolveBy": "{{time}} तक हल करें",
     "expiringIn30Days": "30 दिनों में समाप्त",
     "priorityQueue": "Priority Queue",
     "recentTickets": "Recent Tickets",
