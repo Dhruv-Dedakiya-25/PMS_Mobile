@@ -440,7 +440,9 @@
     "status": {
       "expected": "예정",
       "arrived": "도착",
-      "expired": "만료"
+      "expired": "만료",
+      "left": "떠남",
+      "cancelled": "취소됨"
     },
     "pass": "방문증",
     "passNo": "방문증 번호",
@@ -448,7 +450,13 @@
     "hostLine": "{{building}} {{unit}}호",
     "noVehicle": "없음",
     "sharePass": "방문증 공유",
-    "gateNote": "이 방문증을 방문객에게 보내세요. 경비원이 정문에서 QR 코드를 스캔하며, 방문일에만 유효합니다."
+    "gateNote": "이 방문증을 방문객에게 보내세요. 경비원이 정문에서 QR 코드를 스캔하며, 방문일에만 유효합니다.",
+    "cancel": "출입증 취소",
+    "cancelTitle": "이 출입증을 취소할까요?",
+    "cancelBody": "{{name}} 님은 게이트에서 입장이 거부됩니다.",
+    "keep": "출입증 유지",
+    "cancelled": "출입증이 취소되었습니다",
+    "shareText": "{{property}} {{date}} 방문객 출입증 {{number}}. 게이트에서 이 코드를 보여 주세요: {{code}}"
   },
   "fac": {
     "title": "편의시설 예약",
@@ -741,7 +749,21 @@
     "noRequests": "아직 자재 요청이 없습니다",
     "noRequestsDetail": "보낸 자재 요청이 여기에 표시됩니다.",
     "approvalNote": "재고가 출고되기 전에 부동산 관리자가 각 요청을 승인합니다.",
-    "requestMaterials": "자재 요청"
+    "requestMaterials": "자재 요청",
+    "draft": "임시저장",
+    "inApproval": "승인 중",
+    "issued": "발급됨",
+    "returned": "반려됨",
+    "saveDraft": "임시 저장",
+    "saveAndSend": "저장 후 승인 요청",
+    "sendForApproval": "승인 요청",
+    "sending": "보내는 중…",
+    "duplicateItemLine": "한 요청에는 각 품목을 한 번만 추가할 수 있습니다.",
+    "emptyInventory": "아직 재고 품목이 없습니다",
+    "emptyRequisitions": "아직 자재 요청이 없습니다",
+    "estimatedTotal": "예상 합계",
+    "requisitionSaved": "{{number}}이(가) 임시 저장되었습니다.",
+    "requisitionSubmitted": "{{number}} 승인 요청을 보냈습니다."
   },
   "approvals": {
     "type": {

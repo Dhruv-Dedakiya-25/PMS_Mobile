@@ -1,7 +1,7 @@
 /**
  * One typed function per /api/My endpoint on PMS_API.
  */
-import { apiGet, apiImage, apiPost, apiUploadPhoto, sendAuthed } from '@/api/client';
+import { apiGet, apiImage, apiPost, apiPut, apiUploadPhoto, sendAuthed } from '@/api/client';
 import type {
   CreateMyServiceRequestDto,
   MyDocumentDto,
@@ -14,6 +14,8 @@ import type {
   MyServiceRequestDto,
   MyAnnouncementDto,
   MyNotificationDto,
+  MyVisitorDto,
+  InviteMyVisitorDto,
 } from '@/api/types';
 
 export const getMyProfile = () => apiGet<MyProfileDto>('/My/getMyProfile');
@@ -70,3 +72,13 @@ export const markNotificationRead = (id: string) =>
 
 export const markAllNotificationsRead = () =>
   apiPost<{ success: boolean }>('/My/markAllNotificationsRead', {});
+
+/** The tenant's visitor passes, newest visit first. */
+export const getMyVisitors = () => apiGet<MyVisitorDto[]>('/My/getMyVisitors');
+
+/** A pass for the tenant's own unit, ready at the gate at once. */
+export const inviteMyVisitor = (visit: InviteMyVisitorDto) => apiPost<MyVisitorDto>('/My/inviteMyVisitor', visit);
+
+/** Cancels one of the tenant's own passes before the visitor comes. */
+export const cancelMyVisitor = (id: string) => apiPut<MyVisitorDto>(`/My/cancelMyVisitor/${id}`, {});
+

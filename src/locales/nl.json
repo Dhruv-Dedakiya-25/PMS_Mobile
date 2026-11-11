@@ -440,7 +440,9 @@
     "status": {
       "expected": "Verwacht",
       "arrived": "Aangekomen",
-      "expired": "Verlopen"
+      "expired": "Verlopen",
+      "left": "Vertrokken",
+      "cancelled": "Geannuleerd"
     },
     "pass": "Bezoekerspas",
     "passNo": "Pasnummer",
@@ -448,7 +450,13 @@
     "hostLine": "Woning {{unit}}, {{building}}",
     "noVehicle": "Geen",
     "sharePass": "Pas delen",
-    "gateNote": "Stuur deze pas naar uw bezoeker. De bewaking scant de QR-code bij de poort; hij werkt alleen op de bezoekdatum."
+    "gateNote": "Stuur deze pas naar uw bezoeker. De bewaking scant de QR-code bij de poort; hij werkt alleen op de bezoekdatum.",
+    "cancel": "Pas annuleren",
+    "cancelTitle": "Deze pas annuleren?",
+    "cancelBody": "{{name}} wordt bij de poort geweigerd.",
+    "keep": "Pas behouden",
+    "cancelled": "Pas geannuleerd",
+    "shareText": "Bezoekerspas {{number}} voor {{property}} op {{date}}. Toon deze code bij de poort: {{code}}"
   },
   "fac": {
     "title": "Voorzieningen reserveren",
@@ -741,7 +749,21 @@
     "noRequests": "Nog geen aanvragen",
     "noRequestsDetail": "Materiaalaanvragen die je verstuurt, verschijnen hier.",
     "approvalNote": "Een property manager keurt elke aanvraag goed voordat de voorraad wordt uitgegeven.",
-    "requestMaterials": "Materiaal aanvragen"
+    "requestMaterials": "Materiaal aanvragen",
+    "draft": "Concept",
+    "inApproval": "In goedkeuring",
+    "issued": "Uitgegeven",
+    "returned": "Teruggestuurd",
+    "saveDraft": "Concept opslaan",
+    "saveAndSend": "Opslaan en ter goedkeuring sturen",
+    "sendForApproval": "Ter goedkeuring sturen",
+    "sending": "Bezig met versturen...",
+    "duplicateItemLine": "Elk artikel mag maar één keer op een aanvraag voorkomen.",
+    "emptyInventory": "Nog geen voorraadartikelen",
+    "emptyRequisitions": "Nog geen materiaalaanvragen",
+    "estimatedTotal": "Geschat totaal",
+    "requisitionSaved": "{{number}} opgeslagen als concept.",
+    "requisitionSubmitted": "{{number}} ter goedkeuring verstuurd."
   },
   "approvals": {
     "type": {

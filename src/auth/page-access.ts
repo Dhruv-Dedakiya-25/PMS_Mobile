@@ -90,6 +90,8 @@ const MODULES: Record<string, string> = {
   'staff/lease': 'Lease',
   'staff/announcements': 'Announcement',
   'staff/announcement': 'Announcement',
+  'staff/inventory': 'Inventory',
+  'staff/requisition': 'Inventory',
 };
 
 const RANK: Record<Access, number> = { view: 1, edit: 2, full: 3 };

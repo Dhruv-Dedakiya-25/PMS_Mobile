@@ -440,7 +440,9 @@
     "status": {
       "expected": "צפוי",
       "arrived": "הגיע",
-      "expired": "פג תוקף"
+      "expired": "פג תוקף",
+      "left": "יצא",
+      "cancelled": "בוטל"
     },
     "pass": "אישור אורח",
     "passNo": "מספר אישור",
@@ -448,7 +450,13 @@
     "hostLine": "דירה {{unit}}, {{building}}",
     "noVehicle": "אין",
     "sharePass": "שיתוף האישור",
-    "gateNote": "שלח את האישור לאורח. השומר סורק את קוד ה־QR בשער; הוא תקף רק ביום הביקור."
+    "gateNote": "שלח את האישור לאורח. השומר סורק את קוד ה־QR בשער; הוא תקף רק ביום הביקור.",
+    "cancel": "בטל אישור",
+    "cancelTitle": "לבטל את האישור הזה?",
+    "cancelBody": "{{name}} לא יוכנס בשער.",
+    "keep": "השאר את האישור",
+    "cancelled": "האישור בוטל",
+    "shareText": "אישור מבקר {{number}} ל־{{property}} בתאריך {{date}}. הציגו את הקוד הזה בשער: {{code}}"
   },
   "fac": {
     "title": "הזמנת מתקנים",
@@ -741,7 +749,21 @@
     "noRequests": "אין עדיין דרישות",
     "noRequestsDetail": "דרישות החומרים ששלחת יופיעו כאן.",
     "approvalNote": "מנהל הנכס מאשר כל דרישה לפני הנפקת המלאי.",
-    "requestMaterials": "בקשת חומרים"
+    "requestMaterials": "בקשת חומרים",
+    "draft": "טיוטה",
+    "inApproval": "בתהליך אישור",
+    "issued": "הונפק",
+    "returned": "הוחזר",
+    "saveDraft": "שמירת טיוטה",
+    "saveAndSend": "שמירה ושליחה לאישור",
+    "sendForApproval": "שליחה לאישור",
+    "sending": "שולח...",
+    "duplicateItemLine": "כל פריט יכול להופיע פעם אחת בלבד בדרישה.",
+    "emptyInventory": "אין עדיין פריטי מלאי",
+    "emptyRequisitions": "אין עדיין דרישות חומרים",
+    "estimatedTotal": "סכום משוער",
+    "requisitionSaved": "{{number}} נשמרה כטיוטה.",
+    "requisitionSubmitted": "{{number}} נשלחה לאישור."
   },
   "approvals": {
     "type": {

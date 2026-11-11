@@ -472,7 +472,9 @@
     "status": {
       "expected": "Oczekiwany",
       "arrived": "Przybył",
-      "expired": "Wygasła"
+      "expired": "Wygasła",
+      "left": "Wyszedł",
+      "cancelled": "Anulowana"
     },
     "pass": "Przepustka gościa",
     "passNo": "Numer przepustki",
@@ -480,7 +482,13 @@
     "hostLine": "Lokal {{unit}}, {{building}}",
     "noVehicle": "Brak",
     "sharePass": "Udostępnij przepustkę",
-    "gateNote": "Wyślij tę przepustkę gościowi. Ochrona skanuje kod QR przy bramie; działa tylko w dniu wizyty."
+    "gateNote": "Wyślij tę przepustkę gościowi. Ochrona skanuje kod QR przy bramie; działa tylko w dniu wizyty.",
+    "cancel": "Anuluj przepustkę",
+    "cancelTitle": "Anulować tę przepustkę?",
+    "cancelBody": "{{name}} nie zostanie wpuszczony przy bramie.",
+    "keep": "Zachowaj przepustkę",
+    "cancelled": "Przepustka anulowana",
+    "shareText": "Przepustka gościa {{number}} do {{property}} na {{date}}. Pokaż ten kod przy bramie: {{code}}"
   },
   "fac": {
     "title": "Rezerwacja udogodnień",
@@ -777,7 +785,21 @@
     "noRequests": "Brak zapotrzebowań",
     "noRequestsDetail": "Tutaj pojawią się wysłane zapotrzebowania na materiały.",
     "approvalNote": "Kierownik nieruchomości zatwierdza każde zapotrzebowanie przed wydaniem materiałów.",
-    "requestMaterials": "Zamów materiały"
+    "requestMaterials": "Zamów materiały",
+    "draft": "Wersja robocza",
+    "inApproval": "W zatwierdzaniu",
+    "issued": "Wystawiono",
+    "returned": "Zwrócony",
+    "saveDraft": "Zapisz wersję roboczą",
+    "saveAndSend": "Zapisz i wyślij do zatwierdzenia",
+    "sendForApproval": "Wyślij do zatwierdzenia",
+    "sending": "Wysyłanie...",
+    "duplicateItemLine": "Każda pozycja może wystąpić w zapotrzebowaniu tylko raz.",
+    "emptyInventory": "Brak pozycji magazynowych",
+    "emptyRequisitions": "Brak zapotrzebowań na materiały",
+    "estimatedTotal": "Szacowana suma",
+    "requisitionSaved": "{{number}} zapisano jako wersję roboczą.",
+    "requisitionSubmitted": "{{number}} wysłane do zatwierdzenia."
   },
   "approvals": {
     "type": {

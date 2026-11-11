@@ -2,27 +2,30 @@ import { IconQrcode, IconUserPlus } from '@tabler/icons-react-native';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View } from 'react-native';
+import { Alert, Platform, View } from 'react-native';
 
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Button, Card, Empty, Field, Onward, Pill, Segmented, Select, Avatar } from '@/components/ui';
+import { type MappedVisitor, useVisitors } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { longDate, weekday } from '@/lib/format';
 import { dateDaysAgo } from '@/mock/clock';
-import type { VisitPurpose, VisitStatus } from '@/mock/data';
-import { inviteVisitor, useMockState } from '@/mock/store';
+import type { VisitPurpose } from '@/mock/data';
 import { space, type Accent } from '@/theme/tokens';
 
 const purposes: VisitPurpose[] = ['family', 'friend', 'delivery', 'service', 'other'];
-const statusAccent: Record<VisitStatus, Accent> = { expected: 'primary', arrived: 'success', expired: 'warning' };
+const statusAccent: Record<MappedVisitor['status'], Accent> = {
+  expected: 'primary', arrived: 'success', left: 'teal', expired: 'warning', cancelled: 'danger',
+};
 
 /** Invites a visitor with a QR pass for the gate, and lists who has been invited before. */
 export default function Visitors() {
   const { t } = useTranslation();
   const { language } = useLanguage();
-  const { visitors } = useMockState();
+  const { visitors, invite, loading, error, refresh, refreshing } = useVisitors();
   const [tab, setTab] = useState<'invite' | 'history'>('invite');
+  const [sending, setSending] = useState(false);
   const [name, setName] = useState('');
   const [mobile, setMobile] = useState('');
   const [date, setDate] = useState(dateDaysAgo(0));
@@ -30,15 +33,33 @@ export default function Visitors() {
   const [vehicle, setVehicle] = useState('');
   const code = language.code;
   const days = [0, 1, 2, 3, 4, 5, 6].map((d) => dateDaysAgo(-d));
-  const ready = !!name.trim() && mobile.replace(/\D/g, '').length >= 8 && !!purpose;
+  const ready = !!name.trim() && mobile.replace(/\D/g, '').length >= 8 && !!purpose && !sending;
 
-  const generate = () => {
-    const visitor = inviteVisitor({ name: name.trim(), mobile: `+968 ${mobile.trim()}`, date, purpose: purpose!, vehicle: vehicle.trim() });
-    router.push({ pathname: '/requests/visitor-pass/[id]', params: { id: visitor.id } });
+  const generate = async () => {
+    setSending(true);
+    try {
+      const id = await invite({ name: name.trim(), mobile: `+968 ${mobile.trim()}`, date, purpose: purpose!, vehicle: vehicle.trim().toUpperCase() });
+      router.push({ pathname: '/requests/visitor-pass/[id]', params: { id } });
+    } catch (e) {
+      const reason = e instanceof Error ? e.message : '';
+      if (Platform.OS === 'web') window.alert(reason || t('common.errorLoad'));
+      else Alert.alert(t('common.errorLoad'), reason);
+    } finally {
+      setSending(false);
+    }
   };
 
+  const history = tab === 'history';
   return (
-    <Page title={t('visit.title')} footer={tab === 'invite' ? <Button label={t('visit.generate')} icon={IconQrcode} disabled={!ready} onPress={generate} /> : undefined}>
+    <Page
+      title={t('visit.title')}
+      footer={tab === 'invite' ? <Button label={t('visit.generate')} icon={IconQrcode} disabled={!ready} onPress={() => void generate()} /> : undefined}
+      loading={history && loading}
+      error={history ? error : null}
+      onRetry={refresh}
+      refreshing={history ? refreshing : undefined}
+      onRefresh={history ? refresh : undefined}
+    >
       <Segmented
         value={tab}
         onChange={setTab}

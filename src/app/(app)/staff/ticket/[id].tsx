@@ -27,8 +27,9 @@ export default function TicketDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { t } = useTranslation();
   const { language } = useLanguage();
-  const { permissionsFor, isMaintenance } = useAppSession();
+  const { permissionsFor, isMaintenance, isDemo } = useAppSession();
   const permissions = permissionsFor('staff/tickets');
+  const canRequestMaterials = isDemo ? isMaintenance : permissionsFor('staff/requisition').canAdd;
 
   const [ticket, setTicket] = useState<StaffTicket | null>(null);
   const [properties, setProperties] = useState<StaffProperty[]>([]);
@@ -167,12 +168,21 @@ export default function TicketDetail() {
               onPress={() => void handleSave()}
             />
           )}
-          {isMaintenance && ticket && (
+          {canRequestMaterials && ticket && (
             <Button
               label={t('inventory.requestMaterials')}
               icon={IconPackage}
               tone="outline"
-              onPress={() => router.push({ pathname: '/staff/requisition/new', params: { ticketId: ticket.id, ticketNumber: ticket.ticketNumber } })}
+              onPress={() =>
+                router.push({
+                  pathname: '/staff/requisition/new',
+                  params: {
+                    ticketId: ticket.id,
+                    ticketNumber: ticket.ticketNumber,
+                    propertyId: ticket.propertyId ?? '',
+                  },
+                })
+              }
             />
           )}
           {permissions.canDelete && (

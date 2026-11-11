@@ -440,7 +440,9 @@
     "status": {
       "expected": "Erwartet",
       "arrived": "Angekommen",
-      "expired": "Abgelaufen"
+      "expired": "Abgelaufen",
+      "left": "Gegangen",
+      "cancelled": "Storniert"
     },
     "pass": "Besucherausweis",
     "passNo": "Ausweisnummer",
@@ -448,7 +450,13 @@
     "hostLine": "Wohnung {{unit}}, {{building}}",
     "noVehicle": "Keins",
     "sharePass": "Ausweis teilen",
-    "gateNote": "Senden Sie diesen Ausweis an Ihren Besuch. Der Wachdienst scannt den QR-Code am Tor; er gilt nur am Besuchstag."
+    "gateNote": "Senden Sie diesen Ausweis an Ihren Besuch. Der Wachdienst scannt den QR-Code am Tor; er gilt nur am Besuchstag.",
+    "cancel": "Ausweis stornieren",
+    "cancelTitle": "Diesen Ausweis stornieren?",
+    "cancelBody": "{{name}} wird am Tor abgewiesen.",
+    "keep": "Ausweis behalten",
+    "cancelled": "Ausweis storniert",
+    "shareText": "Besucherausweis {{number}} für {{property}} am {{date}}. Diesen Code am Tor zeigen: {{code}}"
   },
   "fac": {
     "title": "Einrichtungen buchen",
@@ -741,7 +749,21 @@
     "noRequests": "Noch keine Anforderungen",
     "noRequestsDetail": "Ihre Materialanforderungen erscheinen hier.",
     "approvalNote": "Ein Property Manager genehmigt jede Anforderung, bevor Material ausgegeben wird.",
-    "requestMaterials": "Material anfordern"
+    "requestMaterials": "Material anfordern",
+    "draft": "Entwurf",
+    "inApproval": "In Genehmigung",
+    "issued": "Ausgestellt",
+    "returned": "Zurückgegeben",
+    "saveDraft": "Entwurf speichern",
+    "saveAndSend": "Speichern & zur Genehmigung senden",
+    "sendForApproval": "Zur Genehmigung senden",
+    "sending": "Wird gesendet...",
+    "duplicateItemLine": "Jeder Artikel darf nur einmal in einer Anforderung vorkommen.",
+    "emptyInventory": "Noch keine Lagerartikel",
+    "emptyRequisitions": "Noch keine Materialanforderungen",
+    "estimatedTotal": "Geschätzte Summe",
+    "requisitionSaved": "{{number}} als Entwurf gespeichert.",
+    "requisitionSubmitted": "{{number}} zur Genehmigung gesendet."
   },
   "approvals": {
     "type": {

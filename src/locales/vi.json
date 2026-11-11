@@ -440,7 +440,9 @@
     "status": {
       "expected": "Dự kiến",
       "arrived": "Đã đến",
-      "expired": "Hết hạn"
+      "expired": "Hết hạn",
+      "left": "Đã rời đi",
+      "cancelled": "Đã hủy"
     },
     "pass": "Thẻ khách",
     "passNo": "Số thẻ",
@@ -448,7 +450,13 @@
     "hostLine": "Căn {{unit}}, {{building}}",
     "noVehicle": "Không có",
     "sharePass": "Chia sẻ thẻ",
-    "gateNote": "Gửi thẻ này cho khách. Bảo vệ quét mã QR ở cổng; thẻ chỉ dùng được vào ngày đến."
+    "gateNote": "Gửi thẻ này cho khách. Bảo vệ quét mã QR ở cổng; thẻ chỉ dùng được vào ngày đến.",
+    "cancel": "Hủy thẻ",
+    "cancelTitle": "Hủy thẻ này?",
+    "cancelBody": "{{name}} sẽ bị từ chối tại cổng.",
+    "keep": "Giữ thẻ",
+    "cancelled": "Đã hủy thẻ",
+    "shareText": "Thẻ khách {{number}} vào {{property}} ngày {{date}}. Đưa mã này tại cổng: {{code}}"
   },
   "fac": {
     "title": "Đặt tiện ích",
@@ -741,7 +749,21 @@
     "noRequests": "Chưa có phiếu đề nghị",
     "noRequestsDetail": "Các phiếu đề nghị vật tư bạn gửi sẽ hiển thị tại đây.",
     "approvalNote": "Quản lý tòa nhà duyệt từng phiếu đề nghị trước khi xuất kho.",
-    "requestMaterials": "Yêu cầu vật tư"
+    "requestMaterials": "Yêu cầu vật tư",
+    "draft": "Nháp",
+    "inApproval": "Đang phê duyệt",
+    "issued": "Đã cấp",
+    "returned": "Đã trả lại",
+    "saveDraft": "Lưu bản nháp",
+    "saveAndSend": "Lưu & Gửi phê duyệt",
+    "sendForApproval": "Gửi phê duyệt",
+    "sending": "Đang gửi...",
+    "duplicateItemLine": "Mỗi mặt hàng chỉ được xuất hiện một lần trên một phiếu lĩnh.",
+    "emptyInventory": "Chưa có mặt hàng tồn kho nào",
+    "emptyRequisitions": "Chưa có phiếu yêu cầu vật tư nào",
+    "estimatedTotal": "Tổng ước tính",
+    "requisitionSaved": "Đã lưu {{number}} dưới dạng bản nháp.",
+    "requisitionSubmitted": "Đã gửi {{number}} để duyệt."
   },
   "approvals": {
     "type": {

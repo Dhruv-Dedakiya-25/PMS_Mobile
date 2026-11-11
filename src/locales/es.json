@@ -440,7 +440,9 @@
     "status": {
       "expected": "Esperada",
       "arrived": "Llegó",
-      "expired": "Caducado"
+      "expired": "Caducado",
+      "left": "Salió",
+      "cancelled": "Cancelado"
     },
     "pass": "Pase de visitante",
     "passNo": "Número de pase",
@@ -448,7 +450,13 @@
     "hostLine": "Vivienda {{unit}}, {{building}}",
     "noVehicle": "Ninguno",
     "sharePass": "Compartir pase",
-    "gateNote": "Envía este pase a tu visita. El vigilante escanea el código QR en la entrada; solo sirve el día de la visita."
+    "gateNote": "Envía este pase a tu visita. El vigilante escanea el código QR en la entrada; solo sirve el día de la visita.",
+    "cancel": "Cancelar pase",
+    "cancelTitle": "¿Cancelar este pase?",
+    "cancelBody": "A {{name}} se le negará la entrada en la puerta.",
+    "keep": "Conservar pase",
+    "cancelled": "Pase cancelado",
+    "shareText": "Pase de visitante {{number}} para {{property}} el {{date}}. Muestre este código en la puerta: {{code}}"
   },
   "fac": {
     "title": "Reserva de instalaciones",
@@ -741,7 +749,21 @@
     "noRequests": "Aún no hay requisiciones",
     "noRequestsDetail": "Aquí aparecen las requisiciones de materiales que envíes.",
     "approvalNote": "Un administrador de la propiedad aprueba cada requisición antes de entregar el material.",
-    "requestMaterials": "Solicitar materiales"
+    "requestMaterials": "Solicitar materiales",
+    "draft": "Borrador",
+    "inApproval": "En aprobación",
+    "issued": "Emitido",
+    "returned": "Devuelta",
+    "saveDraft": "Guardar borrador",
+    "saveAndSend": "Guardar y enviar a aprobación",
+    "sendForApproval": "Enviar a aprobación",
+    "sending": "Enviando...",
+    "duplicateItemLine": "Cada artículo solo puede aparecer una vez en una requisición.",
+    "emptyInventory": "Aún no hay artículos de inventario",
+    "emptyRequisitions": "Aún no hay solicitudes de materiales",
+    "estimatedTotal": "Total estimado",
+    "requisitionSaved": "{{number}} guardada como borrador.",
+    "requisitionSubmitted": "{{number}} enviada para aprobación."
   },
   "approvals": {
     "type": {

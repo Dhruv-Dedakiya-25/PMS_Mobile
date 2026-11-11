@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 
 import {
   acknowledgeAnnouncement as apiAcknowledgeAnnouncement,
+  cancelMyVisitor,
   createMyServiceRequest,
   getMyAnnouncement,
   getMyAnnouncements,
@@ -21,6 +22,8 @@ import {
   getMyServiceRequest,
   getMyServiceRequestPhotoUris,
   getMyServiceRequests,
+  getMyVisitors,
+  inviteMyVisitor,
   markAllNotificationsRead as apiMarkAllNotificationsRead,
   markNotificationRead as apiMarkNotificationRead,
   uploadMyServiceRequestPhoto,
@@ -37,6 +40,7 @@ import type {
   MyReceiptDetailDto,
   MyReceiptDto,
   MyServiceRequestDto,
+  MyVisitorDto,
 } from '@/api/types';
 import { login, logout, restoreSession, useAuth } from '@/auth/session';
 import { authMode, brand } from '@/config';
@@ -59,12 +63,15 @@ import {
   type RequestCategory,
   type RequestPriority,
   type RequestStage,
+  type VisitPurpose,
+  type VisitStatus,
 } from '@/mock/data';
 import {
   acknowledge as mockAcknowledge,
   markAllRead as mockMarkAllRead,
   markRead as mockMarkRead,
   nextRentMonth,
+  inviteVisitor as mockInviteVisitor,
   raiseRequest,
   signIn as mockSignIn,
   signOut as mockSignOut,
@@ -111,6 +118,7 @@ interface LiveCache {
   announcements?: MyAnnouncementDto[];
   announcementDetails: Record<string, MyAnnouncementDto>;
   notifications?: MyNotificationDto[];
+  visitors?: MyVisitorDto[];
 }
 
 let cache: LiveCache = {
@@ -1203,3 +1211,104 @@ export function useNotifications() {
     ...status,
   };
 }
+
+/** A visitor pass as the screens show it. The live API adds Left and Cancelled to the sample statuses. */
+export interface MappedVisitor {
+  id: string;
+  passNo: string;
+  name: string;
+  mobile: string;
+  /** The visit day, YYYY-MM-DD on the phone's clock. */
+  date: string;
+  purpose: VisitPurpose;
+  vehicle: string;
+  status: VisitStatus | 'left' | 'cancelled';
+  /** What the gate checks; the QR carries it. Absent in the sample app. */
+  code?: string;
+  unit?: string;
+  building?: string;
+}
+
+const PURPOSE_TO_API: Record<VisitPurpose, MyVisitorDto['purpose']> = {
+  family: 'Family', friend: 'Friend', delivery: 'Delivery', service: 'Service', other: 'Other',
+};
+
+const localDay = (iso: string) => {
+  const d = new Date(iso);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+};
+
+const mapVisitor = (v: MyVisitorDto): MappedVisitor => ({
+  id: v.id,
+  passNo: v.passNumber,
+  name: v.guestName ?? '',
+  mobile: v.guestMobile ?? '',
+  date: localDay(v.validFromUtc),
+  purpose: v.purpose.toLowerCase() as VisitPurpose,
+  vehicle: v.plateNumber ?? '',
+  status: v.status.toLowerCase() as MappedVisitor['status'],
+  code: v.passCode,
+  unit: v.unitCode ?? undefined,
+  building: v.propertyName ?? undefined,
+});
+
+/**
+ * The tenant's visitors: invite one for a day, and the pass is ready for the gate at once.
+ * The whole visit day on the phone's clock is sent, so the pass works on that date only.
+ */
+export function useVisitors() {
+  const isDemo = authMode === 'demo';
+  const mock = useMockState();
+  const live = useLiveCache();
+
+  const fetchVisitors = useCallback(async () => {
+    cache.visitors = await getMyVisitors();
+    notifyCache();
+  }, []);
+
+  const status = useResource(Boolean(live.visitors), fetchVisitors);
+
+  const invite = useCallback(
+    async (input: { name: string; mobile: string; date: string; purpose: VisitPurpose; vehicle: string }): Promise<string> => {
+      if (isDemo) return mockInviteVisitor(input).id;
+      const created = await inviteMyVisitor({
+        guestName: input.name,
+        guestMobile: input.mobile || undefined,
+        validFromUtc: new Date(`${input.date}T00:00:00`).toISOString(),
+        validToUtc: new Date(`${input.date}T23:59:59`).toISOString(),
+        purpose: PURPOSE_TO_API[input.purpose],
+        plateNumber: input.vehicle || undefined,
+      });
+      cache.visitors = [created, ...(cache.visitors ?? [])];
+      notifyCache();
+      return created.id;
+    },
+    [isDemo],
+  );
+
+  const cancel = useCallback(
+    async (id: string) => {
+      if (isDemo) return;
+      const saved = await cancelMyVisitor(id);
+      cache.visitors = (cache.visitors ?? []).map((v) => (v.id === id ? saved : v));
+      notifyCache();
+    },
+    [isDemo],
+  );
+
+  if (isDemo) {
+    return {
+      isDemo: true,
+      visitors: mock.visitors as MappedVisitor[],
+      invite,
+      cancel,
+      loading: false,
+      refreshing: false,
+      error: null,
+      refresh: () => Promise.resolve(),
+    };
+  }
+
+  return { isDemo: false, visitors: (live.visitors ?? []).map(mapVisitor), invite, cancel, ...status };
+}
+

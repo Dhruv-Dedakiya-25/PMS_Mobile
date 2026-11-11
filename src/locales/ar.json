@@ -492,7 +492,9 @@
     "status": {
       "expected": "متوقع",
       "arrived": "وصل",
-      "expired": "منتهي"
+      "expired": "منتهي",
+      "left": "غادر",
+      "cancelled": "ملغى"
     },
     "pass": "تصريح زائر",
     "passNo": "رقم التصريح",
@@ -500,7 +502,13 @@
     "hostLine": "الوحدة {{unit}}، {{building}}",
     "noVehicle": "لا يوجد",
     "sharePass": "مشاركة التصريح",
-    "gateNote": "أرسل هذا التصريح إلى زائرك. يمسح الحارس رمز QR عند البوابة، ويعمل في تاريخ الزيارة فقط."
+    "gateNote": "أرسل هذا التصريح إلى زائرك. يمسح الحارس رمز QR عند البوابة، ويعمل في تاريخ الزيارة فقط.",
+    "cancel": "إلغاء التصريح",
+    "cancelTitle": "إلغاء هذا التصريح؟",
+    "cancelBody": "سيتم رفض دخول {{name}} عند البوابة.",
+    "keep": "الإبقاء على التصريح",
+    "cancelled": "تم إلغاء التصريح",
+    "shareText": "تصريح زائر {{number}} إلى {{property}} بتاريخ {{date}}. اعرض هذا الرمز عند البوابة: {{code}}"
   },
   "fac": {
     "title": "حجز المرافق",
@@ -801,7 +809,21 @@
     "noRequests": "لا توجد طلبات صرف بعد",
     "noRequestsDetail": "تظهر هنا طلبات صرف المواد التي ترسلها.",
     "approvalNote": "يعتمد مدير العقار كل طلب صرف قبل صرف المخزون.",
-    "requestMaterials": "طلب مواد"
+    "requestMaterials": "طلب مواد",
+    "draft": "مسودة",
+    "inApproval": "قيد الاعتماد",
+    "issued": "صادر",
+    "returned": "مُعاد",
+    "saveDraft": "حفظ كمسودة",
+    "saveAndSend": "حفظ وإرسال للاعتماد",
+    "sendForApproval": "إرسال للاعتماد",
+    "sending": "جارٍ الإرسال...",
+    "duplicateItemLine": "لا يمكن تكرار نفس الصنف أكثر من مرة في طلب الصرف.",
+    "emptyInventory": "لا توجد أصناف مخزون بعد",
+    "emptyRequisitions": "لا توجد طلبات صرف مواد بعد",
+    "estimatedTotal": "الإجمالي التقديري",
+    "requisitionSaved": "تم حفظ {{number}} كمسودة.",
+    "requisitionSubmitted": "تم إرسال {{number}} للاعتماد."
   },
   "approvals": {
     "type": {

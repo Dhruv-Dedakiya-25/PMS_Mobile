@@ -440,7 +440,9 @@
     "status": {
       "expected": "待到访",
       "arrived": "已到达",
-      "expired": "已过期"
+      "expired": "已过期",
+      "left": "已离开",
+      "cancelled": "已取消"
     },
     "pass": "访客证",
     "passNo": "访客证编号",
@@ -448,7 +450,13 @@
     "hostLine": "{{building}} {{unit}} 室",
     "noVehicle": "无",
     "sharePass": "分享访客证",
-    "gateNote": "请把访客证发给您的访客。保安会在大门扫描二维码，仅在到访当天有效。"
+    "gateNote": "请把访客证发给您的访客。保安会在大门扫描二维码，仅在到访当天有效。",
+    "cancel": "取消通行证",
+    "cancelTitle": "取消此通行证？",
+    "cancelBody": "{{name}} 将在大门被拒绝进入。",
+    "keep": "保留通行证",
+    "cancelled": "通行证已取消",
+    "shareText": "访客通行证 {{number}}，{{property}}，日期 {{date}}。请在大门出示此代码：{{code}}"
   },
   "fac": {
     "title": "设施预订",
@@ -741,7 +749,21 @@
     "noRequests": "暂无领料申请",
     "noRequestsDetail": "你提交的领料申请会显示在这里。",
     "approvalNote": "每份领料申请需经物业经理批准后才会发放库存。",
-    "requestMaterials": "申请材料"
+    "requestMaterials": "申请材料",
+    "draft": "草稿",
+    "inApproval": "审批中",
+    "issued": "已签发",
+    "returned": "已退回",
+    "saveDraft": "保存草稿",
+    "saveAndSend": "保存并提交审批",
+    "sendForApproval": "提交审批",
+    "sending": "正在发送…",
+    "duplicateItemLine": "同一领料单中每种物料只能添加一次。",
+    "emptyInventory": "暂无库存物品",
+    "emptyRequisitions": "暂无物料申请",
+    "estimatedTotal": "预估总额",
+    "requisitionSaved": "{{number}} 已保存为草稿。",
+    "requisitionSubmitted": "{{number}} 已提交审批。"
   },
   "approvals": {
     "type": {

@@ -440,7 +440,9 @@
     "status": {
       "expected": "Bekleniyor",
       "arrived": "Geldi",
-      "expired": "Süresi doldu"
+      "expired": "Süresi doldu",
+      "left": "Ayrıldı",
+      "cancelled": "İptal edildi"
     },
     "pass": "Ziyaretçi kartı",
     "passNo": "Kart numarası",
@@ -448,7 +450,13 @@
     "hostLine": "Daire {{unit}}, {{building}}",
     "noVehicle": "Yok",
     "sharePass": "Kartı paylaş",
-    "gateNote": "Bu kartı ziyaretçinize gönderin. Güvenlik QR kodu kapıda okutur; yalnızca ziyaret günü geçerlidir."
+    "gateNote": "Bu kartı ziyaretçinize gönderin. Güvenlik QR kodu kapıda okutur; yalnızca ziyaret günü geçerlidir.",
+    "cancel": "Kartı iptal et",
+    "cancelTitle": "Bu kart iptal edilsin mi?",
+    "cancelBody": "{{name}} kapıda geri çevrilecek.",
+    "keep": "Kartı tut",
+    "cancelled": "Kart iptal edildi",
+    "shareText": "{{property}} için {{date}} tarihli ziyaretçi kartı {{number}}. Kapıda bu kodu gösterin: {{code}}"
   },
   "fac": {
     "title": "Olanak rezervasyonu",
@@ -741,7 +749,21 @@
     "noRequests": "Henüz malzeme talebi yok",
     "noRequestsDetail": "Gönderdiğiniz malzeme talepleri burada görünür.",
     "approvalNote": "Malzeme çıkışından önce mülk yöneticisi her talebi onaylar.",
-    "requestMaterials": "Malzeme Talep Et"
+    "requestMaterials": "Malzeme Talep Et",
+    "draft": "Taslak",
+    "inApproval": "Onayda",
+    "issued": "Düzenlendi",
+    "returned": "İade edildi",
+    "saveDraft": "Taslağı kaydet",
+    "saveAndSend": "Kaydet ve onaya gönder",
+    "sendForApproval": "Onaya gönder",
+    "sending": "Gönderiliyor...",
+    "duplicateItemLine": "Her kalem bir talepte yalnızca bir kez yer alabilir.",
+    "emptyInventory": "Henüz stok kalemi yok",
+    "emptyRequisitions": "Henüz malzeme talebi yok",
+    "estimatedTotal": "Tahmini toplam",
+    "requisitionSaved": "{{number}} taslak olarak kaydedildi.",
+    "requisitionSubmitted": "{{number}} onaya gönderildi."
   },
   "approvals": {
     "type": {

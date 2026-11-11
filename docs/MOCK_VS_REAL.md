@@ -50,7 +50,10 @@ In **API mode** (`EXPO_PUBLIC_AUTH_MODE=api`), screens read through the live API
 | Assets (the Assets section of `/(tabs)/staff/facilities`) | `GET /api/Asset/getAsset` | Tag, category, property and status |
 | Work Orders (Maintenance home, the Work Orders section of `/(tabs)/staff/operations`) | `GET /api/WorkOrder/getWorkOrder` | Newest first; each opens its ticket |
 | Approvals (`/(tabs)/staff/operations` for managers, `/(tabs)/staff/approvals` for Maintenance) | `GET /api/Approval/getApprovalRequest`, `POST /api/Approval/decideApprovalRequest/{id}` | Requests waiting for the signed-in person offer Approve, Return and Reject (a reason is needed for the last two); others show who they wait for |
+| Inventory & Material Requisitions (`/(tabs)/staff/inventory`, `/staff/requisition/new`, Request Materials on `/staff/ticket/[id]`) | `GET /api/InventoryItem/getInventoryItem`, `GET /api/MaterialRequisition/getMaterialRequisition`, `POST /api/MaterialRequisition/createMaterialRequisition`, `PUT /api/MaterialRequisition/updateMaterialRequisition/{id}`, `PUT /api/MaterialRequisition/sendMaterialRequisition/{id}` | Live store stock levels (`onHand`, low/out-of-stock pills) and material requisitions (`Draft`, `InApproval`, `Issued`, `Returned`, `Rejected`) routed through `MaterialRequisition` approval workflows; demo mode keeps `src/mock/inventory.ts` |
 | Staff Profile (`/profile` & `/staff/profile`) | `POST /api/Auth/logout` | Staff user info, role pill, language switch, theme selector, and sign out (no tenant profile calls) |
+
+| Visitors and passes (`/requests/visitors`, `/requests/visitor-pass/[id]`) | `GET /api/My/getMyVisitors`, `POST /api/My/inviteMyVisitor`, `PUT /api/My/cancelMyVisitor/{id}` | A pass covers the whole visit day on the phone's clock. The QR carries the pass's own random code, which the gate checks. Share Pass uses the phone's share menu. Cancel Pass works until the visitor arrives. Statuses are Expected, Arrived, Left, Cancelled and Expired |
 
 ## Sample in `api` mode (no backend API yet)
 
@@ -60,11 +63,9 @@ In **API mode** (`EXPO_PUBLIC_AUTH_MODE=api`), screens read through the live API
 | Utilities (`/utilities`) | `initialUtilities` | No utility billing API yet |
 | Lease escalation table (`/lease/escalation`) | `escalation` | The API stores only `EscalationRuleRef` text on the lease |
 | Lease renewal & termination requests (`/lease/renewal`, `/lease/termination`) | `src/mock/store.ts` | No tenant-initiated renewal/termination request API yet |
-| Visitors and passes (`/requests/visitors`, `/requests/visitor-pass/[id]`) | `initialVisitors` | No visitor pass API yet |
 | Facility bookings (`/requests/facilities/*`) | `facilities`, `initialBookings` | No facility booking API yet |
 | Move-in and move-out (`/requests/move`) | `moveIn`, `moveOutSteps` | No move-in/move-out inspection API yet |
 | Digital access (`/requests/access`) | `accessCards` | No digital access / keycard API yet |
 | Inspections (`/(tabs)/staff/facilities`) | `SAMPLE_INSPECTIONS` in `src/api/staff.ts` | No inspection API yet |
-| Inventory & Material Requests | Sample data | No inventory or material requisition API yet |
 | Contacts (`/contacts`) | `contacts` | No property contacts API yet |
 | AI Assistant (`/profile`) | Static row | Marked "Coming soon" |

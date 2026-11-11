@@ -440,7 +440,9 @@
     "status": {
       "expected": "予定",
       "arrived": "到着",
-      "expired": "期限切れ"
+      "expired": "期限切れ",
+      "left": "退出済み",
+      "cancelled": "取り消し済み"
     },
     "pass": "来客証",
     "passNo": "来客証番号",
@@ -448,7 +450,13 @@
     "hostLine": "{{building}} {{unit}}号室",
     "noVehicle": "なし",
     "sharePass": "来客証を共有",
-    "gateNote": "この来客証を来客者に送ってください。警備員がゲートでQRコードを読み取ります。訪問日のみ有効です。"
+    "gateNote": "この来客証を来客者に送ってください。警備員がゲートでQRコードを読み取ります。訪問日のみ有効です。",
+    "cancel": "パスを取り消す",
+    "cancelTitle": "このパスを取り消しますか？",
+    "cancelBody": "{{name}} さんはゲートで入場を断られます。",
+    "keep": "パスを残す",
+    "cancelled": "パスを取り消しました",
+    "shareText": "{{property}} の {{date}} 用訪問者パス {{number}}。ゲートでこのコードを見せてください：{{code}}"
   },
   "fac": {
     "title": "共用施設の予約",
@@ -741,7 +749,21 @@
     "noRequests": "資材請求はまだありません",
     "noRequestsDetail": "送信した資材請求がここに表示されます。",
     "approvalNote": "出庫の前に、物件管理者が各請求を承認します。",
-    "requestMaterials": "資材を請求"
+    "requestMaterials": "資材を請求",
+    "draft": "下書き",
+    "inApproval": "承認中",
+    "issued": "発行済み",
+    "returned": "差し戻し",
+    "saveDraft": "下書きを保存",
+    "saveAndSend": "保存して承認へ回す",
+    "sendForApproval": "承認に回す",
+    "sending": "送信しています…",
+    "duplicateItemLine": "同一の資材請求に同じ品目は1行のみ指定できます。",
+    "emptyInventory": "在庫品目はまだありません",
+    "emptyRequisitions": "資材請求はまだありません",
+    "estimatedTotal": "見積合計",
+    "requisitionSaved": "{{number}} を下書き保存しました。",
+    "requisitionSubmitted": "{{number}} を承認依頼しました。"
   },
   "approvals": {
     "type": {

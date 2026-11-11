@@ -349,6 +349,8 @@ export interface StaffApproval {
   status: 'InApproval' | 'Approved' | 'Returned' | 'Rejected';
   currentStep?: number | null;
   submittedAtUtc: string;
+  requisitionId?: string | null;
+  requisitionNumber?: string | null;
   /** The step it waits at is the signed-in person's to decide. */
   canDecide: boolean;
   route: { stepIndex: number; approverNames: string[]; state: string }[];
@@ -361,3 +363,77 @@ export const getStaffApprovals = () => apiGet<StaffApproval[]>('/Approval/getApp
 /** Approve, Return or Reject the step waiting for the signed-in person; Return and Reject need a comment. */
 export const decideStaffApproval = (id: string, decision: 'Approve' | 'Return' | 'Reject', comment?: string) =>
   apiPost<StaffApproval>(`/Approval/decideApprovalRequest/${id}`, { decision, comment });
+
+/** A repair material kept in the maintenance store. Stock changes only through movements and approved requisitions. */
+export interface StaffInventoryItem {
+  id: string;
+  itemCode: string;
+  nameEn: string;
+  nameAr?: string | null;
+  category: string;
+  unit: string;
+  reorderLevel: number;
+  unitCost: number;
+  location?: string | null;
+  onHand: number;
+  isActive: boolean;
+}
+
+export type StaffRequisitionStatus = 'Draft' | 'InApproval' | 'Issued' | 'Returned' | 'Rejected';
+
+export interface StaffMaterialRequisitionLine {
+  id?: string;
+  itemId: string;
+  itemCode?: string | null;
+  itemNameEn?: string | null;
+  itemNameAr?: string | null;
+  unit?: string | null;
+  quantity: number;
+  unitCost?: number;
+}
+
+/** Materials a technician asks for; stock is issued only after final approval. */
+export interface StaffMaterialRequisition {
+  id: string;
+  number: string;
+  serviceRequestId?: string | null;
+  ticketNumber?: string | null;
+  workOrderId?: string | null;
+  workOrderNumber?: string | null;
+  propertyId?: string | null;
+  propertyName?: string | null;
+  notes?: string | null;
+  status: StaffRequisitionStatus;
+  requestedByUserId: string;
+  requestedByName?: string | null;
+  createdAtUtc: string;
+  totalAmount: number;
+  approvalRequestId?: string | null;
+  approvalReference?: string | null;
+  approvalStatus?: 'InApproval' | 'Approved' | 'Returned' | 'Rejected' | null;
+  decidedByName?: string | null;
+  decidedAtUtc?: string | null;
+  decisionComment?: string | null;
+  lines: StaffMaterialRequisitionLine[];
+}
+
+export interface SaveStaffMaterialRequisition {
+  serviceRequestId?: string | null;
+  workOrderId?: string | null;
+  propertyId?: string | null;
+  notes?: string | null;
+  lines: { itemId: string; quantity: number }[];
+}
+
+export const getStaffInventoryItems = () => apiGet<StaffInventoryItem[]>('/InventoryItem/getInventoryItem');
+export const getStaffMaterialRequisitions = () => apiGet<StaffMaterialRequisition[]>('/MaterialRequisition/getMaterialRequisition');
+export const getStaffMaterialRequisition = (id: string) =>
+  apiGet<StaffMaterialRequisition>(`/MaterialRequisition/getMaterialRequisition/${id}`);
+export const createStaffMaterialRequisition = (body: SaveStaffMaterialRequisition) =>
+  apiPost<StaffMaterialRequisition>('/MaterialRequisition/createMaterialRequisition', body);
+export const updateStaffMaterialRequisition = (id: string, body: SaveStaffMaterialRequisition) =>
+  apiPut<void>(`/MaterialRequisition/updateMaterialRequisition/${id}`, body);
+export const sendStaffMaterialRequisition = (id: string) =>
+  apiPut<StaffMaterialRequisition>(`/MaterialRequisition/sendMaterialRequisition/${id}`, {});
+export const deleteStaffMaterialRequisition = (id: string) =>
+  apiDelete(`/MaterialRequisition/deleteMaterialRequisition/${id}`);

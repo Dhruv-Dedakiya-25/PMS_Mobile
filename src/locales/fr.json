@@ -440,7 +440,9 @@
     "status": {
       "expected": "Attendu",
       "arrived": "Arrivé",
-      "expired": "Expiré"
+      "expired": "Expiré",
+      "left": "Parti",
+      "cancelled": "Annulé"
     },
     "pass": "Laissez-passer",
     "passNo": "Numéro du laissez-passer",
@@ -448,7 +450,13 @@
     "hostLine": "Logement {{unit}}, {{building}}",
     "noVehicle": "Aucun",
     "sharePass": "Partager le laissez-passer",
-    "gateNote": "Envoyez ce laissez-passer à votre visiteur. Le gardien scanne le code QR à l’entrée ; il n’est valable que le jour de la visite."
+    "gateNote": "Envoyez ce laissez-passer à votre visiteur. Le gardien scanne le code QR à l’entrée ; il n’est valable que le jour de la visite.",
+    "cancel": "Annuler le laissez-passer",
+    "cancelTitle": "Annuler ce laissez-passer ?",
+    "cancelBody": "{{name}} sera refusé à la porte.",
+    "keep": "Garder le laissez-passer",
+    "cancelled": "Laissez-passer annulé",
+    "shareText": "Laissez-passer visiteur {{number}} pour {{property}} le {{date}}. Montrez ce code à la porte : {{code}}"
   },
   "fac": {
     "title": "Réservation d’équipements",
@@ -741,7 +749,21 @@
     "noRequests": "Aucune demande pour l’instant",
     "noRequestsDetail": "Les demandes de matériel que vous envoyez apparaissent ici.",
     "approvalNote": "Un gestionnaire immobilier approuve chaque demande avant la sortie du stock.",
-    "requestMaterials": "Demander du matériel"
+    "requestMaterials": "Demander du matériel",
+    "draft": "Brouillon",
+    "inApproval": "En approbation",
+    "issued": "Émis",
+    "returned": "Retournée",
+    "saveDraft": "Enregistrer le brouillon",
+    "saveAndSend": "Enregistrer et envoyer pour approbation",
+    "sendForApproval": "Envoyer pour approbation",
+    "sending": "Envoi en cours...",
+    "duplicateItemLine": "Chaque article ne peut figurer qu'une seule fois sur une demande.",
+    "emptyInventory": "Aucun article en stock pour l'instant",
+    "emptyRequisitions": "Aucune demande de matériel pour l'instant",
+    "estimatedTotal": "Total estimé",
+    "requisitionSaved": "{{number}} enregistrée en brouillon.",
+    "requisitionSubmitted": "{{number}} envoyée pour approbation."
   },
   "approvals": {
     "type": {

@@ -440,7 +440,9 @@
     "status": {
       "expected": "Atteso",
       "arrived": "Arrivato",
-      "expired": "Scaduto"
+      "expired": "Scaduto",
+      "left": "Uscito",
+      "cancelled": "Annullato"
     },
     "pass": "Pass visitatore",
     "passNo": "Numero del pass",
@@ -448,7 +450,13 @@
     "hostLine": "Appartamento {{unit}}, {{building}}",
     "noVehicle": "Nessuno",
     "sharePass": "Condividi pass",
-    "gateNote": "Invia questo pass al tuo ospite. La guardia scansiona il codice QR al cancello; vale solo nel giorno della visita."
+    "gateNote": "Invia questo pass al tuo ospite. La guardia scansiona il codice QR al cancello; vale solo nel giorno della visita.",
+    "cancel": "Annulla pass",
+    "cancelTitle": "Annullare questo pass?",
+    "cancelBody": "{{name}} verrà respinto al cancello.",
+    "keep": "Mantieni il pass",
+    "cancelled": "Pass annullato",
+    "shareText": "Pass visitatore {{number}} per {{property}} il {{date}}. Mostra questo codice al cancello: {{code}}"
   },
   "fac": {
     "title": "Prenotazione servizi",
@@ -741,7 +749,21 @@
     "noRequests": "Ancora nessuna richiesta",
     "noRequestsDetail": "Qui compaiono le richieste di materiale che invii.",
     "approvalNote": "Un property manager approva ogni richiesta prima del prelievo dal magazzino.",
-    "requestMaterials": "Richiedi materiale"
+    "requestMaterials": "Richiedi materiale",
+    "draft": "Bozza",
+    "inApproval": "In approvazione",
+    "issued": "Emesso",
+    "returned": "Restituita",
+    "saveDraft": "Salva bozza",
+    "saveAndSend": "Salva e invia in approvazione",
+    "sendForApproval": "Invia in approvazione",
+    "sending": "Invio in corso...",
+    "duplicateItemLine": "Ciascun articolo può comparire una sola volta nella stessa richiesta.",
+    "emptyInventory": "Ancora nessun articolo di magazzino",
+    "emptyRequisitions": "Ancora nessuna richiesta materiali",
+    "estimatedTotal": "Totale stimato",
+    "requisitionSaved": "{{number}} salvata come bozza.",
+    "requisitionSubmitted": "{{number}} inviata per l'approvazione."
   },
   "approvals": {
     "type": {

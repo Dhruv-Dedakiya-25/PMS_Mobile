@@ -440,7 +440,9 @@
     "status": {
       "expected": "Dijangka",
       "arrived": "Tiba",
-      "expired": "Tamat tempoh"
+      "expired": "Tamat tempoh",
+      "left": "Keluar",
+      "cancelled": "Dibatalkan"
     },
     "pass": "Pas pelawat",
     "passNo": "Nombor pas",
@@ -448,7 +450,13 @@
     "hostLine": "Unit {{unit}}, {{building}}",
     "noVehicle": "Tiada",
     "sharePass": "Kongsi pas",
-    "gateNote": "Hantar pas ini kepada pelawat anda. Pengawal mengimbas kod QR di pintu pagar; ia sah pada tarikh lawatan sahaja."
+    "gateNote": "Hantar pas ini kepada pelawat anda. Pengawal mengimbas kod QR di pintu pagar; ia sah pada tarikh lawatan sahaja.",
+    "cancel": "Batalkan pas",
+    "cancelTitle": "Batalkan pas ini?",
+    "cancelBody": "{{name}} akan ditolak di pintu pagar.",
+    "keep": "Kekalkan pas",
+    "cancelled": "Pas dibatalkan",
+    "shareText": "Pas pelawat {{number}} untuk {{property}} pada {{date}}. Tunjukkan kod ini di pintu pagar: {{code}}"
   },
   "fac": {
     "title": "Tempahan kemudahan",
@@ -741,7 +749,21 @@
     "noRequests": "Belum ada permohonan",
     "noRequestsDetail": "Permohonan bahan yang anda hantar dipaparkan di sini.",
     "approvalNote": "Pengurus Hartanah meluluskan setiap permohonan sebelum stok dikeluarkan.",
-    "requestMaterials": "Mohon Bahan"
+    "requestMaterials": "Mohon Bahan",
+    "draft": "Draf",
+    "inApproval": "Dalam Kelulusan",
+    "issued": "Dikeluarkan",
+    "returned": "Dikembalikan",
+    "saveDraft": "Simpan draf",
+    "saveAndSend": "Simpan & Hantar untuk kelulusan",
+    "sendForApproval": "Hantar untuk kelulusan",
+    "sending": "Sedang menghantar...",
+    "duplicateItemLine": "Setiap item hanya boleh disenaraikan sekali dalam satu permohonan.",
+    "emptyInventory": "Belum ada item inventori",
+    "emptyRequisitions": "Belum ada permohonan bahan",
+    "estimatedTotal": "Jumlah anggaran",
+    "requisitionSaved": "{{number}} disimpan sebagai draf.",
+    "requisitionSubmitted": "{{number}} dihantar untuk kelulusan."
   },
   "approvals": {
     "type": {

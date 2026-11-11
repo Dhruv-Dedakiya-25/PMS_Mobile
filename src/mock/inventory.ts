@@ -55,7 +55,7 @@ const subscribe = (l: () => void) => { listeners.add(l); return () => { listener
 
 export const useInventory = () => useSyncExternalStore(subscribe, () => state);
 
-export const stockLevel = (item: InventoryItem): 'Out' | 'Low' | 'OK' =>
+export const stockLevel = (item: { onHand: number; reorderLevel: number }): 'Out' | 'Low' | 'OK' =>
   item.onHand <= 0 ? 'Out' : item.onHand <= item.reorderLevel ? 'Low' : 'OK';
 
 export function createRequest(input: Omit<MaterialRequest, 'id' | 'number' | 'requestedAt' | 'status'>): MaterialRequest {

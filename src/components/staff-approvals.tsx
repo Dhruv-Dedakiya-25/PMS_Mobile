@@ -87,7 +87,11 @@ export function StaffApprovals() {
         return (
           <Card key={ap.id} style={{ gap: space.xs }}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.sm }}>
-              <AppText weight="bold" style={{ flex: 1 }}>{ap.reference} · {t(`approvals.type.${lowerFirst(ap.requestType)}`)}</AppText>
+              <AppText weight="bold" style={{ flex: 1 }}>
+                {ap.reference}
+                {ap.requisitionNumber ? ` · ${ap.requisitionNumber}` : ''}
+                {` · ${t(`approvals.type.${lowerFirst(ap.requestType)}`)}`}
+              </AppText>
               <Pill
                 accent={ap.status === 'Approved' ? 'success' : ap.status === 'Rejected' ? 'danger' : 'warning'}
                 label={t(`approvals.status.${lowerFirst(ap.status)}`)}

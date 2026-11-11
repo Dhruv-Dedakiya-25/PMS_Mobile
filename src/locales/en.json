@@ -440,7 +440,9 @@
     "status": {
       "expected": "Expected",
       "arrived": "Arrived",
-      "expired": "Expired"
+      "expired": "Expired",
+      "left": "Left",
+      "cancelled": "Cancelled"
     },
     "pass": "Visitor Pass",
     "passNo": "Pass number",
@@ -448,7 +450,13 @@
     "hostLine": "Unit {{unit}}, {{building}}",
     "noVehicle": "None",
     "sharePass": "Share Pass",
-    "gateNote": "Send this pass to your visitor. The guard scans the QR code at the gate; it works on the visit date only."
+    "gateNote": "Send this pass to your visitor. The guard scans the QR code at the gate; it works on the visit date only.",
+    "cancel": "Cancel Pass",
+    "cancelTitle": "Cancel this pass?",
+    "cancelBody": "{{name}} will be turned away at the gate.",
+    "keep": "Keep Pass",
+    "cancelled": "Pass cancelled",
+    "shareText": "Visitor pass {{number}} for {{property}} on {{date}}. Show this code at the gate: {{code}}"
   },
   "fac": {
     "title": "Facilities Booking",
@@ -741,7 +749,21 @@
     "noRequests": "No requisitions yet",
     "noRequestsDetail": "Requisitions you send for materials show here.",
     "approvalNote": "A Property Manager approves each requisition before the stock is issued.",
-    "requestMaterials": "Request Materials"
+    "requestMaterials": "Request Materials",
+    "draft": "Draft",
+    "inApproval": "In Approval",
+    "issued": "Issued",
+    "returned": "Returned",
+    "saveDraft": "Save Draft",
+    "saveAndSend": "Save & Send for approval",
+    "sendForApproval": "Send for approval",
+    "sending": "Sending...",
+    "duplicateItemLine": "Each item can appear only once on a requisition.",
+    "emptyInventory": "No inventory items yet",
+    "emptyRequisitions": "No material requisitions yet",
+    "estimatedTotal": "Estimated total",
+    "requisitionSaved": "{{number}} saved as draft.",
+    "requisitionSubmitted": "{{number}} sent for approval."
   },
   "approvals": {
     "type": {

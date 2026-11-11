@@ -440,7 +440,9 @@
     "status": {
       "expected": "Esperada",
       "arrived": "Chegou",
-      "expired": "Expirado"
+      "expired": "Expirado",
+      "left": "Saiu",
+      "cancelled": "Cancelado"
     },
     "pass": "Passe de visitante",
     "passNo": "Número do passe",
@@ -448,7 +450,13 @@
     "hostLine": "Fração {{unit}}, {{building}}",
     "noVehicle": "Nenhum",
     "sharePass": "Partilhar passe",
-    "gateNote": "Envie este passe à sua visita. O vigilante lê o código QR na entrada; só é válido no dia da visita."
+    "gateNote": "Envie este passe à sua visita. O vigilante lê o código QR na entrada; só é válido no dia da visita.",
+    "cancel": "Cancelar passe",
+    "cancelTitle": "Cancelar este passe?",
+    "cancelBody": "{{name}} será impedido de entrar no portão.",
+    "keep": "Manter passe",
+    "cancelled": "Passe cancelado",
+    "shareText": "Passe de visitante {{number}} para {{property}} em {{date}}. Mostre este código no portão: {{code}}"
   },
   "fac": {
     "title": "Reserva de instalações",
@@ -741,7 +749,21 @@
     "noRequests": "Nenhuma requisição ainda",
     "noRequestsDetail": "As requisições de material que você enviar aparecem aqui.",
     "approvalNote": "Um gerente do imóvel aprova cada requisição antes da liberação do estoque.",
-    "requestMaterials": "Solicitar materiais"
+    "requestMaterials": "Solicitar materiais",
+    "draft": "Rascunho",
+    "inApproval": "Em aprovação",
+    "issued": "Emitido",
+    "returned": "Devolvida",
+    "saveDraft": "Guardar rascunho",
+    "saveAndSend": "Guardar e enviar para aprovação",
+    "sendForApproval": "Enviar para aprovação",
+    "sending": "A enviar...",
+    "duplicateItemLine": "Cada item só pode constar uma vez numa requisição.",
+    "emptyInventory": "Ainda não há itens em estoque",
+    "emptyRequisitions": "Ainda não há requisições de material",
+    "estimatedTotal": "Total estimado",
+    "requisitionSaved": "{{number}} salva como rascunho.",
+    "requisitionSubmitted": "{{number}} enviada para aprovação."
   },
   "approvals": {
     "type": {

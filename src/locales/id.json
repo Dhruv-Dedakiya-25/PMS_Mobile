@@ -440,7 +440,9 @@
     "status": {
       "expected": "Diharapkan",
       "arrived": "Tiba",
-      "expired": "Kedaluwarsa"
+      "expired": "Kedaluwarsa",
+      "left": "Pergi",
+      "cancelled": "Dibatalkan"
     },
     "pass": "Kartu tamu",
     "passNo": "Nomor kartu",
@@ -448,7 +450,13 @@
     "hostLine": "Unit {{unit}}, {{building}}",
     "noVehicle": "Tidak ada",
     "sharePass": "Bagikan kartu",
-    "gateNote": "Kirim kartu ini ke tamu Anda. Petugas memindai kode QR di gerbang; hanya berlaku pada tanggal kunjungan."
+    "gateNote": "Kirim kartu ini ke tamu Anda. Petugas memindai kode QR di gerbang; hanya berlaku pada tanggal kunjungan.",
+    "cancel": "Batalkan pas",
+    "cancelTitle": "Batalkan pas ini?",
+    "cancelBody": "{{name}} akan ditolak di gerbang.",
+    "keep": "Simpan pas",
+    "cancelled": "Pas dibatalkan",
+    "shareText": "Pas pengunjung {{number}} untuk {{property}} pada {{date}}. Tunjukkan kode ini di gerbang: {{code}}"
   },
   "fac": {
     "title": "Pemesanan fasilitas",
@@ -741,7 +749,21 @@
     "noRequests": "Belum ada permintaan",
     "noRequestsDetail": "Permintaan bahan yang Anda kirim muncul di sini.",
     "approvalNote": "Property Manager menyetujui setiap permintaan sebelum stok dikeluarkan.",
-    "requestMaterials": "Minta Bahan"
+    "requestMaterials": "Minta Bahan",
+    "draft": "Draf",
+    "inApproval": "Dalam Persetujuan",
+    "issued": "Diterbitkan",
+    "returned": "Dikembalikan",
+    "saveDraft": "Simpan draf",
+    "saveAndSend": "Simpan & Kirim untuk persetujuan",
+    "sendForApproval": "Kirim untuk persetujuan",
+    "sending": "Mengirim...",
+    "duplicateItemLine": "Setiap barang hanya boleh muncul sekali dalam satu permintaan.",
+    "emptyInventory": "Belum ada barang inventaris",
+    "emptyRequisitions": "Belum ada permintaan material",
+    "estimatedTotal": "Perkiraan total",
+    "requisitionSaved": "{{number}} disimpan sebagai draf.",
+    "requisitionSubmitted": "{{number}} dikirim untuk persetujuan."
   },
   "approvals": {
     "type": {

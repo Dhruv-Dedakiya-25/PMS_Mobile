@@ -315,3 +315,28 @@ export interface MyNotificationDto {
   read: boolean;
   href?: string | null;
 }
+
+/** A visitor pass, as /api/My/getMyVisitors and inviteMyVisitor send it. passCode is what the QR carries. */
+export interface MyVisitorDto {
+  id: string;
+  guestName?: string | null;
+  guestMobile?: string | null;
+  unitCode?: string | null;
+  propertyName?: string | null;
+  passNumber: string;
+  passCode: string;
+  validFromUtc: string;
+  validToUtc: string;
+  purpose: 'Family' | 'Friend' | 'Delivery' | 'Service' | 'Other';
+  plateNumber?: string | null;
+  status: 'Expected' | 'Arrived' | 'Left' | 'Cancelled' | 'Expired';
+}
+
+export interface InviteMyVisitorDto {
+  guestName: string;
+  guestMobile?: string;
+  validFromUtc: string;
+  validToUtc: string;
+  purpose: MyVisitorDto['purpose'];
+  plateNumber?: string;
+}
