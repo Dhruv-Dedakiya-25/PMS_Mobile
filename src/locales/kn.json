@@ -12,7 +12,8 @@
     "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ…",
     "errorLoad": "ನಿಮ್ಮ ಮಾಹಿತಿಯನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
     "retry": "ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ",
-    "select": "ಆರಿಸಿ…"
+    "select": "ಆರಿಸಿ…",
+    "cancel": "ರದ್ದು"
   },
   "tabs": {
     "dashboard": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್",
@@ -470,6 +471,7 @@
       "guestParking": "ಅತಿಥಿ ಪಾರ್ಕಿಂಗ್"
     },
     "myBookings": "ನನ್ನ ಬುಕಿಂಗ್‌ಗಳು",
+    "pastBookings": "ಹಿಂದಿನ ಬುಕಿಂಗ್‌ಗಳು",
     "bookASpace": "ಸ್ಥಳ ಕಾಯ್ದಿರಿಸಿ",
     "perSlot": "ಪ್ರತಿ ಸ್ಲಾಟ್‌ಗೆ {{amount}}",
     "capacity_one": "{{count}} ವ್ಯಕ್ತಿವರೆಗೆ",
@@ -484,7 +486,34 @@
     "book": "ಈಗ ಕಾಯ್ದಿರಿಸಿ",
     "bookFor": "{{amount}} ಗೆ ಕಾಯ್ದಿರಿಸಿ",
     "fewer": "ಕಡಿಮೆ ಅತಿಥಿಗಳು",
-    "more": "ಹೆಚ್ಚು ಅತಿಥಿಗಳು"
+    "more": "ಹೆಚ್ಚು ಅತಿಥಿಗಳು",
+    "statusValues": {
+      "pending": "ಬಾಕಿ ಇದೆ",
+      "confirmed": "ಖಚಿತಪಡಿಸಲಾಗಿದೆ",
+      "rejected": "ತಿರಸ್ಕರಿಸಲಾಗಿದೆ",
+      "cancelled": "ರದ್ದುಗೊಂಡಿದೆ"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "ನಿಮ್ಮ ಕಟ್ಟಡದಲ್ಲಿ ಇನ್ನೂ ಯಾವುದೇ ಸೌಲಭ್ಯಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+    "noSlots": "No slots available on this date.",
+    "reference": "ಉಲ್ಲೇಖ",
+    "fee": "ಶುಲ್ಕ",
+    "notes": "ನೋಟ್ಸ್",
+    "notesPlaceholder": "Optional notes",
+    "reason": "ಕಾರಣ",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "ಅನುಮೋದನೆ ಬಾಕಿ",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "ವಾಸ ಆರಂಭ / ಖಾಲಿ",
@@ -531,7 +560,23 @@
     "refundDue": "ಮರುಪಾವತಿ",
     "afterHandover": "ಹಸ್ತಾಂತರದ ನಂತರ",
     "notStarted": "ಆರಂಭವಾಗಿಲ್ಲ",
-    "giveNotice": "ಸೂಚನೆ ನೀಡಿ"
+    "giveNotice": "ಸೂಚನೆ ನೀಡಿ",
+    "remotes": "ಪಾರ್ಕಿಂಗ್ ರಿಮೋಟ್‌ಗಳು",
+    "mailboxKeys": "ಮೇಲ್‌ಬಾಕ್ಸ್ ಕೀಲಿಗಳು",
+    "chillerMeter": "ಚಿಲ್ಲರ್ (ನೀರಿನ ಮೀಟರ್)",
+    "noMoveIn": "ಇನ್ನೂ ಪರಿಶೀಲನಾ ವರದಿಗಳಿಲ್ಲ.",
+    "noMoveOut": "ಇನ್ನೂ ಪರಿಶೀಲನಾ ವರದಿಗಳಿಲ್ಲ.",
+    "damageCharges": "ಹಾನಿ ಶುಲ್ಕಗಳು",
+    "summary": "ಸಾರಾಂಶ ಟಿಪ್ಪಣಿಗಳು",
+    "accept": "ವರದಿ ಅಂಗೀಕರಿಸಿ",
+    "acceptHint": "ಅಂಗೀಕರಿಸುವ ಮೂಲಕ ನೀವು ಈ ವರದಿಯನ್ನು ಓದಿದ್ದೀರಿ ಎಂದು ದೃಢೀಕರಿಸುತ್ತೀರಿ. ಏನಾದರೂ ತಪ್ಪಾಗಿ ಕಂಡರೆ ಕಾಮೆಂಟ್ ಸೇರಿಸಿ.",
+    "commentPlaceholder": "ಐಚ್ಛಿಕ ಕಾಮೆಂಟ್",
+    "acceptedToast": "ವರದಿ ಅಂಗೀಕರಿಸಲಾಗಿದೆ.",
+    "youAccepted": "ನೀವು ಈ ವರದಿಯನ್ನು {{date}} ರಂದು ಅಂಗೀಕರಿಸಿದ್ದೀರಿ",
+    "acceptedOn": "ಬಾಡಿಗೆದಾರರು {{date}} ರಂದು ಅಂಗೀಕರಿಸಿದರು",
+    "scheduledFor": "{{date}} ಕ್ಕೆ ನಿಗದಿಯಾಗಿದೆ",
+    "scheduledHint": "ನಿಮ್ಮ ಪರಿಶೀಲನೆ {{date}} ಕ್ಕೆ ನಿಗದಿಯಾಗಿದೆ. ಪರಿಶೀಲಕರು ಪೂರ್ಣಗೊಳಿಸಿದ ನಂತರ ವರದಿ ಇಲ್ಲಿ ಕಾಣುತ್ತದೆ.",
+    "viewReport": "ವರದಿ ನೋಡಿ"
   },
   "access": {
     "title": "ಡಿಜಿಟಲ್ ಪ್ರವೇಶ",
@@ -788,5 +833,116 @@
     "reasonNeeded": "ಹಿಂದಿರುಗಿಸಲು ಅಥವಾ ತಿರಸ್ಕರಿಸಲು ಕಾರಣ ನೀಡಿ. ವಿನಂತಿದಾರರು ಅದನ್ನು ನೋಡುತ್ತಾರೆ.",
     "othersTurn": "ಹಂತ {{n}} ರಲ್ಲಿ {{names}} ಅವರಿಗಾಗಿ ಕಾಯುತ್ತಿದೆ. ನೀವು ಇಲ್ಲಿ ಗಮನಿಸಬಹುದು; ನಿರ್ಧರಿಸಲು ಅವರಿಗೆ ಮಾತ್ರ ಸಾಧ್ಯ.",
     "empty": "ನಿಮ್ಮ ನಿರ್ಧಾರಕ್ಕಾಗಿ ಏನೂ ಕಾಯುತ್ತಿಲ್ಲ."
+  },
+  "inspection": {
+    "title": "ಪರಿಶೀಲನಾ ವರದಿಗಳು",
+    "inspections": "ತಪಾಸಣೆಗಳು",
+    "checklist": "ಪ್ರತಿ ಪರಿಶೀಲನಾ ಐಟಂ ಅದರ ಸ್ಥಿತಿ, ಶುಲ್ಕ ಮತ್ತು ಟಿಕೆಟ್‌ನೊಂದಿಗೆ",
+    "readingsHandover": "ರೀಡಿಂಗ್‌ಗಳು ಮತ್ತು ಹಸ್ತಾಂತರ",
+    "summary": "ಸಾರಾಂಶ ಟಿಪ್ಪಣಿಗಳು",
+    "keys": "ಕೀಲಿಗಳು",
+    "accessCards": "ಪ್ರವೇಶ ಕಾರ್ಡ್‌ಗಳು",
+    "parkingRemotes": "ಪಾರ್ಕಿಂಗ್ ರಿಮೋಟ್‌ಗಳು",
+    "mailboxKeys": "ಮೇಲ್‌ಬಾಕ್ಸ್ ಕೀಲಿಗಳು",
+    "electricityMeter": "ವಿದ್ಯುತ್ ಮೀಟರ್",
+    "waterMeter": "ನೀರಿನ ಮೀಟರ್",
+    "chillerMeter": "ಚಿಲ್ಲರ್ (ನೀರಿನ ಮೀಟರ್)",
+    "save": "ಉಳಿಸಿ",
+    "complete": "ಪರಿಶೀಲನೆ ಪೂರ್ಣಗೊಳಿಸಿ",
+    "completeHint": "ನಂತರ ವರದಿಯನ್ನು ಬದಲಾಯಿಸಲಾಗುವುದಿಲ್ಲ.",
+    "completeTitle": "ಪರಿಶೀಲನೆ {{number}} ಪೂರ್ಣಗೊಳಿಸುವುದೇ?",
+    "completed": "ಪರಿಶೀಲನೆ {{number}} ಪೂರ್ಣಗೊಂಡಿದೆ.",
+    "cancel": "ಪರಿಶೀಲನೆ ರದ್ದುಮಾಡಿ",
+    "cancelTitle": "ಪರಿಶೀಲನೆ {{number}} ರದ್ದುಮಾಡಿ",
+    "reason": "ಕಾರಣ",
+    "cancelled": "ಪರಿಶೀಲನೆ ರದ್ದಾಗಿದೆ.",
+    "raiseTicket": "ಟಿಕೆಟ್ ರಚಿಸಿ",
+    "raiseTicketFor": "{{name}} ಗಾಗಿ ಟಿಕೆಟ್ ರಚಿಸಿ",
+    "ticketRaised": "ಟಿಕೆಟ್ ರಚಿಸಲಾಗಿದೆ.",
+    "ticket": "ಟಿಕೆಟ್",
+    "category": "ವರ್ಗ",
+    "priority": "ಆದ್ಯತೆ",
+    "addItem": "ಐಟಂ ಸೇರಿಸಿ",
+    "removeItem": "ಐಟಂ ತೆಗೆದುಹಾಕಿ",
+    "removeItemTitle": "ಪರಿಶೀಲನಾ ಪಟ್ಟಿಯಿಂದ \"{{name}}\" ತೆಗೆದುಹಾಕುವುದೇ?",
+    "area": "ಪ್ರದೇಶ",
+    "item": "ಐಟಂ",
+    "name": "ಹೆಸರು",
+    "addPhoto": "Photos",
+    "removePhoto": "ಫೋಟೋ ತೆಗೆದುಹಾಕಿ",
+    "photoLimit": "ಪ್ರತಿ ಐಟಂಗೆ ಗರಿಷ್ಠ 4 ಫೋಟೋಗಳು",
+    "charge": "ಶುಲ್ಕ",
+    "chargeTotal": "ಹಾನಿ ಶುಲ್ಕಗಳು",
+    "inspector": "ಪರಿಶೀಲಕ",
+    "notePlaceholder": "ದೋಷ, ಸ್ಥಳ ಮತ್ತು ತೀವ್ರತೆಯನ್ನು ವಿವರಿಸಿ…",
+    "noInspections": "ತೆರೆದ ಪರಿಶೀಲನೆಗಳಿಲ್ಲ. ಪ್ರಾರಂಭಿಸಲು ಒಂದನ್ನು ನಿಗದಿಪಡಿಸಿ.",
+    "run": "ನಡೆಸಿ",
+    "lockedCompleted": "{{date}} ರಂದು {{name}} ಪೂರ್ಣಗೊಳಿಸಿದರು. ವರದಿಯನ್ನು ಬದಲಾಯಿಸಲಾಗುವುದಿಲ್ಲ.",
+    "lockedCancelled": "ರದ್ದಾಗಿದೆ: {{reason}}",
+    "tenantAcceptance": "ಬಾಡಿಗೆದಾರರ ಅಂಗೀಕಾರ",
+    "acceptedOn": "ಬಾಡಿಗೆದಾರರು {{date}} ರಂದು ಅಂಗೀಕರಿಸಿದರು",
+    "youAccepted": "ನೀವು ಈ ವರದಿಯನ್ನು {{date}} ರಂದು ಅಂಗೀಕರಿಸಿದ್ದೀರಿ",
+    "toAccept": "ಅಂಗೀಕರಿಸಬೇಕಿದೆ",
+    "accepted": "ಅಂಗೀಕರಿಸಲಾಗಿದೆ",
+    "accept": "ವರದಿ ಅಂಗೀಕರಿಸಿ",
+    "acceptHint": "ಅಂಗೀಕರಿಸುವ ಮೂಲಕ ನೀವು ಈ ವರದಿಯನ್ನು ಓದಿದ್ದೀರಿ ಎಂದು ದೃಢೀಕರಿಸುತ್ತೀರಿ. ಏನಾದರೂ ತಪ್ಪಾಗಿ ಕಂಡರೆ ಕಾಮೆಂಟ್ ಸೇರಿಸಿ.",
+    "commentPlaceholder": "ಐಚ್ಛಿಕ ಕಾಮೆಂಟ್",
+    "acceptedToast": "ವರದಿ ಅಂಗೀಕರಿಸಲಾಗಿದೆ.",
+    "scheduledFor": "{{date}} ಕ್ಕೆ ನಿಗದಿಯಾಗಿದೆ",
+    "scheduledHint": "ನಿಮ್ಮ ಪರಿಶೀಲನೆ {{date}} ಕ್ಕೆ ನಿಗದಿಯಾಗಿದೆ. ಪರಿಶೀಲಕರು ಪೂರ್ಣಗೊಳಿಸಿದ ನಂತರ ವರದಿ ಇಲ್ಲಿ ಕಾಣುತ್ತದೆ.",
+    "viewReport": "ವರದಿ ನೋಡಿ",
+    "unchecked": "ಪರಿಶೀಲಿಸಿಲ್ಲ",
+    "condition": {
+      "good": "ಉತ್ತಮ",
+      "fair": "ಸಾಧಾರಣ",
+      "damaged": "ಹಾನಿಯಾಗಿದೆ",
+      "notApplicable": "ಅನ್ವಯಿಸುವುದಿಲ್ಲ",
+      "unchecked": "ಪರಿಶೀಲಿಸಿಲ್ಲ"
+    },
+    "status": {
+      "Scheduled": "ನಿಗದಿಯಾಗಿದೆ",
+      "InProgress": "ಪ್ರಗತಿಯಲ್ಲಿದೆ",
+      "Completed": "ಪೂರ್ಣಗೊಂಡಿದೆ",
+      "Cancelled": "ರದ್ದುಗೊಂಡಿದೆ"
+    },
+    "type": {
+      "MoveIn": "ವಾಸ ಆರಂಭ",
+      "MoveOut": "ಖಾಲಿ ಮಾಡುವುದು",
+      "Routine": "ನಿಯಮಿತ",
+      "Emergency": "ತುರ್ತು"
+    },
+    "areas": {
+      "livingRoom": "ಲಿವಿಂಗ್ ರೂಮ್",
+      "kitchen": "ಅಡುಗೆಮನೆ",
+      "bathrooms": "ಸ್ನಾನಗೃಹಗಳು",
+      "bedrooms": "ಮಲಗುವ ಕೋಣೆಗಳು",
+      "systems": "ವ್ಯವಸ್ಥೆಗಳು",
+      "handover": "ಹಸ್ತಾಂತರ"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "ಗೋಡೆಗಳು, ಚಾವಣಿ ಮತ್ತು ಬಣ್ಣ",
+        "flooring": "ನೆಲ ಮತ್ತು ಸ್ಕರ್ಟಿಂಗ್",
+        "windows": "ಕಿಟಕಿಗಳು, ಗಾಜು ಮತ್ತು ಹಿಡಿಕೆಗಳು"
+      },
+      "kitchen": {
+        "cabinets": "ಕಪಾಟುಗಳು, ಕೌಂಟರ್‌ಗಳು ಮತ್ತು ಸಿಂಕ್",
+        "appliances": "ಮಾಲೀಕರು ನೀಡಿದ ಉಪಕರಣಗಳು"
+      },
+      "bathrooms": {
+        "sanitary": "ಸ್ಯಾನಿಟರಿ ಸಾಮಗ್ರಿ ಮತ್ತು ಫಿಟ್ಟಿಂಗ್‌ಗಳು"
+      },
+      "bedrooms": {
+        "wardrobes": "ವಾರ್ಡ್‌ರೋಬ್‌ಗಳು, ಬಾಗಿಲುಗಳು ಮತ್ತು ಬೀಗಗಳು"
+      },
+      "systems": {
+        "airConditioning": "ಹವಾನಿಯಂತ್ರಣ",
+        "electrical": "ವಿದ್ಯುತ್ ಸಾಕೆಟ್‌ಗಳು ಮತ್ತು ದೀಪಗಳು"
+      },
+      "handover": {
+        "keys": "ಕೀಲಿಗಳು, ಪ್ರವೇಶ ಕಾರ್ಡ್‌ಗಳು ಮತ್ತು ರಿಮೋಟ್‌ಗಳು"
+      }
+    },
+    "updated": "ತಪಾಸಣೆ ನವೀಕರಿಸಲಾಗಿದೆ"
   }
 }

@@ -3,8 +3,12 @@
  */
 import { apiGet, apiImage, apiPost, apiPut, apiUploadPhoto, sendAuthed } from '@/api/client';
 import type {
+  BookMyFacilityDto,
   CreateMyServiceRequestDto,
   MyDocumentDto,
+  MyFacilityBookingDto,
+  MyFacilityDto,
+  MyFacilitySlotDto,
   MyInstallmentDto,
   MyInvoiceDto,
   MyLeaseDto,
@@ -16,6 +20,7 @@ import type {
   MyNotificationDto,
   MyVisitorDto,
   InviteMyVisitorDto,
+  InspectionDto,
 } from '@/api/types';
 
 export const getMyProfile = () => apiGet<MyProfileDto>('/My/getMyProfile');
@@ -81,4 +86,39 @@ export const inviteMyVisitor = (visit: InviteMyVisitorDto) => apiPost<MyVisitorD
 
 /** Cancels one of the tenant's own passes before the visitor comes. */
 export const cancelMyVisitor = (id: string) => apiPut<MyVisitorDto>(`/My/cancelMyVisitor/${id}`, {});
+
+/** Bookable facilities at the properties where the tenant has a current lease. */
+export const getMyFacilities = () => apiGet<MyFacilityDto[]>('/My/getMyFacilities');
+
+/** The day's slots for one of those facilities. */
+export const getMyAvailability = (facilityId: string, date: string) =>
+  apiGet<MyFacilitySlotDto[]>(
+    `/My/getMyAvailability?facilityId=${encodeURIComponent(facilityId)}&date=${encodeURIComponent(date)}`,
+  );
+
+/** The tenant's own facility bookings, newest slot first. */
+export const getMyBookings = () => apiGet<MyFacilityBookingDto[]>('/My/getMyBookings');
+
+/** Books one free slot on a bookable facility of the tenant's property. */
+export const bookMyFacility = (booking: BookMyFacilityDto) =>
+  apiPost<MyFacilityBookingDto>('/My/bookMyFacility', booking);
+
+/** Cancels one of the tenant's own upcoming bookings. */
+export const cancelMyBooking = (id: string, reason?: string) =>
+  apiPut<MyFacilityBookingDto>(`/My/cancelMyBooking/${id}`, { reason });
+
+/** The tenant's own move-in and move-out inspection reports. */
+export const getMyInspections = () => apiGet<InspectionDto[]>('/My/getMyInspections');
+
+/** One inspection with its checklist, condition of each item, meter readings, notes, and photos. */
+export const getMyInspection = (id: string) => apiGet<InspectionDto>(`/My/getMyInspection/${id}`);
+
+/** Loads an inspection photo as a data URI for display. */
+export const getMyInspectionPhotoUri = (photoId: string) => apiImage(`/My/getMyInspectionPhotoFile/${photoId}`);
+
+/** Tenant accepts the move-in or move-out inspection report with an optional comment. */
+export const acceptMyInspection = (id: string, comment?: string) =>
+  apiPut<InspectionDto>(`/My/acceptMyInspection/${id}`, { comment });
+
+
 

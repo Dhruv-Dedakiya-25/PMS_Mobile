@@ -12,7 +12,8 @@
     "loading": "読み込み中…",
     "errorLoad": "情報を読み込めませんでした。もう一度お試しください。",
     "retry": "再試行",
-    "select": "選択…"
+    "select": "選択…",
+    "cancel": "キャンセル"
   },
   "tabs": {
     "dashboard": "ホーム",
@@ -470,6 +471,7 @@
       "guestParking": "来客用駐車場"
     },
     "myBookings": "予約一覧",
+    "pastBookings": "過去の予約",
     "bookASpace": "スペースを予約",
     "perSlot": "1枠 {{amount}}",
     "capacity_one": "最大{{count}}名",
@@ -484,7 +486,34 @@
     "book": "今すぐ予約",
     "bookFor": "{{amount}} で予約",
     "fewer": "人数を減らす",
-    "more": "人数を増やす"
+    "more": "人数を増やす",
+    "statusValues": {
+      "pending": "保留中",
+      "confirmed": "確定済み",
+      "rejected": "却下",
+      "cancelled": "キャンセル済み"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "お住まいの建物では現在予約可能な施設がありません。",
+    "noSlots": "No slots available on this date.",
+    "reference": "参照番号",
+    "fee": "料金",
+    "notes": "メモ",
+    "notesPlaceholder": "Optional notes",
+    "reason": "理由",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "承認待ち",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "入居 / 退去",
@@ -531,7 +560,23 @@
     "refundDue": "返還",
     "afterHandover": "引き渡し後",
     "notStarted": "未開始",
-    "giveNotice": "退去を予告"
+    "giveNotice": "退去を予告",
+    "remotes": "駐車場リモコン",
+    "mailboxKeys": "郵便受けの鍵",
+    "chillerMeter": "冷凍機・BTU (水道メーター)",
+    "noMoveIn": "検査報告書はまだありません。",
+    "noMoveOut": "検査報告書はまだありません。",
+    "damageCharges": "損傷の請求額",
+    "summary": "まとめメモ",
+    "accept": "報告書を承認",
+    "acceptHint": "承認すると、この報告書を読んだことになります。誤りがあればコメントを追加してください。",
+    "commentPlaceholder": "コメント（任意）",
+    "acceptedToast": "報告書を承認しました。",
+    "youAccepted": "{{date}} にこの報告書を承認しました",
+    "acceptedOn": "{{date}} に入居者が承認しました",
+    "scheduledFor": "{{date}} に予定",
+    "scheduledHint": "検査は {{date}} に予定されています。検査員が完了すると、ここに報告書が表示されます。",
+    "viewReport": "報告書を見る"
   },
   "access": {
     "title": "デジタル入館",
@@ -788,5 +833,116 @@
     "reasonNeeded": "差し戻しまたは却下の理由を入力してください。申請者に表示されます。",
     "othersTurn": "ステップ {{n}} で {{names}} を待っています。ここで経過を確認できます。判断できるのは担当者のみです。",
     "empty": "あなたの判断を待っているものはありません。"
+  },
+  "inspection": {
+    "title": "検査報告書",
+    "inspections": "点検一覧",
+    "checklist": "各チェック項目の状態・請求・チケット",
+    "readingsHandover": "メーターと引き渡し",
+    "summary": "まとめメモ",
+    "keys": "鍵",
+    "accessCards": "入館カード",
+    "parkingRemotes": "駐車場リモコン",
+    "mailboxKeys": "郵便受けの鍵",
+    "electricityMeter": "電気メーター",
+    "waterMeter": "水道メーター",
+    "chillerMeter": "冷凍機・BTU (水道メーター)",
+    "save": "保存",
+    "complete": "検査を完了",
+    "completeHint": "完了後は報告書を変更できません。",
+    "completeTitle": "検査 {{number}} を完了しますか？",
+    "completed": "検査 {{number}} を完了しました。",
+    "cancel": "検査をキャンセル",
+    "cancelTitle": "検査 {{number}} をキャンセル",
+    "reason": "理由",
+    "cancelled": "検査をキャンセルしました。",
+    "raiseTicket": "チケットを作成",
+    "raiseTicketFor": "{{name}} のチケットを作成",
+    "ticketRaised": "チケットを作成しました。",
+    "ticket": "チケット",
+    "category": "カテゴリ",
+    "priority": "優先度",
+    "addItem": "項目を追加",
+    "removeItem": "項目を削除",
+    "removeItemTitle": "「{{name}}」をチェックリストから削除しますか？",
+    "area": "エリア",
+    "item": "項目",
+    "name": "名称",
+    "addPhoto": "Photos",
+    "removePhoto": "写真を削除",
+    "photoLimit": "1項目につき写真は4枚まで",
+    "charge": "請求額",
+    "chargeTotal": "損傷の請求額",
+    "inspector": "検査員",
+    "notePlaceholder": "不具合の内容・場所・程度を記入してください…",
+    "noInspections": "未完了の検査はありません。まず検査を予定してください。",
+    "run": "実施",
+    "lockedCompleted": "{{date}} に {{name}} が完了しました。報告書は変更できません。",
+    "lockedCancelled": "キャンセル：{{reason}}",
+    "tenantAcceptance": "入居者の承認",
+    "acceptedOn": "{{date}} に入居者が承認しました",
+    "youAccepted": "{{date}} にこの報告書を承認しました",
+    "toAccept": "承認待ち",
+    "accepted": "承認済み",
+    "accept": "報告書を承認",
+    "acceptHint": "承認すると、この報告書を読んだことになります。誤りがあればコメントを追加してください。",
+    "commentPlaceholder": "コメント（任意）",
+    "acceptedToast": "報告書を承認しました。",
+    "scheduledFor": "{{date}} に予定",
+    "scheduledHint": "検査は {{date}} に予定されています。検査員が完了すると、ここに報告書が表示されます。",
+    "viewReport": "報告書を見る",
+    "unchecked": "未確認",
+    "condition": {
+      "good": "良好",
+      "fair": "やや傷あり",
+      "damaged": "破損",
+      "notApplicable": "該当なし",
+      "unchecked": "未確認"
+    },
+    "status": {
+      "Scheduled": "予定済み",
+      "InProgress": "対応中",
+      "Completed": "完了",
+      "Cancelled": "キャンセル"
+    },
+    "type": {
+      "MoveIn": "入居",
+      "MoveOut": "退去",
+      "Routine": "定期",
+      "Emergency": "緊急"
+    },
+    "areas": {
+      "livingRoom": "リビング",
+      "kitchen": "キッチン",
+      "bathrooms": "浴室",
+      "bedrooms": "寝室",
+      "systems": "設備",
+      "handover": "引き渡し"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "壁・天井・塗装",
+        "flooring": "床・巾木",
+        "windows": "窓・ガラス・取っ手"
+      },
+      "kitchen": {
+        "cabinets": "収納・カウンター・シンク",
+        "appliances": "貸主提供の家電"
+      },
+      "bathrooms": {
+        "sanitary": "衛生陶器・水栓"
+      },
+      "bedrooms": {
+        "wardrobes": "クローゼット・ドア・鍵"
+      },
+      "systems": {
+        "airConditioning": "エアコン",
+        "electrical": "コンセント・照明"
+      },
+      "handover": {
+        "keys": "鍵・入館カード・リモコン"
+      }
+    },
+    "updated": "点検を更新しました"
   }
 }

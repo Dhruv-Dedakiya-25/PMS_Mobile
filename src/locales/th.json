@@ -12,7 +12,8 @@
     "loading": "กำลังโหลด…",
     "errorLoad": "ไม่สามารถโหลดข้อมูลของคุณได้ กรุณาลองใหม่อีกครั้ง",
     "retry": "ลองใหม่",
-    "select": "เลือก…"
+    "select": "เลือก…",
+    "cancel": "ยกเลิก"
   },
   "tabs": {
     "dashboard": "แดชบอร์ด",
@@ -470,6 +471,7 @@
       "guestParking": "ที่จอดรถผู้มาติดต่อ"
     },
     "myBookings": "การจองของฉัน",
+    "pastBookings": "การจองที่ผ่านมา",
     "bookASpace": "จองพื้นที่",
     "perSlot": "{{amount}} ต่อช่วงเวลา",
     "capacity_one": "สูงสุด {{count}} คน",
@@ -484,7 +486,34 @@
     "book": "จองเลย",
     "bookFor": "จองในราคา {{amount}}",
     "fewer": "ลดจำนวนคน",
-    "more": "เพิ่มจำนวนคน"
+    "more": "เพิ่มจำนวนคน",
+    "statusValues": {
+      "pending": "รอดำเนินการ",
+      "confirmed": "ยืนยันแล้ว",
+      "rejected": "ถูกปฏิเสธ",
+      "cancelled": "ยกเลิกแล้ว"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "ยังไม่มีสิ่งอำนวยความสะดวกที่สามารถจองได้ในอาคารของคุณ",
+    "noSlots": "No slots available on this date.",
+    "reference": "เลขอ้างอิง",
+    "fee": "ค่าธรรมเนียม",
+    "notes": "หมายเหตุ",
+    "notesPlaceholder": "Optional notes",
+    "reason": "เหตุผล",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "รออนุมัติ",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "ย้ายเข้า / ย้ายออก",
@@ -531,7 +560,23 @@
     "refundDue": "การคืนเงิน",
     "afterHandover": "หลังส่งมอบ",
     "notStarted": "ยังไม่เริ่ม",
-    "giveNotice": "แจ้งย้ายออก"
+    "giveNotice": "แจ้งย้ายออก",
+    "remotes": "รีโมตลานจอดรถ",
+    "mailboxKeys": "กุญแจตู้จดหมาย",
+    "chillerMeter": "ชิลเลอร์ (มิเตอร์น้ำ)",
+    "noMoveIn": "ยังไม่มีรายงานการตรวจ",
+    "noMoveOut": "ยังไม่มีรายงานการตรวจ",
+    "damageCharges": "ค่าความเสียหาย",
+    "summary": "บันทึกสรุป",
+    "accept": "ยอมรับรายงาน",
+    "acceptHint": "การยอมรับเป็นการยืนยันว่าคุณได้อ่านรายงานนี้แล้ว เพิ่มความคิดเห็นหากมีสิ่งใดไม่ถูกต้อง",
+    "commentPlaceholder": "ความคิดเห็น (ไม่บังคับ)",
+    "acceptedToast": "ยอมรับรายงานแล้ว",
+    "youAccepted": "คุณยอมรับรายงานนี้เมื่อ {{date}}",
+    "acceptedOn": "ผู้เช่ายอมรับเมื่อ {{date}}",
+    "scheduledFor": "นัดหมายวันที่ {{date}}",
+    "scheduledHint": "การตรวจของคุณนัดหมายไว้วันที่ {{date}} รายงานจะแสดงที่นี่เมื่อผู้ตรวจดำเนินการเสร็จ",
+    "viewReport": "ดูรายงาน"
   },
   "access": {
     "title": "การเข้าออกดิจิทัล",
@@ -788,5 +833,116 @@
     "reasonNeeded": "ระบุเหตุผลในการส่งกลับหรือปฏิเสธ ผู้ขอจะเห็นเหตุผลนี้",
     "othersTurn": "รอ {{names}} ที่ขั้นตอนที่ {{n}} คุณติดตามได้ที่นี่ เฉพาะพวกเขาเท่านั้นที่ตัดสินใจได้",
     "empty": "ไม่มีรายการที่รอการตัดสินใจของคุณ"
+  },
+  "inspection": {
+    "title": "รายงานการตรวจ",
+    "inspections": "การตรวจสอบ",
+    "checklist": "รายการตรวจทุกข้อพร้อมสภาพ ค่าใช้จ่าย และคำขอ",
+    "readingsHandover": "มิเตอร์และการส่งมอบ",
+    "summary": "บันทึกสรุป",
+    "keys": "กุญแจ",
+    "accessCards": "บัตรผ่าน",
+    "parkingRemotes": "รีโมตลานจอดรถ",
+    "mailboxKeys": "กุญแจตู้จดหมาย",
+    "electricityMeter": "มิเตอร์ไฟฟ้า",
+    "waterMeter": "มิเตอร์น้ำ",
+    "chillerMeter": "ชิลเลอร์ (มิเตอร์น้ำ)",
+    "save": "บันทึก",
+    "complete": "ปิดการตรวจ",
+    "completeHint": "หลังจากนี้จะแก้ไขรายงานไม่ได้",
+    "completeTitle": "ปิดการตรวจ {{number}} หรือไม่",
+    "completed": "ปิดการตรวจ {{number}} แล้ว",
+    "cancel": "ยกเลิกการตรวจ",
+    "cancelTitle": "ยกเลิกการตรวจ {{number}}",
+    "reason": "เหตุผล",
+    "cancelled": "ยกเลิกการตรวจแล้ว",
+    "raiseTicket": "สร้างคำขอ",
+    "raiseTicketFor": "สร้างคำขอสำหรับ {{name}}",
+    "ticketRaised": "สร้างคำขอแล้ว",
+    "ticket": "คำขอ",
+    "category": "หมวดหมู่",
+    "priority": "ลำดับความสำคัญ",
+    "addItem": "เพิ่มรายการ",
+    "removeItem": "ลบรายการ",
+    "removeItemTitle": "ลบ \"{{name}}\" ออกจากรายการตรวจหรือไม่",
+    "area": "พื้นที่",
+    "item": "รายการ",
+    "name": "ชื่อ",
+    "addPhoto": "Photos",
+    "removePhoto": "ลบรูปภาพ",
+    "photoLimit": "สูงสุด 4 รูปต่อรายการ",
+    "charge": "ค่าใช้จ่าย",
+    "chargeTotal": "ค่าความเสียหาย",
+    "inspector": "ผู้ตรวจ",
+    "notePlaceholder": "อธิบายความชำรุด ตำแหน่ง และความรุนแรง…",
+    "noInspections": "ไม่มีการตรวจที่เปิดอยู่ นัดหมายการตรวจเพื่อเริ่มต้น",
+    "run": "ดำเนินการ",
+    "lockedCompleted": "เสร็จสิ้นเมื่อ {{date}} โดย {{name}} แก้ไขรายงานไม่ได้",
+    "lockedCancelled": "ยกเลิกแล้ว: {{reason}}",
+    "tenantAcceptance": "การยอมรับของผู้เช่า",
+    "acceptedOn": "ผู้เช่ายอมรับเมื่อ {{date}}",
+    "youAccepted": "คุณยอมรับรายงานนี้เมื่อ {{date}}",
+    "toAccept": "รอการยอมรับ",
+    "accepted": "ยอมรับแล้ว",
+    "accept": "ยอมรับรายงาน",
+    "acceptHint": "การยอมรับเป็นการยืนยันว่าคุณได้อ่านรายงานนี้แล้ว เพิ่มความคิดเห็นหากมีสิ่งใดไม่ถูกต้อง",
+    "commentPlaceholder": "ความคิดเห็น (ไม่บังคับ)",
+    "acceptedToast": "ยอมรับรายงานแล้ว",
+    "scheduledFor": "นัดหมายวันที่ {{date}}",
+    "scheduledHint": "การตรวจของคุณนัดหมายไว้วันที่ {{date}} รายงานจะแสดงที่นี่เมื่อผู้ตรวจดำเนินการเสร็จ",
+    "viewReport": "ดูรายงาน",
+    "unchecked": "ยังไม่ตรวจ",
+    "condition": {
+      "good": "ดี",
+      "fair": "พอใช้",
+      "damaged": "เสียหาย",
+      "notApplicable": "ไม่เกี่ยวข้อง",
+      "unchecked": "ยังไม่ตรวจ"
+    },
+    "status": {
+      "Scheduled": "กำหนดการแล้ว",
+      "InProgress": "กำลังดำเนินการ",
+      "Completed": "เสร็จสิ้น",
+      "Cancelled": "ยกเลิกแล้ว"
+    },
+    "type": {
+      "MoveIn": "ย้ายเข้า",
+      "MoveOut": "ย้ายออก",
+      "Routine": "ตามปกติ",
+      "Emergency": "ฉุกเฉิน"
+    },
+    "areas": {
+      "livingRoom": "ห้องนั่งเล่น",
+      "kitchen": "ห้องครัว",
+      "bathrooms": "ห้องน้ำ",
+      "bedrooms": "ห้องนอน",
+      "systems": "ระบบ",
+      "handover": "การส่งมอบ"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "ผนัง เพดาน และสี",
+        "flooring": "พื้นและบัวพื้น",
+        "windows": "หน้าต่าง กระจก และมือจับ"
+      },
+      "kitchen": {
+        "cabinets": "ตู้ เคาน์เตอร์ และซิงก์",
+        "appliances": "เครื่องใช้ที่ผู้ให้เช่าจัดให้"
+      },
+      "bathrooms": {
+        "sanitary": "สุขภัณฑ์และอุปกรณ์"
+      },
+      "bedrooms": {
+        "wardrobes": "ตู้เสื้อผ้า ประตู และกุญแจล็อก"
+      },
+      "systems": {
+        "airConditioning": "เครื่องปรับอากาศ",
+        "electrical": "ปลั๊กไฟและแสงสว่าง"
+      },
+      "handover": {
+        "keys": "กุญแจ บัตรผ่าน และรีโมต"
+      }
+    },
+    "updated": "อัปเดตการตรวจสอบแล้ว"
   }
 }

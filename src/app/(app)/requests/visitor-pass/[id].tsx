@@ -60,8 +60,8 @@ export default function VisitorPass() {
       await cancel(v.id);
     } catch (e) {
       const reason = e instanceof Error ? e.message : '';
-      if (Platform.OS === 'web') window.alert(reason || t('common.errorLoad'));
-      else Alert.alert(t('common.errorLoad'), reason);
+      if (Platform.OS === 'web') window.alert(reason || t('visit.cancel'));
+      else Alert.alert(t('visit.cancel'), reason || undefined);
     } finally {
       setCancelling(false);
     }

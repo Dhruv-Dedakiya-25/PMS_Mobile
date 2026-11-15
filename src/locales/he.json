@@ -12,7 +12,8 @@
     "loading": "טוען…",
     "errorLoad": "לא ניתן לטעון את המידע שלך. נא לנסות שוב.",
     "retry": "נסה שוב",
-    "select": "בחר…"
+    "select": "בחר…",
+    "cancel": "ביטול"
   },
   "tabs": {
     "dashboard": "ראשי",
@@ -470,6 +471,7 @@
       "guestParking": "חניית אורחים"
     },
     "myBookings": "ההזמנות שלי",
+    "pastBookings": "הזמנות קודמות",
     "bookASpace": "הזמנת מקום",
     "perSlot": "{{amount}} למשבצת",
     "capacity_one": "עד אדם {{count}}",
@@ -484,7 +486,34 @@
     "book": "להזמין",
     "bookFor": "הזמנה ב־{{amount}}",
     "fewer": "פחות אורחים",
-    "more": "יותר אורחים"
+    "more": "יותר אורחים",
+    "statusValues": {
+      "pending": "ממתין",
+      "confirmed": "מאושר",
+      "rejected": "נדחה",
+      "cancelled": "בוטל"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "עדיין לא ניתן להזמין מתקנים בבניין שלך.",
+    "noSlots": "No slots available on this date.",
+    "reference": "אסמכתא",
+    "fee": "עמלה",
+    "notes": "פתקים",
+    "notesPlaceholder": "Optional notes",
+    "reason": "סיבה",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "ממתין לאישור",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "כניסה / יציאה",
@@ -531,7 +560,23 @@
     "refundDue": "החזר",
     "afterHandover": "אחרי המסירה",
     "notStarted": "טרם התחיל",
-    "giveNotice": "מתן הודעה"
+    "giveNotice": "מתן הודעה",
+    "remotes": "שלטי חניה",
+    "mailboxKeys": "מפתחות תיבת דואר",
+    "chillerMeter": "צ'ילר (מונה מים)",
+    "noMoveIn": "עדיין אין דוחות בדיקה.",
+    "noMoveOut": "עדיין אין דוחות בדיקה.",
+    "damageCharges": "חיובי נזק",
+    "summary": "הערות סיכום",
+    "accept": "אישור הדוח",
+    "acceptHint": "האישור מאשר שקראתם את הדוח. הוסיפו הערה אם משהו נראה שגוי.",
+    "commentPlaceholder": "הערה (לא חובה)",
+    "acceptedToast": "הדוח אושר.",
+    "youAccepted": "אישרתם את הדוח ב-{{date}}",
+    "acceptedOn": "אושר על ידי הדייר ב-{{date}}",
+    "scheduledFor": "נקבעה ל-{{date}}",
+    "scheduledHint": "הבדיקה שלכם נקבעה ל-{{date}}. הדוח יופיע כאן כשהמפקח ישלים אותו.",
+    "viewReport": "הצגת דוח"
   },
   "access": {
     "title": "כניסה דיגיטלית",
@@ -788,5 +833,116 @@
     "reasonNeeded": "ציינו סיבה להחזרה או לדחייה. המבקש יראה אותה.",
     "othersTurn": "ממתין ל{{names}} בשלב {{n}}. אפשר לעקוב כאן; רק הם יכולים להחליט.",
     "empty": "אין דבר שממתין להחלטתך."
+  },
+  "inspection": {
+    "title": "דוחות בדיקה",
+    "inspections": "בדיקות",
+    "checklist": "כל פריט ברשימה עם מצבו, החיוב והקריאה",
+    "readingsHandover": "קריאות מונים ומסירה",
+    "summary": "הערות סיכום",
+    "keys": "מפתחות",
+    "accessCards": "כרטיסי כניסה",
+    "parkingRemotes": "שלטי חניה",
+    "mailboxKeys": "מפתחות תיבת דואר",
+    "electricityMeter": "מונה חשמל",
+    "waterMeter": "מונה מים",
+    "chillerMeter": "צ'ילר (מונה מים)",
+    "save": "שמור",
+    "complete": "השלמת הבדיקה",
+    "completeHint": "לאחר מכן לא ניתן יהיה לשנות את הדוח.",
+    "completeTitle": "להשלים את בדיקה {{number}}?",
+    "completed": "בדיקה {{number}} הושלמה.",
+    "cancel": "ביטול הבדיקה",
+    "cancelTitle": "ביטול בדיקה {{number}}",
+    "reason": "סיבה",
+    "cancelled": "הבדיקה בוטלה.",
+    "raiseTicket": "פתיחת קריאה",
+    "raiseTicketFor": "פתיחת קריאה עבור {{name}}",
+    "ticketRaised": "הקריאה נפתחה.",
+    "ticket": "קריאה",
+    "category": "קטגוריה",
+    "priority": "עדיפות",
+    "addItem": "הוספת פריט",
+    "removeItem": "הסרת פריט",
+    "removeItemTitle": "להסיר את \"{{name}}\" מרשימת הבדיקה?",
+    "area": "אזור",
+    "item": "פריט",
+    "name": "שם",
+    "addPhoto": "Photos",
+    "removePhoto": "הסרת תמונה",
+    "photoLimit": "עד 4 תמונות לכל פריט",
+    "charge": "חיוב",
+    "chargeTotal": "חיובי נזק",
+    "inspector": "מפקח",
+    "notePlaceholder": "תארו את הליקוי, מיקומו וחומרתו…",
+    "noInspections": "אין בדיקות פתוחות. תזמנו בדיקה כדי להתחיל.",
+    "run": "ביצוע",
+    "lockedCompleted": "הושלמה ב-{{date}} על ידי {{name}}. לא ניתן לשנות את הדוח.",
+    "lockedCancelled": "בוטלה: {{reason}}",
+    "tenantAcceptance": "אישור הדייר",
+    "acceptedOn": "אושר על ידי הדייר ב-{{date}}",
+    "youAccepted": "אישרתם את הדוח ב-{{date}}",
+    "toAccept": "ממתין לאישור",
+    "accepted": "אושר",
+    "accept": "אישור הדוח",
+    "acceptHint": "האישור מאשר שקראתם את הדוח. הוסיפו הערה אם משהו נראה שגוי.",
+    "commentPlaceholder": "הערה (לא חובה)",
+    "acceptedToast": "הדוח אושר.",
+    "scheduledFor": "נקבעה ל-{{date}}",
+    "scheduledHint": "הבדיקה שלכם נקבעה ל-{{date}}. הדוח יופיע כאן כשהמפקח ישלים אותו.",
+    "viewReport": "הצגת דוח",
+    "unchecked": "לא נבדק",
+    "condition": {
+      "good": "תקין",
+      "fair": "סביר",
+      "damaged": "פגום",
+      "notApplicable": "לא רלוונטי",
+      "unchecked": "לא נבדק"
+    },
+    "status": {
+      "Scheduled": "מתוזמן",
+      "InProgress": "בביצוע",
+      "Completed": "הושלם",
+      "Cancelled": "בוטל"
+    },
+    "type": {
+      "MoveIn": "כניסה",
+      "MoveOut": "יציאה",
+      "Routine": "שגרתי",
+      "Emergency": "חירום"
+    },
+    "areas": {
+      "livingRoom": "סלון",
+      "kitchen": "מטבח",
+      "bathrooms": "חדרי רחצה",
+      "bedrooms": "חדרי שינה",
+      "systems": "מערכות",
+      "handover": "מסירה"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "קירות, תקרה וצבע",
+        "flooring": "ריצוף ופאנלים",
+        "windows": "חלונות, זכוכית וידיות"
+      },
+      "kitchen": {
+        "cabinets": "ארונות, משטחים וכיור",
+        "appliances": "מכשירים שסיפק המשכיר"
+      },
+      "bathrooms": {
+        "sanitary": "כלים סניטריים ואביזרים"
+      },
+      "bedrooms": {
+        "wardrobes": "ארונות בגדים, דלתות ומנעולים"
+      },
+      "systems": {
+        "airConditioning": "מיזוג אוויר",
+        "electrical": "שקעים ותאורה"
+      },
+      "handover": {
+        "keys": "מפתחות, כרטיסי כניסה ושלטים"
+      }
+    },
+    "updated": "בדיקה עודכן"
   }
 }

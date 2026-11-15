@@ -12,7 +12,8 @@
     "loading": "Laden…",
     "errorLoad": "Uw gegevens konden niet worden geladen. Probeer het opnieuw.",
     "retry": "Opnieuw proberen",
-    "select": "Selecteren…"
+    "select": "Selecteren…",
+    "cancel": "Annuleren"
   },
   "tabs": {
     "dashboard": "Overzicht",
@@ -470,6 +471,7 @@
       "guestParking": "Bezoekersparkeren"
     },
     "myBookings": "Mijn reserveringen",
+    "pastBookings": "Eerdere reserveringen",
     "bookASpace": "Ruimte reserveren",
     "perSlot": "{{amount}} per tijdvak",
     "capacity_one": "Tot {{count}} persoon",
@@ -484,7 +486,34 @@
     "book": "Nu reserveren",
     "bookFor": "Reserveren voor {{amount}}",
     "fewer": "Minder gasten",
-    "more": "Meer gasten"
+    "more": "Meer gasten",
+    "statusValues": {
+      "pending": "In behandeling",
+      "confirmed": "Bevestigd",
+      "rejected": "Afgewezen",
+      "cancelled": "Geannuleerd"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "Er kunnen nog geen faciliteiten in uw gebouw worden geboekt.",
+    "noSlots": "No slots available on this date.",
+    "reference": "Referentie",
+    "fee": "Vergoeding",
+    "notes": "Notities",
+    "notesPlaceholder": "Optional notes",
+    "reason": "Reden",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "In afwachting van goedkeuring",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "Intrek / Vertrek",
@@ -531,7 +560,23 @@
     "refundDue": "Terugbetaling",
     "afterHandover": "Na overdracht",
     "notStarted": "Niet begonnen",
-    "giveNotice": "Opzeggen"
+    "giveNotice": "Opzeggen",
+    "remotes": "Afstandsbedieningen parkeergarage",
+    "mailboxKeys": "Brievenbussleutels",
+    "chillerMeter": "Koelmachine (Watermeter)",
+    "noMoveIn": "Nog geen inspectierapporten.",
+    "noMoveOut": "Nog geen inspectierapporten.",
+    "damageCharges": "Schadekosten",
+    "summary": "Samenvatting",
+    "accept": "Rapport accepteren",
+    "acceptHint": "Door te accepteren bevestigt u dat u dit rapport hebt gelezen. Voeg een opmerking toe als iets niet klopt.",
+    "commentPlaceholder": "Optionele opmerking",
+    "acceptedToast": "Rapport geaccepteerd.",
+    "youAccepted": "U hebt dit rapport geaccepteerd op {{date}}",
+    "acceptedOn": "Akkoord van de huurder op {{date}}",
+    "scheduledFor": "Gepland op {{date}}",
+    "scheduledHint": "Uw inspectie is gepland op {{date}}. Het rapport verschijnt hier zodra de inspecteur het heeft afgerond.",
+    "viewReport": "Rapport bekijken"
   },
   "access": {
     "title": "Digitale toegang",
@@ -788,5 +833,116 @@
     "reasonNeeded": "Geef een reden om terug te sturen of af te wijzen. De aanvrager ziet die.",
     "othersTurn": "Wacht op {{names}} bij stap {{n}}. U kunt het hier volgen; alleen zij kunnen beslissen.",
     "empty": "Er wacht niets op uw beslissing."
+  },
+  "inspection": {
+    "title": "Inspectierapporten",
+    "inspections": "Inspecties",
+    "checklist": "Elk checklistpunt met staat, kosten en ticket",
+    "readingsHandover": "Meterstanden en overdracht",
+    "summary": "Samenvatting",
+    "keys": "Sleutels",
+    "accessCards": "Toegangspassen",
+    "parkingRemotes": "Afstandsbedieningen parkeergarage",
+    "mailboxKeys": "Brievenbussleutels",
+    "electricityMeter": "Elektriciteitsmeter",
+    "waterMeter": "Watermeter",
+    "chillerMeter": "Koelmachine (Watermeter)",
+    "save": "Opslaan",
+    "complete": "Inspectie afronden",
+    "completeHint": "Het rapport kan daarna niet meer worden gewijzigd.",
+    "completeTitle": "Inspectie {{number}} afronden?",
+    "completed": "Inspectie {{number}} afgerond.",
+    "cancel": "Inspectie annuleren",
+    "cancelTitle": "Inspectie {{number}} annuleren",
+    "reason": "Reden",
+    "cancelled": "Inspectie geannuleerd.",
+    "raiseTicket": "Ticket aanmaken",
+    "raiseTicketFor": "Ticket aanmaken voor {{name}}",
+    "ticketRaised": "Ticket aangemaakt.",
+    "ticket": "Ticket",
+    "category": "Categorie",
+    "priority": "Prioriteit",
+    "addItem": "Punt toevoegen",
+    "removeItem": "Punt verwijderen",
+    "removeItemTitle": "\"{{name}}\" uit de checklist verwijderen?",
+    "area": "Ruimte",
+    "item": "Punt",
+    "name": "Naam",
+    "addPhoto": "Photos",
+    "removePhoto": "Foto verwijderen",
+    "photoLimit": "Maximaal 4 foto's per punt",
+    "charge": "Kosten",
+    "chargeTotal": "Schadekosten",
+    "inspector": "Inspecteur",
+    "notePlaceholder": "Beschrijf het gebrek, de locatie en de ernst…",
+    "noInspections": "Geen open inspecties. Plan er een om te beginnen.",
+    "run": "Uitvoeren",
+    "lockedCompleted": "Afgerond op {{date}} door {{name}}. Het rapport kan niet meer worden gewijzigd.",
+    "lockedCancelled": "Geannuleerd: {{reason}}",
+    "tenantAcceptance": "Akkoord van de huurder",
+    "acceptedOn": "Akkoord van de huurder op {{date}}",
+    "youAccepted": "U hebt dit rapport geaccepteerd op {{date}}",
+    "toAccept": "Akkoord nodig",
+    "accepted": "Akkoord",
+    "accept": "Rapport accepteren",
+    "acceptHint": "Door te accepteren bevestigt u dat u dit rapport hebt gelezen. Voeg een opmerking toe als iets niet klopt.",
+    "commentPlaceholder": "Optionele opmerking",
+    "acceptedToast": "Rapport geaccepteerd.",
+    "scheduledFor": "Gepland op {{date}}",
+    "scheduledHint": "Uw inspectie is gepland op {{date}}. Het rapport verschijnt hier zodra de inspecteur het heeft afgerond.",
+    "viewReport": "Rapport bekijken",
+    "unchecked": "Niet gecontroleerd",
+    "condition": {
+      "good": "Goed",
+      "fair": "Redelijk",
+      "damaged": "Beschadigd",
+      "notApplicable": "Niet van toepassing",
+      "unchecked": "Niet gecontroleerd"
+    },
+    "status": {
+      "Scheduled": "Gepland",
+      "InProgress": "Bezig",
+      "Completed": "Voltooid",
+      "Cancelled": "Geannuleerd"
+    },
+    "type": {
+      "MoveIn": "Intrek",
+      "MoveOut": "Vertrek",
+      "Routine": "Routinematig",
+      "Emergency": "Noodgeval"
+    },
+    "areas": {
+      "livingRoom": "Woonkamer",
+      "kitchen": "Keuken",
+      "bathrooms": "Badkamers",
+      "bedrooms": "Slaapkamers",
+      "systems": "Installaties",
+      "handover": "Overdracht"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "Muren, plafond en verf",
+        "flooring": "Vloeren en plinten",
+        "windows": "Ramen, glas en handgrepen"
+      },
+      "kitchen": {
+        "cabinets": "Kasten, werkbladen en spoelbak",
+        "appliances": "Apparaten van de verhuurder"
+      },
+      "bathrooms": {
+        "sanitary": "Sanitair en kranen"
+      },
+      "bedrooms": {
+        "wardrobes": "Kledingkasten, deuren en sloten"
+      },
+      "systems": {
+        "airConditioning": "Airconditioning",
+        "electrical": "Stopcontacten en verlichting"
+      },
+      "handover": {
+        "keys": "Sleutels, toegangspassen en afstandsbedieningen"
+      }
+    },
+    "updated": "Inspectie bijgewerkt"
   }
 }

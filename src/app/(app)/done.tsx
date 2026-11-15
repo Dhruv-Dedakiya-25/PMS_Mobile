@@ -25,7 +25,8 @@ export default function Done() {
   const { t } = useTranslation();
   const palette = usePalette();
   const insets = useSafeAreaInsets();
-  const { kind, ref } = useLocalSearchParams<{ kind: Kind; ref?: string }>();
+  const { kind, ref, status } = useLocalSearchParams<{ kind: Kind; ref?: string; status?: string }>();
+  const isPendingBooking = kind === 'booking' && status === 'Pending';
   return (
     <View style={{ flex: 1, backgroundColor: palette.bg, paddingTop: insets.top, paddingBottom: Math.max(insets.bottom, space.lg), paddingHorizontal: space.xl }}>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', gap: space.md }}>
@@ -33,10 +34,10 @@ export default function Done() {
           <IconCircleCheck size={60} color={palette.success} strokeWidth={1.5} />
         </View>
         <AppText variant="title" weight="bold" align="center">
-          {t(`done.${kind}.title`)}
+          {isPendingBooking ? t('fac.createdPendingTitle') : t(`done.${kind}.title`)}
         </AppText>
         <AppText tone="secondary" align="center">
-          {t(`done.${kind}.body`, { ref })}
+          {isPendingBooking ? t('fac.approvalNote') : t(`done.${kind}.body`, { ref })}
         </AppText>
         {ref ? (
           <View style={{ backgroundColor: palette.surfaceStrong, borderRadius: 8, paddingHorizontal: space.md, paddingVertical: space.xs }}>

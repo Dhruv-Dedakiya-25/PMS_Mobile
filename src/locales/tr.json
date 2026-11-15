@@ -12,7 +12,8 @@
     "loading": "Yükleniyor…",
     "errorLoad": "Bilgileriniz yüklenemedi. Lütfen tekrar deneyin.",
     "retry": "Tekrar Dene",
-    "select": "Seçiniz…"
+    "select": "Seçiniz…",
+    "cancel": "İptal"
   },
   "tabs": {
     "dashboard": "Ana sayfa",
@@ -470,6 +471,7 @@
       "guestParking": "Misafir otoparkı"
     },
     "myBookings": "Rezervasyonlarım",
+    "pastBookings": "Geçmiş rezervasyonlar",
     "bookASpace": "Alan ayırt",
     "perSlot": "Saat dilimi başına {{amount}}",
     "capacity_one": "En fazla {{count}} kişi",
@@ -484,7 +486,34 @@
     "book": "Hemen ayırt",
     "bookFor": "{{amount}} karşılığında ayırt",
     "fewer": "Daha az misafir",
-    "more": "Daha fazla misafir"
+    "more": "Daha fazla misafir",
+    "statusValues": {
+      "pending": "Beklemede",
+      "confirmed": "Onaylandı",
+      "rejected": "Reddedildi",
+      "cancelled": "İptal Edildi"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "Binanızda henüz rezerve edilebilecek bir tesis bulunmuyor.",
+    "noSlots": "No slots available on this date.",
+    "reference": "Referans",
+    "fee": "Ücret",
+    "notes": "Notlar",
+    "notesPlaceholder": "Optional notes",
+    "reason": "Neden",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "Onay bekliyor",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "Taşınma / Çıkış",
@@ -531,7 +560,23 @@
     "refundDue": "İade",
     "afterHandover": "Teslimden sonra",
     "notStarted": "Başlamadı",
-    "giveNotice": "Bildirim ver"
+    "giveNotice": "Bildirim ver",
+    "remotes": "Otopark kumandaları",
+    "mailboxKeys": "Posta kutusu anahtarları",
+    "chillerMeter": "Soğutma grubu (Su sayacı)",
+    "noMoveIn": "Henüz denetim raporu yok.",
+    "noMoveOut": "Henüz denetim raporu yok.",
+    "damageCharges": "Hasar ücretleri",
+    "summary": "Özet notlar",
+    "accept": "Raporu onayla",
+    "acceptHint": "Onaylayarak bu raporu okuduğunuzu belirtirsiniz. Yanlış görünen bir şey varsa yorum ekleyin.",
+    "commentPlaceholder": "İsteğe bağlı yorum",
+    "acceptedToast": "Rapor onaylandı.",
+    "youAccepted": "Bu raporu {{date}} tarihinde onayladınız",
+    "acceptedOn": "Kiracı tarafından {{date}} tarihinde onaylandı",
+    "scheduledFor": "{{date}} için planlandı",
+    "scheduledHint": "Denetiminiz {{date}} için planlandı. Denetçi tamamladığında rapor burada görünür.",
+    "viewReport": "Raporu gör"
   },
   "access": {
     "title": "Dijital erişim",
@@ -788,5 +833,116 @@
     "reasonNeeded": "İade veya ret için bir neden yazın. Talep sahibi bunu görecek.",
     "othersTurn": "{{n}}. adımda {{names}} bekleniyor. Buradan izleyebilirsiniz; yalnızca onlar karar verebilir.",
     "empty": "Kararınızı bekleyen bir şey yok."
+  },
+  "inspection": {
+    "title": "Denetim raporları",
+    "inspections": "Denetimler",
+    "checklist": "Durumu, ücreti ve talebiyle her kontrol maddesi",
+    "readingsHandover": "Sayaçlar ve teslim",
+    "summary": "Özet notlar",
+    "keys": "Anahtarlar",
+    "accessCards": "Giriş kartları",
+    "parkingRemotes": "Otopark kumandaları",
+    "mailboxKeys": "Posta kutusu anahtarları",
+    "electricityMeter": "Elektrik sayacı",
+    "waterMeter": "Su sayacı",
+    "chillerMeter": "Soğutma grubu (Su sayacı)",
+    "save": "Kaydet",
+    "complete": "Denetimi tamamla",
+    "completeHint": "Rapor bundan sonra değiştirilemez.",
+    "completeTitle": "{{number}} denetimi tamamlansın mı?",
+    "completed": "{{number}} denetimi tamamlandı.",
+    "cancel": "Denetimi iptal et",
+    "cancelTitle": "{{number}} denetimini iptal et",
+    "reason": "Neden",
+    "cancelled": "Denetim iptal edildi.",
+    "raiseTicket": "Talep oluştur",
+    "raiseTicketFor": "{{name}} için talep oluştur",
+    "ticketRaised": "Talep oluşturuldu.",
+    "ticket": "Talep",
+    "category": "Kategori",
+    "priority": "Öncelik",
+    "addItem": "Madde ekle",
+    "removeItem": "Maddeyi kaldır",
+    "removeItemTitle": "\"{{name}}\" kontrol listesinden kaldırılsın mı?",
+    "area": "Alan",
+    "item": "Madde",
+    "name": "Ad",
+    "addPhoto": "Photos",
+    "removePhoto": "Fotoğrafı kaldır",
+    "photoLimit": "Madde başına en fazla 4 fotoğraf",
+    "charge": "Ücret",
+    "chargeTotal": "Hasar ücretleri",
+    "inspector": "Denetçi",
+    "notePlaceholder": "Kusuru, yerini ve ciddiyetini açıklayın…",
+    "noInspections": "Açık denetim yok. Başlamak için bir denetim planlayın.",
+    "run": "Yürüt",
+    "lockedCompleted": "{{date}} tarihinde {{name}} tarafından tamamlandı. Rapor değiştirilemez.",
+    "lockedCancelled": "İptal edildi: {{reason}}",
+    "tenantAcceptance": "Kiracı onayı",
+    "acceptedOn": "Kiracı tarafından {{date}} tarihinde onaylandı",
+    "youAccepted": "Bu raporu {{date}} tarihinde onayladınız",
+    "toAccept": "Onay bekliyor",
+    "accepted": "Onaylandı",
+    "accept": "Raporu onayla",
+    "acceptHint": "Onaylayarak bu raporu okuduğunuzu belirtirsiniz. Yanlış görünen bir şey varsa yorum ekleyin.",
+    "commentPlaceholder": "İsteğe bağlı yorum",
+    "acceptedToast": "Rapor onaylandı.",
+    "scheduledFor": "{{date}} için planlandı",
+    "scheduledHint": "Denetiminiz {{date}} için planlandı. Denetçi tamamladığında rapor burada görünür.",
+    "viewReport": "Raporu gör",
+    "unchecked": "Kontrol edilmedi",
+    "condition": {
+      "good": "İyi",
+      "fair": "Orta",
+      "damaged": "Hasarlı",
+      "notApplicable": "Uygulanamaz",
+      "unchecked": "Kontrol edilmedi"
+    },
+    "status": {
+      "Scheduled": "Planlandı",
+      "InProgress": "Devam ediyor",
+      "Completed": "Tamamlandı",
+      "Cancelled": "İptal edildi"
+    },
+    "type": {
+      "MoveIn": "Taşınma",
+      "MoveOut": "Çıkış",
+      "Routine": "Rutin",
+      "Emergency": "Acil"
+    },
+    "areas": {
+      "livingRoom": "Oturma odası",
+      "kitchen": "Mutfak",
+      "bathrooms": "Banyolar",
+      "bedrooms": "Yatak odaları",
+      "systems": "Sistemler",
+      "handover": "Teslim"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "Duvarlar, tavan ve boya",
+        "flooring": "Zemin ve süpürgelikler",
+        "windows": "Pencereler, camlar ve kollar"
+      },
+      "kitchen": {
+        "cabinets": "Dolaplar, tezgâhlar ve evye",
+        "appliances": "Ev sahibinin sağladığı cihazlar"
+      },
+      "bathrooms": {
+        "sanitary": "Vitrifiye ve armatürler"
+      },
+      "bedrooms": {
+        "wardrobes": "Gardıroplar, kapılar ve kilitler"
+      },
+      "systems": {
+        "airConditioning": "Klima",
+        "electrical": "Prizler ve aydınlatma"
+      },
+      "handover": {
+        "keys": "Anahtarlar, giriş kartları ve kumandalar"
+      }
+    },
+    "updated": "Denetim güncellendi"
   }
 }

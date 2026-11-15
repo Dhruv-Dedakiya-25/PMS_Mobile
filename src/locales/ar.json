@@ -12,7 +12,8 @@
     "loading": "جارٍ التحميل…",
     "errorLoad": "تعذّر تحميل بياناتك. يرجى المحاولة مرة أخرى.",
     "retry": "إعادة المحاولة",
-    "select": "اختر…"
+    "select": "اختر…",
+    "cancel": "إلغاء"
   },
   "tabs": {
     "dashboard": "الرئيسية",
@@ -522,6 +523,7 @@
       "guestParking": "مواقف الزوار"
     },
     "myBookings": "حجوزاتي",
+    "pastBookings": "الحجوزات السابقة",
     "bookASpace": "احجز مرفقًا",
     "perSlot": "{{amount}} لكل فترة",
     "capacity_one": "حتى شخص واحد",
@@ -540,7 +542,34 @@
     "book": "احجز الآن",
     "bookFor": "احجز مقابل {{amount}}",
     "fewer": "ضيوف أقل",
-    "more": "ضيوف أكثر"
+    "more": "ضيوف أكثر",
+    "statusValues": {
+      "pending": "قيد الانتظار",
+      "confirmed": "مؤكد",
+      "rejected": "مرفوض",
+      "cancelled": "ملغى"
+    },
+    "slotStatus": {
+      "free": "متاح",
+      "pending": "قيد الانتظار",
+      "booked": "محجوز",
+      "past": "منتهي"
+    },
+    "requiresApproval": "يتطلب موافقة",
+    "instantBooking": "تأكيد فوري",
+    "min": "دقيقة",
+    "noFacilitiesYet": "لا توجد مرافق متاحة للحجز في مبناك حتى الآن.",
+    "noSlots": "لا توجد فترات متاحة في هذا التاريخ.",
+    "reference": "المرجع",
+    "fee": "الرسوم",
+    "notes": "الملاحظات",
+    "notesPlaceholder": "ملاحظات اختيارية",
+    "reason": "السبب",
+    "officeFeeNote": "يتم تحصيل رسوم الحجز من قِبل مكتب الإدارة.",
+    "approvalNote": "يتطلب هذا المرفق موافقة مكتب الإدارة قبل تأكيد فترتك.",
+    "createdPendingTitle": "بانتظار الموافقة",
+    "cancelTitle": "إلغاء الحجز {{number}}؟",
+    "cancelTenantHint": "سيؤدي هذا إلى إتاحة الفترة ليتمكن مقيم آخر من حجزها."
   },
   "move": {
     "title": "السكن / الإخلاء",
@@ -587,7 +616,23 @@
     "refundDue": "الاسترداد",
     "afterHandover": "بعد التسليم",
     "notStarted": "لم يبدأ",
-    "giveNotice": "تقديم الإشعار"
+    "giveNotice": "تقديم الإشعار",
+    "remotes": "أجهزة تحكم المواقف",
+    "mailboxKeys": "مفاتيح صندوق البريد",
+    "chillerMeter": "عداد التبريد",
+    "noMoveIn": "لا توجد تقارير فحص بعد.",
+    "noMoveOut": "لا توجد تقارير فحص بعد.",
+    "damageCharges": "رسوم الأضرار",
+    "summary": "ملاحظات الملخص",
+    "accept": "الموافقة على التقرير",
+    "acceptHint": "موافقتك تؤكد أنك قرأت هذا التقرير. أضف تعليقاً إذا بدا أي شيء غير صحيح.",
+    "commentPlaceholder": "تعليق اختياري",
+    "acceptedToast": "تمت الموافقة على التقرير.",
+    "youAccepted": "وافقت على هذا التقرير في {{date}}",
+    "acceptedOn": "وافق المستأجر في {{date}}",
+    "scheduledFor": "محجوز في {{date}}",
+    "scheduledHint": "فحصك محجوز في {{date}}. سيظهر التقرير هنا بعد أن يكمله المفتش.",
+    "viewReport": "عرض التقرير"
   },
   "access": {
     "title": "الدخول الرقمي",
@@ -848,5 +893,116 @@
     "reasonNeeded": "اذكر سببًا للإعادة أو الرفض. سيراه مقدّم الطلب.",
     "othersTurn": "بانتظار {{names}} في الخطوة {{n}}. يمكنك متابعته هنا؛ وهم وحدهم من يقررونه.",
     "empty": "لا يوجد ما ينتظر قرارك."
+  },
+  "inspection": {
+    "title": "تقارير الفحص",
+    "inspections": "عمليات التفتيش",
+    "checklist": "كل بند في قائمة الفحص مع حالته ورسومه وتذكرته",
+    "readingsHandover": "القراءات والتسليم",
+    "summary": "ملاحظات الملخص",
+    "keys": "المفاتيح",
+    "accessCards": "بطاقات الدخول",
+    "parkingRemotes": "أجهزة تحكم المواقف",
+    "mailboxKeys": "مفاتيح صندوق البريد",
+    "electricityMeter": "عداد الكهرباء",
+    "waterMeter": "عداد المياه",
+    "chillerMeter": "عداد التبريد",
+    "save": "حفظ",
+    "complete": "إكمال الفحص",
+    "completeHint": "لا يمكن تغيير التقرير بعد ذلك.",
+    "completeTitle": "إكمال الفحص {{number}}؟",
+    "completed": "تم إكمال الفحص {{number}}.",
+    "cancel": "إلغاء الفحص",
+    "cancelTitle": "إلغاء الفحص {{number}}",
+    "reason": "السبب",
+    "cancelled": "تم إلغاء الفحص.",
+    "raiseTicket": "إنشاء تذكرة",
+    "raiseTicketFor": "إنشاء تذكرة لـ {{name}}",
+    "ticketRaised": "تم إنشاء التذكرة.",
+    "ticket": "التذكرة",
+    "category": "فئة",
+    "priority": "أولوية",
+    "addItem": "إضافة بند",
+    "removeItem": "إزالة البند",
+    "removeItemTitle": "إزالة \"{{name}}\" من قائمة الفحص؟",
+    "area": "المنطقة",
+    "item": "البند",
+    "name": "الاسم",
+    "addPhoto": "Photos",
+    "removePhoto": "إزالة الصورة",
+    "photoLimit": "حتى 4 صور لكل بند",
+    "charge": "الرسوم",
+    "chargeTotal": "رسوم الأضرار",
+    "inspector": "المفتش",
+    "notePlaceholder": "صف العطل وموقعه ودرجة خطورته…",
+    "noInspections": "لا توجد فحوصات مفتوحة. قم بجدولة فحص للبدء.",
+    "run": "تنفيذ",
+    "lockedCompleted": "اكتمل في {{date}} بواسطة {{name}}. لا يمكن تغيير التقرير.",
+    "lockedCancelled": "ملغى: {{reason}}",
+    "tenantAcceptance": "موافقة المستأجر",
+    "acceptedOn": "وافق المستأجر في {{date}}",
+    "youAccepted": "وافقت على هذا التقرير في {{date}}",
+    "toAccept": "بانتظار الموافقة",
+    "accepted": "تمت الموافقة",
+    "accept": "الموافقة على التقرير",
+    "acceptHint": "موافقتك تؤكد أنك قرأت هذا التقرير. أضف تعليقاً إذا بدا أي شيء غير صحيح.",
+    "commentPlaceholder": "تعليق اختياري",
+    "acceptedToast": "تمت الموافقة على التقرير.",
+    "scheduledFor": "محجوز في {{date}}",
+    "scheduledHint": "فحصك محجوز في {{date}}. سيظهر التقرير هنا بعد أن يكمله المفتش.",
+    "viewReport": "عرض التقرير",
+    "unchecked": "لم يُفحص",
+    "condition": {
+      "good": "جيدة",
+      "fair": "مقبولة",
+      "damaged": "متضررة",
+      "notApplicable": "لا ينطبق",
+      "unchecked": "لم يُفحص"
+    },
+    "status": {
+      "Scheduled": "مجدول",
+      "InProgress": "قيد التنفيذ",
+      "Completed": "مكتمل",
+      "Cancelled": "ملغى"
+    },
+    "type": {
+      "MoveIn": "السكن",
+      "MoveOut": "الإخلاء",
+      "Routine": "روتيني",
+      "Emergency": "طارئ"
+    },
+    "areas": {
+      "livingRoom": "غرفة المعيشة",
+      "kitchen": "المطبخ",
+      "bathrooms": "الحمامات",
+      "bedrooms": "غرف النوم",
+      "systems": "الأنظمة",
+      "handover": "التسليم"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "الجدران والسقف والطلاء",
+        "flooring": "الأرضيات والوزرات",
+        "windows": "النوافذ والزجاج والمقابض"
+      },
+      "kitchen": {
+        "cabinets": "الخزائن والأسطح والحوض",
+        "appliances": "الأجهزة المقدمة من المالك"
+      },
+      "bathrooms": {
+        "sanitary": "الأدوات الصحية والتجهيزات"
+      },
+      "bedrooms": {
+        "wardrobes": "خزائن الملابس والأبواب والأقفال"
+      },
+      "systems": {
+        "airConditioning": "التكييف",
+        "electrical": "المقابس الكهربائية والإنارة"
+      },
+      "handover": {
+        "keys": "المفاتيح وبطاقات الدخول وأجهزة التحكم"
+      }
+    },
+    "updated": "تم تحديث تفتيش"
   }
 }

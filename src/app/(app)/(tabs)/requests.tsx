@@ -6,19 +6,19 @@ import { View } from 'react-native';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
 import { Card, IconTile } from '@/components/ui';
-import { useRequests } from '@/hooks/use-tenancy';
+import { useFacilities, useRequests, useVisitors } from '@/hooks/use-tenancy';
 import { daysUntil } from '@/lib/format';
-import { useMockState } from '@/mock/store';
 import { space } from '@/theme/tokens';
 
 /** Everything a tenant asks the building for: repairs, visitors, bookings, moving and access. */
 export default function Requests() {
   const { t } = useTranslation();
-  const state = useMockState();
   const { requests, loading, refreshing, error, refresh } = useRequests();
+  const { visitors } = useVisitors();
+  const { bookings } = useFacilities();
   const open = requests.filter((r) => r.stage !== 'completed').length;
-  const expected = state.visitors.filter((v) => v.status === 'expected').length;
-  const upcoming = state.bookings.filter((b) => daysUntil(b.date) >= 0).length;
+  const expected = visitors.filter((v) => v.status === 'expected').length;
+  const upcoming = bookings.filter((b) => (b.status === 'Pending' || b.status === 'Confirmed') && daysUntil(b.date) >= 0).length;
 
   const tiles: { icon: Icon; label: string; detail: string; href: Href }[] = [
     { icon: IconTool, label: t('maint.title'), detail: t('requests.openCount', { count: open }), href: '/requests/maintenance' },

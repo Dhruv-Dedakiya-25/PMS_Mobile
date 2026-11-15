@@ -12,7 +12,8 @@
     "loading": "ലോഡ് ചെയ്യുന്നു…",
     "errorLoad": "നിങ്ങളുടെ വിവരങ്ങൾ ലോഡ് ചെയ്യാനായില്ല. ദയവായി വീണ്ടും ശ്രമിക്കുക.",
     "retry": "വീണ്ടും ശ്രമിക്കുക",
-    "select": "തിരഞ്ഞെടുക്കുക…"
+    "select": "തിരഞ്ഞെടുക്കുക…",
+    "cancel": "റദ്ദാക്കുക"
   },
   "tabs": {
     "dashboard": "ഡാഷ്ബോർഡ്",
@@ -470,6 +471,7 @@
       "guestParking": "അതിഥി പാർക്കിംഗ്"
     },
     "myBookings": "എന്റെ ബുക്കിംഗുകൾ",
+    "pastBookings": "മുൻ ബുക്കിംഗുകൾ",
     "bookASpace": "സ്ഥലം ബുക്ക് ചെയ്യുക",
     "perSlot": "ഓരോ സ്ലോട്ടിനും {{amount}}",
     "capacity_one": "{{count}} പേർ വരെ",
@@ -484,7 +486,34 @@
     "book": "ഇപ്പോൾ ബുക്ക് ചെയ്യുക",
     "bookFor": "{{amount}}-ന് ബുക്ക് ചെയ്യുക",
     "fewer": "കുറച്ച് അതിഥികൾ",
-    "more": "കൂടുതൽ അതിഥികൾ"
+    "more": "കൂടുതൽ അതിഥികൾ",
+    "statusValues": {
+      "pending": "തീർപ്പുകൽപ്പിക്കാത്തത്",
+      "confirmed": "സ്ഥിരീകരിച്ചു",
+      "rejected": "നിരസിച്ചു",
+      "cancelled": "റദ്ദാക്കി"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "നിങ്ങളുടെ കെട്ടിടത്തിൽ നിലവിൽ ബുക്ക് ചെയ്യാവുന്ന സൗകര്യങ്ങളൊന്നുമില്ല.",
+    "noSlots": "No slots available on this date.",
+    "reference": "റഫറൻസ്",
+    "fee": "ഫീസ്",
+    "notes": "കുറിപ്പുകൾ",
+    "notesPlaceholder": "Optional notes",
+    "reason": "കാരണം",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "അംഗീകാരം കാത്തിരിക്കുന്നു",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "താമസം തുടങ്ങൽ / ഒഴിയൽ",
@@ -531,7 +560,23 @@
     "refundDue": "തിരികെ നൽകൽ",
     "afterHandover": "കൈമാറ്റത്തിന് ശേഷം",
     "notStarted": "ആരംഭിച്ചിട്ടില്ല",
-    "giveNotice": "നോട്ടീസ് നൽകുക"
+    "giveNotice": "നോട്ടീസ് നൽകുക",
+    "remotes": "പാർക്കിംഗ് റിമോട്ടുകൾ",
+    "mailboxKeys": "മെയിൽബോക്സ് താക്കോലുകൾ",
+    "chillerMeter": "ചില്ലർ (വെള്ളം മീറ്റർ)",
+    "noMoveIn": "ഇതുവരെ പരിശോധനാ റിപ്പോർട്ടുകളൊന്നുമില്ല.",
+    "noMoveOut": "ഇതുവരെ പരിശോധനാ റിപ്പോർട്ടുകളൊന്നുമില്ല.",
+    "damageCharges": "കേടുപാട് നിരക്കുകൾ",
+    "summary": "സംഗ്രഹ കുറിപ്പുകൾ",
+    "accept": "റിപ്പോർട്ട് അംഗീകരിക്കുക",
+    "acceptHint": "അംഗീകരിക്കുന്നതിലൂടെ നിങ്ങൾ ഈ റിപ്പോർട്ട് വായിച്ചതായി സ്ഥിരീകരിക്കുന്നു. എന്തെങ്കിലും തെറ്റായി തോന്നിയാൽ അഭിപ്രായം ചേർക്കുക.",
+    "commentPlaceholder": "ഐച്ഛിക അഭിപ്രായം",
+    "acceptedToast": "റിപ്പോർട്ട് അംഗീകരിച്ചു.",
+    "youAccepted": "നിങ്ങൾ {{date}} ന് ഈ റിപ്പോർട്ട് അംഗീകരിച്ചു",
+    "acceptedOn": "{{date}} ന് വാടകക്കാരൻ അംഗീകരിച്ചു",
+    "scheduledFor": "{{date}} ന് നിശ്ചയിച്ചു",
+    "scheduledHint": "നിങ്ങളുടെ പരിശോധന {{date}} ന് നിശ്ചയിച്ചിരിക്കുന്നു. പരിശോധകൻ പൂർത്തിയാക്കിയാൽ റിപ്പോർട്ട് ഇവിടെ കാണാം.",
+    "viewReport": "റിപ്പോർട്ട് കാണുക"
   },
   "access": {
     "title": "ഡിജിറ്റൽ ആക്സസ്",
@@ -788,5 +833,116 @@
     "reasonNeeded": "തിരിച്ചയയ്ക്കാനോ നിരസിക്കാനോ കാരണം നൽകുക. അപേക്ഷകൻ അത് കാണും.",
     "othersTurn": "ഘട്ടം {{n}}-ൽ {{names}}-നെ കാത്തിരിക്കുന്നു. നിങ്ങൾക്ക് ഇവിടെ പിന്തുടരാം; തീരുമാനിക്കാൻ അവർക്ക് മാത്രമേ കഴിയൂ.",
     "empty": "നിങ്ങളുടെ തീരുമാനം കാത്ത് ഒന്നുമില്ല."
+  },
+  "inspection": {
+    "title": "പരിശോധനാ റിപ്പോർട്ടുകൾ",
+    "inspections": "പരിശോധനകൾ",
+    "checklist": "ഓരോ ചെക്ക്‌ലിസ്റ്റ് ഇനവും അതിന്റെ അവസ്ഥ, നിരക്ക്, ടിക്കറ്റ് എന്നിവയോടൊപ്പം",
+    "readingsHandover": "റീഡിംഗുകളും കൈമാറ്റവും",
+    "summary": "സംഗ്രഹ കുറിപ്പുകൾ",
+    "keys": "താക്കോലുകൾ",
+    "accessCards": "ആക്സസ് കാർഡുകൾ",
+    "parkingRemotes": "പാർക്കിംഗ് റിമോട്ടുകൾ",
+    "mailboxKeys": "മെയിൽബോക്സ് താക്കോലുകൾ",
+    "electricityMeter": "വൈദ്യുതി മീറ്റർ",
+    "waterMeter": "വെള്ളം മീറ്റർ",
+    "chillerMeter": "ചില്ലർ (വെള്ളം മീറ്റർ)",
+    "save": "സേവ്",
+    "complete": "പരിശോധന പൂർത്തിയാക്കുക",
+    "completeHint": "അതിനുശേഷം റിപ്പോർട്ട് മാറ്റാൻ കഴിയില്ല.",
+    "completeTitle": "പരിശോധന {{number}} പൂർത്തിയാക്കണോ?",
+    "completed": "പരിശോധന {{number}} പൂർത്തിയായി.",
+    "cancel": "പരിശോധന റദ്ദാക്കുക",
+    "cancelTitle": "പരിശോധന {{number}} റദ്ദാക്കുക",
+    "reason": "കാരണം",
+    "cancelled": "പരിശോധന റദ്ദാക്കി.",
+    "raiseTicket": "ടിക്കറ്റ് സൃഷ്ടിക്കുക",
+    "raiseTicketFor": "{{name}} നായി ടിക്കറ്റ് സൃഷ്ടിക്കുക",
+    "ticketRaised": "ടിക്കറ്റ് സൃഷ്ടിച്ചു.",
+    "ticket": "ടിക്കറ്റ്",
+    "category": "വിഭാഗം",
+    "priority": "മുൻഗണന",
+    "addItem": "ഇനം ചേർക്കുക",
+    "removeItem": "ഇനം നീക്കുക",
+    "removeItemTitle": "ചെക്ക്‌ലിസ്റ്റിൽ നിന്ന് \"{{name}}\" നീക്കണോ?",
+    "area": "ഭാഗം",
+    "item": "ഇനം",
+    "name": "പേര്",
+    "addPhoto": "Photos",
+    "removePhoto": "ഫോട്ടോ നീക്കുക",
+    "photoLimit": "ഒരു ഇനത്തിന് പരമാവധി 4 ഫോട്ടോകൾ",
+    "charge": "നിരക്ക്",
+    "chargeTotal": "കേടുപാട് നിരക്കുകൾ",
+    "inspector": "പരിശോധകൻ",
+    "notePlaceholder": "തകരാർ, സ്ഥാനം, ഗൗരവം എന്നിവ വിവരിക്കുക…",
+    "noInspections": "തുറന്ന പരിശോധനകളില്ല. തുടങ്ങാൻ ഒന്ന് ഷെഡ്യൂൾ ചെയ്യുക.",
+    "run": "നടത്തുക",
+    "lockedCompleted": "{{date}} ന് {{name}} പൂർത്തിയാക്കി. റിപ്പോർട്ട് മാറ്റാൻ കഴിയില്ല.",
+    "lockedCancelled": "റദ്ദാക്കി: {{reason}}",
+    "tenantAcceptance": "വാടകക്കാരന്റെ അംഗീകാരം",
+    "acceptedOn": "{{date}} ന് വാടകക്കാരൻ അംഗീകരിച്ചു",
+    "youAccepted": "നിങ്ങൾ {{date}} ന് ഈ റിപ്പോർട്ട് അംഗീകരിച്ചു",
+    "toAccept": "അംഗീകരിക്കാനുണ്ട്",
+    "accepted": "അംഗീകരിച്ചു",
+    "accept": "റിപ്പോർട്ട് അംഗീകരിക്കുക",
+    "acceptHint": "അംഗീകരിക്കുന്നതിലൂടെ നിങ്ങൾ ഈ റിപ്പോർട്ട് വായിച്ചതായി സ്ഥിരീകരിക്കുന്നു. എന്തെങ്കിലും തെറ്റായി തോന്നിയാൽ അഭിപ്രായം ചേർക്കുക.",
+    "commentPlaceholder": "ഐച്ഛിക അഭിപ്രായം",
+    "acceptedToast": "റിപ്പോർട്ട് അംഗീകരിച്ചു.",
+    "scheduledFor": "{{date}} ന് നിശ്ചയിച്ചു",
+    "scheduledHint": "നിങ്ങളുടെ പരിശോധന {{date}} ന് നിശ്ചയിച്ചിരിക്കുന്നു. പരിശോധകൻ പൂർത്തിയാക്കിയാൽ റിപ്പോർട്ട് ഇവിടെ കാണാം.",
+    "viewReport": "റിപ്പോർട്ട് കാണുക",
+    "unchecked": "പരിശോധിച്ചിട്ടില്ല",
+    "condition": {
+      "good": "നല്ലത്",
+      "fair": "തരക്കേടില്ല",
+      "damaged": "കേടായത്",
+      "notApplicable": "ബാധകമല്ല",
+      "unchecked": "പരിശോധിച്ചിട്ടില്ല"
+    },
+    "status": {
+      "Scheduled": "ഷെഡ്യൂൾ ചെയ്തു",
+      "InProgress": "പുരോഗമിക്കുന്നു",
+      "Completed": "പൂർത്തിയായി",
+      "Cancelled": "റദ്ദാക്കി"
+    },
+    "type": {
+      "MoveIn": "താമസം തുടങ്ങൽ",
+      "MoveOut": "ഒഴിയൽ",
+      "Routine": "പതിവ്",
+      "Emergency": "അടിയന്തിരം"
+    },
+    "areas": {
+      "livingRoom": "സ്വീകരണമുറി",
+      "kitchen": "അടുക്കള",
+      "bathrooms": "കുളിമുറികൾ",
+      "bedrooms": "കിടപ്പുമുറികൾ",
+      "systems": "സംവിധാനങ്ങൾ",
+      "handover": "കൈമാറ്റം"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "ചുവരുകൾ, മേൽക്കൂര, പെയിന്റ്",
+        "flooring": "തറയും സ്കർട്ടിംഗും",
+        "windows": "ജനലുകൾ, ഗ്ലാസ്, പിടികൾ"
+      },
+      "kitchen": {
+        "cabinets": "അലമാരകൾ, കൗണ്ടറുകൾ, സിങ്ക്",
+        "appliances": "ഉടമ നൽകിയ ഉപകരണങ്ങൾ"
+      },
+      "bathrooms": {
+        "sanitary": "സാനിറ്ററി സാധനങ്ങളും ഫിറ്റിംഗുകളും"
+      },
+      "bedrooms": {
+        "wardrobes": "വാർഡ്രോബുകൾ, വാതിലുകൾ, പൂട്ടുകൾ"
+      },
+      "systems": {
+        "airConditioning": "എയർ കണ്ടീഷനിംഗ്",
+        "electrical": "ഇലക്ട്രിക് സോക്കറ്റുകളും വെളിച്ചവും"
+      },
+      "handover": {
+        "keys": "താക്കോലുകൾ, ആക്സസ് കാർഡുകൾ, റിമോട്ടുകൾ"
+      }
+    },
+    "updated": "പരിശോധന പുതുക്കി"
   }
 }

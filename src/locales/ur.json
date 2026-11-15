@@ -12,7 +12,8 @@
     "loading": "لوڈ ہو رہا ہے…",
     "errorLoad": "آپ کی معلومات لوڈ نہیں ہو سکیں۔ براہ کرم دوبارہ کوشش کریں۔",
     "retry": "دوبارہ کوشش کریں",
-    "select": "منتخب کریں…"
+    "select": "منتخب کریں…",
+    "cancel": "منسوخ کریں"
   },
   "tabs": {
     "dashboard": "ہوم",
@@ -470,6 +471,7 @@
       "guestParking": "مہمان پارکنگ"
     },
     "myBookings": "میری بکنگز",
+    "pastBookings": "پچھلی بکنگز",
     "bookASpace": "جگہ بُک کریں",
     "perSlot": "فی سلاٹ {{amount}}",
     "capacity_one": "{{count}} فرد تک",
@@ -484,7 +486,34 @@
     "book": "ابھی بُک کریں",
     "bookFor": "{{amount}} میں بُک کریں",
     "fewer": "کم مہمان",
-    "more": "زیادہ مہمان"
+    "more": "زیادہ مہمان",
+    "statusValues": {
+      "pending": "زیر التواء",
+      "confirmed": "تصدیق شدہ",
+      "rejected": "مسترد شدہ",
+      "cancelled": "منسوخ"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "آپ کی عمارت میں ابھی تک کوئی سہولت بک نہیں کی جا سکتی۔",
+    "noSlots": "No slots available on this date.",
+    "reference": "حوالہ",
+    "fee": "فیس",
+    "notes": "نوٹس",
+    "notesPlaceholder": "Optional notes",
+    "reason": "وجہ",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "منظوری کے منتظر",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "منتقلی / خالی کرنا",
@@ -531,7 +560,23 @@
     "refundDue": "واپسی",
     "afterHandover": "حوالگی کے بعد",
     "notStarted": "شروع نہیں ہوا",
-    "giveNotice": "نوٹس دیں"
+    "giveNotice": "نوٹس دیں",
+    "remotes": "پارکنگ ریموٹ",
+    "mailboxKeys": "میل باکس کی چابیاں",
+    "chillerMeter": "چلر (پانی کا میٹر)",
+    "noMoveIn": "ابھی کوئی معائنہ رپورٹ نہیں۔",
+    "noMoveOut": "ابھی کوئی معائنہ رپورٹ نہیں۔",
+    "damageCharges": "نقصان کے چارجز",
+    "summary": "خلاصہ نوٹس",
+    "accept": "رپورٹ منظور کریں",
+    "acceptHint": "منظوری سے آپ تصدیق کرتے ہیں کہ آپ نے یہ رپورٹ پڑھ لی ہے۔ اگر کچھ غلط لگے تو تبصرہ شامل کریں۔",
+    "commentPlaceholder": "اختیاری تبصرہ",
+    "acceptedToast": "رپورٹ منظور ہو گئی۔",
+    "youAccepted": "آپ نے یہ رپورٹ {{date}} کو منظور کی",
+    "acceptedOn": "کرایہ دار نے {{date}} کو منظور کیا",
+    "scheduledFor": "{{date}} کے لیے طے",
+    "scheduledHint": "آپ کا معائنہ {{date}} کے لیے طے ہے۔ معائنہ کار کے مکمل کرنے پر رپورٹ یہاں دکھائی دے گی۔",
+    "viewReport": "رپورٹ دیکھیں"
   },
   "access": {
     "title": "ڈیجیٹل رسائی",
@@ -788,5 +833,116 @@
     "reasonNeeded": "واپس یا مسترد کرنے کی وجہ لکھیں۔ درخواست گزار اسے دیکھے گا۔",
     "othersTurn": "مرحلہ {{n}} پر {{names}} کا منتظر۔ آپ یہاں اسے دیکھ سکتے ہیں؛ فیصلہ صرف وہی کر سکتے ہیں۔",
     "empty": "کوئی چیز آپ کے فیصلے کی منتظر نہیں۔"
+  },
+  "inspection": {
+    "title": "معائنہ رپورٹس",
+    "inspections": "معائنہ جات",
+    "checklist": "ہر چیک لسٹ آئٹم اس کی حالت، چارج اور ٹکٹ کے ساتھ",
+    "readingsHandover": "ریڈنگز اور حوالگی",
+    "summary": "خلاصہ نوٹس",
+    "keys": "چابیاں",
+    "accessCards": "رسائی کارڈ",
+    "parkingRemotes": "پارکنگ ریموٹ",
+    "mailboxKeys": "میل باکس کی چابیاں",
+    "electricityMeter": "بجلی کا میٹر",
+    "waterMeter": "پانی کا میٹر",
+    "chillerMeter": "چلر (پانی کا میٹر)",
+    "save": "محفوظ کریں",
+    "complete": "معائنہ مکمل کریں",
+    "completeHint": "اس کے بعد رپورٹ تبدیل نہیں ہو سکے گی۔",
+    "completeTitle": "معائنہ {{number}} مکمل کریں؟",
+    "completed": "معائنہ {{number}} مکمل ہو گیا۔",
+    "cancel": "معائنہ منسوخ کریں",
+    "cancelTitle": "معائنہ {{number}} منسوخ کریں",
+    "reason": "وجہ",
+    "cancelled": "معائنہ منسوخ ہو گیا۔",
+    "raiseTicket": "ٹکٹ بنائیں",
+    "raiseTicketFor": "{{name}} کے لیے ٹکٹ بنائیں",
+    "ticketRaised": "ٹکٹ بن گیا۔",
+    "ticket": "ٹکٹ",
+    "category": "زمرہ",
+    "priority": "ترجیح",
+    "addItem": "آئٹم شامل کریں",
+    "removeItem": "آئٹم ہٹائیں",
+    "removeItemTitle": "\"{{name}}\" کو چیک لسٹ سے ہٹائیں؟",
+    "area": "حصہ",
+    "item": "آئٹم",
+    "name": "نام",
+    "addPhoto": "Photos",
+    "removePhoto": "تصویر ہٹائیں",
+    "photoLimit": "فی آئٹم زیادہ سے زیادہ 4 تصاویر",
+    "charge": "چارج",
+    "chargeTotal": "نقصان کے چارجز",
+    "inspector": "معائنہ کار",
+    "notePlaceholder": "خرابی، اس کی جگہ اور شدت بیان کریں…",
+    "noInspections": "کوئی کھلا معائنہ نہیں۔ شروع کرنے کے لیے ایک شیڈول کریں۔",
+    "run": "انجام دیں",
+    "lockedCompleted": "{{date}} کو {{name}} نے مکمل کیا۔ رپورٹ تبدیل نہیں ہو سکتی۔",
+    "lockedCancelled": "منسوخ: {{reason}}",
+    "tenantAcceptance": "کرایہ دار کی منظوری",
+    "acceptedOn": "کرایہ دار نے {{date}} کو منظور کیا",
+    "youAccepted": "آپ نے یہ رپورٹ {{date}} کو منظور کی",
+    "toAccept": "منظوری درکار",
+    "accepted": "منظور شدہ",
+    "accept": "رپورٹ منظور کریں",
+    "acceptHint": "منظوری سے آپ تصدیق کرتے ہیں کہ آپ نے یہ رپورٹ پڑھ لی ہے۔ اگر کچھ غلط لگے تو تبصرہ شامل کریں۔",
+    "commentPlaceholder": "اختیاری تبصرہ",
+    "acceptedToast": "رپورٹ منظور ہو گئی۔",
+    "scheduledFor": "{{date}} کے لیے طے",
+    "scheduledHint": "آپ کا معائنہ {{date}} کے لیے طے ہے۔ معائنہ کار کے مکمل کرنے پر رپورٹ یہاں دکھائی دے گی۔",
+    "viewReport": "رپورٹ دیکھیں",
+    "unchecked": "جانچ نہیں ہوئی",
+    "condition": {
+      "good": "اچھا",
+      "fair": "مناسب",
+      "damaged": "خراب",
+      "notApplicable": "لاگو نہیں",
+      "unchecked": "جانچ نہیں ہوئی"
+    },
+    "status": {
+      "Scheduled": "طے شدہ",
+      "InProgress": "جاری",
+      "Completed": "مکمل",
+      "Cancelled": "منسوخ"
+    },
+    "type": {
+      "MoveIn": "منتقلی",
+      "MoveOut": "خالی کرنا",
+      "Routine": "معمول",
+      "Emergency": "ہنگامی"
+    },
+    "areas": {
+      "livingRoom": "بیٹھک",
+      "kitchen": "باورچی خانہ",
+      "bathrooms": "غسل خانے",
+      "bedrooms": "خواب گاہیں",
+      "systems": "نظام",
+      "handover": "حوالگی"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "دیواریں، چھت اور رنگ",
+        "flooring": "فرش اور اسکرٹنگ",
+        "windows": "کھڑکیاں، شیشہ اور ہینڈل"
+      },
+      "kitchen": {
+        "cabinets": "الماریاں، کاؤنٹر اور سنک",
+        "appliances": "مالک مکان کے فراہم کردہ آلات"
+      },
+      "bathrooms": {
+        "sanitary": "سینیٹری سامان اور فٹنگز"
+      },
+      "bedrooms": {
+        "wardrobes": "وارڈروب، دروازے اور تالے"
+      },
+      "systems": {
+        "airConditioning": "ایئر کنڈیشنگ",
+        "electrical": "بجلی کے ساکٹ اور روشنی"
+      },
+      "handover": {
+        "keys": "چابیاں، رسائی کارڈ اور ریموٹ"
+      }
+    },
+    "updated": "معائنہ اپ ڈیٹ ہوا"
   }
 }

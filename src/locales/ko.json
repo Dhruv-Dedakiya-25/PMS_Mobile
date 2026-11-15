@@ -12,7 +12,8 @@
     "loading": "불러오는 중…",
     "errorLoad": "정보를 불러올 수 없습니다. 다시 시도해 주세요.",
     "retry": "다시 시도",
-    "select": "선택…"
+    "select": "선택…",
+    "cancel": "취소"
   },
   "tabs": {
     "dashboard": "홈",
@@ -470,6 +471,7 @@
       "guestParking": "방문자 주차"
     },
     "myBookings": "내 예약",
+    "pastBookings": "지난 예약",
     "bookASpace": "공간 예약",
     "perSlot": "시간대당 {{amount}}",
     "capacity_one": "최대 {{count}}명",
@@ -484,7 +486,34 @@
     "book": "지금 예약",
     "bookFor": "{{amount}}에 예약",
     "fewer": "인원 줄이기",
-    "more": "인원 늘리기"
+    "more": "인원 늘리기",
+    "statusValues": {
+      "pending": "대기중",
+      "confirmed": "확정됨",
+      "rejected": "반려됨",
+      "cancelled": "취소됨"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "현재 거주 중인 건물에 예약 가능한 시설이 없습니다.",
+    "noSlots": "No slots available on this date.",
+    "reference": "참조번호",
+    "fee": "수수료",
+    "notes": "비고",
+    "notesPlaceholder": "Optional notes",
+    "reason": "사유",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "승인 대기",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "입주 / 퇴거",
@@ -531,7 +560,23 @@
     "refundDue": "반환",
     "afterHandover": "인도 후",
     "notStarted": "시작 전",
-    "giveNotice": "퇴거 통보"
+    "giveNotice": "퇴거 통보",
+    "remotes": "주차장 리모컨",
+    "mailboxKeys": "우편함 열쇠",
+    "chillerMeter": "냉동기 (수도 계량기)",
+    "noMoveIn": "아직 점검 보고서가 없습니다.",
+    "noMoveOut": "아직 점검 보고서가 없습니다.",
+    "damageCharges": "손상 비용",
+    "summary": "요약 메모",
+    "accept": "보고서 확인",
+    "acceptHint": "확인하면 이 보고서를 읽었음을 의미합니다. 잘못된 부분이 있으면 의견을 남겨 주세요.",
+    "commentPlaceholder": "의견(선택)",
+    "acceptedToast": "보고서를 확인했습니다.",
+    "youAccepted": "{{date}}에 이 보고서를 확인했습니다",
+    "acceptedOn": "임차인이 {{date}}에 확인함",
+    "scheduledFor": "{{date}} 예정",
+    "scheduledHint": "점검이 {{date}}에 예정되어 있습니다. 점검자가 완료하면 여기에 보고서가 표시됩니다.",
+    "viewReport": "보고서 보기"
   },
   "access": {
     "title": "디지털 출입",
@@ -788,5 +833,116 @@
     "reasonNeeded": "반려 또는 거부 사유를 입력하세요. 요청자에게 표시됩니다.",
     "othersTurn": "{{n}}단계에서 {{names}}의 결정을 기다립니다. 여기서 진행 상황을 볼 수 있으며, 결정은 그들만 할 수 있습니다.",
     "empty": "결정을 기다리는 항목이 없습니다."
+  },
+  "inspection": {
+    "title": "점검 보고서",
+    "inspections": "점검",
+    "checklist": "각 체크리스트 항목의 상태, 비용 및 요청",
+    "readingsHandover": "계량기 및 인도",
+    "summary": "요약 메모",
+    "keys": "열쇠",
+    "accessCards": "출입 카드",
+    "parkingRemotes": "주차장 리모컨",
+    "mailboxKeys": "우편함 열쇠",
+    "electricityMeter": "전기 계량기",
+    "waterMeter": "수도 계량기",
+    "chillerMeter": "냉동기 (수도 계량기)",
+    "save": "저장",
+    "complete": "점검 완료",
+    "completeHint": "완료 후에는 보고서를 변경할 수 없습니다.",
+    "completeTitle": "점검 {{number}}을(를) 완료할까요?",
+    "completed": "점검 {{number}}이(가) 완료되었습니다.",
+    "cancel": "점검 취소",
+    "cancelTitle": "점검 {{number}} 취소",
+    "reason": "사유",
+    "cancelled": "점검이 취소되었습니다.",
+    "raiseTicket": "요청 생성",
+    "raiseTicketFor": "{{name}} 요청 생성",
+    "ticketRaised": "요청이 생성되었습니다.",
+    "ticket": "요청",
+    "category": "분류",
+    "priority": "우선순위",
+    "addItem": "항목 추가",
+    "removeItem": "항목 삭제",
+    "removeItemTitle": "체크리스트에서 \"{{name}}\"을(를) 삭제할까요?",
+    "area": "구역",
+    "item": "항목",
+    "name": "이름",
+    "addPhoto": "Photos",
+    "removePhoto": "사진 삭제",
+    "photoLimit": "항목당 사진 최대 4장",
+    "charge": "비용",
+    "chargeTotal": "손상 비용",
+    "inspector": "점검자",
+    "notePlaceholder": "결함 내용, 위치, 정도를 적어 주세요…",
+    "noInspections": "진행 중인 점검이 없습니다. 먼저 점검을 예약하세요.",
+    "run": "진행",
+    "lockedCompleted": "{{date}}에 {{name}}님이 완료했습니다. 보고서는 변경할 수 없습니다.",
+    "lockedCancelled": "취소됨: {{reason}}",
+    "tenantAcceptance": "임차인 확인",
+    "acceptedOn": "임차인이 {{date}}에 확인함",
+    "youAccepted": "{{date}}에 이 보고서를 확인했습니다",
+    "toAccept": "확인 필요",
+    "accepted": "확인됨",
+    "accept": "보고서 확인",
+    "acceptHint": "확인하면 이 보고서를 읽었음을 의미합니다. 잘못된 부분이 있으면 의견을 남겨 주세요.",
+    "commentPlaceholder": "의견(선택)",
+    "acceptedToast": "보고서를 확인했습니다.",
+    "scheduledFor": "{{date}} 예정",
+    "scheduledHint": "점검이 {{date}}에 예정되어 있습니다. 점검자가 완료하면 여기에 보고서가 표시됩니다.",
+    "viewReport": "보고서 보기",
+    "unchecked": "확인 안 됨",
+    "condition": {
+      "good": "양호",
+      "fair": "보통",
+      "damaged": "파손",
+      "notApplicable": "해당 없음",
+      "unchecked": "확인 안 됨"
+    },
+    "status": {
+      "Scheduled": "예정됨",
+      "InProgress": "진행 중",
+      "Completed": "완료",
+      "Cancelled": "취소됨"
+    },
+    "type": {
+      "MoveIn": "입주",
+      "MoveOut": "퇴거",
+      "Routine": "정기",
+      "Emergency": "긴급"
+    },
+    "areas": {
+      "livingRoom": "거실",
+      "kitchen": "주방",
+      "bathrooms": "욕실",
+      "bedrooms": "침실",
+      "systems": "설비",
+      "handover": "인도"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "벽, 천장 및 도장",
+        "flooring": "바닥 및 걸레받이",
+        "windows": "창문, 유리 및 손잡이"
+      },
+      "kitchen": {
+        "cabinets": "수납장, 조리대 및 싱크대",
+        "appliances": "임대인 제공 가전"
+      },
+      "bathrooms": {
+        "sanitary": "위생도기 및 수전"
+      },
+      "bedrooms": {
+        "wardrobes": "붙박이장, 문 및 잠금장치"
+      },
+      "systems": {
+        "airConditioning": "에어컨",
+        "electrical": "전기 콘센트 및 조명"
+      },
+      "handover": {
+        "keys": "열쇠, 출입 카드 및 리모컨"
+      }
+    },
+    "updated": "점검을(를) 수정했습니다"
   }
 }

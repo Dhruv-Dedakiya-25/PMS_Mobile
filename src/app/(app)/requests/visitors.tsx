@@ -42,8 +42,8 @@ export default function Visitors() {
       router.push({ pathname: '/requests/visitor-pass/[id]', params: { id } });
     } catch (e) {
       const reason = e instanceof Error ? e.message : '';
-      if (Platform.OS === 'web') window.alert(reason || t('common.errorLoad'));
-      else Alert.alert(t('common.errorLoad'), reason);
+      if (Platform.OS === 'web') window.alert(reason || t('visit.generate'));
+      else Alert.alert(t('visit.generate'), reason || undefined);
     } finally {
       setSending(false);
     }

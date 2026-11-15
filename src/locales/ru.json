@@ -12,7 +12,8 @@
     "loading": "Загрузка…",
     "errorLoad": "Не удалось загрузить данные. Пожалуйста, попробуйте снова.",
     "retry": "Повторить",
-    "select": "Выбрать…"
+    "select": "Выбрать…",
+    "cancel": "Отмена"
   },
   "tabs": {
     "dashboard": "Главная",
@@ -502,6 +503,7 @@
       "guestParking": "Гостевая парковка"
     },
     "myBookings": "Мои брони",
+    "pastBookings": "Прошлые брони",
     "bookASpace": "Забронировать",
     "perSlot": "{{amount}} за слот",
     "capacity_one": "До {{count}} человека",
@@ -518,7 +520,34 @@
     "book": "Забронировать",
     "bookFor": "Забронировать за {{amount}}",
     "fewer": "Меньше гостей",
-    "more": "Больше гостей"
+    "more": "Больше гостей",
+    "statusValues": {
+      "pending": "В ожидании",
+      "confirmed": "Подтверждено",
+      "rejected": "Отклонено",
+      "cancelled": "Отменён"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "В вашем здании пока нет доступных для бронирования объектов.",
+    "noSlots": "No slots available on this date.",
+    "reference": "Ссылка",
+    "fee": "Сбор",
+    "notes": "Заметки",
+    "notesPlaceholder": "Optional notes",
+    "reason": "Причина",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "Ожидает утверждения",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "Заселение / Выезд",
@@ -565,7 +594,23 @@
     "refundDue": "Возврат",
     "afterHandover": "После передачи",
     "notStarted": "Не начато",
-    "giveNotice": "Уведомить о выезде"
+    "giveNotice": "Уведомить о выезде",
+    "remotes": "Пульты парковки",
+    "mailboxKeys": "Ключи от почтового ящика",
+    "chillerMeter": "Чиллер (Счётчик воды)",
+    "noMoveIn": "Отчётов об осмотрах пока нет.",
+    "noMoveOut": "Отчётов об осмотрах пока нет.",
+    "damageCharges": "Начисления за ущерб",
+    "summary": "Итоговые заметки",
+    "accept": "Подтвердить отчёт",
+    "acceptHint": "Подтверждая, вы сообщаете, что прочитали отчёт. Добавьте комментарий, если что-то не так.",
+    "commentPlaceholder": "Комментарий (необязательно)",
+    "acceptedToast": "Отчёт подтверждён.",
+    "youAccepted": "Вы подтвердили этот отчёт {{date}}",
+    "acceptedOn": "Подтверждено арендатором {{date}}",
+    "scheduledFor": "Назначен на {{date}}",
+    "scheduledHint": "Ваш осмотр назначен на {{date}}. Отчёт появится здесь, когда инспектор его завершит.",
+    "viewReport": "Открыть отчёт"
   },
   "access": {
     "title": "Цифровой доступ",
@@ -824,5 +869,116 @@
     "reasonNeeded": "Укажите причину возврата или отклонения. Заявитель её увидит.",
     "othersTurn": "Ждёт {{names}} на шаге {{n}}. Вы можете следить за ней здесь; решать могут только они.",
     "empty": "Ничто не ждёт вашего решения."
+  },
+  "inspection": {
+    "title": "Отчёты об осмотрах",
+    "inspections": "Осмотры",
+    "checklist": "Каждый пункт с состоянием, начислением и заявкой",
+    "readingsHandover": "Показания и передача",
+    "summary": "Итоговые заметки",
+    "keys": "Ключи",
+    "accessCards": "Карты доступа",
+    "parkingRemotes": "Пульты парковки",
+    "mailboxKeys": "Ключи от почтового ящика",
+    "electricityMeter": "Счётчик электричества",
+    "waterMeter": "Счётчик воды",
+    "chillerMeter": "Чиллер (Счётчик воды)",
+    "save": "Сохранить",
+    "complete": "Завершить осмотр",
+    "completeHint": "После этого отчёт нельзя будет изменить.",
+    "completeTitle": "Завершить осмотр {{number}}?",
+    "completed": "Осмотр {{number}} завершён.",
+    "cancel": "Отменить осмотр",
+    "cancelTitle": "Отменить осмотр {{number}}",
+    "reason": "Причина",
+    "cancelled": "Осмотр отменён.",
+    "raiseTicket": "Создать заявку",
+    "raiseTicketFor": "Создать заявку: {{name}}",
+    "ticketRaised": "Заявка создана.",
+    "ticket": "Заявка",
+    "category": "Категория",
+    "priority": "Приоритет",
+    "addItem": "Добавить пункт",
+    "removeItem": "Удалить пункт",
+    "removeItemTitle": "Удалить «{{name}}» из чек-листа?",
+    "area": "Зона",
+    "item": "Пункт",
+    "name": "Название",
+    "addPhoto": "Photos",
+    "removePhoto": "Удалить фото",
+    "photoLimit": "До 4 фото на пункт",
+    "charge": "Начисление",
+    "chargeTotal": "Начисления за ущерб",
+    "inspector": "Инспектор",
+    "notePlaceholder": "Опишите дефект, его расположение и серьёзность…",
+    "noInspections": "Открытых осмотров нет. Запланируйте осмотр, чтобы начать.",
+    "run": "Провести",
+    "lockedCompleted": "Завершён {{date}}, {{name}}. Отчёт нельзя изменить.",
+    "lockedCancelled": "Отменён: {{reason}}",
+    "tenantAcceptance": "Подтверждение арендатора",
+    "acceptedOn": "Подтверждено арендатором {{date}}",
+    "youAccepted": "Вы подтвердили этот отчёт {{date}}",
+    "toAccept": "Нужно подтвердить",
+    "accepted": "Подтверждено",
+    "accept": "Подтвердить отчёт",
+    "acceptHint": "Подтверждая, вы сообщаете, что прочитали отчёт. Добавьте комментарий, если что-то не так.",
+    "commentPlaceholder": "Комментарий (необязательно)",
+    "acceptedToast": "Отчёт подтверждён.",
+    "scheduledFor": "Назначен на {{date}}",
+    "scheduledHint": "Ваш осмотр назначен на {{date}}. Отчёт появится здесь, когда инспектор его завершит.",
+    "viewReport": "Открыть отчёт",
+    "unchecked": "Не проверено",
+    "condition": {
+      "good": "Хорошо",
+      "fair": "Удовлетворительно",
+      "damaged": "Повреждено",
+      "notApplicable": "Не применимо",
+      "unchecked": "Не проверено"
+    },
+    "status": {
+      "Scheduled": "Запланирован",
+      "InProgress": "В работе",
+      "Completed": "Выполнен",
+      "Cancelled": "Отменён"
+    },
+    "type": {
+      "MoveIn": "Заселение",
+      "MoveOut": "Выезд",
+      "Routine": "Плановое",
+      "Emergency": "Аварийная ситуация"
+    },
+    "areas": {
+      "livingRoom": "Гостиная",
+      "kitchen": "Кухня",
+      "bathrooms": "Ванные комнаты",
+      "bedrooms": "Спальни",
+      "systems": "Инженерные системы",
+      "handover": "Передача"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "Стены, потолок и покраска",
+        "flooring": "Пол и плинтусы",
+        "windows": "Окна, стёкла и ручки"
+      },
+      "kitchen": {
+        "cabinets": "Шкафы, столешницы и мойка",
+        "appliances": "Техника от арендодателя"
+      },
+      "bathrooms": {
+        "sanitary": "Сантехника и арматура"
+      },
+      "bedrooms": {
+        "wardrobes": "Шкафы, двери и замки"
+      },
+      "systems": {
+        "airConditioning": "Кондиционирование",
+        "electrical": "Розетки и освещение"
+      },
+      "handover": {
+        "keys": "Ключи, карты доступа и пульты"
+      }
+    },
+    "updated": "Осмотр обновлён"
   }
 }

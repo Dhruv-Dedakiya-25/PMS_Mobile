@@ -12,7 +12,8 @@
     "loading": "Завантаження…",
     "errorLoad": "Не вдалося завантажити дані. Спробуйте ще раз.",
     "retry": "Повторити",
-    "select": "Вибрати…"
+    "select": "Вибрати…",
+    "cancel": "Скасувати"
   },
   "tabs": {
     "dashboard": "Головна",
@@ -502,6 +503,7 @@
       "guestParking": "Гостьова парковка"
     },
     "myBookings": "Мої бронювання",
+    "pastBookings": "Минулі бронювання",
     "bookASpace": "Забронювати",
     "perSlot": "{{amount}} за слот",
     "capacity_one": "До {{count}} особи",
@@ -518,7 +520,34 @@
     "book": "Забронювати",
     "bookFor": "Забронювати за {{amount}}",
     "fewer": "Менше гостей",
-    "more": "Більше гостей"
+    "more": "Більше гостей",
+    "statusValues": {
+      "pending": "На розгляді",
+      "confirmed": "Підтверджено",
+      "rejected": "Відхилено",
+      "cancelled": "Скасовано"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "У вашому будинку поки немає об’єктів, доступних для бронювання.",
+    "noSlots": "No slots available on this date.",
+    "reference": "Посилання",
+    "fee": "Збір",
+    "notes": "Примітки",
+    "notesPlaceholder": "Optional notes",
+    "reason": "Причина",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "Очікує затвердження",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "Заселення / Виїзд",
@@ -565,7 +594,23 @@
     "refundDue": "Повернення",
     "afterHandover": "Після передачі",
     "notStarted": "Не розпочато",
-    "giveNotice": "Повідомити про виїзд"
+    "giveNotice": "Повідомити про виїзд",
+    "remotes": "Пульти паркінгу",
+    "mailboxKeys": "Ключі від поштової скриньки",
+    "chillerMeter": "Чилер (Лічильник води)",
+    "noMoveIn": "Звітів про огляди поки немає.",
+    "noMoveOut": "Звітів про огляди поки немає.",
+    "damageCharges": "Нарахування за пошкодження",
+    "summary": "Підсумкові нотатки",
+    "accept": "Підтвердити звіт",
+    "acceptHint": "Підтверджуючи, ви повідомляєте, що прочитали звіт. Додайте коментар, якщо щось не так.",
+    "commentPlaceholder": "Коментар (необов'язково)",
+    "acceptedToast": "Звіт підтверджено.",
+    "youAccepted": "Ви підтвердили цей звіт {{date}}",
+    "acceptedOn": "Підтверджено орендарем {{date}}",
+    "scheduledFor": "Призначено на {{date}}",
+    "scheduledHint": "Ваш огляд призначено на {{date}}. Звіт з'явиться тут, коли інспектор його завершить.",
+    "viewReport": "Переглянути звіт"
   },
   "access": {
     "title": "Цифровий доступ",
@@ -824,5 +869,116 @@
     "reasonNeeded": "Вкажіть причину повернення або відхилення. Заявник її побачить.",
     "othersTurn": "Чекає на {{names}} на кроці {{n}}. Ви можете стежити тут; вирішувати можуть лише вони.",
     "empty": "Ніщо не чекає на ваше рішення."
+  },
+  "inspection": {
+    "title": "Звіти про огляди",
+    "inspections": "Інспекції",
+    "checklist": "Кожен пункт зі станом, нарахуванням і заявкою",
+    "readingsHandover": "Показники та передання",
+    "summary": "Підсумкові нотатки",
+    "keys": "Ключі",
+    "accessCards": "Картки доступу",
+    "parkingRemotes": "Пульти паркінгу",
+    "mailboxKeys": "Ключі від поштової скриньки",
+    "electricityMeter": "Лічильник електроенергії",
+    "waterMeter": "Лічильник води",
+    "chillerMeter": "Чилер (Лічильник води)",
+    "save": "Зберегти",
+    "complete": "Завершити огляд",
+    "completeHint": "Після цього звіт не можна буде змінити.",
+    "completeTitle": "Завершити огляд {{number}}?",
+    "completed": "Огляд {{number}} завершено.",
+    "cancel": "Скасувати огляд",
+    "cancelTitle": "Скасувати огляд {{number}}",
+    "reason": "Причина",
+    "cancelled": "Огляд скасовано.",
+    "raiseTicket": "Створити заявку",
+    "raiseTicketFor": "Створити заявку: {{name}}",
+    "ticketRaised": "Заявку створено.",
+    "ticket": "Заявка",
+    "category": "Категорія",
+    "priority": "Пріоритет",
+    "addItem": "Додати пункт",
+    "removeItem": "Вилучити пункт",
+    "removeItemTitle": "Вилучити «{{name}}» з чек-листа?",
+    "area": "Зона",
+    "item": "Пункт",
+    "name": "Назва",
+    "addPhoto": "Photos",
+    "removePhoto": "Вилучити фото",
+    "photoLimit": "До 4 фото на пункт",
+    "charge": "Нарахування",
+    "chargeTotal": "Нарахування за пошкодження",
+    "inspector": "Інспектор",
+    "notePlaceholder": "Опишіть дефект, його розташування та серйозність…",
+    "noInspections": "Відкритих оглядів немає. Заплануйте огляд, щоб почати.",
+    "run": "Провести",
+    "lockedCompleted": "Завершено {{date}}, {{name}}. Звіт не можна змінити.",
+    "lockedCancelled": "Скасовано: {{reason}}",
+    "tenantAcceptance": "Підтвердження орендаря",
+    "acceptedOn": "Підтверджено орендарем {{date}}",
+    "youAccepted": "Ви підтвердили цей звіт {{date}}",
+    "toAccept": "Потрібно підтвердити",
+    "accepted": "Підтверджено",
+    "accept": "Підтвердити звіт",
+    "acceptHint": "Підтверджуючи, ви повідомляєте, що прочитали звіт. Додайте коментар, якщо щось не так.",
+    "commentPlaceholder": "Коментар (необов'язково)",
+    "acceptedToast": "Звіт підтверджено.",
+    "scheduledFor": "Призначено на {{date}}",
+    "scheduledHint": "Ваш огляд призначено на {{date}}. Звіт з'явиться тут, коли інспектор його завершить.",
+    "viewReport": "Переглянути звіт",
+    "unchecked": "Не перевірено",
+    "condition": {
+      "good": "Добре",
+      "fair": "Задовільно",
+      "damaged": "Пошкоджено",
+      "notApplicable": "Не застосовується",
+      "unchecked": "Не перевірено"
+    },
+    "status": {
+      "Scheduled": "Заплановано",
+      "InProgress": "У роботі",
+      "Completed": "Виконано",
+      "Cancelled": "Скасовано"
+    },
+    "type": {
+      "MoveIn": "Заселення",
+      "MoveOut": "Виїзд",
+      "Routine": "Планове",
+      "Emergency": "Аварійна"
+    },
+    "areas": {
+      "livingRoom": "Вітальня",
+      "kitchen": "Кухня",
+      "bathrooms": "Ванні кімнати",
+      "bedrooms": "Спальні",
+      "systems": "Інженерні системи",
+      "handover": "Передання"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "Стіни, стеля та фарбування",
+        "flooring": "Підлога та плінтуси",
+        "windows": "Вікна, скло та ручки"
+      },
+      "kitchen": {
+        "cabinets": "Шафи, стільниці та мийка",
+        "appliances": "Техніка від орендодавця"
+      },
+      "bathrooms": {
+        "sanitary": "Сантехніка та арматура"
+      },
+      "bedrooms": {
+        "wardrobes": "Шафи, двері та замки"
+      },
+      "systems": {
+        "airConditioning": "Кондиціонування",
+        "electrical": "Розетки та освітлення"
+      },
+      "handover": {
+        "keys": "Ключі, картки доступу та пульти"
+      }
+    },
+    "updated": "Інспекція оновлено"
   }
 }

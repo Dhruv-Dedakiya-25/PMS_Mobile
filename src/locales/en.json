@@ -12,7 +12,8 @@
     "loading": "Loading…",
     "errorLoad": "Could not load your information. Please try again.",
     "retry": "Retry",
-    "select": "Select…"
+    "select": "Select…",
+    "cancel": "Cancel"
   },
   "tabs": {
     "dashboard": "Dashboard",
@@ -470,6 +471,7 @@
       "guestParking": "Guest Parking"
     },
     "myBookings": "My bookings",
+    "pastBookings": "Past bookings",
     "bookASpace": "Book a space",
     "perSlot": "{{amount}} per slot",
     "capacity_one": "Up to {{count}} person",
@@ -484,7 +486,34 @@
     "book": "Book Now",
     "bookFor": "Book for {{amount}}",
     "fewer": "Fewer guests",
-    "more": "More guests"
+    "more": "More guests",
+    "statusValues": {
+      "pending": "Pending",
+      "confirmed": "Confirmed",
+      "rejected": "Rejected",
+      "cancelled": "Cancelled"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "No facilities can be booked at your building yet.",
+    "noSlots": "No slots available on this date.",
+    "reference": "Reference",
+    "fee": "Fee",
+    "notes": "Notes",
+    "notesPlaceholder": "Optional notes",
+    "reason": "Reason",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "Pending Approval",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "Move‑in / Move‑out",
@@ -531,7 +560,23 @@
     "refundDue": "Refund",
     "afterHandover": "After handover",
     "notStarted": "Not started",
-    "giveNotice": "Give Notice"
+    "giveNotice": "Give Notice",
+    "remotes": "Parking remotes",
+    "mailboxKeys": "Mailbox keys",
+    "chillerMeter": "Chiller meter",
+    "noMoveIn": "No inspection reports yet.",
+    "noMoveOut": "No inspection reports yet.",
+    "damageCharges": "Damage charges",
+    "summary": "Summary notes",
+    "accept": "Accept report",
+    "acceptHint": "Accepting confirms you have read this report. Add a comment if anything looks wrong.",
+    "commentPlaceholder": "Optional comment",
+    "acceptedToast": "Report accepted.",
+    "youAccepted": "You accepted this report on {{date}}",
+    "acceptedOn": "Accepted by the tenant on {{date}}",
+    "scheduledFor": "Booked for {{date}}",
+    "scheduledHint": "Your inspection is booked for {{date}}. The report shows here once the inspector completes it.",
+    "viewReport": "View report"
   },
   "access": {
     "title": "Digital Access",
@@ -788,5 +833,116 @@
     "reasonNeeded": "Give a reason to return or reject. The requester will see it.",
     "othersTurn": "Waiting for {{names}} at step {{n}}. You can follow it here; only they can decide it.",
     "empty": "Nothing is waiting for your decision."
+  },
+  "inspection": {
+    "title": "Inspection reports",
+    "inspections": "Inspections",
+    "checklist": "Every checklist item with its condition, charge and ticket",
+    "readingsHandover": "Readings and handover",
+    "summary": "Summary notes",
+    "keys": "Keys",
+    "accessCards": "Access cards",
+    "parkingRemotes": "Parking remotes",
+    "mailboxKeys": "Mailbox keys",
+    "electricityMeter": "Electricity meter",
+    "waterMeter": "Water meter",
+    "chillerMeter": "Chiller meter",
+    "save": "Save",
+    "complete": "Complete inspection",
+    "completeHint": "The report can't be changed afterwards.",
+    "completeTitle": "Complete inspection {{number}}?",
+    "completed": "Inspection {{number}} completed.",
+    "cancel": "Cancel inspection",
+    "cancelTitle": "Cancel inspection {{number}}",
+    "reason": "Reason",
+    "cancelled": "Inspection cancelled.",
+    "raiseTicket": "Raise ticket",
+    "raiseTicketFor": "Raise a ticket for {{name}}",
+    "ticketRaised": "Ticket raised.",
+    "ticket": "Ticket",
+    "category": "Category",
+    "priority": "Priority",
+    "addItem": "Add item",
+    "removeItem": "Remove item",
+    "removeItemTitle": "Remove \"{{name}}\" from the checklist?",
+    "area": "Area",
+    "item": "Item",
+    "name": "Name",
+    "addPhoto": "Photos",
+    "removePhoto": "Remove photo",
+    "photoLimit": "Up to 4 photos per item",
+    "charge": "Charge",
+    "chargeTotal": "Damage charges",
+    "inspector": "Inspector",
+    "notePlaceholder": "Describe the defect, location and severity…",
+    "noInspections": "No inspections are open. Schedule one to start.",
+    "run": "Run",
+    "lockedCompleted": "Completed {{date}} by {{name}}. The report can't be changed.",
+    "lockedCancelled": "Cancelled: {{reason}}",
+    "tenantAcceptance": "Tenant acceptance",
+    "acceptedOn": "Accepted by the tenant on {{date}}",
+    "youAccepted": "You accepted this report on {{date}}",
+    "toAccept": "To accept",
+    "accepted": "Accepted",
+    "accept": "Accept report",
+    "acceptHint": "Accepting confirms you have read this report. Add a comment if anything looks wrong.",
+    "commentPlaceholder": "Optional comment",
+    "acceptedToast": "Report accepted.",
+    "scheduledFor": "Booked for {{date}}",
+    "scheduledHint": "Your inspection is booked for {{date}}. The report shows here once the inspector completes it.",
+    "viewReport": "View report",
+    "unchecked": "Not checked",
+    "condition": {
+      "good": "Good",
+      "fair": "Fair",
+      "damaged": "Damaged",
+      "notApplicable": "Not applicable",
+      "unchecked": "Not checked"
+    },
+    "status": {
+      "Scheduled": "Scheduled",
+      "InProgress": "In progress",
+      "Completed": "Completed",
+      "Cancelled": "Cancelled"
+    },
+    "type": {
+      "MoveIn": "Move-in",
+      "MoveOut": "Move-out",
+      "Routine": "Routine",
+      "Emergency": "Emergency"
+    },
+    "areas": {
+      "livingRoom": "Living Room",
+      "kitchen": "Kitchen",
+      "bathrooms": "Bathrooms",
+      "bedrooms": "Bedrooms",
+      "systems": "Systems",
+      "handover": "Handover"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "Walls, ceiling and paint",
+        "flooring": "Flooring and skirting",
+        "windows": "Windows, glass and handles"
+      },
+      "kitchen": {
+        "cabinets": "Cabinets, counters and sink",
+        "appliances": "Appliances supplied by landlord"
+      },
+      "bathrooms": {
+        "sanitary": "Sanitary ware and fittings"
+      },
+      "bedrooms": {
+        "wardrobes": "Wardrobes, doors and locks"
+      },
+      "systems": {
+        "airConditioning": "Air conditioning",
+        "electrical": "Electrical points and lighting"
+      },
+      "handover": {
+        "keys": "Keys, access cards and remotes"
+      }
+    },
+    "updated": "Inspection updated"
   }
 }

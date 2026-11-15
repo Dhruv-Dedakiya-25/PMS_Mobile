@@ -58,6 +58,7 @@ const RULES: Record<UserType, Record<string, Access | null>> = {
     'staff/requisition': 'edit',
     // A maintenance account can be a step's approver.
     'staff/approvals': 'edit',
+    'staff/inspection': 'edit',
     profile: 'full',
     language: 'full',
     done: 'full',
@@ -92,6 +93,7 @@ const MODULES: Record<string, string> = {
   'staff/announcement': 'Announcement',
   'staff/inventory': 'Inventory',
   'staff/requisition': 'Inventory',
+  'staff/inspection': 'Inspection',
 };
 
 const RANK: Record<Access, number> = { view: 1, edit: 2, full: 3 };

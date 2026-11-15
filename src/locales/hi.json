@@ -12,7 +12,8 @@
     "loading": "लोड हो रहा है…",
     "errorLoad": "आपकी जानकारी लोड नहीं हो सकी। कृपया पुनः प्रयास करें।",
     "retry": "पुनः प्रयास करें",
-    "select": "चुनें…"
+    "select": "चुनें…",
+    "cancel": "रद्द करें"
   },
   "tabs": {
     "dashboard": "डैशबोर्ड",
@@ -470,6 +471,7 @@
       "guestParking": "अतिथि पार्किंग"
     },
     "myBookings": "मेरी बुकिंग",
+    "pastBookings": "पिछली बुकिंग",
     "bookASpace": "जगह बुक करें",
     "perSlot": "प्रति स्लॉट {{amount}}",
     "capacity_one": "{{count}} व्यक्ति तक",
@@ -484,7 +486,34 @@
     "book": "अभी बुक करें",
     "bookFor": "{{amount}} में बुक करें",
     "fewer": "कम मेहमान",
-    "more": "ज़्यादा मेहमान"
+    "more": "ज़्यादा मेहमान",
+    "statusValues": {
+      "pending": "लंबित",
+      "confirmed": "पुष्टि की गई",
+      "rejected": "अस्वीकृत",
+      "cancelled": "रद्द"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "आपकी इमारत में अभी कोई सुविधा बुक नहीं की जा सकती है।",
+    "noSlots": "No slots available on this date.",
+    "reference": "संदर्भ",
+    "fee": "शुल्क",
+    "notes": "नोट्स",
+    "notesPlaceholder": "Optional notes",
+    "reason": "कारण",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "अनुमोदन लंबित",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "आगमन / प्रस्थान",
@@ -531,7 +560,23 @@
     "refundDue": "वापसी",
     "afterHandover": "हैंडओवर के बाद",
     "notStarted": "शुरू नहीं हुआ",
-    "giveNotice": "नोटिस दें"
+    "giveNotice": "नोटिस दें",
+    "remotes": "पार्किंग रिमोट",
+    "mailboxKeys": "मेलबॉक्स चाबियाँ",
+    "chillerMeter": "चिलर (पानी मीटर)",
+    "noMoveIn": "अभी कोई निरीक्षण रिपोर्ट नहीं है।",
+    "noMoveOut": "अभी कोई निरीक्षण रिपोर्ट नहीं है।",
+    "damageCharges": "क्षति शुल्क",
+    "summary": "सारांश नोट्स",
+    "accept": "रिपोर्ट स्वीकार करें",
+    "acceptHint": "स्वीकार करके आप पुष्टि करते हैं कि आपने यह रिपोर्ट पढ़ ली है। कुछ गलत लगे तो टिप्पणी जोड़ें।",
+    "commentPlaceholder": "वैकल्पिक टिप्पणी",
+    "acceptedToast": "रिपोर्ट स्वीकार की गई।",
+    "youAccepted": "आपने यह रिपोर्ट {{date}} को स्वीकार की",
+    "acceptedOn": "किरायेदार ने {{date}} को स्वीकार किया",
+    "scheduledFor": "{{date}} के लिए निर्धारित",
+    "scheduledHint": "आपका निरीक्षण {{date}} के लिए निर्धारित है। निरीक्षक के पूरा करने पर रिपोर्ट यहाँ दिखेगी।",
+    "viewReport": "रिपोर्ट देखें"
   },
   "access": {
     "title": "डिजिटल एक्सेस",
@@ -788,5 +833,116 @@
     "reasonNeeded": "लौटाने या अस्वीकार करने का कारण दें। अनुरोधकर्ता इसे देखेगा।",
     "othersTurn": "चरण {{n}} पर {{names}} की प्रतीक्षा। आप इसे यहाँ देख सकते हैं; निर्णय केवल वही ले सकते हैं।",
     "empty": "आपके निर्णय की प्रतीक्षा में कुछ नहीं है।"
+  },
+  "inspection": {
+    "title": "निरीक्षण रिपोर्टें",
+    "inspections": "निरीक्षण",
+    "checklist": "हर चेकलिस्ट आइटम उसकी स्थिति, शुल्क और टिकट के साथ",
+    "readingsHandover": "रीडिंग और हस्तांतरण",
+    "summary": "सारांश नोट्स",
+    "keys": "चाबियाँ",
+    "accessCards": "एक्सेस कार्ड",
+    "parkingRemotes": "पार्किंग रिमोट",
+    "mailboxKeys": "मेलबॉक्स चाबियाँ",
+    "electricityMeter": "बिजली मीटर",
+    "waterMeter": "पानी मीटर",
+    "chillerMeter": "चिलर (पानी मीटर)",
+    "save": "सहेजें",
+    "complete": "निरीक्षण पूरा करें",
+    "completeHint": "इसके बाद रिपोर्ट बदली नहीं जा सकेगी।",
+    "completeTitle": "निरीक्षण {{number}} पूरा करें?",
+    "completed": "निरीक्षण {{number}} पूरा हुआ।",
+    "cancel": "निरीक्षण रद्द करें",
+    "cancelTitle": "निरीक्षण {{number}} रद्द करें",
+    "reason": "कारण",
+    "cancelled": "निरीक्षण रद्द हुआ।",
+    "raiseTicket": "टिकट बनाएँ",
+    "raiseTicketFor": "{{name}} के लिए टिकट बनाएँ",
+    "ticketRaised": "टिकट बन गया।",
+    "ticket": "टिकट",
+    "category": "श्रेणी",
+    "priority": "प्राथमिकता",
+    "addItem": "आइटम जोड़ें",
+    "removeItem": "आइटम हटाएँ",
+    "removeItemTitle": "\"{{name}}\" को चेकलिस्ट से हटाएँ?",
+    "area": "क्षेत्र",
+    "item": "आइटम",
+    "name": "नाम",
+    "addPhoto": "Photos",
+    "removePhoto": "फ़ोटो हटाएँ",
+    "photoLimit": "प्रति आइटम अधिकतम 4 फ़ोटो",
+    "charge": "शुल्क",
+    "chargeTotal": "क्षति शुल्क",
+    "inspector": "निरीक्षक",
+    "notePlaceholder": "दोष, उसका स्थान और गंभीरता बताएँ…",
+    "noInspections": "कोई खुला निरीक्षण नहीं है। शुरू करने के लिए एक निर्धारित करें।",
+    "run": "करें",
+    "lockedCompleted": "{{date}} को {{name}} द्वारा पूरा किया गया। रिपोर्ट बदली नहीं जा सकती।",
+    "lockedCancelled": "रद्द: {{reason}}",
+    "tenantAcceptance": "किरायेदार की स्वीकृति",
+    "acceptedOn": "किरायेदार ने {{date}} को स्वीकार किया",
+    "youAccepted": "आपने यह रिपोर्ट {{date}} को स्वीकार की",
+    "toAccept": "स्वीकार करना है",
+    "accepted": "स्वीकृत",
+    "accept": "रिपोर्ट स्वीकार करें",
+    "acceptHint": "स्वीकार करके आप पुष्टि करते हैं कि आपने यह रिपोर्ट पढ़ ली है। कुछ गलत लगे तो टिप्पणी जोड़ें।",
+    "commentPlaceholder": "वैकल्पिक टिप्पणी",
+    "acceptedToast": "रिपोर्ट स्वीकार की गई।",
+    "scheduledFor": "{{date}} के लिए निर्धारित",
+    "scheduledHint": "आपका निरीक्षण {{date}} के लिए निर्धारित है। निरीक्षक के पूरा करने पर रिपोर्ट यहाँ दिखेगी।",
+    "viewReport": "रिपोर्ट देखें",
+    "unchecked": "जाँचा नहीं गया",
+    "condition": {
+      "good": "अच्छा",
+      "fair": "ठीक",
+      "damaged": "क्षतिग्रस्त",
+      "notApplicable": "लागू नहीं",
+      "unchecked": "जाँचा नहीं गया"
+    },
+    "status": {
+      "Scheduled": "निर्धारित",
+      "InProgress": "प्रगति में",
+      "Completed": "पूर्ण",
+      "Cancelled": "रद्द"
+    },
+    "type": {
+      "MoveIn": "आगमन",
+      "MoveOut": "प्रस्थान",
+      "Routine": "नियमित",
+      "Emergency": "आपातकालीन"
+    },
+    "areas": {
+      "livingRoom": "बैठक कक्ष",
+      "kitchen": "रसोई",
+      "bathrooms": "स्नानघर",
+      "bedrooms": "शयनकक्ष",
+      "systems": "प्रणालियाँ",
+      "handover": "हस्तांतरण"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "दीवारें, छत और पेंट",
+        "flooring": "फ़र्श और स्कर्टिंग",
+        "windows": "खिड़कियाँ, काँच और हैंडल"
+      },
+      "kitchen": {
+        "cabinets": "अलमारियाँ, काउंटर और सिंक",
+        "appliances": "मकान मालिक द्वारा दिए उपकरण"
+      },
+      "bathrooms": {
+        "sanitary": "सैनिटरी सामान और फिटिंग"
+      },
+      "bedrooms": {
+        "wardrobes": "वार्डरोब, दरवाज़े और ताले"
+      },
+      "systems": {
+        "airConditioning": "एयर कंडीशनिंग",
+        "electrical": "बिजली के सॉकेट और रोशनी"
+      },
+      "handover": {
+        "keys": "चाबियाँ, एक्सेस कार्ड और रिमोट"
+      }
+    },
+    "updated": "निरीक्षण अद्यतन किया गया"
   }
 }

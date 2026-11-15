@@ -12,7 +12,8 @@
     "loading": "Memuat…",
     "errorLoad": "Tidak dapat memuat informasi Anda. Silakan coba lagi.",
     "retry": "Coba Lagi",
-    "select": "Pilih…"
+    "select": "Pilih…",
+    "cancel": "Batal"
   },
   "tabs": {
     "dashboard": "Beranda",
@@ -470,6 +471,7 @@
       "guestParking": "Parkir tamu"
     },
     "myBookings": "Pemesanan saya",
+    "pastBookings": "Pemesanan sebelumnya",
     "bookASpace": "Pesan tempat",
     "perSlot": "{{amount}} per sesi",
     "capacity_one": "Hingga {{count}} orang",
@@ -484,7 +486,34 @@
     "book": "Pesan sekarang",
     "bookFor": "Pesan seharga {{amount}}",
     "fewer": "Kurangi tamu",
-    "more": "Tambah tamu"
+    "more": "Tambah tamu",
+    "statusValues": {
+      "pending": "Menunggu",
+      "confirmed": "Dikonfirmasi",
+      "rejected": "Ditolak",
+      "cancelled": "Dibatalkan"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "Belum ada fasilitas yang dapat dipesan di gedung Anda.",
+    "noSlots": "No slots available on this date.",
+    "reference": "Referensi",
+    "fee": "Biaya",
+    "notes": "Catatan",
+    "notesPlaceholder": "Optional notes",
+    "reason": "Alasan",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "Menunggu persetujuan",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "Pindah masuk / keluar",
@@ -531,7 +560,23 @@
     "refundDue": "Pengembalian",
     "afterHandover": "Setelah serah terima",
     "notStarted": "Belum dimulai",
-    "giveNotice": "Beri pemberitahuan"
+    "giveNotice": "Beri pemberitahuan",
+    "remotes": "Remote parkir",
+    "mailboxKeys": "Kunci kotak surat",
+    "chillerMeter": "Chiller (Meter air)",
+    "noMoveIn": "Belum ada laporan inspeksi.",
+    "noMoveOut": "Belum ada laporan inspeksi.",
+    "damageCharges": "Biaya kerusakan",
+    "summary": "Catatan ringkasan",
+    "accept": "Setujui laporan",
+    "acceptHint": "Dengan menyetujui, Anda menyatakan telah membaca laporan ini. Tambahkan komentar jika ada yang tidak sesuai.",
+    "commentPlaceholder": "Komentar opsional",
+    "acceptedToast": "Laporan disetujui.",
+    "youAccepted": "Anda menyetujui laporan ini pada {{date}}",
+    "acceptedOn": "Disetujui penyewa pada {{date}}",
+    "scheduledFor": "Dijadwalkan {{date}}",
+    "scheduledHint": "Inspeksi Anda dijadwalkan pada {{date}}. Laporan akan muncul di sini setelah pemeriksa menyelesaikannya.",
+    "viewReport": "Lihat laporan"
   },
   "access": {
     "title": "Akses digital",
@@ -788,5 +833,116 @@
     "reasonNeeded": "Berikan alasan untuk mengembalikan atau menolak. Pemohon akan melihatnya.",
     "othersTurn": "Menunggu {{names}} di langkah {{n}}. Anda dapat memantaunya di sini; hanya mereka yang dapat memutuskan.",
     "empty": "Tidak ada yang menunggu keputusan Anda."
+  },
+  "inspection": {
+    "title": "Laporan inspeksi",
+    "inspections": "Inspeksi",
+    "checklist": "Setiap item daftar periksa dengan kondisi, biaya, dan tiketnya",
+    "readingsHandover": "Meteran dan serah terima",
+    "summary": "Catatan ringkasan",
+    "keys": "Kunci",
+    "accessCards": "Kartu akses",
+    "parkingRemotes": "Remote parkir",
+    "mailboxKeys": "Kunci kotak surat",
+    "electricityMeter": "Meter listrik",
+    "waterMeter": "Meter air",
+    "chillerMeter": "Chiller (Meter air)",
+    "save": "Simpan",
+    "complete": "Selesaikan inspeksi",
+    "completeHint": "Laporan tidak dapat diubah setelahnya.",
+    "completeTitle": "Selesaikan inspeksi {{number}}?",
+    "completed": "Inspeksi {{number}} selesai.",
+    "cancel": "Batalkan inspeksi",
+    "cancelTitle": "Batalkan inspeksi {{number}}",
+    "reason": "Alasan",
+    "cancelled": "Inspeksi dibatalkan.",
+    "raiseTicket": "Buat tiket",
+    "raiseTicketFor": "Buat tiket untuk {{name}}",
+    "ticketRaised": "Tiket dibuat.",
+    "ticket": "Tiket",
+    "category": "Kategori",
+    "priority": "Prioritas",
+    "addItem": "Tambah item",
+    "removeItem": "Hapus item",
+    "removeItemTitle": "Hapus \"{{name}}\" dari daftar periksa?",
+    "area": "Area",
+    "item": "Item",
+    "name": "Nama",
+    "addPhoto": "Photos",
+    "removePhoto": "Hapus foto",
+    "photoLimit": "Maksimal 4 foto per item",
+    "charge": "Biaya",
+    "chargeTotal": "Biaya kerusakan",
+    "inspector": "Pemeriksa",
+    "notePlaceholder": "Jelaskan kerusakan, lokasi, dan tingkat keparahannya…",
+    "noInspections": "Tidak ada inspeksi terbuka. Jadwalkan satu untuk memulai.",
+    "run": "Jalankan",
+    "lockedCompleted": "Diselesaikan {{date}} oleh {{name}}. Laporan tidak dapat diubah.",
+    "lockedCancelled": "Dibatalkan: {{reason}}",
+    "tenantAcceptance": "Persetujuan penyewa",
+    "acceptedOn": "Disetujui penyewa pada {{date}}",
+    "youAccepted": "Anda menyetujui laporan ini pada {{date}}",
+    "toAccept": "Perlu disetujui",
+    "accepted": "Disetujui",
+    "accept": "Setujui laporan",
+    "acceptHint": "Dengan menyetujui, Anda menyatakan telah membaca laporan ini. Tambahkan komentar jika ada yang tidak sesuai.",
+    "commentPlaceholder": "Komentar opsional",
+    "acceptedToast": "Laporan disetujui.",
+    "scheduledFor": "Dijadwalkan {{date}}",
+    "scheduledHint": "Inspeksi Anda dijadwalkan pada {{date}}. Laporan akan muncul di sini setelah pemeriksa menyelesaikannya.",
+    "viewReport": "Lihat laporan",
+    "unchecked": "Belum diperiksa",
+    "condition": {
+      "good": "Baik",
+      "fair": "Cukup",
+      "damaged": "Rusak",
+      "notApplicable": "Tidak berlaku",
+      "unchecked": "Belum diperiksa"
+    },
+    "status": {
+      "Scheduled": "Terjadwal",
+      "InProgress": "Sedang dikerjakan",
+      "Completed": "Selesai",
+      "Cancelled": "Dibatalkan"
+    },
+    "type": {
+      "MoveIn": "Pindah masuk",
+      "MoveOut": "Pindah keluar",
+      "Routine": "Rutin",
+      "Emergency": "Darurat"
+    },
+    "areas": {
+      "livingRoom": "Ruang tamu",
+      "kitchen": "Dapur",
+      "bathrooms": "Kamar mandi",
+      "bedrooms": "Kamar tidur",
+      "systems": "Sistem",
+      "handover": "Serah terima"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "Dinding, plafon, dan cat",
+        "flooring": "Lantai dan plint",
+        "windows": "Jendela, kaca, dan pegangan"
+      },
+      "kitchen": {
+        "cabinets": "Lemari, meja dapur, dan bak cuci",
+        "appliances": "Peralatan dari pemilik"
+      },
+      "bathrooms": {
+        "sanitary": "Perlengkapan sanitasi dan keran"
+      },
+      "bedrooms": {
+        "wardrobes": "Lemari pakaian, pintu, dan kunci"
+      },
+      "systems": {
+        "airConditioning": "AC",
+        "electrical": "Stopkontak dan lampu"
+      },
+      "handover": {
+        "keys": "Kunci, kartu akses, dan remote"
+      }
+    },
+    "updated": "Inspeksi diperbarui"
   }
 }

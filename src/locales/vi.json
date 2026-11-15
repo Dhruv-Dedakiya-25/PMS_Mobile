@@ -12,7 +12,8 @@
     "loading": "Đang tải…",
     "errorLoad": "Không thể tải thông tin của bạn. Vui lòng thử lại.",
     "retry": "Thử lại",
-    "select": "Chọn…"
+    "select": "Chọn…",
+    "cancel": "Hủy"
   },
   "tabs": {
     "dashboard": "Trang chủ",
@@ -470,6 +471,7 @@
       "guestParking": "Bãi đỗ cho khách"
     },
     "myBookings": "Lượt đặt của tôi",
+    "pastBookings": "Lượt đặt trước đây",
     "bookASpace": "Đặt chỗ",
     "perSlot": "{{amount}} mỗi khung giờ",
     "capacity_one": "Tối đa {{count}} người",
@@ -484,7 +486,34 @@
     "book": "Đặt ngay",
     "bookFor": "Đặt với {{amount}}",
     "fewer": "Bớt khách",
-    "more": "Thêm khách"
+    "more": "Thêm khách",
+    "statusValues": {
+      "pending": "Đang chờ",
+      "confirmed": "Đã xác nhận",
+      "rejected": "Đã từ chối",
+      "cancelled": "Đã hủy"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "Chưa có tiện ích nào có thể đặt tại tòa nhà của bạn.",
+    "noSlots": "No slots available on this date.",
+    "reference": "Tham chiếu",
+    "fee": "Phí",
+    "notes": "Ghi chú",
+    "notesPlaceholder": "Optional notes",
+    "reason": "Lý do",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "Chờ phê duyệt",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "Dọn vào / Dọn đi",
@@ -531,7 +560,23 @@
     "refundDue": "Hoàn tiền",
     "afterHandover": "Sau bàn giao",
     "notStarted": "Chưa bắt đầu",
-    "giveNotice": "Báo trước"
+    "giveNotice": "Báo trước",
+    "remotes": "Điều khiển bãi đỗ xe",
+    "mailboxKeys": "Chìa khóa hộp thư",
+    "chillerMeter": "Chiller (Đồng hồ nước)",
+    "noMoveIn": "Chưa có báo cáo kiểm tra.",
+    "noMoveOut": "Chưa có báo cáo kiểm tra.",
+    "damageCharges": "Phí hư hỏng",
+    "summary": "Ghi chú tóm tắt",
+    "accept": "Xác nhận báo cáo",
+    "acceptHint": "Khi xác nhận, bạn cho biết đã đọc báo cáo này. Hãy thêm nhận xét nếu có gì chưa đúng.",
+    "commentPlaceholder": "Nhận xét (không bắt buộc)",
+    "acceptedToast": "Đã xác nhận báo cáo.",
+    "youAccepted": "Bạn đã xác nhận báo cáo này ngày {{date}}",
+    "acceptedOn": "Người thuê đã xác nhận ngày {{date}}",
+    "scheduledFor": "Đã hẹn vào {{date}}",
+    "scheduledHint": "Buổi kiểm tra của bạn được hẹn vào {{date}}. Báo cáo sẽ hiển thị ở đây khi người kiểm tra hoàn thành.",
+    "viewReport": "Xem báo cáo"
   },
   "access": {
     "title": "Ra vào kỹ thuật số",
@@ -788,5 +833,116 @@
     "reasonNeeded": "Nêu lý do trả lại hoặc từ chối. Người yêu cầu sẽ thấy lý do này.",
     "othersTurn": "Đang chờ {{names}} ở bước {{n}}. Bạn có thể theo dõi tại đây; chỉ họ mới quyết định được.",
     "empty": "Không có gì đang chờ bạn quyết định."
+  },
+  "inspection": {
+    "title": "Báo cáo kiểm tra",
+    "inspections": "Kiểm tra",
+    "checklist": "Mọi mục kiểm tra kèm tình trạng, phí và yêu cầu",
+    "readingsHandover": "Chỉ số và bàn giao",
+    "summary": "Ghi chú tóm tắt",
+    "keys": "Chìa khóa",
+    "accessCards": "Thẻ ra vào",
+    "parkingRemotes": "Điều khiển bãi đỗ xe",
+    "mailboxKeys": "Chìa khóa hộp thư",
+    "electricityMeter": "Đồng hồ điện",
+    "waterMeter": "Đồng hồ nước",
+    "chillerMeter": "Chiller (Đồng hồ nước)",
+    "save": "Lưu",
+    "complete": "Hoàn thành kiểm tra",
+    "completeHint": "Sau đó không thể thay đổi báo cáo.",
+    "completeTitle": "Hoàn thành đợt kiểm tra {{number}}?",
+    "completed": "Đã hoàn thành đợt kiểm tra {{number}}.",
+    "cancel": "Hủy kiểm tra",
+    "cancelTitle": "Hủy đợt kiểm tra {{number}}",
+    "reason": "Lý do",
+    "cancelled": "Đã hủy kiểm tra.",
+    "raiseTicket": "Tạo yêu cầu",
+    "raiseTicketFor": "Tạo yêu cầu cho {{name}}",
+    "ticketRaised": "Đã tạo yêu cầu.",
+    "ticket": "Yêu cầu",
+    "category": "Danh mục",
+    "priority": "Mức độ ưu tiên",
+    "addItem": "Thêm mục",
+    "removeItem": "Xóa mục",
+    "removeItemTitle": "Xóa \"{{name}}\" khỏi danh sách kiểm tra?",
+    "area": "Khu vực",
+    "item": "Mục",
+    "name": "Tên",
+    "addPhoto": "Photos",
+    "removePhoto": "Xóa ảnh",
+    "photoLimit": "Tối đa 4 ảnh mỗi mục",
+    "charge": "Phí",
+    "chargeTotal": "Phí hư hỏng",
+    "inspector": "Người kiểm tra",
+    "notePlaceholder": "Mô tả hư hỏng, vị trí và mức độ…",
+    "noInspections": "Không có đợt kiểm tra nào đang mở. Hãy lên lịch một đợt để bắt đầu.",
+    "run": "Thực hiện",
+    "lockedCompleted": "Hoàn thành ngày {{date}} bởi {{name}}. Không thể thay đổi báo cáo.",
+    "lockedCancelled": "Đã hủy: {{reason}}",
+    "tenantAcceptance": "Xác nhận của người thuê",
+    "acceptedOn": "Người thuê đã xác nhận ngày {{date}}",
+    "youAccepted": "Bạn đã xác nhận báo cáo này ngày {{date}}",
+    "toAccept": "Cần xác nhận",
+    "accepted": "Đã xác nhận",
+    "accept": "Xác nhận báo cáo",
+    "acceptHint": "Khi xác nhận, bạn cho biết đã đọc báo cáo này. Hãy thêm nhận xét nếu có gì chưa đúng.",
+    "commentPlaceholder": "Nhận xét (không bắt buộc)",
+    "acceptedToast": "Đã xác nhận báo cáo.",
+    "scheduledFor": "Đã hẹn vào {{date}}",
+    "scheduledHint": "Buổi kiểm tra của bạn được hẹn vào {{date}}. Báo cáo sẽ hiển thị ở đây khi người kiểm tra hoàn thành.",
+    "viewReport": "Xem báo cáo",
+    "unchecked": "Chưa kiểm tra",
+    "condition": {
+      "good": "Tốt",
+      "fair": "Khá",
+      "damaged": "Hư hỏng",
+      "notApplicable": "Không áp dụng",
+      "unchecked": "Chưa kiểm tra"
+    },
+    "status": {
+      "Scheduled": "Đã lên lịch",
+      "InProgress": "Đang thực hiện",
+      "Completed": "Hoàn thành",
+      "Cancelled": "Đã hủy"
+    },
+    "type": {
+      "MoveIn": "Dọn vào",
+      "MoveOut": "Dọn đi",
+      "Routine": "Định kỳ",
+      "Emergency": "Khẩn cấp"
+    },
+    "areas": {
+      "livingRoom": "Phòng khách",
+      "kitchen": "Nhà bếp",
+      "bathrooms": "Phòng tắm",
+      "bedrooms": "Phòng ngủ",
+      "systems": "Hệ thống",
+      "handover": "Bàn giao"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "Tường, trần và sơn",
+        "flooring": "Sàn và chân tường",
+        "windows": "Cửa sổ, kính và tay nắm"
+      },
+      "kitchen": {
+        "cabinets": "Tủ bếp, mặt bếp và bồn rửa",
+        "appliances": "Thiết bị do chủ nhà cung cấp"
+      },
+      "bathrooms": {
+        "sanitary": "Thiết bị vệ sinh và vòi"
+      },
+      "bedrooms": {
+        "wardrobes": "Tủ quần áo, cửa và khóa"
+      },
+      "systems": {
+        "airConditioning": "Điều hòa",
+        "electrical": "Ổ cắm điện và chiếu sáng"
+      },
+      "handover": {
+        "keys": "Chìa khóa, thẻ ra vào và điều khiển"
+      }
+    },
+    "updated": "Đã cập nhật Kiểm tra"
   }
 }

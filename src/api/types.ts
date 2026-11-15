@@ -308,7 +308,7 @@ export interface MyAnnouncementDto {
 
 export interface MyNotificationDto {
   id: string;
-  kind: 'payment' | 'lease' | 'maintenance' | 'visitor' | 'announcement';
+  kind: 'payment' | 'lease' | 'maintenance' | 'visitor' | 'announcement' | 'booking' | 'inspection';
   title: string;
   body: string;
   at: string;
@@ -340,3 +340,191 @@ export interface InviteMyVisitorDto {
   purpose: MyVisitorDto['purpose'];
   plateNumber?: string;
 }
+
+/** A bookable facility at a property where the tenant has a current lease. */
+export interface MyFacilityDto {
+  id: string;
+  propertyId: string;
+  buildingId?: string | null;
+  floorZoneId?: string | null;
+  facilityCode: string;
+  facilityTypeId: string;
+  nameEn: string;
+  nameAr?: string | null;
+  locationDescription?: string | null;
+  bookable: boolean;
+  capacity?: number | null;
+  openingTime?: string | null;
+  closingTime?: string | null;
+  slotMinutes: number;
+  bookingFee: number;
+  requiresApproval: boolean;
+  status: string;
+  isActive: boolean;
+}
+
+/** One fixed slot of a bookable facility's day. */
+export interface MyFacilitySlotDto {
+  startUtc: string;
+  endUtc: string;
+  startTime: string;
+  endTime: string;
+  label: string;
+  isAvailable: boolean;
+  isPast: boolean;
+  isTaken: boolean;
+  bookingStatus?: 'Pending' | 'Confirmed' | string | null;
+}
+
+export type ApiFacilityBookingStatus = 'Pending' | 'Confirmed' | 'Rejected' | 'Cancelled';
+
+/** A tenant's facility reservation, as /api/My/getMyBookings and bookMyFacility return it. */
+export interface MyFacilityBookingDto {
+  id: string;
+  number: string;
+  facilityId: string;
+  facilityCode?: string | null;
+  facilityNameEn: string;
+  facilityNameAr?: string | null;
+  propertyId?: string | null;
+  propertyNameEn?: string | null;
+  propertyNameAr?: string | null;
+  tenantId?: string | null;
+  tenantName?: string | null;
+  tenantNameAr?: string | null;
+  unitId?: string | null;
+  unitCode?: string | null;
+  title?: string | null;
+  startUtc: string;
+  endUtc: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  slotLabel: string;
+  guests: number;
+  fee: number;
+  status: ApiFacilityBookingStatus;
+  notes?: string | null;
+  decisionReason?: string | null;
+  cancelReason?: string | null;
+  canCancel: boolean;
+}
+
+export interface BookMyFacilityDto {
+  facilityId: string;
+  startUtc?: string;
+  date?: string;
+  startTime?: string;
+  guests: number;
+  unitId?: string;
+  notes?: string;
+}
+
+// ── Inspections ─────────────────────────────────────────────────────────────
+
+export type InspectionType = 'MoveIn' | 'MoveOut' | 'Routine' | 'Emergency';
+export type InspectionStatus = 'Scheduled' | 'InProgress' | 'Completed' | 'Cancelled';
+export type InspectionCondition = 'Unchecked' | 'Good' | 'Fair' | 'Damaged' | 'NotApplicable';
+
+export interface InspectionPhotoDto {
+  id: string;
+  inspectionItemId: string;
+  fileName: string;
+  contentType: string;
+  sizeBytes: number;
+  createdOn: string;
+}
+
+/** One checklist line of an inspection report. */
+export interface InspectionItemDto {
+  id: string;
+  inspectionId: string;
+  inspectionNumber?: string | null;
+  inspectionType?: InspectionType | null;
+  inspectionStatus?: InspectionStatus | null;
+  unitCode?: string | null;
+  area: string;
+  name: string;
+  templateKey?: string | null;
+  sortOrder: number;
+  condition: InspectionCondition;
+  note?: string | null;
+  chargeAmount?: number | null;
+  serviceRequestId?: string | null;
+  ticketNumber?: string | null;
+  photos: InspectionPhotoDto[];
+}
+
+/** An inspection report as returned by PMS_API. */
+export interface InspectionDto {
+  id: string;
+  number: string;
+  type: InspectionType;
+  status: InspectionStatus;
+  propertyId: string;
+  propertyNameEn?: string | null;
+  propertyNameAr?: string | null;
+  buildingNameEn?: string | null;
+  buildingNameAr?: string | null;
+  unitId?: string | null;
+  unitCode?: string | null;
+  leaseId?: string | null;
+  leaseNumber?: string | null;
+  tenantId?: string | null;
+  tenantName?: string | null;
+  tenantNameAr?: string | null;
+  title?: string | null;
+  scheduledAtUtc: string;
+  inspectorUserId?: string | null;
+  inspectorName?: string | null;
+  startedAtUtc?: string | null;
+  completedAtUtc?: string | null;
+  completedByName?: string | null;
+  electricityReading?: number | null;
+  waterReading?: number | null;
+  chillerReading?: number | null;
+  keysCount?: number | null;
+  accessCardsCount?: number | null;
+  parkingRemotesCount?: number | null;
+  mailboxKeysCount?: number | null;
+  summary?: string | null;
+  tenantAcceptedAtUtc?: string | null;
+  tenantComment?: string | null;
+  cancelledAtUtc?: string | null;
+  cancelledByName?: string | null;
+  cancelReason?: string | null;
+  itemCount: number;
+  checkedCount: number;
+  goodCount: number;
+  fairCount: number;
+  damagedCount: number;
+  notApplicableCount: number;
+  chargeTotal: number;
+  isLocked: boolean;
+  canAccept: boolean;
+  createdOn?: string | null;
+  items: InspectionItemDto[];
+}
+
+export interface UpdateInspectionDto {
+  scheduledAtUtc?: string;
+  inspectorUserId?: string | null;
+  title?: string | null;
+  summary?: string | null;
+  electricityReading?: number | null;
+  waterReading?: number | null;
+  chillerReading?: number | null;
+  keysCount?: number | null;
+  accessCardsCount?: number | null;
+  parkingRemotesCount?: number | null;
+  mailboxKeysCount?: number | null;
+}
+
+export interface InspectionItemRequestDto {
+  area: string;
+  name: string;
+  condition: InspectionCondition;
+  note?: string | null;
+  chargeAmount?: number | null;
+}
+

@@ -12,7 +12,8 @@
     "loading": "加载中…",
     "errorLoad": "无法加载您的信息，请重试。",
     "retry": "重试",
-    "select": "选择…"
+    "select": "选择…",
+    "cancel": "取消"
   },
   "tabs": {
     "dashboard": "首页",
@@ -470,6 +471,7 @@
       "guestParking": "访客停车"
     },
     "myBookings": "我的预订",
+    "pastBookings": "历史预订",
     "bookASpace": "预订场地",
     "perSlot": "每时段 {{amount}}",
     "capacity_one": "最多 {{count}} 人",
@@ -484,7 +486,34 @@
     "book": "立即预订",
     "bookFor": "以 {{amount}} 预订",
     "fewer": "减少人数",
-    "more": "增加人数"
+    "more": "增加人数",
+    "statusValues": {
+      "pending": "待处理",
+      "confirmed": "已确认",
+      "rejected": "已拒绝",
+      "cancelled": "已取消"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "您所在楼栋暂无比可预订的设施。",
+    "noSlots": "No slots available on this date.",
+    "reference": "参考号",
+    "fee": "费用",
+    "notes": "备注",
+    "notesPlaceholder": "Optional notes",
+    "reason": "原因",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "待审批",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "入住 / 退房",
@@ -531,7 +560,23 @@
     "refundDue": "退款",
     "afterHandover": "交房后",
     "notStarted": "未开始",
-    "giveNotice": "提交退租通知"
+    "giveNotice": "提交退租通知",
+    "remotes": "停车场遥控器",
+    "mailboxKeys": "信箱钥匙",
+    "chillerMeter": "冷水机组 (水表)",
+    "noMoveIn": "暂无检查报告。",
+    "noMoveOut": "暂无检查报告。",
+    "damageCharges": "损坏费用",
+    "summary": "总结备注",
+    "accept": "确认报告",
+    "acceptHint": "确认即表示您已阅读此报告。如有不符之处，请添加备注。",
+    "commentPlaceholder": "备注（可选）",
+    "acceptedToast": "报告已确认。",
+    "youAccepted": "您已于 {{date}} 确认此报告",
+    "acceptedOn": "租户已于 {{date}} 确认",
+    "scheduledFor": "预约于 {{date}}",
+    "scheduledHint": "您的检查预约于 {{date}}。检查员完成后，报告将显示在这里。",
+    "viewReport": "查看报告"
   },
   "access": {
     "title": "数字门禁",
@@ -788,5 +833,116 @@
     "reasonNeeded": "请填写退回或驳回的原因。申请人会看到。",
     "othersTurn": "在第 {{n}} 步等待 {{names}}。您可以在此跟进；只有他们可以决定。",
     "empty": "没有等待您决定的事项。"
+  },
+  "inspection": {
+    "title": "检查报告",
+    "inspections": "巡检",
+    "checklist": "每个检查项目及其状况、费用和工单",
+    "readingsHandover": "读数和交接",
+    "summary": "总结备注",
+    "keys": "钥匙",
+    "accessCards": "门禁卡",
+    "parkingRemotes": "停车场遥控器",
+    "mailboxKeys": "信箱钥匙",
+    "electricityMeter": "电表",
+    "waterMeter": "水表",
+    "chillerMeter": "冷水机组 (水表)",
+    "save": "保存",
+    "complete": "完成检查",
+    "completeHint": "之后将无法修改报告。",
+    "completeTitle": "完成检查 {{number}}？",
+    "completed": "检查 {{number}} 已完成。",
+    "cancel": "取消检查",
+    "cancelTitle": "取消检查 {{number}}",
+    "reason": "原因",
+    "cancelled": "检查已取消。",
+    "raiseTicket": "创建工单",
+    "raiseTicketFor": "为 {{name}} 创建工单",
+    "ticketRaised": "工单已创建。",
+    "ticket": "工单",
+    "category": "类别",
+    "priority": "优先级",
+    "addItem": "添加项目",
+    "removeItem": "移除项目",
+    "removeItemTitle": "从清单中移除\"{{name}}\"？",
+    "area": "区域",
+    "item": "项目",
+    "name": "名称",
+    "addPhoto": "Photos",
+    "removePhoto": "移除照片",
+    "photoLimit": "每个项目最多 4 张照片",
+    "charge": "费用",
+    "chargeTotal": "损坏费用",
+    "inspector": "检查员",
+    "notePlaceholder": "描述缺陷、位置与严重程度…",
+    "noInspections": "没有未完成的检查。请先安排一个。",
+    "run": "执行",
+    "lockedCompleted": "由 {{name}} 于 {{date}} 完成。报告无法修改。",
+    "lockedCancelled": "已取消：{{reason}}",
+    "tenantAcceptance": "租户确认",
+    "acceptedOn": "租户已于 {{date}} 确认",
+    "youAccepted": "您已于 {{date}} 确认此报告",
+    "toAccept": "待确认",
+    "accepted": "已确认",
+    "accept": "确认报告",
+    "acceptHint": "确认即表示您已阅读此报告。如有不符之处，请添加备注。",
+    "commentPlaceholder": "备注（可选）",
+    "acceptedToast": "报告已确认。",
+    "scheduledFor": "预约于 {{date}}",
+    "scheduledHint": "您的检查预约于 {{date}}。检查员完成后，报告将显示在这里。",
+    "viewReport": "查看报告",
+    "unchecked": "未检查",
+    "condition": {
+      "good": "良好",
+      "fair": "一般",
+      "damaged": "损坏",
+      "notApplicable": "不适用",
+      "unchecked": "未检查"
+    },
+    "status": {
+      "Scheduled": "已排期",
+      "InProgress": "进行中",
+      "Completed": "已完成",
+      "Cancelled": "已取消"
+    },
+    "type": {
+      "MoveIn": "入住",
+      "MoveOut": "退房",
+      "Routine": "常规",
+      "Emergency": "紧急"
+    },
+    "areas": {
+      "livingRoom": "客厅",
+      "kitchen": "厨房",
+      "bathrooms": "浴室",
+      "bedrooms": "卧室",
+      "systems": "设备系统",
+      "handover": "交接"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "墙面、天花板和油漆",
+        "flooring": "地板和踢脚线",
+        "windows": "窗户、玻璃和把手"
+      },
+      "kitchen": {
+        "cabinets": "橱柜、台面和水槽",
+        "appliances": "房东提供的电器"
+      },
+      "bathrooms": {
+        "sanitary": "卫浴洁具和配件"
+      },
+      "bedrooms": {
+        "wardrobes": "衣柜、门和锁"
+      },
+      "systems": {
+        "airConditioning": "空调",
+        "electrical": "电源插座和照明"
+      },
+      "handover": {
+        "keys": "钥匙、门禁卡和遥控器"
+      }
+    },
+    "updated": "已更新巡检"
   }
 }

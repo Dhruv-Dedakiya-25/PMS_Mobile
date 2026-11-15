@@ -1,4 +1,4 @@
-import { IconBell, IconCreditCard, IconFileText, IconSpeakerphone, IconTool, IconUsers, type Icon } from '@tabler/icons-react-native';
+import { IconBell, IconCalendarEvent, IconClipboardCheck, IconCreditCard, IconFileText, IconSpeakerphone, IconTool, IconUsers, type Icon } from '@tabler/icons-react-native';
 import { router, type Href } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { Pressable, View } from 'react-native';
@@ -18,6 +18,8 @@ const look: Record<NotificationKind, { icon: Icon; accent: Accent }> = {
   maintenance: { icon: IconTool, accent: 'orange' },
   visitor: { icon: IconUsers, accent: 'violet' },
   announcement: { icon: IconSpeakerphone, accent: 'teal' },
+  booking: { icon: IconCalendarEvent, accent: 'primary' },
+  inspection: { icon: IconClipboardCheck, accent: 'teal' },
 };
 
 /** Payment reminders, lease alerts and maintenance updates, newest first; each opens what it is about. */

@@ -12,7 +12,8 @@
     "loading": "Wird geladen…",
     "errorLoad": "Ihre Daten konnten nicht geladen werden. Bitte versuchen Sie es erneut.",
     "retry": "Erneut versuchen",
-    "select": "Auswählen…"
+    "select": "Auswählen…",
+    "cancel": "Abbrechen"
   },
   "tabs": {
     "dashboard": "Übersicht",
@@ -470,6 +471,7 @@
       "guestParking": "Gästeparkplätze"
     },
     "myBookings": "Meine Buchungen",
+    "pastBookings": "Vergangene Buchungen",
     "bookASpace": "Raum buchen",
     "perSlot": "{{amount}} pro Zeitfenster",
     "capacity_one": "Bis zu {{count}} Person",
@@ -484,7 +486,34 @@
     "book": "Jetzt buchen",
     "bookFor": "Für {{amount}} buchen",
     "fewer": "Weniger Gäste",
-    "more": "Mehr Gäste"
+    "more": "Mehr Gäste",
+    "statusValues": {
+      "pending": "Ausstehend",
+      "confirmed": "Bestätigt",
+      "rejected": "Abgelehnt",
+      "cancelled": "Storniert"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "In Ihrem Gebäude können derzeit noch keine Einrichtungen gebucht werden.",
+    "noSlots": "No slots available on this date.",
+    "reference": "Referenz",
+    "fee": "Gebühr",
+    "notes": "Notizen",
+    "notesPlaceholder": "Optional notes",
+    "reason": "Grund",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "Genehmigung ausstehend",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "Einzug / Auszug",
@@ -531,7 +560,23 @@
     "refundDue": "Erstattung",
     "afterHandover": "Nach der Übergabe",
     "notStarted": "Nicht begonnen",
-    "giveNotice": "Kündigen"
+    "giveNotice": "Kündigen",
+    "remotes": "Parkplatz-Fernbedienungen",
+    "mailboxKeys": "Briefkastenschlüssel",
+    "chillerMeter": "Kälteanlage (Wasserzähler)",
+    "noMoveIn": "Noch keine Prüfberichte.",
+    "noMoveOut": "Noch keine Prüfberichte.",
+    "damageCharges": "Schadensgebühren",
+    "summary": "Zusammenfassung",
+    "accept": "Bericht bestätigen",
+    "acceptHint": "Mit der Bestätigung erklären Sie, dass Sie diesen Bericht gelesen haben. Fügen Sie einen Kommentar hinzu, wenn etwas nicht stimmt.",
+    "commentPlaceholder": "Optionaler Kommentar",
+    "acceptedToast": "Bericht bestätigt.",
+    "youAccepted": "Sie haben diesen Bericht am {{date}} bestätigt",
+    "acceptedOn": "Vom Mieter bestätigt am {{date}}",
+    "scheduledFor": "Geplant für {{date}}",
+    "scheduledHint": "Ihre Prüfung ist für {{date}} geplant. Der Bericht erscheint hier, sobald der Prüfer ihn abgeschlossen hat.",
+    "viewReport": "Bericht ansehen"
   },
   "access": {
     "title": "Digitaler Zugang",
@@ -788,5 +833,116 @@
     "reasonNeeded": "Geben Sie einen Grund für Rückgabe oder Ablehnung an. Der Antragsteller sieht ihn.",
     "othersTurn": "Wartet auf {{names}} in Schritt {{n}}. Sie können es hier verfolgen; nur sie können entscheiden.",
     "empty": "Nichts wartet auf Ihre Entscheidung."
+  },
+  "inspection": {
+    "title": "Prüfberichte",
+    "inspections": "Inspektionen",
+    "checklist": "Jeder Prüfpunkt mit Zustand, Gebühr und Ticket",
+    "readingsHandover": "Zählerstände und Übergabe",
+    "summary": "Zusammenfassung",
+    "keys": "Schlüssel",
+    "accessCards": "Zugangskarten",
+    "parkingRemotes": "Parkplatz-Fernbedienungen",
+    "mailboxKeys": "Briefkastenschlüssel",
+    "electricityMeter": "Stromzähler",
+    "waterMeter": "Wasserzähler",
+    "chillerMeter": "Kälteanlage (Wasserzähler)",
+    "save": "Speichern",
+    "complete": "Prüfung abschließen",
+    "completeHint": "Der Bericht kann danach nicht mehr geändert werden.",
+    "completeTitle": "Prüfung {{number}} abschließen?",
+    "completed": "Prüfung {{number}} abgeschlossen.",
+    "cancel": "Prüfung stornieren",
+    "cancelTitle": "Prüfung {{number}} stornieren",
+    "reason": "Grund",
+    "cancelled": "Prüfung storniert.",
+    "raiseTicket": "Ticket erstellen",
+    "raiseTicketFor": "Ticket für {{name}} erstellen",
+    "ticketRaised": "Ticket erstellt.",
+    "ticket": "Ticket",
+    "category": "Kategorie",
+    "priority": "Priorität",
+    "addItem": "Prüfpunkt hinzufügen",
+    "removeItem": "Prüfpunkt entfernen",
+    "removeItemTitle": "„{{name}}“ aus der Checkliste entfernen?",
+    "area": "Bereich",
+    "item": "Prüfpunkt",
+    "name": "Bezeichnung",
+    "addPhoto": "Photos",
+    "removePhoto": "Foto entfernen",
+    "photoLimit": "Bis zu 4 Fotos pro Prüfpunkt",
+    "charge": "Gebühr",
+    "chargeTotal": "Schadensgebühren",
+    "inspector": "Prüfer",
+    "notePlaceholder": "Mangel, Ort und Schweregrad beschreiben…",
+    "noInspections": "Keine offenen Prüfungen. Planen Sie eine, um zu beginnen.",
+    "run": "Durchführen",
+    "lockedCompleted": "Abgeschlossen am {{date}} von {{name}}. Der Bericht kann nicht mehr geändert werden.",
+    "lockedCancelled": "Storniert: {{reason}}",
+    "tenantAcceptance": "Bestätigung durch den Mieter",
+    "acceptedOn": "Vom Mieter bestätigt am {{date}}",
+    "youAccepted": "Sie haben diesen Bericht am {{date}} bestätigt",
+    "toAccept": "Zu bestätigen",
+    "accepted": "Bestätigt",
+    "accept": "Bericht bestätigen",
+    "acceptHint": "Mit der Bestätigung erklären Sie, dass Sie diesen Bericht gelesen haben. Fügen Sie einen Kommentar hinzu, wenn etwas nicht stimmt.",
+    "commentPlaceholder": "Optionaler Kommentar",
+    "acceptedToast": "Bericht bestätigt.",
+    "scheduledFor": "Geplant für {{date}}",
+    "scheduledHint": "Ihre Prüfung ist für {{date}} geplant. Der Bericht erscheint hier, sobald der Prüfer ihn abgeschlossen hat.",
+    "viewReport": "Bericht ansehen",
+    "unchecked": "Nicht geprüft",
+    "condition": {
+      "good": "Gut",
+      "fair": "Ausreichend",
+      "damaged": "Beschädigt",
+      "notApplicable": "Nicht zutreffend",
+      "unchecked": "Nicht geprüft"
+    },
+    "status": {
+      "Scheduled": "Geplant",
+      "InProgress": "In Bearbeitung",
+      "Completed": "Abgeschlossen",
+      "Cancelled": "Storniert"
+    },
+    "type": {
+      "MoveIn": "Einzug",
+      "MoveOut": "Auszug",
+      "Routine": "Routinemäßig",
+      "Emergency": "Notfall"
+    },
+    "areas": {
+      "livingRoom": "Wohnzimmer",
+      "kitchen": "Küche",
+      "bathrooms": "Badezimmer",
+      "bedrooms": "Schlafzimmer",
+      "systems": "Haustechnik",
+      "handover": "Übergabe"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "Wände, Decke und Anstrich",
+        "flooring": "Bodenbelag und Sockelleisten",
+        "windows": "Fenster, Glas und Griffe"
+      },
+      "kitchen": {
+        "cabinets": "Schränke, Arbeitsplatten und Spüle",
+        "appliances": "Vom Vermieter gestellte Geräte"
+      },
+      "bathrooms": {
+        "sanitary": "Sanitärobjekte und Armaturen"
+      },
+      "bedrooms": {
+        "wardrobes": "Kleiderschränke, Türen und Schlösser"
+      },
+      "systems": {
+        "airConditioning": "Klimaanlage",
+        "electrical": "Steckdosen und Beleuchtung"
+      },
+      "handover": {
+        "keys": "Schlüssel, Zugangskarten und Fernbedienungen"
+      }
+    },
+    "updated": "Inspektion aktualisiert"
   }
 }

@@ -7,11 +7,16 @@ import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 
 import {
   acknowledgeAnnouncement as apiAcknowledgeAnnouncement,
+  bookMyFacility,
+  cancelMyBooking,
   cancelMyVisitor,
   createMyServiceRequest,
   getMyAnnouncement,
   getMyAnnouncements,
+  getMyAvailability,
+  getMyBookings,
   getMyDocuments,
+  getMyFacilities,
   getMyInstallments,
   getMyInvoices,
   getMyLease,
@@ -29,9 +34,13 @@ import {
   uploadMyServiceRequestPhoto,
 } from '@/api/my';
 import type {
+  ApiFacilityBookingStatus,
   ApiServicePriority,
   MyAnnouncementDto,
   MyDocumentDto,
+  MyFacilityBookingDto,
+  MyFacilityDto,
+  MyFacilitySlotDto,
   MyInstallmentDto,
   MyInvoiceDto,
   MyLeaseDto,
@@ -50,6 +59,7 @@ import { omanToday } from '@/mock/clock';
 import {
   announcements as mockAnnouncements,
   documents as mockDocuments,
+  facilities as mockFacilities,
   lease as mockLease,
   parking as mockParking,
   property as mockProperty,
@@ -57,6 +67,7 @@ import {
   tenant as mockTenant,
   unit as mockUnit,
   type DocumentKind,
+  type FacilityKind,
   type MaintenanceRequest,
   type Payment,
   type PaymentMethod,
@@ -68,6 +79,8 @@ import {
 } from '@/mock/data';
 import {
   acknowledge as mockAcknowledge,
+  book as mockBook,
+  cancelBooking as mockCancelBooking,
   markAllRead as mockMarkAllRead,
   markRead as mockMarkRead,
   nextRentMonth,
@@ -119,6 +132,8 @@ interface LiveCache {
   announcementDetails: Record<string, MyAnnouncementDto>;
   notifications?: MyNotificationDto[];
   visitors?: MyVisitorDto[];
+  facilities?: MyFacilityDto[];
+  bookings?: MyFacilityBookingDto[];
 }
 
 let cache: LiveCache = {
@@ -613,6 +628,7 @@ export function useLease() {
         receiptNo: 'RCP-DEP-2024-0412' as string | null,
         heldBy: mockProperty.developer,
         deductions: 0,
+        refunded: false,
       },
       tenant: mockTenant,
       property: mockProperty,
@@ -662,6 +678,7 @@ export function useLease() {
       receiptNo: null as string | null,
       heldBy: mappedProfile.property.developer,
       deductions: Number(firstDeposit?.adjustedAmount ?? 0),
+      refunded: firstDeposit?.status === 'Refunded',
     },
     tenant: mappedProfile.tenant,
     property: mappedProfile.property,
@@ -1311,4 +1328,236 @@ export function useVisitors() {
 
   return { isDemo: false, visitors: (live.visitors ?? []).map(mapVisitor), invite, cancel, ...status };
 }
+
+/** A bookable facility as the phone screens render it. */
+export interface MappedFacility {
+  id: string;
+  kind: FacilityKind;
+  name: string;
+  location: string;
+  fee: number;
+  capacity: number;
+  opens: string;
+  closes: string;
+  slotMinutes: number;
+  requiresApproval: boolean;
+}
+
+/** A facility reservation as the phone screens render it. */
+export interface MappedBooking {
+  id: string;
+  number: string;
+  facilityId: string;
+  facilityName: string;
+  date: string;
+  slot: string;
+  guests: number;
+  fee: number;
+  status: ApiFacilityBookingStatus;
+  notes?: string;
+  reason?: string;
+  canCancel: boolean;
+}
+
+function inferFacilityKind(dto: MyFacilityDto): FacilityKind {
+  const text = `${dto.facilityCode ?? ''} ${dto.nameEn ?? ''}`.toLowerCase();
+  if (text.includes('pool') || text.includes('swim')) return 'pool';
+  if (text.includes('gym') || text.includes('fitness')) return 'gym';
+  if (text.includes('club') || text.includes('lounge') || text.includes('hall')) return 'clubhouse';
+  if (text.includes('bbq') || text.includes('grill') || text.includes('barbecue')) return 'bbq';
+  if (text.includes('court') || text.includes('padel') || text.includes('tennis') || text.includes('squash')) return 'court';
+  if (text.includes('park')) return 'guestParking';
+  return 'meetingRoom';
+}
+
+function mapFacilityDto(dto: MyFacilityDto, isAr: boolean): MappedFacility {
+  return {
+    id: dto.id,
+    kind: inferFacilityKind(dto),
+    name: (isAr && dto.nameAr?.trim()) || dto.nameEn,
+    location: dto.locationDescription?.trim() || dto.facilityCode || '—',
+    fee: Number(dto.bookingFee ?? 0),
+    capacity: dto.capacity && dto.capacity > 0 ? dto.capacity : 0,
+    opens: dto.openingTime || '08:00',
+    closes: dto.closingTime || '22:00',
+    slotMinutes: dto.slotMinutes && dto.slotMinutes >= 15 ? dto.slotMinutes : 60,
+    requiresApproval: Boolean(dto.requiresApproval),
+  };
+}
+
+function mapBookingDto(dto: MyFacilityBookingDto, isAr: boolean): MappedBooking {
+  return {
+    id: dto.id,
+    number: dto.number,
+    facilityId: dto.facilityId,
+    facilityName: (isAr && dto.facilityNameAr?.trim()) || dto.facilityNameEn,
+    date: dto.date,
+    slot: dto.slotLabel,
+    guests: dto.guests,
+    fee: Number(dto.fee ?? 0),
+    status: dto.status,
+    notes: dto.notes?.trim() || undefined,
+    reason: (dto.cancelReason || dto.decisionReason)?.trim() || undefined,
+    canCancel: Boolean(dto.canCancel),
+  };
+}
+
+function buildDemoSlots(opens: string, closes: string, date: string): MyFacilitySlotDto[] {
+  const start = Number(opens.slice(0, 2));
+  const end = closes === '23:59' ? 24 : Number(closes.slice(0, 2));
+  const out: MyFacilitySlotDto[] = [];
+  let idx = 0;
+  for (let h = start; h + 2 <= end; h += 2) {
+    const startTime = `${String(h).padStart(2, '0')}:00`;
+    const endTime = `${String(h + 2).padStart(2, '0')}:00`;
+    const isTaken = (idx + Number(date.slice(8))) % 3 === 0;
+    out.push({
+      startUtc: `${date}T${startTime}:00Z`,
+      endUtc: `${date}T${endTime}:00Z`,
+      startTime,
+      endTime,
+      label: `${startTime}–${endTime}`,
+      isAvailable: !isTaken,
+      isPast: false,
+      isTaken,
+      bookingStatus: isTaken ? 'Confirmed' : null,
+    });
+    idx++;
+  }
+  return out;
+}
+
+/**
+ * Bookable facilities at the tenant's leased properties, day-by-day slot availability,
+ * and the tenant's own reservations with book and cancel.
+ */
+export function useFacilities() {
+  const isDemo = authMode === 'demo';
+  const { language } = useLanguage();
+  const isAr = language.code === 'ar';
+  const mock = useMockState();
+  const live = useLiveCache();
+
+  const fetchFacilitiesAndBookings = useCallback(async () => {
+    const [facs, bkgs] = await Promise.all([getMyFacilities(), getMyBookings()]);
+    cache.facilities = facs;
+    cache.bookings = bkgs;
+    notifyCache();
+  }, []);
+
+  const status = useResource(Boolean(live.facilities && live.bookings), fetchFacilitiesAndBookings);
+
+  const loadAvailability = useCallback(
+    async (facilityId: string, date: string): Promise<MyFacilitySlotDto[]> => {
+      if (isDemo) {
+        const fac = mockFacilities.find((x) => x.id === facilityId) ?? mockFacilities[0];
+        return buildDemoSlots(fac.opens, fac.closes, date);
+      }
+      return getMyAvailability(facilityId, date);
+    },
+    [isDemo],
+  );
+
+  const bookFacility = useCallback(
+    async (input: {
+      facilityId: string;
+      date: string;
+      startTime: string;
+      slotLabel: string;
+      guests: number;
+      notes?: string;
+    }): Promise<MappedBooking> => {
+      if (isDemo) {
+        const created = mockBook({
+          facilityId: input.facilityId,
+          date: input.date,
+          slot: input.slotLabel,
+          guests: input.guests,
+        });
+        const fac = mockFacilities.find((x) => x.id === input.facilityId);
+        return {
+          id: created.id,
+          number: `BKG-${input.date.slice(0, 4)}-000${mock.bookings.length + 1}`,
+          facilityId: created.facilityId,
+          facilityName: fac?.name ?? '—',
+          date: created.date,
+          slot: created.slot,
+          guests: created.guests,
+          fee: fac?.fee ?? 0,
+          status: 'Confirmed',
+          notes: input.notes?.trim() || undefined,
+          canCancel: true,
+        };
+      }
+      const created = await bookMyFacility({
+        facilityId: input.facilityId,
+        date: input.date,
+        startTime: input.startTime,
+        guests: input.guests,
+        notes: input.notes?.trim() || undefined,
+      });
+      cache.bookings = [created, ...(cache.bookings ?? [])];
+      notifyCache();
+      return mapBookingDto(created, isAr);
+    },
+    [isAr, isDemo, mock.bookings.length],
+  );
+
+  const cancel = useCallback(
+    async (id: string) => {
+      if (isDemo) {
+        mockCancelBooking(id);
+        return;
+      }
+      const saved = await cancelMyBooking(id);
+      cache.bookings = (cache.bookings ?? []).map((b) => (b.id === id ? saved : b));
+      notifyCache();
+    },
+    [isDemo],
+  );
+
+  if (isDemo) {
+    return {
+      isDemo: true,
+      facilities: mockFacilities.map((f) => ({
+        ...f,
+        slotMinutes: 120,
+        requiresApproval: false,
+      })) as MappedFacility[],
+      bookings: mock.bookings.map((b, idx) => {
+        const fac = mockFacilities.find((x) => x.id === b.facilityId);
+        return {
+          id: b.id,
+          number: `BKG-${b.date.slice(0, 4)}-${String(idx + 1).padStart(4, '0')}`,
+          facilityId: b.facilityId,
+          facilityName: fac?.name ?? '—',
+          date: b.date,
+          slot: b.slot,
+          guests: b.guests,
+          fee: fac?.fee ?? 0,
+          status: 'Confirmed' as const,
+          canCancel: true,
+        };
+      }) as MappedBooking[],
+      loadAvailability,
+      bookFacility,
+      cancel,
+      loading: false,
+      refreshing: false,
+      error: null,
+      refresh: () => Promise.resolve(),
+    };
+  }
+
+  return {
+    isDemo: false,
+    facilities: (live.facilities ?? []).map((f) => mapFacilityDto(f, isAr)),
+    bookings: (live.bookings ?? []).map((b) => mapBookingDto(b, isAr)),
+    loadAvailability,
+    bookFacility,
+    cancel,
+    ...status,
+  };
+}
+
 

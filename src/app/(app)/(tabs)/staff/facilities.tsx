@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
+import { router } from 'expo-router';
 
 import {
   getStaffAssets,
   getStaffFacilities,
+  getStaffInspections,
   getStaffUnits,
   SAMPLE_INSPECTIONS,
   type SampleInspection,
@@ -12,9 +14,14 @@ import {
   type StaffFacility,
   type StaffUnit,
 } from '@/api/staff';
+import type { InspectionDto } from '@/api/types';
+import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
 import { Card, Pill, Segmented } from '@/components/ui';
+import { useLanguage } from '@/i18n';
+import { shortDate } from '@/lib/format';
+import { STATUS_ACCENT, STATUS_LABEL, TYPE_LABEL } from '@/lib/inspections';
 import { space, type Accent } from '@/theme/tokens';
 
 const assetAccent: Record<StaffAsset['status'], Accent> = {
@@ -32,10 +39,27 @@ export default function StaffFacilities() {
   const [assets, setAssets] = useState<StaffAsset[]>([]);
   const [assetsError, setAssetsError] = useState<string | null>(null);
   const [inspections] = useState<SampleInspection[]>(SAMPLE_INSPECTIONS);
+  const [realInspections, setRealInspections] = useState<InspectionDto[]>([]);
+  const [inspectionsError, setInspectionsError] = useState<string | null>(null);
+
+  const { isDemo } = useAppSession();
+  const { language } = useLanguage();
+  const code = language.code;
 
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const loadInspections = useCallback(() => {
+    if (isDemo) return;
+    getStaffInspections()
+      .then((list) => {
+        // Open ones first; within each group the server's order (latest visit first) is kept.
+        setRealInspections([...list].sort((a, b) => Number(a.isLocked) - Number(b.isLocked)));
+        setInspectionsError(null);
+      })
+      .catch((e) => setInspectionsError(e instanceof Error ? e.message : t('common.errorLoad')));
+  }, [isDemo, t]);
 
   const fetchData = useCallback((isRefresh = false) => {
     if (isRefresh) setRefreshing(true);
@@ -100,11 +124,18 @@ export default function StaffFacilities() {
 
   useEffect(() => {
     loadAssets();
-  }, [loadAssets]);
+    loadInspections();
+  }, [loadAssets, loadInspections]);
+
+  useEffect(() => {
+    if (section === 'assets') loadAssets();
+    if (section === 'inspections') loadInspections();
+  }, [section, loadAssets, loadInspections]);
 
   const onRefresh = () => {
     fetchData(true);
     loadAssets();
+    loadInspections();
   };
 
   return (
@@ -208,26 +239,63 @@ export default function StaffFacilities() {
 
       {section === 'inspections' && (
         <View style={{ gap: space.sm }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
-            <Pill accent="primary" label={t('staff.sampleDataBadge')} />
-            <AppText variant="caption" tone="muted">
-              {t('staff.sampleDataNote')}
-            </AppText>
-          </View>
-          {inspections.map((ins) => (
-            <Card key={ins.id} style={{ gap: space.xs }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <AppText weight="bold">{ins.title}</AppText>
-                <Pill
-                  accent={ins.status === 'Passed' ? 'success' : ins.status === 'Scheduled' ? 'teal' : 'warning'}
-                  label={ins.status}
-                />
+          {isDemo ? (
+            <>
+              <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
+                <Pill accent="primary" label={t('staff.sampleDataBadge')} />
+                <AppText variant="caption" tone="muted">
+                  {t('staff.sampleDataNote')}
+                </AppText>
               </View>
-              <AppText variant="caption" tone="secondary">
-                {ins.scheduledDate} • {ins.inspector}
+              {inspections.map((ins) => (
+                <Card key={ins.id} style={{ gap: space.xs }}>
+                  <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <AppText weight="bold">{ins.title}</AppText>
+                    <Pill
+                      accent={ins.status === 'Passed' ? 'success' : ins.status === 'Scheduled' ? 'teal' : 'warning'}
+                      label={ins.status}
+                    />
+                  </View>
+                  <AppText variant="caption" tone="secondary">
+                    {ins.scheduledDate} • {ins.inspector}
+                  </AppText>
+                </Card>
+              ))}
+            </>
+          ) : realInspections.length === 0 ? (
+            <Card style={{ alignItems: 'center', paddingVertical: space.xl }}>
+              <AppText tone={inspectionsError ? 'danger' : 'secondary'}>
+                {inspectionsError ?? t('inspection.noInspections')}
               </AppText>
             </Card>
-          ))}
+          ) : (
+            realInspections.map((ins) => (
+              <Card
+                key={ins.id}
+                onPress={() => router.push(`/staff/inspection/${ins.id}` as any)}
+                style={{ gap: space.xs }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.sm }}>
+                  <AppText weight="bold" style={{ flexShrink: 1 }}>
+                    {ins.number} • {ins.title || t(TYPE_LABEL[ins.type])}
+                  </AppText>
+                  <Pill
+                    accent={STATUS_ACCENT[ins.status]}
+                    label={t(STATUS_LABEL[ins.status])}
+                  />
+                </View>
+                <AppText variant="caption" tone="secondary">
+                  {[
+                    shortDate(ins.scheduledAtUtc, code),
+                    ins.propertyNameEn,
+                    ins.unitCode,
+                    ins.inspectorName || t('staff.unassigned'),
+                  ]
+                    .filter(Boolean)
+                    .join(' • ')}
+                </AppText>
+              </Card>
+            ))
+          )}
         </View>
       )}
     </Screen>

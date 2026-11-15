@@ -12,7 +12,8 @@
     "loading": "লোড হচ্ছে…",
     "errorLoad": "আপনার তথ্য লোড করা যায়নি। অনুগ্রহ করে আবার চেষ্টা করুন।",
     "retry": "আবার চেষ্টা করুন",
-    "select": "নির্বাচন করুন…"
+    "select": "নির্বাচন করুন…",
+    "cancel": "বাতিল"
   },
   "tabs": {
     "dashboard": "ড্যাশবোর্ড",
@@ -470,6 +471,7 @@
       "guestParking": "অতিথি পার্কিং"
     },
     "myBookings": "আমার বুকিং",
+    "pastBookings": "আগের বুকিং",
     "bookASpace": "জায়গা বুক করুন",
     "perSlot": "প্রতি স্লটে {{amount}}",
     "capacity_one": "সর্বোচ্চ {{count}} জন",
@@ -484,7 +486,34 @@
     "book": "এখনই বুক করুন",
     "bookFor": "{{amount}}-এ বুক করুন",
     "fewer": "কম অতিথি",
-    "more": "বেশি অতিথি"
+    "more": "বেশি অতিথি",
+    "statusValues": {
+      "pending": "মুলতুবি",
+      "confirmed": "নিশ্চিত করা হয়েছে",
+      "rejected": "প্রত্যাখ্যাত",
+      "cancelled": "বাতিল"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "আপনার ভবনে এখনও কোনো সুবিধা বুক করা যাচ্ছে না।",
+    "noSlots": "No slots available on this date.",
+    "reference": "সূত্র",
+    "fee": "ফি",
+    "notes": "নোট",
+    "notesPlaceholder": "Optional notes",
+    "reason": "কারণ",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "অনুমোদনের অপেক্ষায়",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "ওঠা / ছাড়া",
@@ -531,7 +560,23 @@
     "refundDue": "ফেরত",
     "afterHandover": "হস্তান্তরের পর",
     "notStarted": "শুরু হয়নি",
-    "giveNotice": "নোটিশ দিন"
+    "giveNotice": "নোটিশ দিন",
+    "remotes": "পার্কিং রিমোট",
+    "mailboxKeys": "মেইলবক্সের চাবি",
+    "chillerMeter": "চিলার (পানির মিটার)",
+    "noMoveIn": "এখনও কোনো পরিদর্শন রিপোর্ট নেই।",
+    "noMoveOut": "এখনও কোনো পরিদর্শন রিপোর্ট নেই।",
+    "damageCharges": "ক্ষতির চার্জ",
+    "summary": "সারসংক্ষেপ নোট",
+    "accept": "রিপোর্ট গ্রহণ করুন",
+    "acceptHint": "গ্রহণ করে আপনি নিশ্চিত করছেন যে রিপোর্টটি পড়েছেন। কিছু ভুল মনে হলে মন্তব্য যোগ করুন।",
+    "commentPlaceholder": "ঐচ্ছিক মন্তব্য",
+    "acceptedToast": "রিপোর্ট গৃহীত হয়েছে।",
+    "youAccepted": "আপনি {{date}} তারিখে এই রিপোর্ট গ্রহণ করেছেন",
+    "acceptedOn": "ভাড়াটিয়া {{date}} তারিখে গ্রহণ করেছেন",
+    "scheduledFor": "{{date}} তারিখে নির্ধারিত",
+    "scheduledHint": "আপনার পরিদর্শন {{date}} তারিখে নির্ধারিত। পরিদর্শক সম্পন্ন করলে রিপোর্ট এখানে দেখা যাবে।",
+    "viewReport": "রিপোর্ট দেখুন"
   },
   "access": {
     "title": "ডিজিটাল প্রবেশ",
@@ -788,5 +833,116 @@
     "reasonNeeded": "ফেরত বা প্রত্যাখ্যানের কারণ দিন। অনুরোধকারী এটি দেখবেন।",
     "othersTurn": "ধাপ {{n}}-এ {{names}}-এর অপেক্ষায়। আপনি এখানে অনুসরণ করতে পারেন; সিদ্ধান্ত শুধু তাঁরাই নিতে পারেন।",
     "empty": "আপনার সিদ্ধান্তের অপেক্ষায় কিছু নেই।"
+  },
+  "inspection": {
+    "title": "পরিদর্শন রিপোর্ট",
+    "inspections": "পরিদর্শনসমূহ",
+    "checklist": "প্রতিটি চেকলিস্ট আইটেম তার অবস্থা, চার্জ ও টিকিটসহ",
+    "readingsHandover": "রিডিং ও হস্তান্তর",
+    "summary": "সারসংক্ষেপ নোট",
+    "keys": "চাবি",
+    "accessCards": "অ্যাক্সেস কার্ড",
+    "parkingRemotes": "পার্কিং রিমোট",
+    "mailboxKeys": "মেইলবক্সের চাবি",
+    "electricityMeter": "বিদ্যুৎ মিটার",
+    "waterMeter": "পানির মিটার",
+    "chillerMeter": "চিলার (পানির মিটার)",
+    "save": "সংরক্ষণ",
+    "complete": "পরিদর্শন সম্পন্ন করুন",
+    "completeHint": "এরপর রিপোর্ট আর পরিবর্তন করা যাবে না।",
+    "completeTitle": "পরিদর্শন {{number}} সম্পন্ন করবেন?",
+    "completed": "পরিদর্শন {{number}} সম্পন্ন হয়েছে।",
+    "cancel": "পরিদর্শন বাতিল করুন",
+    "cancelTitle": "পরিদর্শন {{number}} বাতিল করুন",
+    "reason": "কারণ",
+    "cancelled": "পরিদর্শন বাতিল হয়েছে।",
+    "raiseTicket": "টিকিট তৈরি করুন",
+    "raiseTicketFor": "{{name}}-এর জন্য টিকিট তৈরি করুন",
+    "ticketRaised": "টিকিট তৈরি হয়েছে।",
+    "ticket": "টিকিট",
+    "category": "বিভাগ",
+    "priority": "অগ্রাধিকার",
+    "addItem": "আইটেম যোগ করুন",
+    "removeItem": "আইটেম সরান",
+    "removeItemTitle": "চেকলিস্ট থেকে \"{{name}}\" সরাবেন?",
+    "area": "এলাকা",
+    "item": "আইটেম",
+    "name": "নাম",
+    "addPhoto": "Photos",
+    "removePhoto": "ছবি সরান",
+    "photoLimit": "প্রতি আইটেমে সর্বোচ্চ ৪টি ছবি",
+    "charge": "চার্জ",
+    "chargeTotal": "ক্ষতির চার্জ",
+    "inspector": "পরিদর্শক",
+    "notePlaceholder": "ত্রুটি, স্থান ও মাত্রা বর্ণনা করুন…",
+    "noInspections": "কোনো খোলা পরিদর্শন নেই। শুরু করতে একটি নির্ধারণ করুন।",
+    "run": "সম্পন্ন করুন",
+    "lockedCompleted": "{{date}} তারিখে {{name}} সম্পন্ন করেছেন। রিপোর্ট পরিবর্তন করা যাবে না।",
+    "lockedCancelled": "বাতিল: {{reason}}",
+    "tenantAcceptance": "ভাড়াটিয়ার স্বীকৃতি",
+    "acceptedOn": "ভাড়াটিয়া {{date}} তারিখে গ্রহণ করেছেন",
+    "youAccepted": "আপনি {{date}} তারিখে এই রিপোর্ট গ্রহণ করেছেন",
+    "toAccept": "গ্রহণ বাকি",
+    "accepted": "গৃহীত",
+    "accept": "রিপোর্ট গ্রহণ করুন",
+    "acceptHint": "গ্রহণ করে আপনি নিশ্চিত করছেন যে রিপোর্টটি পড়েছেন। কিছু ভুল মনে হলে মন্তব্য যোগ করুন।",
+    "commentPlaceholder": "ঐচ্ছিক মন্তব্য",
+    "acceptedToast": "রিপোর্ট গৃহীত হয়েছে।",
+    "scheduledFor": "{{date}} তারিখে নির্ধারিত",
+    "scheduledHint": "আপনার পরিদর্শন {{date}} তারিখে নির্ধারিত। পরিদর্শক সম্পন্ন করলে রিপোর্ট এখানে দেখা যাবে।",
+    "viewReport": "রিপোর্ট দেখুন",
+    "unchecked": "পরীক্ষা করা হয়নি",
+    "condition": {
+      "good": "ভালো",
+      "fair": "মোটামুটি",
+      "damaged": "ক্ষতিগ্রস্ত",
+      "notApplicable": "প্রযোজ্য নয়",
+      "unchecked": "পরীক্ষা করা হয়নি"
+    },
+    "status": {
+      "Scheduled": "নির্ধারিত",
+      "InProgress": "চলমান",
+      "Completed": "সম্পন্ন",
+      "Cancelled": "বাতিল"
+    },
+    "type": {
+      "MoveIn": "ওঠা",
+      "MoveOut": "ছাড়া",
+      "Routine": "নিয়মিত",
+      "Emergency": "জরুরি"
+    },
+    "areas": {
+      "livingRoom": "বসার ঘর",
+      "kitchen": "রান্নাঘর",
+      "bathrooms": "বাথরুম",
+      "bedrooms": "শোবার ঘর",
+      "systems": "ব্যবস্থাসমূহ",
+      "handover": "হস্তান্তর"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "দেয়াল, ছাদ ও রং",
+        "flooring": "মেঝে ও স্কার্টিং",
+        "windows": "জানালা, কাচ ও হাতল"
+      },
+      "kitchen": {
+        "cabinets": "কেবিনেট, কাউন্টার ও সিঙ্ক",
+        "appliances": "বাড়িওয়ালার দেওয়া যন্ত্রপাতি"
+      },
+      "bathrooms": {
+        "sanitary": "স্যানিটারি সামগ্রী ও ফিটিংস"
+      },
+      "bedrooms": {
+        "wardrobes": "আলমারি, দরজা ও তালা"
+      },
+      "systems": {
+        "airConditioning": "এয়ার কন্ডিশনিং",
+        "electrical": "বৈদ্যুতিক সকেট ও আলো"
+      },
+      "handover": {
+        "keys": "চাবি, অ্যাক্সেস কার্ড ও রিমোট"
+      }
+    },
+    "updated": "পরিদর্শন হালনাগাদ হয়েছে"
   }
 }

@@ -12,7 +12,8 @@
     "loading": "පූරණය වෙමින්…",
     "errorLoad": "ඔබගේ තොරතුරු පූරණය කළ නොහැකි විය. කරුණාකර නැවත උත්සාහ කරන්න.",
     "retry": "නැවත උත්සාහ කරන්න",
-    "select": "තෝරන්න…"
+    "select": "තෝරන්න…",
+    "cancel": "අවලංගු"
   },
   "tabs": {
     "dashboard": "උපකරණ පුවරුව",
@@ -470,6 +471,7 @@
       "guestParking": "අමුත්තන්ගේ වාහන නැවතුම"
     },
     "myBookings": "මගේ වෙන් කිරීම්",
+    "pastBookings": "පසුගිය වෙන් කිරීම්",
     "bookASpace": "ඉඩක් වෙන් කරන්න",
     "perSlot": "කාල පරාසයකට {{amount}}",
     "capacity_one": "පුද්ගලයින් {{count}} දක්වා",
@@ -484,7 +486,34 @@
     "book": "දැන් වෙන් කරන්න",
     "bookFor": "{{amount}}ට වෙන් කරන්න",
     "fewer": "අමුත්තන් අඩු කරන්න",
-    "more": "අමුත්තන් වැඩි කරන්න"
+    "more": "අමුත්තන් වැඩි කරන්න",
+    "statusValues": {
+      "pending": "පොරොත්තුවෙන්",
+      "confirmed": "තහවුරු කරන ලදී",
+      "rejected": "ප්‍රතික්ෂේපිතයි",
+      "cancelled": "අවලංගුයි"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "ඔබගේ ගොඩනැගිල්ලේ තවමත් කිසිදු පහසුකමක් වෙන්කරවා ගත නොහැක.",
+    "noSlots": "No slots available on this date.",
+    "reference": "යොමුව",
+    "fee": "ගාස්තුව",
+    "notes": "සටහන්",
+    "notesPlaceholder": "Optional notes",
+    "reason": "හේතුව",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "අනුමැතිය අපේක්ෂිතයි",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "පදිංචියට පැමිණීම / ඉවත්වීම",
@@ -531,7 +560,23 @@
     "refundDue": "ආපසු ගෙවීම",
     "afterHandover": "භාරදීමෙන් පසු",
     "notStarted": "ආරම්භ කර නැත",
-    "giveNotice": "දැනුම් දෙන්න"
+    "giveNotice": "දැනුම් දෙන්න",
+    "remotes": "වාහන නැවතුම් දුරස්ථ පාලක",
+    "mailboxKeys": "තැපැල් පෙට්ටි යතුරු",
+    "chillerMeter": "චිලර් (ජල මීටරය)",
+    "noMoveIn": "තවම පරීක්ෂණ වාර්තා නැත.",
+    "noMoveOut": "තවම පරීක්ෂණ වාර්තා නැත.",
+    "damageCharges": "හානි ගාස්තු",
+    "summary": "සාරාංශ සටහන්",
+    "accept": "වාර්තාව පිළිගන්න",
+    "acceptHint": "පිළිගැනීමෙන් ඔබ මෙම වාර්තාව කියවූ බව තහවුරු කරයි. යමක් වැරදි ලෙස පෙනේ නම් අදහසක් එක් කරන්න.",
+    "commentPlaceholder": "විකල්ප අදහස",
+    "acceptedToast": "වාර්තාව පිළිගන්නා ලදී.",
+    "youAccepted": "ඔබ මෙම වාර්තාව {{date}} දින පිළිගත්තා",
+    "acceptedOn": "කුලී නිවැසියා {{date}} දින පිළිගත්තේය",
+    "scheduledFor": "{{date}} සඳහා නියමිතයි",
+    "scheduledHint": "ඔබේ පරීක්ෂාව {{date}} සඳහා නියමිතයි. පරීක්ෂක එය සම්පූර්ණ කළ පසු වාර්තාව මෙහි පෙන්වයි.",
+    "viewReport": "වාර්තාව බලන්න"
   },
   "access": {
     "title": "ඩිජිටල් ප්‍රවේශය",
@@ -788,5 +833,116 @@
     "reasonNeeded": "ආපසු යැවීමට හෝ ප්‍රතික්ෂේප කිරීමට හේතුවක් දෙන්න. ඉල්ලුම්කරුට එය පෙනේ.",
     "othersTurn": "පියවර {{n}} හි {{names}} බලාපොරොත්තුවෙන්. ඔබට මෙහි අනුගමනය කළ හැක; තීරණය කළ හැක්කේ ඔවුන්ට පමණි.",
     "empty": "ඔබේ තීරණය බලාපොරොත්තුවෙන් කිසිවක් නැත."
+  },
+  "inspection": {
+    "title": "පරීක්ෂණ වාර්තා",
+    "inspections": "පරීක්ෂාවන්",
+    "checklist": "සෑම පිරික්සුම් අයිතමයක්ම එහි තත්ත්වය, ගාස්තුව සහ ටිකට්පත සමඟ",
+    "readingsHandover": "කියවීම් සහ භාරදීම",
+    "summary": "සාරාංශ සටහන්",
+    "keys": "යතුරු",
+    "accessCards": "ප්‍රවේශ කාඩ්පත්",
+    "parkingRemotes": "වාහන නැවතුම් දුරස්ථ පාලක",
+    "mailboxKeys": "තැපැල් පෙට්ටි යතුරු",
+    "electricityMeter": "විදුලි මීටරය",
+    "waterMeter": "ජල මීටරය",
+    "chillerMeter": "චිලර් (ජල මීටරය)",
+    "save": "සුරකින්න",
+    "complete": "පරීක්ෂාව සම්පූර්ණ කරන්න",
+    "completeHint": "ඉන්පසු වාර්තාව වෙනස් කළ නොහැක.",
+    "completeTitle": "පරීක්ෂාව {{number}} සම්පූර්ණ කරන්නද?",
+    "completed": "පරීක්ෂාව {{number}} සම්පූර්ණයි.",
+    "cancel": "පරීක්ෂාව අවලංගු කරන්න",
+    "cancelTitle": "පරීක්ෂාව {{number}} අවලංගු කරන්න",
+    "reason": "හේතුව",
+    "cancelled": "පරීක්ෂාව අවලංගු කරන ලදී.",
+    "raiseTicket": "ටිකට්පතක් සාදන්න",
+    "raiseTicketFor": "{{name}} සඳහා ටිකට්පතක් සාදන්න",
+    "ticketRaised": "ටිකට්පත සාදන ලදී.",
+    "ticket": "ටිකට්පත",
+    "category": "වර්ගය",
+    "priority": "ප්‍රමුඛතාවය",
+    "addItem": "අයිතමය එක් කරන්න",
+    "removeItem": "අයිතමය ඉවත් කරන්න",
+    "removeItemTitle": "පිරික්සුම් ලැයිස්තුවෙන් \"{{name}}\" ඉවත් කරන්නද?",
+    "area": "ප්‍රදේශය",
+    "item": "අයිතමය",
+    "name": "නම",
+    "addPhoto": "Photos",
+    "removePhoto": "ඡායාරූපය ඉවත් කරන්න",
+    "photoLimit": "අයිතමයකට ඡායාරූප 4ක් දක්වා",
+    "charge": "ගාස්තුව",
+    "chargeTotal": "හානි ගාස්තු",
+    "inspector": "පරීක්ෂක",
+    "notePlaceholder": "දෝෂය, එහි ස්ථානය සහ බරපතළකම විස්තර කරන්න…",
+    "noInspections": "විවෘත පරීක්ෂා නැත. ආරම්භ කිරීමට එකක් කාලසටහන්ගත කරන්න.",
+    "run": "ක්‍රියාත්මක කරන්න",
+    "lockedCompleted": "{{date}} දින {{name}} විසින් සම්පූර්ණ කරන ලදී. වාර්තාව වෙනස් කළ නොහැක.",
+    "lockedCancelled": "අවලංගුයි: {{reason}}",
+    "tenantAcceptance": "කුලී නිවැසියාගේ පිළිගැනීම",
+    "acceptedOn": "කුලී නිවැසියා {{date}} දින පිළිගත්තේය",
+    "youAccepted": "ඔබ මෙම වාර්තාව {{date}} දින පිළිගත්තා",
+    "toAccept": "පිළිගැනීමට ඇත",
+    "accepted": "පිළිගත්තා",
+    "accept": "වාර්තාව පිළිගන්න",
+    "acceptHint": "පිළිගැනීමෙන් ඔබ මෙම වාර්තාව කියවූ බව තහවුරු කරයි. යමක් වැරදි ලෙස පෙනේ නම් අදහසක් එක් කරන්න.",
+    "commentPlaceholder": "විකල්ප අදහස",
+    "acceptedToast": "වාර්තාව පිළිගන්නා ලදී.",
+    "scheduledFor": "{{date}} සඳහා නියමිතයි",
+    "scheduledHint": "ඔබේ පරීක්ෂාව {{date}} සඳහා නියමිතයි. පරීක්ෂක එය සම්පූර්ණ කළ පසු වාර්තාව මෙහි පෙන්වයි.",
+    "viewReport": "වාර්තාව බලන්න",
+    "unchecked": "පරීක්ෂා කර නැත",
+    "condition": {
+      "good": "හොඳයි",
+      "fair": "සාමාන්‍යයි",
+      "damaged": "හානි වී ඇත",
+      "notApplicable": "අදාළ නොවේ",
+      "unchecked": "පරීක්ෂා කර නැත"
+    },
+    "status": {
+      "Scheduled": "සැලසුම් කර ඇත",
+      "InProgress": "ක්‍රියාත්මකයි",
+      "Completed": "සම්පූර්ණයි",
+      "Cancelled": "අවලංගුයි"
+    },
+    "type": {
+      "MoveIn": "පදිංචියට පැමිණීම",
+      "MoveOut": "ඉවත්වීම",
+      "Routine": "නිත්‍ය",
+      "Emergency": "හදිසි"
+    },
+    "areas": {
+      "livingRoom": "විසිත්ත කාමරය",
+      "kitchen": "මුළුතැන්ගෙය",
+      "bathrooms": "නාන කාමර",
+      "bedrooms": "නිදන කාමර",
+      "systems": "පද්ධති",
+      "handover": "භාරදීම"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "බිත්ති, සිවිලිම සහ තීන්ත",
+        "flooring": "පොළොව සහ ස්කර්ටින්",
+        "windows": "ජනෙල්, වීදුරු සහ මිට"
+      },
+      "kitchen": {
+        "cabinets": "කබඩ්, කවුන්ටර සහ සින්ක්",
+        "appliances": "අයිතිකරු සැපයූ උපකරණ"
+      },
+      "bathrooms": {
+        "sanitary": "සනීපාරක්ෂක භාණ්ඩ සහ සවිකිරීම්"
+      },
+      "bedrooms": {
+        "wardrobes": "ඇඳුම් අල්මාරි, දොරවල් සහ අගුළු"
+      },
+      "systems": {
+        "airConditioning": "වායුසමීකරණය",
+        "electrical": "විදුලි සොකට් සහ ආලෝකය"
+      },
+      "handover": {
+        "keys": "යතුරු, ප්‍රවේශ කාඩ්පත් සහ දුරස්ථ පාලක"
+      }
+    },
+    "updated": "පරීක්ෂාව යාවත්කාලීන කරන ලදී"
   }
 }

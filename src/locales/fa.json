@@ -12,7 +12,8 @@
     "loading": "در حال بارگذاری…",
     "errorLoad": "بارگذاری اطلاعات شما ممکن نشد. لطفاً دوباره تلاش کنید.",
     "retry": "تلاش مجدد",
-    "select": "انتخاب…"
+    "select": "انتخاب…",
+    "cancel": "انصراف"
   },
   "tabs": {
     "dashboard": "خانه",
@@ -470,6 +471,7 @@
       "guestParking": "پارکینگ مهمان"
     },
     "myBookings": "رزروهای من",
+    "pastBookings": "رزروهای گذشته",
     "bookASpace": "رزرو فضا",
     "perSlot": "{{amount}} برای هر نوبت",
     "capacity_one": "تا {{count}} نفر",
@@ -484,7 +486,34 @@
     "book": "رزرو کنید",
     "bookFor": "رزرو با {{amount}}",
     "fewer": "مهمان کمتر",
-    "more": "مهمان بیشتر"
+    "more": "مهمان بیشتر",
+    "statusValues": {
+      "pending": "در انتظار",
+      "confirmed": "تصدیق‌شده",
+      "rejected": "رد شده",
+      "cancelled": "لغو شده"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "هنوز هیچ امکاناتی در ساختمان شما قابل رزرو نیست.",
+    "noSlots": "No slots available on this date.",
+    "reference": "مرجع",
+    "fee": "کارمزد",
+    "notes": "یادداشت‌ها",
+    "notesPlaceholder": "Optional notes",
+    "reason": "دلیل",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "در انتظار تأیید",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "سکونت / تخلیه",
@@ -531,7 +560,23 @@
     "refundDue": "بازپرداخت",
     "afterHandover": "پس از تحویل",
     "notStarted": "شروع نشده",
-    "giveNotice": "اعلام تخلیه"
+    "giveNotice": "اعلام تخلیه",
+    "remotes": "ریموت‌های پارکینگ",
+    "mailboxKeys": "کلیدهای صندوق پست",
+    "chillerMeter": "چیلر (کنتور آب)",
+    "noMoveIn": "هنوز گزارش بازرسی وجود ندارد.",
+    "noMoveOut": "هنوز گزارش بازرسی وجود ندارد.",
+    "damageCharges": "هزینه‌های خسارت",
+    "summary": "یادداشت‌های خلاصه",
+    "accept": "تأیید گزارش",
+    "acceptHint": "با تأیید، اعلام می‌کنید که این گزارش را خوانده‌اید. اگر چیزی نادرست است، نظر بگذارید.",
+    "commentPlaceholder": "نظر اختیاری",
+    "acceptedToast": "گزارش تأیید شد.",
+    "youAccepted": "شما این گزارش را در {{date}} تأیید کردید",
+    "acceptedOn": "تأییدشده توسط مستأجر در {{date}}",
+    "scheduledFor": "زمان‌بندی‌شده برای {{date}}",
+    "scheduledHint": "بازرسی شما برای {{date}} زمان‌بندی شده است. گزارش پس از تکمیل توسط بازرس اینجا نمایش داده می‌شود.",
+    "viewReport": "مشاهده گزارش"
   },
   "access": {
     "title": "ورود دیجیتال",
@@ -788,5 +833,116 @@
     "reasonNeeded": "برای برگشت یا رد دلیلی بنویسید. درخواست‌کننده آن را می‌بیند.",
     "othersTurn": "منتظر {{names}} در گام {{n}}. می‌توانید اینجا آن را دنبال کنید؛ فقط آن‌ها می‌توانند تصمیم بگیرند.",
     "empty": "هیچ چیز منتظر تصمیم شما نیست."
+  },
+  "inspection": {
+    "title": "گزارش‌های بازرسی",
+    "inspections": "بازرسی‌ها",
+    "checklist": "هر مورد فهرست با وضعیت، هزینه و درخواست آن",
+    "readingsHandover": "کنتورها و تحویل",
+    "summary": "یادداشت‌های خلاصه",
+    "keys": "کلیدها",
+    "accessCards": "کارت‌های ورود",
+    "parkingRemotes": "ریموت‌های پارکینگ",
+    "mailboxKeys": "کلیدهای صندوق پست",
+    "electricityMeter": "کنتور برق",
+    "waterMeter": "کنتور آب",
+    "chillerMeter": "چیلر (کنتور آب)",
+    "save": "ذخیره",
+    "complete": "تکمیل بازرسی",
+    "completeHint": "پس از آن گزارش قابل تغییر نیست.",
+    "completeTitle": "بازرسی {{number}} تکمیل شود؟",
+    "completed": "بازرسی {{number}} تکمیل شد.",
+    "cancel": "لغو بازرسی",
+    "cancelTitle": "لغو بازرسی {{number}}",
+    "reason": "دلیل",
+    "cancelled": "بازرسی لغو شد.",
+    "raiseTicket": "ثبت درخواست",
+    "raiseTicketFor": "ثبت درخواست برای {{name}}",
+    "ticketRaised": "درخواست ثبت شد.",
+    "ticket": "درخواست",
+    "category": "دسته‌بندی",
+    "priority": "اولویت",
+    "addItem": "افزودن مورد",
+    "removeItem": "حذف مورد",
+    "removeItemTitle": "«{{name}}» از فهرست حذف شود؟",
+    "area": "بخش",
+    "item": "مورد",
+    "name": "نام",
+    "addPhoto": "Photos",
+    "removePhoto": "حذف عکس",
+    "photoLimit": "حداکثر ۴ عکس برای هر مورد",
+    "charge": "هزینه",
+    "chargeTotal": "هزینه‌های خسارت",
+    "inspector": "بازرس",
+    "notePlaceholder": "نقص، محل و شدت آن را شرح دهید…",
+    "noInspections": "هیچ بازرسی بازی وجود ندارد. برای شروع یکی را زمان‌بندی کنید.",
+    "run": "انجام",
+    "lockedCompleted": "در {{date}} توسط {{name}} تکمیل شد. گزارش قابل تغییر نیست.",
+    "lockedCancelled": "لغو شد: {{reason}}",
+    "tenantAcceptance": "تأیید مستأجر",
+    "acceptedOn": "تأییدشده توسط مستأجر در {{date}}",
+    "youAccepted": "شما این گزارش را در {{date}} تأیید کردید",
+    "toAccept": "نیاز به تأیید",
+    "accepted": "تأیید شد",
+    "accept": "تأیید گزارش",
+    "acceptHint": "با تأیید، اعلام می‌کنید که این گزارش را خوانده‌اید. اگر چیزی نادرست است، نظر بگذارید.",
+    "commentPlaceholder": "نظر اختیاری",
+    "acceptedToast": "گزارش تأیید شد.",
+    "scheduledFor": "زمان‌بندی‌شده برای {{date}}",
+    "scheduledHint": "بازرسی شما برای {{date}} زمان‌بندی شده است. گزارش پس از تکمیل توسط بازرس اینجا نمایش داده می‌شود.",
+    "viewReport": "مشاهده گزارش",
+    "unchecked": "بررسی نشده",
+    "condition": {
+      "good": "خوب",
+      "fair": "متوسط",
+      "damaged": "آسیب‌دیده",
+      "notApplicable": "مصداق ندارد",
+      "unchecked": "بررسی نشده"
+    },
+    "status": {
+      "Scheduled": "زمان‌بندی‌شده",
+      "InProgress": "در حال انجام",
+      "Completed": "تکمیل‌شده",
+      "Cancelled": "لغوشده"
+    },
+    "type": {
+      "MoveIn": "سکونت",
+      "MoveOut": "تخلیه",
+      "Routine": "روتین",
+      "Emergency": "اضطراری"
+    },
+    "areas": {
+      "livingRoom": "اتاق نشیمن",
+      "kitchen": "آشپزخانه",
+      "bathrooms": "حمام‌ها",
+      "bedrooms": "اتاق‌خواب‌ها",
+      "systems": "تأسیسات",
+      "handover": "تحویل"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "دیوارها، سقف و رنگ",
+        "flooring": "کف و قرنیز",
+        "windows": "پنجره‌ها، شیشه و دستگیره‌ها"
+      },
+      "kitchen": {
+        "cabinets": "کابینت‌ها، کانترها و سینک",
+        "appliances": "لوازم ارائه‌شده توسط موجر"
+      },
+      "bathrooms": {
+        "sanitary": "لوازم بهداشتی و شیرآلات"
+      },
+      "bedrooms": {
+        "wardrobes": "کمدها، درها و قفل‌ها"
+      },
+      "systems": {
+        "airConditioning": "تهویه مطبوع",
+        "electrical": "پریزها و روشنایی"
+      },
+      "handover": {
+        "keys": "کلیدها، کارت‌های ورود و ریموت‌ها"
+      }
+    },
+    "updated": "بازرسی به‌روزرسانی شد"
   }
 }

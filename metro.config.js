@@ -8,7 +8,7 @@ const config = getDefaultConfig(__dirname);
 // In development the app reaches the API through this server's own /api, as the web app does
 // through Vite's proxy: the phone needs no separate address for the API, the browser preview
 // makes no cross-site call, and the API itself stays on the Mac's localhost.
-const devApi = process.env.PMS_DEV_API ?? 'http://localhost:5028';
+const devApi = process.env.PMS_DEV_API ?? 'http://127.0.0.1:5028';
 
 config.server.enhanceMiddleware = (metroMiddleware) => (req, res, next) => {
   if (!req.url?.startsWith('/api/')) return metroMiddleware(req, res, next);

@@ -12,7 +12,8 @@
     "loading": "Carregando…",
     "errorLoad": "Não foi possível carregar suas informações. Tente novamente.",
     "retry": "Tentar novamente",
-    "select": "Selecionar…"
+    "select": "Selecionar…",
+    "cancel": "Cancelar"
   },
   "tabs": {
     "dashboard": "Início",
@@ -470,6 +471,7 @@
       "guestParking": "Estacionamento de visitas"
     },
     "myBookings": "As minhas reservas",
+    "pastBookings": "Reservas anteriores",
     "bookASpace": "Reservar um espaço",
     "perSlot": "{{amount}} por horário",
     "capacity_one": "Até {{count}} pessoa",
@@ -484,7 +486,34 @@
     "book": "Reservar agora",
     "bookFor": "Reservar por {{amount}}",
     "fewer": "Menos convidados",
-    "more": "Mais convidados"
+    "more": "Mais convidados",
+    "statusValues": {
+      "pending": "Pendente",
+      "confirmed": "Confirmado",
+      "rejected": "Rejeitado",
+      "cancelled": "Cancelado"
+    },
+    "slotStatus": {
+      "free": "Free",
+      "pending": "Pending",
+      "booked": "Booked",
+      "past": "Past"
+    },
+    "requiresApproval": "Needs approval",
+    "instantBooking": "Instant confirmation",
+    "min": "min",
+    "noFacilitiesYet": "Ainda não há instalações disponíveis para reserva no seu edifício.",
+    "noSlots": "No slots available on this date.",
+    "reference": "Referência",
+    "fee": "Taxa",
+    "notes": "Notas",
+    "notesPlaceholder": "Optional notes",
+    "reason": "Motivo",
+    "officeFeeNote": "The booking fee is collected by the management office.",
+    "approvalNote": "This facility requires approval from the management office before your slot is confirmed.",
+    "createdPendingTitle": "Aprovação pendente",
+    "cancelTitle": "Cancel booking {{number}}?",
+    "cancelTenantHint": "This frees the slot so another resident can book it."
   },
   "move": {
     "title": "Entrada / Saída",
@@ -531,7 +560,23 @@
     "refundDue": "Devolução",
     "afterHandover": "Após a entrega",
     "notStarted": "Por iniciar",
-    "giveNotice": "Dar pré-aviso"
+    "giveNotice": "Dar pré-aviso",
+    "remotes": "Comandos do estacionamento",
+    "mailboxKeys": "Chaves da caixa de correio",
+    "chillerMeter": "Chiller (Contador de água)",
+    "noMoveIn": "Ainda não há relatórios de inspeção.",
+    "noMoveOut": "Ainda não há relatórios de inspeção.",
+    "damageCharges": "Encargos por danos",
+    "summary": "Notas de resumo",
+    "accept": "Aceitar relatório",
+    "acceptHint": "Ao aceitar, confirma que leu este relatório. Adicione um comentário se algo estiver errado.",
+    "commentPlaceholder": "Comentário opcional",
+    "acceptedToast": "Relatório aceite.",
+    "youAccepted": "Aceitou este relatório em {{date}}",
+    "acceptedOn": "Aceite pelo inquilino em {{date}}",
+    "scheduledFor": "Agendada para {{date}}",
+    "scheduledHint": "A sua inspeção está agendada para {{date}}. O relatório aparece aqui quando o inspetor o concluir.",
+    "viewReport": "Ver relatório"
   },
   "access": {
     "title": "Acesso digital",
@@ -788,5 +833,116 @@
     "reasonNeeded": "Informe um motivo para devolver ou rejeitar. O solicitante verá.",
     "othersTurn": "Aguardando {{names}} na etapa {{n}}. Você pode acompanhar aqui; só eles podem decidir.",
     "empty": "Nada aguarda sua decisão."
+  },
+  "inspection": {
+    "title": "Relatórios de inspeção",
+    "inspections": "Inspeções",
+    "checklist": "Cada item da lista com o estado, o encargo e o ticket",
+    "readingsHandover": "Leituras e entrega",
+    "summary": "Notas de resumo",
+    "keys": "Chaves",
+    "accessCards": "Cartões de acesso",
+    "parkingRemotes": "Comandos do estacionamento",
+    "mailboxKeys": "Chaves da caixa de correio",
+    "electricityMeter": "Contador de eletricidade",
+    "waterMeter": "Contador de água",
+    "chillerMeter": "Chiller (Contador de água)",
+    "save": "Guardar",
+    "complete": "Concluir inspeção",
+    "completeHint": "O relatório não poderá ser alterado depois.",
+    "completeTitle": "Concluir a inspeção {{number}}?",
+    "completed": "Inspeção {{number}} concluída.",
+    "cancel": "Cancelar inspeção",
+    "cancelTitle": "Cancelar inspeção {{number}}",
+    "reason": "Motivo",
+    "cancelled": "Inspeção cancelada.",
+    "raiseTicket": "Abrir ticket",
+    "raiseTicketFor": "Abrir um ticket para {{name}}",
+    "ticketRaised": "Ticket aberto.",
+    "ticket": "Ticket",
+    "category": "Categoria",
+    "priority": "Prioridade",
+    "addItem": "Adicionar item",
+    "removeItem": "Remover item",
+    "removeItemTitle": "Remover \"{{name}}\" da lista?",
+    "area": "Área",
+    "item": "Item",
+    "name": "Nome",
+    "addPhoto": "Photos",
+    "removePhoto": "Remover foto",
+    "photoLimit": "Até 4 fotos por item",
+    "charge": "Encargo",
+    "chargeTotal": "Encargos por danos",
+    "inspector": "Inspetor",
+    "notePlaceholder": "Descreva o defeito, a localização e a gravidade…",
+    "noInspections": "Não há inspeções abertas. Agende uma para começar.",
+    "run": "Realizar",
+    "lockedCompleted": "Concluída em {{date}} por {{name}}. O relatório não pode ser alterado.",
+    "lockedCancelled": "Cancelada: {{reason}}",
+    "tenantAcceptance": "Aceitação do inquilino",
+    "acceptedOn": "Aceite pelo inquilino em {{date}}",
+    "youAccepted": "Aceitou este relatório em {{date}}",
+    "toAccept": "Por aceitar",
+    "accepted": "Aceite",
+    "accept": "Aceitar relatório",
+    "acceptHint": "Ao aceitar, confirma que leu este relatório. Adicione um comentário se algo estiver errado.",
+    "commentPlaceholder": "Comentário opcional",
+    "acceptedToast": "Relatório aceite.",
+    "scheduledFor": "Agendada para {{date}}",
+    "scheduledHint": "A sua inspeção está agendada para {{date}}. O relatório aparece aqui quando o inspetor o concluir.",
+    "viewReport": "Ver relatório",
+    "unchecked": "Não verificado",
+    "condition": {
+      "good": "Bom",
+      "fair": "Razoável",
+      "damaged": "Danificado",
+      "notApplicable": "Não aplicável",
+      "unchecked": "Não verificado"
+    },
+    "status": {
+      "Scheduled": "Agendada",
+      "InProgress": "Em andamento",
+      "Completed": "Concluída",
+      "Cancelled": "Cancelada"
+    },
+    "type": {
+      "MoveIn": "Entrada",
+      "MoveOut": "Saída",
+      "Routine": "Rotina",
+      "Emergency": "Emergência"
+    },
+    "areas": {
+      "livingRoom": "Sala de estar",
+      "kitchen": "Cozinha",
+      "bathrooms": "Casas de banho",
+      "bedrooms": "Quartos",
+      "systems": "Instalações",
+      "handover": "Entrega"
+    },
+    "items": {
+      "livingRoom": {
+        "walls": "Paredes, teto e pintura",
+        "flooring": "Pavimento e rodapés",
+        "windows": "Janelas, vidros e puxadores"
+      },
+      "kitchen": {
+        "cabinets": "Armários, bancadas e lava-loiça",
+        "appliances": "Eletrodomésticos do senhorio"
+      },
+      "bathrooms": {
+        "sanitary": "Louças sanitárias e torneiras"
+      },
+      "bedrooms": {
+        "wardrobes": "Roupeiros, portas e fechaduras"
+      },
+      "systems": {
+        "airConditioning": "Ar condicionado",
+        "electrical": "Tomadas e iluminação"
+      },
+      "handover": {
+        "keys": "Chaves, cartões de acesso e comandos"
+      }
+    },
+    "updated": "Inspeção atualizado"
   }
 }

@@ -317,8 +317,8 @@ export const announcements: Announcement[] = [
   },
 ];
 
-// ── Notifications · awaiting a Notification API ──────────────────────────────
-export type NotificationKind = 'payment' | 'lease' | 'maintenance' | 'visitor' | 'announcement';
+// ── Notifications · Notification API (/My/getMyNotifications) ────────────────
+export type NotificationKind = 'payment' | 'lease' | 'maintenance' | 'visitor' | 'announcement' | 'booking' | 'inspection';
 
 export const initialNotifications = [
   { id: 'n1', kind: 'maintenance' as NotificationKind, title: 'Technician on the way', body: 'Khalid Al Balushi will visit tomorrow for SR-2026-0142 (air conditioning).', at: dateDaysAgo(0), read: false, href: '/requests/maintenance/sr3' },

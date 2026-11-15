@@ -1,4 +1,12 @@
-import { apiDelete, apiGet, apiImage, apiPost, apiPut } from './client';
+import { apiDelete, apiGet, apiImage, apiPost, apiPut, apiUploadPhoto } from './client';
+import type {
+  InspectionDto,
+  InspectionItemDto,
+  InspectionItemRequestDto,
+  InspectionStatus,
+  InspectionType,
+  UpdateInspectionDto,
+} from './types';
 
 export interface StaffDashboardServiceRequestItem {
   id: string;
@@ -437,3 +445,52 @@ export const sendStaffMaterialRequisition = (id: string) =>
   apiPut<StaffMaterialRequisition>(`/MaterialRequisition/sendMaterialRequisition/${id}`, {});
 export const deleteStaffMaterialRequisition = (id: string) =>
   apiDelete(`/MaterialRequisition/deleteMaterialRequisition/${id}`);
+
+// ── Inspections ─────────────────────────────────────────────────────────────
+
+export const getStaffInspections = (
+  filter: { status?: InspectionStatus; type?: InspectionType; propertyId?: string; unitId?: string } = {},
+) => {
+  const q = new URLSearchParams(
+    Object.entries(filter).filter((e): e is [string, string] => Boolean(e[1])),
+  ).toString();
+  return apiGet<InspectionDto[]>(`/Inspection/getInspection${q ? `?${q}` : ''}`);
+};
+
+export const getStaffInspection = (id: string) => apiGet<InspectionDto>(`/Inspection/getInspection/${id}`);
+
+export const updateStaffInspection = (id: string, body: UpdateInspectionDto) =>
+  apiPut<InspectionDto>(`/Inspection/updateInspection/${id}`, body);
+
+export const completeStaffInspection = (id: string) =>
+  apiPut<InspectionDto>(`/Inspection/completeInspection/${id}`, {});
+
+export const cancelStaffInspection = (id: string, reason: string) =>
+  apiPut<InspectionDto>(`/Inspection/cancelInspection/${id}`, { reason });
+
+export const getStaffInspectionItems = (inspectionId?: string) =>
+  apiGet<InspectionItemDto[]>(`/Inspection/getInspectionItem${inspectionId ? `?inspectionId=${inspectionId}` : ''}`);
+
+export const addStaffInspectionItem = (inspectionId: string, body: InspectionItemRequestDto) =>
+  apiPost<InspectionItemDto>(`/Inspection/addInspectionItem/${inspectionId}`, body);
+
+export const updateStaffInspectionItem = (itemId: string, body: InspectionItemRequestDto) =>
+  apiPut<InspectionItemDto>(`/Inspection/updateInspectionItem/${itemId}`, body);
+
+export const removeStaffInspectionItem = (itemId: string) =>
+  apiPut<void>(`/Inspection/removeInspectionItem/${itemId}`, {});
+
+export const raiseStaffInspectionTicket = (
+  itemId: string,
+  body: { category?: string; priority?: string; description?: string },
+) => apiPost<InspectionItemDto>(`/Inspection/raiseInspectionTicket/${itemId}`, body);
+
+export const getStaffInspectionPhotoUri = (photoId: string) =>
+  apiImage(`/Inspection/getInspectionPhotoFile/${photoId}`);
+
+export const uploadStaffInspectionPhoto = (itemId: string, uri: string) =>
+  apiUploadPhoto(`/Inspection/uploadInspectionPhoto/${itemId}`, uri);
+
+export const removeStaffInspectionPhoto = (photoId: string) =>
+  apiPut<void>(`/Inspection/removeInspectionPhoto/${photoId}`, {});
+
