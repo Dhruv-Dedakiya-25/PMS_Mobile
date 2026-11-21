@@ -16,6 +16,7 @@ import { accountLabel, useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
 import { Avatar, Button, Card, IconTile, Onward, Pill } from '@/components/ui';
+import { StaffBell } from '@/components/staff-bell';
 import { useLanguage } from '@/i18n';
 import { omr } from '@/lib/format';
 import { space } from '@/theme/tokens';
@@ -102,6 +103,7 @@ export default function StaffDashboard() {
             {staffName}
           </AppText>
         </View>
+        <StaffBell />
       </View>
 
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: space.xs }}>

@@ -21,7 +21,7 @@ export const permissionsFor = (access: Access | null): ActionPermissions => {
  * - Staff roles = 'staff' routes plus shared screens (profile, language, done) only
  * - Maintenance = limited to its own pages only:
  *     staff/facility, staff/facilities, staff/announcements, staff/announcement, staff/property as 'view';
- *     staff/tickets, staff/ticket, staff/inventory and staff/requisition as 'edit';
+ *     staff/tickets, staff/ticket, staff/inventory and staff/requisition as 'edit'; staff/inbox as 'view';
  *     plus profile, language, done. Everything else under staff is null.
  * - An unknown user type gets the least access (empty rules, nothing allowed)
  *
@@ -59,6 +59,8 @@ const RULES: Record<UserType, Record<string, Access | null>> = {
     // A maintenance account can be a step's approver.
     'staff/approvals': 'edit',
     'staff/inspection': 'edit',
+    // Their own notifications, under the bell.
+    'staff/inbox': 'view',
     profile: 'full',
     language: 'full',
     done: 'full',

@@ -195,6 +195,15 @@ export async function login(username: string, password: string): Promise<void> {
   await keep(body, rtHeader);
 }
 
+/**
+ * Asks the API to email a reset link. The answer is the same whether or not the email has an
+ * account; the link opens the website's reset page, which works in the phone's browser.
+ */
+export async function requestPasswordReset(email: string): Promise<void> {
+  const res = await postAuth('forgotPassword', { email: email.trim() });
+  if (!res.ok) throw new SignInError('invalid', await extractErrorMessage(res));
+}
+
 let inFlight: Promise<boolean> | null = null;
 
 /** Exchanges the refresh token (or web cookie) for a new access token. */

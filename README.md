@@ -42,7 +42,7 @@ npx jest           # every language has every string, with the same placeholders
 
 | Path | What |
 |---|---|
-| `src/app/(auth)` | Sign In, Create Account (demo mode) |
+| `src/app/(auth)` | Sign In, Forgot password |
 | `src/app/(app)/(tabs)` | The four tabs: Dashboard, My Property, Requests, Announcements |
 | `src/app/(app)/…` | Lease, payments, utilities, documents, requests, notifications, contacts, profile |
 | `src/auth/session.ts` | Live session (access token in memory, refresh token in `expo-secure-store` / HttpOnly cookie) |

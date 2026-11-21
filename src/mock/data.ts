@@ -2,7 +2,9 @@
 // that will replace it; until then every screen reads from here (docs/MOCK_VS_REAL.md lists them).
 // Dates count from today, so the sample never looks stale. Names, titles and descriptions are
 // records, as the database would hold them, so they stay in English in every language.
-import { dateDaysAgo, monthStart, omanToday } from './clock';
+import type { MyViolationDto } from '@/api/types';
+
+import { daysAgo, dateDaysAgo, monthStart, omanToday } from './clock';
 
 const dayBefore = (date: string) => {
   const d = new Date(`${date}T00:00:00Z`);
@@ -338,4 +340,23 @@ export const contacts = [
   { role: 'reception' as ContactRole, name: 'Lobby Reception', phone: '+968 2449 1101', email: 'reception@estateflow.om', hours: '24/7' },
   { role: 'security' as ContactRole, name: 'Security Control Room', phone: '+968 2449 1199', email: 'security@estateflow.om', hours: '24/7' },
   { role: 'emergency' as ContactRole, name: 'Royal Oman Police', phone: '9999', email: '', hours: '24/7' },
+];
+
+/** Sample violations: one with a notice the tenant can still appeal, one settled after a question. */
+export const initialViolations: MyViolationDto[] = [
+  {
+    id: 'vio-1', violationNumber: 'VIO-0902', violationType: 'Noise after 11pm',
+    description: 'Loud music reported by neighbours after midnight on Friday.',
+    violationDate: dateDaysAgo(6), fineAmount: 50, status: 'NoticeSent', evidenceCount: 0, appeals: [],
+  },
+  {
+    id: 'vio-2', violationNumber: 'VIO-0881', violationType: 'Guest parking misuse',
+    description: 'A guest vehicle was left in a resident bay overnight.',
+    violationDate: dateDaysAgo(40), fineAmount: 20, status: 'Paid', evidenceCount: 0,
+    appeals: [{
+      id: 'apl-1', appealNumber: 'APL-0041', type: 'Question', status: 'Answered',
+      reason: 'Where can my guests park overnight?', response: 'Bays G1 to G6 are open to guests overnight.',
+      createdAtUtc: daysAgo(39, '10:15'), decidedAtUtc: daysAgo(38, '09:30'),
+    }],
+  },
 ];

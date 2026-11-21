@@ -5,6 +5,9 @@ import { apiGet, apiImage, apiPost, apiPut, apiUploadPhoto, sendAuthed } from '@
 import type {
   BookMyFacilityDto,
   CreateMyServiceRequestDto,
+  InspectionDto,
+  InviteMyVisitorDto,
+  MyAnnouncementDto,
   MyDocumentDto,
   MyFacilityBookingDto,
   MyFacilityDto,
@@ -12,15 +15,16 @@ import type {
   MyInstallmentDto,
   MyInvoiceDto,
   MyLeaseDto,
+  MyNotificationDto,
   MyProfileDto,
   MyReceiptDetailDto,
   MyReceiptDto,
   MyServiceRequestDto,
-  MyAnnouncementDto,
-  MyNotificationDto,
+  MyViolationAppealDto,
+  MyViolationDto,
+  MyViolationEvidenceDto,
   MyVisitorDto,
-  InviteMyVisitorDto,
-  InspectionDto,
+  ViolationAppealType,
 } from '@/api/types';
 
 export const getMyProfile = () => apiGet<MyProfileDto>('/My/getMyProfile');
@@ -37,8 +41,11 @@ export const getMyReceipt = (id: string) => apiGet<MyReceiptDetailDto>(`/My/getM
 
 export const getMyDocuments = () => apiGet<MyDocumentDto[]>('/My/getMyDocuments');
 
-export async function getMyDocumentFile(id: string): Promise<{ blob: Blob; contentType: string; fileName?: string }> {
-  const res = await sendAuthed('GET', `/My/getMyDocumentFile/${id}`);
+export const getMyDocumentFile = (id: string) => fileFrom(`/My/getMyDocumentFile/${id}`);
+
+/** A protected file with its type and the name the server gives it. */
+export async function fileFrom(path: string): Promise<{ blob: Blob; contentType: string; fileName?: string }> {
+  const res = await sendAuthed('GET', path);
   const blob = await res.blob();
   const contentType = res.headers.get('content-type') ?? 'application/octet-stream';
   const disposition = res.headers.get('content-disposition') ?? '';
@@ -120,5 +127,17 @@ export const getMyInspectionPhotoUri = (photoId: string) => apiImage(`/My/getMyI
 export const acceptMyInspection = (id: string, comment?: string) =>
   apiPut<InspectionDto>(`/My/acceptMyInspection/${id}`, { comment });
 
+/** The violations recorded against the tenant, newest first, each with its appeals. */
+export const getMyViolations = () => apiGet<MyViolationDto[]>('/My/getMyViolations');
 
+export const getMyViolationEvidence = (violationId: string) =>
+  apiGet<MyViolationEvidenceDto[]>(`/My/getMyViolationEvidence/${violationId}`);
 
+/** A photo of the evidence, as a data URI an Image can show. */
+export const getMyViolationEvidenceImage = (id: string) => apiImage(`/My/getMyViolationEvidenceFile/${id}`);
+
+export const getMyViolationEvidenceFile = (id: string) => fileFrom(`/My/getMyViolationEvidenceFile/${id}`);
+
+/** Appeals a violation or asks the office about it; refused while an earlier one is still pending. */
+export const appealMyViolation = (violationId: string, body: { type: ViolationAppealType; reason: string }) =>
+  apiPost<MyViolationAppealDto>(`/My/appealMyViolation/${violationId}`, body);

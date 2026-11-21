@@ -19,6 +19,7 @@ import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
 import { StaffWorkOrders } from '@/components/staff-work-orders';
 import { Avatar, Button, Card, IconTile, Onward, Pill } from '@/components/ui';
+import { StaffBell } from '@/components/staff-bell';
 import { space } from '@/theme/tokens';
 
 export default function FacilityDashboard() {
@@ -113,6 +114,7 @@ export default function FacilityDashboard() {
             {staffName}
           </AppText>
         </View>
+        <StaffBell />
       </View>
 
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: space.xs }}>

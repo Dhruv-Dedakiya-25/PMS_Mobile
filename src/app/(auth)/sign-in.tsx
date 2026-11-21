@@ -1,41 +1,23 @@
-import { IconArrowRight, IconEye, IconEyeOff, IconLock, IconShieldCheck, IconUser, type Icon } from '@tabler/icons-react-native';
+import { IconArrowRight, IconEye, IconEyeOff, IconLock, IconShieldCheck, IconUser } from '@tabler/icons-react-native';
 import { router } from 'expo-router';
-import { useState, type ReactNode } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, ScrollView, TextInput, View, type TextInputProps } from 'react-native';
+import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 
 import { SignInError } from '@/auth/session';
 import { AppText } from '@/components/app-text';
 import { EstateFlowMark } from '@/components/art';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { AuthField, useAuthColors } from '@/components/auth-ui';
 import { useSession } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { tenant } from '@/mock/data';
-import { contentColumn, fonts, radius, space, usePalette } from '@/theme/tokens';
-
-// In light mode the website's sign-in colours, so both sign-in pages look alike; in dark mode the
-// same page in the app's dark palette.
-const website = {
-  bg: '#F1F5F9', card: '#FFFFFF', border: '#E7EDF3', field: '#F8FAFC', ink: '#0F172A', label: '#334155',
-  muted: '#64748B', faint: '#94A3B8', button: '#3B6FF6', accent: '#3B6FF6', badge: '#EEF3FF', badgeBorder: '#DCE6FE',
-  errorBg: '#FEF2F2', errorBorder: '#FECACA', error: '#B91C1C',
-};
-
-function useColors(): typeof website {
-  const p = usePalette();
-  if (useColorScheme() !== 'dark') return website;
-  return {
-    bg: p.bg, card: p.card, border: p.border, field: p.surface, ink: p.text, label: p.textSecondary,
-    muted: p.textSecondary, faint: p.textMuted, button: website.button, accent: p.primary, badge: p.primarySoft, badgeBorder: p.border,
-    errorBg: p.dangerSoft, errorBorder: p.dangerSoft, error: p.danger,
-  };
-}
+import { contentColumn, radius, space } from '@/theme/tokens';
 
 export default function SignIn() {
   const { t } = useTranslation();
-  const c = useColors();
+  const c = useAuthColors();
   const insets = useSafeAreaInsets();
   const { isRTL } = useLanguage();
   const { isDemo, signIn } = useSession();
@@ -157,6 +139,12 @@ export default function SignIn() {
             }
           />
 
+          <Pressable onPress={() => router.push('/forgot-password')} accessibilityRole="button" hitSlop={8} style={{ alignSelf: 'flex-end', marginTop: -space.sm }}>
+            <AppText weight="semibold" style={{ fontSize: 12.5, color: c.accent }}>
+              {t('auth.forgotPassword')}
+            </AppText>
+          </Pressable>
+
           {/* Shown above the button, not as a toast, so it stays while the field is corrected. */}
           {errorMessage ? (
             <View accessibilityRole="alert" style={{ paddingVertical: 10, paddingHorizontal: 14, borderRadius: radius.sm, backgroundColor: c.errorBg, borderWidth: 1, borderColor: c.errorBorder }}>
@@ -186,13 +174,6 @@ export default function SignIn() {
 
         <View style={{ alignItems: 'center', gap: space.md, marginTop: space.xl }}>
           {isDemo ? (
-            <Pressable onPress={() => router.push('/create-account')} accessibilityRole="button" hitSlop={8}>
-              <AppText weight="bold" style={{ fontSize: 13.5, color: c.accent }}>
-                {t('auth.noAccount')}
-              </AppText>
-            </Pressable>
-          ) : null}
-          {isDemo ? (
             <AppText variant="caption" align="center" style={{ color: c.muted }}>
               {t('auth.sampleNote', { name: tenant.name })}
             </AppText>
@@ -204,41 +185,5 @@ export default function SignIn() {
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
-  );
-}
-
-/** The website's sign-in field: a pale box with an icon, white with a blue edge while typing. */
-function AuthField({ label, icon: FieldIcon, right, ...input }: TextInputProps & { label: string; icon: Icon; right?: ReactNode }) {
-  const c = useColors();
-  const { isRTL } = useLanguage();
-  const [focused, setFocused] = useState(false);
-  return (
-    <View style={{ gap: space.sm }}>
-      <AppText weight="semibold" style={{ fontSize: 13, lineHeight: 18, color: c.label }}>
-        {label}
-      </AppText>
-      <View
-        style={{
-          flexDirection: 'row', alignItems: 'center', gap: space.md, height: 46, paddingHorizontal: 14,
-          borderRadius: radius.md, borderWidth: 1.5, borderColor: focused ? c.accent : c.border,
-          backgroundColor: focused ? c.card : c.field,
-        }}>
-        <FieldIcon size={18} color={c.faint} />
-        <TextInput
-          accessibilityLabel={label}
-          maxFontSizeMultiplier={1.6}
-          placeholderTextColor={c.faint}
-          {...input}
-          onFocus={(e) => { setFocused(true); input.onFocus?.(e); }}
-          onBlur={(e) => { setFocused(false); input.onBlur?.(e); }}
-          style={{
-            // The box's blue edge already shows focus, so the web app draws no browser ring (a solid 0px outline).
-            flex: 1, height: '100%', color: c.ink, fontFamily: fonts.medium, fontSize: 14, outlineStyle: 'solid', outlineWidth: 0,
-            textAlign: isRTL ? 'right' : 'left', writingDirection: isRTL ? 'rtl' : 'ltr',
-          }}
-        />
-        {right}
-      </View>
-    </View>
   );
 }

@@ -528,3 +528,60 @@ export interface InspectionItemRequestDto {
   chargeAmount?: number | null;
 }
 
+/** A violation recorded against the tenant, with every appeal or question raised on it. */
+export interface MyViolationDto {
+  id: string;
+  violationNumber: string;
+  violationType: string;
+  description?: string | null;
+  violationDate: string;
+  fineAmount?: number | null;
+  /** Open, NoticeSent, Disputed, Paid, Waived or Cancelled. */
+  status: string;
+  evidenceCount: number;
+  appeals: MyViolationAppealDto[];
+}
+
+export type ViolationAppealType = 'Appeal' | 'Question';
+
+/** An appeal or question on a violation, and the office's answer once it has one. */
+export interface MyViolationAppealDto {
+  id: string;
+  appealNumber: string;
+  type: ViolationAppealType | string;
+  /** Pending, Accepted, Rejected or Answered. */
+  status: string;
+  reason: string;
+  response?: string | null;
+  previousFineAmount?: number | null;
+  revisedFineAmount?: number | null;
+  createdAtUtc: string;
+  decidedAtUtc?: string | null;
+}
+
+/** A photo or PDF the office attached to a violation. */
+export interface MyViolationEvidenceDto {
+  id: string;
+  fileName: string;
+  contentType: string;
+  sizeBytes: number;
+  description?: string | null;
+}
+
+/** One of a staff member's own notifications: a lease expiry or SLA breach reminder, say. */
+export interface InboxItemDto {
+  id: string;
+  notificationType: string;
+  subject?: string | null;
+  message: string;
+  relatedEntityType?: string | null;
+  relatedEntityId?: string | null;
+  sentAtUtc?: string | null;
+  readAtUtc?: string | null;
+}
+
+/** The staff bell: how many are unread, and the newest twenty. */
+export interface InboxDto {
+  unread: number;
+  items: InboxItemDto[];
+}

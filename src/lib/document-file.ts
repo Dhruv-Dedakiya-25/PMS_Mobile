@@ -31,7 +31,8 @@ async function blobToUint8Array(blob: Blob): Promise<Uint8Array> {
 }
 
 /**
- * Downloads or shares a tenant document file.
+ * Downloads or shares a tenant document file, or any other protected file `fetchFile` reads
+ * (a violation's evidence, say).
  * - Demo mode returns `'sample'` so the caller shows the sample note.
  * - Web opens a blob URL (or triggers a download).
  * - Native writes the file via expo-file-system and opens the share sheet via expo-sharing.
@@ -40,10 +41,11 @@ export async function openOrShareDocument(
   id: string,
   fallbackName: string,
   action: 'download' | 'share',
+  fetchFile: typeof getMyDocumentFile = getMyDocumentFile,
 ): Promise<'sample' | 'done'> {
   if (authMode === 'demo') return 'sample';
 
-  const { blob, contentType, fileName } = await getMyDocumentFile(id);
+  const { blob, contentType, fileName } = await fetchFile(id);
   const resolvedName = sanitizeFileName(fileName || fallbackName || 'document.pdf');
 
   if (Platform.OS === 'web') {

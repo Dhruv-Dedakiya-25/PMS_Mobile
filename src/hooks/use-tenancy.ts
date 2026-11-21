@@ -7,6 +7,7 @@ import { useCallback, useEffect, useState, useSyncExternalStore } from 'react';
 
 import {
   acknowledgeAnnouncement as apiAcknowledgeAnnouncement,
+  appealMyViolation,
   bookMyFacility,
   cancelMyBooking,
   cancelMyVisitor,
@@ -27,6 +28,7 @@ import {
   getMyServiceRequest,
   getMyServiceRequestPhotoUris,
   getMyServiceRequests,
+  getMyViolations,
   getMyVisitors,
   inviteMyVisitor,
   markAllNotificationsRead as apiMarkAllNotificationsRead,
@@ -49,7 +51,9 @@ import type {
   MyReceiptDetailDto,
   MyReceiptDto,
   MyServiceRequestDto,
+  MyViolationDto,
   MyVisitorDto,
+  ViolationAppealType,
 } from '@/api/types';
 import { login, logout, restoreSession, useAuth } from '@/auth/session';
 import { authMode, brand } from '@/config';
@@ -79,6 +83,7 @@ import {
 } from '@/mock/data';
 import {
   acknowledge as mockAcknowledge,
+  appealViolation as mockAppealViolation,
   book as mockBook,
   cancelBooking as mockCancelBooking,
   markAllRead as mockMarkAllRead,
@@ -134,6 +139,7 @@ interface LiveCache {
   visitors?: MyVisitorDto[];
   facilities?: MyFacilityDto[];
   bookings?: MyFacilityBookingDto[];
+  violations?: MyViolationDto[];
 }
 
 let cache: LiveCache = {
@@ -1560,4 +1566,47 @@ export function useFacilities() {
   };
 }
 
+/**
+ * What the tenant may do on a violation, by the same rule as the website: appeal while it is
+ * open or a notice has been sent, ask a question unless it is cancelled, and neither while an
+ * earlier appeal or question is still waiting for the office.
+ */
+export function violationActions(v: MyViolationDto) {
+  const pending = v.appeals.some((a) => a.status === 'Pending');
+  return {
+    canAppeal: !pending && (v.status === 'Open' || v.status === 'NoticeSent'),
+    canAsk: !pending && v.status !== 'Cancelled',
+  };
+}
 
+/** The violations recorded against the tenant, and appealing or asking about one. */
+export function useViolations() {
+  const isDemo = authMode === 'demo';
+  const mock = useMockState();
+  const live = useLiveCache();
+
+  const fetchViolations = useCallback(async () => {
+    cache.violations = await getMyViolations();
+    notifyCache();
+  }, []);
+
+  const status = useResource(Boolean(live.violations), fetchViolations);
+
+  const appeal = useCallback(
+    async (id: string, type: ViolationAppealType, reason: string) => {
+      if (isDemo) {
+        mockAppealViolation(id, type, reason);
+        return;
+      }
+      const created = await appealMyViolation(id, { type, reason });
+      cache.violations = (cache.violations ?? []).map((v) => (v.id === id ? { ...v, appeals: [...v.appeals, created] } : v));
+      notifyCache();
+    },
+    [isDemo],
+  );
+
+  if (isDemo) {
+    return { isDemo: true, violations: mock.violations, appeal, loading: false, refreshing: false, error: null, refresh: () => Promise.resolve() };
+  }
+  return { isDemo: false, violations: live.violations ?? [], appeal, ...status };
+}

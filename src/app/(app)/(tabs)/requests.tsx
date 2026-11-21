@@ -1,4 +1,4 @@
-import { IconBox, IconCalendarEvent, IconKey, IconTool, IconUsers, type Icon } from '@tabler/icons-react-native';
+import { IconBox, IconCalendarEvent, IconGavel, IconKey, IconTool, IconUsers, type Icon } from '@tabler/icons-react-native';
 import { router, type Href } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
@@ -6,18 +6,20 @@ import { View } from 'react-native';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
 import { Card, IconTile } from '@/components/ui';
-import { useFacilities, useRequests, useVisitors } from '@/hooks/use-tenancy';
+import { useFacilities, useRequests, useViolations, useVisitors } from '@/hooks/use-tenancy';
 import { daysUntil } from '@/lib/format';
 import { space } from '@/theme/tokens';
 
-/** Everything a tenant asks the building for: repairs, visitors, bookings, moving and access. */
+/** Everything a tenant asks the building for: repairs, visitors, bookings, moving and access, and answering a violation. */
 export default function Requests() {
   const { t } = useTranslation();
   const { requests, loading, refreshing, error, refresh } = useRequests();
   const { visitors } = useVisitors();
   const { bookings } = useFacilities();
+  const { violations } = useViolations();
   const open = requests.filter((r) => r.stage !== 'completed').length;
   const expected = visitors.filter((v) => v.status === 'expected').length;
+  const unsettled = violations.filter((v) => v.status === 'Open' || v.status === 'NoticeSent' || v.status === 'Disputed').length;
   const upcoming = bookings.filter((b) => (b.status === 'Pending' || b.status === 'Confirmed') && daysUntil(b.date) >= 0).length;
 
   const tiles: { icon: Icon; label: string; detail: string; href: Href }[] = [
@@ -26,6 +28,7 @@ export default function Requests() {
     { icon: IconCalendarEvent, label: t('fac.title'), detail: t('requests.bookingCount', { count: upcoming }), href: '/requests/facilities' },
     { icon: IconBox, label: t('requests.moveDetail') ? t('move.title') : '', detail: t('requests.moveDetail'), href: '/requests/move' },
     { icon: IconKey, label: t('access.title'), detail: t('requests.accessDetail'), href: '/requests/access' },
+    { icon: IconGavel, label: t('viol.title'), detail: t('requests.openCount', { count: unsettled }), href: '/violations' },
   ];
 
   return (

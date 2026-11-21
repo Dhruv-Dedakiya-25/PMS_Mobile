@@ -3,10 +3,12 @@
 // Lost when the app restarts.
 import { useSyncExternalStore } from 'react';
 
+import type { MyViolationDto, ViolationAppealType } from '@/api/types';
+
 import { omanToday } from './clock';
 import {
   type Booking, type MaintenanceRequest, type RenewalStatus, type RequestCategory, type RequestPriority, type UtilityKind, type Visitor,
-  initialBookings, initialNotifications, initialPayments, initialRequests, initialUtilities, initialVisitors, lease,
+  initialBookings, initialNotifications, initialPayments, initialRequests, initialUtilities, initialViolations, initialVisitors, lease,
 } from './data';
 
 export interface MockState {
@@ -20,6 +22,7 @@ export interface MockState {
   renewal: RenewalStatus;
   moveOutRequested?: string;
   acknowledged: string[];
+  violations: MyViolationDto[];
 }
 
 let state: MockState = {
@@ -32,6 +35,7 @@ let state: MockState = {
   notifications: initialNotifications,
   renewal: lease.renewal,
   acknowledged: [],
+  violations: initialViolations,
 };
 const listeners = new Set<() => void>();
 
@@ -93,6 +97,18 @@ export const payUtility = (kind: UtilityKind) => update({ utilities: state.utili
 export const requestRenewal = () => update({ renewal: 'requested' });
 
 export const requestMoveOut = () => update({ moveOutRequested: omanToday() });
+
+/** Adds a pending appeal or question to a sample violation, as the API would. */
+export function appealViolation(id: string, type: ViolationAppealType, reason: string) {
+  update({
+    violations: state.violations.map((v) => (v.id === id ? {
+      ...v,
+      appeals: [...v.appeals, {
+        id: `apl-${Date.now()}`, appealNumber: `APL-${42 + v.appeals.length}`, type, status: 'Pending', reason, createdAtUtc: new Date().toISOString(),
+      }],
+    } : v)),
+  });
+}
 
 export const acknowledge = (id: string) => update({ acknowledged: [...state.acknowledged, id] });
 

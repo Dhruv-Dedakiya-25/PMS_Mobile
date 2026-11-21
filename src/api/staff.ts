@@ -1,5 +1,6 @@
 import { apiDelete, apiGet, apiImage, apiPost, apiPut, apiUploadPhoto } from './client';
 import type {
+  InboxDto,
   InspectionDto,
   InspectionItemDto,
   InspectionItemRequestDto,
@@ -494,3 +495,9 @@ export const uploadStaffInspectionPhoto = (itemId: string, uri: string) =>
 export const removeStaffInspectionPhoto = (photoId: string) =>
   apiPut<void>(`/Inspection/removeInspectionPhoto/${photoId}`, {});
 
+/** The signed-in staff member's own notifications, for the bell. */
+export const getInbox = () => apiGet<InboxDto>('/Inbox/getInbox');
+
+export const markInboxRead = (id: string) => apiPut<void>(`/Inbox/markInboxRead/${id}`, {});
+
+export const markInboxAllRead = () => apiPut<void>('/Inbox/markInboxAllRead', {});
