@@ -268,7 +268,30 @@
       "NoticePeriod": "통지 기간",
       "Cancelled": "취소됨",
       "Renewed": "갱신됨"
-    }
+    },
+    "escalationRenewalIntro": "계약에 따라 갱신할 때마다 임대료가 {{percent}}% 오릅니다.",
+    "noEscalation": "계약에 갱신 시 임대료 인상 조항이 없습니다.",
+    "termN": "기간 {{n}}",
+    "riseOnLast": "이전 기간보다 {{percent}}% 인상",
+    "escalationOnRenewal": "갱신 시 {{percent}}%",
+    "requestWaitingDetail": "사무실이 답변하면 알림을 받게 됩니다.",
+    "lastDeclined": "사무실이 지난 요청을 거절했습니다: {{reason}}",
+    "renewalAccepted": "갱신 요청이 수락되었습니다",
+    "renewalAcceptedDetail": "사무실에서 새 계약을 준비 중이며 서명을 위해 연락드립니다.",
+    "noticeWaiting": "퇴거 통지가 사무실에 접수되었습니다",
+    "noticeAccepted": "퇴거 통지가 수락되었습니다",
+    "moveOutOn": "퇴거일: {{date}}",
+    "noticeGiven": "이 계약에 퇴거 통지를 했으므로 갱신할 수 없습니다.",
+    "requestPending": "이 계약에 사무실의 답변을 기다리는 요청이 이미 있습니다.",
+    "noNoticeDates": "계약이 {{date}}에 끝나 오늘 통지해도 효력이 생기기 전에 종료됩니다. 사무실에 문의하세요.",
+    "rentLine_Quarterly": "이 계약에 따라 분기마다 {{amount}}의 임대료를 냅니다. 월세 및 납부 열기.",
+    "rentLine_HalfYearly": "이 계약에 따라 6개월마다 {{amount}}의 임대료를 냅니다. 월세 및 납부 열기.",
+    "rentLine_Annual": "이 계약에 따라 매년 {{amount}}의 임대료를 냅니다. 월세 및 납부 열기.",
+    "rentLine_Custom": "이 계약에 따라 회차마다 {{amount}}의 임대료를 냅니다. 월세 및 납부 열기.",
+    "monthlyRent_Quarterly": "분기 임대료",
+    "monthlyRent_HalfYearly": "반기 임대료",
+    "monthlyRent_Annual": "연간 임대료",
+    "monthlyRent_Custom": "회차별 임대료"
   },
   "pay": {
     "title": "월세 및 납부",
@@ -323,7 +346,11 @@
     "totalOverdue": "총 연체액",
     "nothingOverdue": "연체 없음. 모두 납부했습니다.",
     "comingUp": "예정",
-    "dueOn": "{{date}} 납부"
+    "dueOn": "{{date}} 납부",
+    "perMonth_Quarterly": "{{amount}} / 분기",
+    "perMonth_HalfYearly": "{{amount}} / 6개월",
+    "perMonth_Annual": "{{amount}} / 년",
+    "perMonth_Custom": "{{amount}} / 회"
   },
   "util": {
     "title": "공과금",
@@ -587,7 +614,17 @@
     "parkingAccess": "주차장 출입",
     "barrier": "차단기 출입",
     "enabled": "사용 중",
-    "guestParkingNote": "방문객은 방문객 관리에서 보낸 방문증으로 주차장에 들어옵니다."
+    "guestParkingNote": "방문객은 방문객 관리에서 보낸 방문증으로 주차장에 들어옵니다.",
+    "howToScan": "이 코드를 게이트 경비원에게 보여 주세요. 30초마다 바뀌므로 스크린샷은 작동하지 않습니다.",
+    "lost": "분실",
+    "cancelled": "취소됨",
+    "reportThisLost": "이 카드 분실 신고",
+    "reportLostConfirm": "카드 {{number}}이(가) 분실로 표시되고 차단할 수 있도록 사무실에 알립니다.",
+    "reportedLost": "사무실에 알렸습니다. 새 카드를 요청하세요.",
+    "noCards": "사무실에서 아직 출입 카드를 발급하지 않았습니다.",
+    "noParking": "아직 등록된 차량이 없습니다.",
+    "pending": "승인 대기 중",
+    "off": "비활성"
   },
   "notifications": {
     "title": "알림",

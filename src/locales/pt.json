@@ -268,7 +268,30 @@
       "NoticePeriod": "Período de aviso prévio",
       "Cancelled": "Cancelado",
       "Renewed": "Renovado"
-    }
+    },
+    "escalationRenewalIntro": "Segundo o seu contrato, a renda sobe {{percent}}% sempre que é renovado.",
+    "noEscalation": "O seu contrato não prevê aumento de renda na renovação.",
+    "termN": "Prazo {{n}}",
+    "riseOnLast": "Mais {{percent}}% do que o prazo anterior",
+    "escalationOnRenewal": "{{percent}}% na renovação",
+    "requestWaitingDetail": "Receberá uma notificação quando o escritório responder.",
+    "lastDeclined": "O escritório recusou o seu último pedido: {{reason}}",
+    "renewalAccepted": "O seu pedido de renovação foi aceite",
+    "renewalAcceptedDetail": "O escritório está a preparar o seu novo contrato e vai contactá-lo para assinar.",
+    "noticeWaiting": "O seu aviso está no escritório",
+    "noticeAccepted": "O seu aviso foi aceite",
+    "moveOutOn": "Data de saída: {{date}}",
+    "noticeGiven": "Já deu aviso de saída neste contrato, por isso não pode ser renovado.",
+    "requestPending": "Já tem um pedido à espera do escritório para este contrato.",
+    "noNoticeDates": "O seu contrato termina a {{date}}, antes de um aviso dado hoje produzir efeito. Contacte o escritório.",
+    "rentLine_Quarterly": "Com este contrato paga {{amount}} de renda por trimestre. Abrir Renda e pagamentos.",
+    "rentLine_HalfYearly": "Com este contrato paga {{amount}} de renda por semestre. Abrir Renda e pagamentos.",
+    "rentLine_Annual": "Com este contrato paga {{amount}} de renda por ano. Abrir Renda e pagamentos.",
+    "rentLine_Custom": "Com este contrato paga {{amount}} de renda por prestação. Abrir Renda e pagamentos.",
+    "monthlyRent_Quarterly": "Renda trimestral",
+    "monthlyRent_HalfYearly": "Renda semestral",
+    "monthlyRent_Annual": "Renda anual",
+    "monthlyRent_Custom": "Renda por prestação"
   },
   "pay": {
     "title": "Renda e pagamentos",
@@ -323,7 +346,11 @@
     "totalOverdue": "Total em atraso",
     "nothingOverdue": "Nada em atraso. Tudo pago.",
     "comingUp": "A seguir",
-    "dueOn": "Vence a {{date}}"
+    "dueOn": "Vence a {{date}}",
+    "perMonth_Quarterly": "{{amount}} / trimestre",
+    "perMonth_HalfYearly": "{{amount}} / 6 meses",
+    "perMonth_Annual": "{{amount}} / ano",
+    "perMonth_Custom": "{{amount}} / prestação"
   },
   "util": {
     "title": "Serviços",
@@ -587,7 +614,17 @@
     "parkingAccess": "Acesso ao estacionamento",
     "barrier": "Acesso pela cancela",
     "enabled": "Ativo",
-    "guestParkingNote": "As visitas entram no estacionamento com o passe que lhes envia na Gestão de visitas."
+    "guestParkingNote": "As visitas entram no estacionamento com o passe que lhes envia na Gestão de visitas.",
+    "howToScan": "Mostre este código ao segurança no portão. Muda a cada 30 segundos, por isso uma captura de ecrã não funciona.",
+    "lost": "Perdido",
+    "cancelled": "Cancelado",
+    "reportThisLost": "Comunicar a perda deste cartão",
+    "reportLostConfirm": "O cartão {{number}} será marcado como perdido e o escritório avisado para o bloquear.",
+    "reportedLost": "O escritório foi avisado. Peça-lhes um cartão novo.",
+    "noCards": "O escritório ainda não lhe entregou cartões de acesso.",
+    "noParking": "Ainda não tem veículos registados.",
+    "pending": "A aguardar aprovação",
+    "off": "Inativo"
   },
   "notifications": {
     "title": "Notificações",

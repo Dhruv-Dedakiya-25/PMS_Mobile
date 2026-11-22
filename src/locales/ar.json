@@ -300,7 +300,30 @@
       "NoticePeriod": "فترة الإخطار",
       "Cancelled": "ملغى",
       "Renewed": "مجدد"
-    }
+    },
+    "escalationRenewalIntro": "بموجب عقدك يرتفع الإيجار بنسبة {{percent}}% في كل مرة يُجدَّد فيها.",
+    "noEscalation": "لا ينص عقدك على زيادة في الإيجار عند التجديد.",
+    "termN": "المدة {{n}}",
+    "riseOnLast": "زيادة {{percent}}% عن المدة السابقة",
+    "escalationOnRenewal": "{{percent}}% عند التجديد",
+    "requestWaitingDetail": "سيصلك إشعار عندما يرد المكتب.",
+    "lastDeclined": "رفض المكتب طلبك الأخير: {{reason}}",
+    "renewalAccepted": "تم قبول طلب التجديد",
+    "renewalAcceptedDetail": "يُعد المكتب عقدك الجديد وسيتواصل معك لتوقيعه.",
+    "noticeWaiting": "إشعار الإخلاء لدى المكتب",
+    "noticeAccepted": "تم قبول إشعار الإخلاء",
+    "moveOutOn": "تاريخ الإخلاء: {{date}}",
+    "noticeGiven": "لقد قدّمت إشعارًا بالإخلاء لهذا العقد، لذا لا يمكن تجديده.",
+    "requestPending": "لديك طلب بانتظار المكتب على هذا العقد.",
+    "noNoticeDates": "ينتهي عقدك في {{date}}، قبل أن يسري إشعار يُقدَّم اليوم. يرجى التواصل مع المكتب.",
+    "rentLine_Quarterly": "يُدفع إيجار ربع سنوي قدره {{amount}} بموجب هذا العقد. افتح الإيجار والمدفوعات.",
+    "rentLine_HalfYearly": "يُدفع إيجار نصف سنوي قدره {{amount}} بموجب هذا العقد. افتح الإيجار والمدفوعات.",
+    "rentLine_Annual": "يُدفع إيجار سنوي قدره {{amount}} بموجب هذا العقد. افتح الإيجار والمدفوعات.",
+    "rentLine_Custom": "يُدفع إيجار قدره {{amount}} لكل دفعة بموجب هذا العقد. افتح الإيجار والمدفوعات.",
+    "monthlyRent_Quarterly": "الإيجار الربع سنوي",
+    "monthlyRent_HalfYearly": "الإيجار نصف السنوي",
+    "monthlyRent_Annual": "الإيجار السنوي",
+    "monthlyRent_Custom": "الإيجار لكل دفعة"
   },
   "pay": {
     "title": "الإيجار والمدفوعات",
@@ -363,7 +386,11 @@
     "totalOverdue": "إجمالي المتأخرات",
     "nothingOverdue": "لا متأخرات. جميع المبالغ مدفوعة.",
     "comingUp": "قريبًا",
-    "dueOn": "مستحق في {{date}}"
+    "dueOn": "مستحق في {{date}}",
+    "perMonth_Quarterly": "{{amount}} / ربع سنوي",
+    "perMonth_HalfYearly": "{{amount}} / كل 6 أشهر",
+    "perMonth_Annual": "{{amount}} / سنويًا",
+    "perMonth_Custom": "{{amount}} / للدفعة"
   },
   "util": {
     "title": "المرافق",
@@ -647,7 +674,17 @@
     "parkingAccess": "دخول المواقف",
     "barrier": "دخول البوابة",
     "enabled": "مفعّل",
-    "guestParkingNote": "يحصل الزوار على دخول المواقف عبر التصريح الذي ترسله لهم من إدارة الزوار."
+    "guestParkingNote": "يحصل الزوار على دخول المواقف عبر التصريح الذي ترسله لهم من إدارة الزوار.",
+    "howToScan": "اعرض هذا الرمز على حارس البوابة. يتغير كل 30 ثانية، لذا لن تعمل لقطة الشاشة.",
+    "lost": "مفقودة",
+    "cancelled": "ملغاة",
+    "reportThisLost": "الإبلاغ عن فقدان هذه البطاقة",
+    "reportLostConfirm": "ستُسجَّل البطاقة {{number}} مفقودة ويُبلَّغ المكتب لإيقافها.",
+    "reportedLost": "تم إبلاغ المكتب. اطلب منهم بطاقة جديدة.",
+    "noCards": "لم يُصدر لك المكتب أي بطاقات دخول بعد.",
+    "noParking": "لا توجد مركبات مسجلة باسمك بعد.",
+    "pending": "بانتظار الموافقة",
+    "off": "غير مفعّل"
   },
   "notifications": {
     "title": "الإشعارات",

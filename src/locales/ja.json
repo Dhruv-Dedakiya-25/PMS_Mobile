@@ -268,7 +268,30 @@
       "NoticePeriod": "予告期間",
       "Cancelled": "キャンセル済み",
       "Renewed": "更新済み"
-    }
+    },
+    "escalationRenewalIntro": "契約により、更新のたびに家賃が {{percent}}% 上がります。",
+    "noEscalation": "契約には更新時の家賃の値上げはありません。",
+    "termN": "期間 {{n}}",
+    "riseOnLast": "前の期間より {{percent}}% 増",
+    "escalationOnRenewal": "更新時 {{percent}}%",
+    "requestWaitingDetail": "事務所が回答すると通知が届きます。",
+    "lastDeclined": "事務所は前回の申請を却下しました：{{reason}}",
+    "renewalAccepted": "更新申請が承認されました",
+    "renewalAcceptedDetail": "事務所が新しい契約を準備しており、署名の連絡があります。",
+    "noticeWaiting": "退去通知は事務所にあります",
+    "noticeAccepted": "退去通知が承認されました",
+    "moveOutOn": "退去日：{{date}}",
+    "noticeGiven": "この契約は退去通知済みのため、更新できません。",
+    "requestPending": "この契約にはすでに事務所の回答待ちの申請があります。",
+    "noNoticeDates": "契約は {{date}} に終了し、今日通知しても効力が生じる前に終わります。事務所にご連絡ください。",
+    "rentLine_Quarterly": "この契約で四半期ごとに {{amount}} の家賃を支払います。家賃と支払いを開く。",
+    "rentLine_HalfYearly": "この契約で半年ごとに {{amount}} の家賃を支払います。家賃と支払いを開く。",
+    "rentLine_Annual": "この契約で毎年 {{amount}} の家賃を支払います。家賃と支払いを開く。",
+    "rentLine_Custom": "この契約で各回 {{amount}} の家賃を支払います。家賃と支払いを開く。",
+    "monthlyRent_Quarterly": "四半期家賃",
+    "monthlyRent_HalfYearly": "半年家賃",
+    "monthlyRent_Annual": "年額家賃",
+    "monthlyRent_Custom": "1回あたりの家賃"
   },
   "pay": {
     "title": "家賃と支払い",
@@ -323,7 +346,11 @@
     "totalOverdue": "期限切れ合計",
     "nothingOverdue": "期限切れはありません。すべて支払い済みです。",
     "comingUp": "今後の予定",
-    "dueOn": "期限 {{date}}"
+    "dueOn": "期限 {{date}}",
+    "perMonth_Quarterly": "{{amount}} / 四半期",
+    "perMonth_HalfYearly": "{{amount}} / 6か月",
+    "perMonth_Annual": "{{amount}} / 年",
+    "perMonth_Custom": "{{amount}} / 回"
   },
   "util": {
     "title": "光熱費",
@@ -587,7 +614,17 @@
     "parkingAccess": "駐車場の入場",
     "barrier": "ゲートの入場",
     "enabled": "有効",
-    "guestParkingNote": "来客は、来客管理から送った来客証で駐車場に入れます。"
+    "guestParkingNote": "来客は、来客管理から送った来客証で駐車場に入れます。",
+    "howToScan": "このコードをゲートの警備員に見せてください。30秒ごとに変わるため、スクリーンショットは使えません。",
+    "lost": "紛失",
+    "cancelled": "取り消し",
+    "reportThisLost": "このカードの紛失を報告",
+    "reportLostConfirm": "カード {{number}} を紛失扱いにし、利用停止のため事務所に連絡します。",
+    "reportedLost": "事務所に連絡しました。新しいカードを依頼してください。",
+    "noCards": "事務所からまだ入館カードが発行されていません。",
+    "noParking": "登録されている車両はまだありません。",
+    "pending": "承認待ち",
+    "off": "無効"
   },
   "notifications": {
     "title": "通知",

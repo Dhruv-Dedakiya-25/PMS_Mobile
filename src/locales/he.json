@@ -268,7 +268,30 @@
       "NoticePeriod": "תקופת הודעה מוקדמת",
       "Cancelled": "בוטל",
       "Renewed": "חודש"
-    }
+    },
+    "escalationRenewalIntro": "לפי החוזה שלך, שכר הדירה עולה ב-{{percent}}% בכל חידוש.",
+    "noEscalation": "החוזה שלך אינו קובע העלאת שכר דירה בחידוש.",
+    "termN": "תקופה {{n}}",
+    "riseOnLast": "עלייה של {{percent}}% לעומת התקופה הקודמת",
+    "escalationOnRenewal": "{{percent}}% בחידוש",
+    "requestWaitingDetail": "תקבלו התראה כשהמשרד ישיב.",
+    "lastDeclined": "המשרד דחה את הבקשה האחרונה שלך: {{reason}}",
+    "renewalAccepted": "בקשת החידוש שלך אושרה",
+    "renewalAcceptedDetail": "המשרד מכין את החוזה החדש שלך וייצור קשר לחתימה.",
+    "noticeWaiting": "ההודעה שלך נמצאת במשרד",
+    "noticeAccepted": "ההודעה שלך אושרה",
+    "moveOutOn": "תאריך עזיבה: {{date}}",
+    "noticeGiven": "מסרת הודעה על עזיבה בחוזה זה, ולכן לא ניתן לחדש אותו.",
+    "requestPending": "כבר יש לך בקשה שממתינה למשרד בחוזה זה.",
+    "noNoticeDates": "החוזה שלך מסתיים ב-{{date}}, לפני שהודעה שתימסר היום תיכנס לתוקף. נא לפנות למשרד.",
+    "rentLine_Quarterly": "לפי חוזה זה משולם שכר דירה של {{amount}} לרבעון. פתח שכירות ותשלומים.",
+    "rentLine_HalfYearly": "לפי חוזה זה משולם שכר דירה של {{amount}} לחצי שנה. פתח שכירות ותשלומים.",
+    "rentLine_Annual": "לפי חוזה זה משולם שכר דירה של {{amount}} לשנה. פתח שכירות ותשלומים.",
+    "rentLine_Custom": "לפי חוזה זה משולם שכר דירה של {{amount}} לכל תשלום. פתח שכירות ותשלומים.",
+    "monthlyRent_Quarterly": "שכר דירה רבעוני",
+    "monthlyRent_HalfYearly": "שכר דירה חצי־שנתי",
+    "monthlyRent_Annual": "שכר דירה שנתי",
+    "monthlyRent_Custom": "שכר דירה לתשלום"
   },
   "pay": {
     "title": "שכירות ותשלומים",
@@ -323,7 +346,11 @@
     "totalOverdue": "סך הכול באיחור",
     "nothingOverdue": "אין איחורים. הכול שולם.",
     "comingUp": "בקרוב",
-    "dueOn": "לתשלום ב־{{date}}"
+    "dueOn": "לתשלום ב־{{date}}",
+    "perMonth_Quarterly": "{{amount}} / רבעון",
+    "perMonth_HalfYearly": "{{amount}} / 6 חודשים",
+    "perMonth_Annual": "{{amount}} / שנה",
+    "perMonth_Custom": "{{amount}} / תשלום"
   },
   "util": {
     "title": "חשבונות",
@@ -587,7 +614,17 @@
     "parkingAccess": "כניסה לחניון",
     "barrier": "כניסה במחסום",
     "enabled": "פעיל",
-    "guestParkingNote": "אורחים נכנסים לחניון עם האישור שאתה שולח מניהול אורחים."
+    "guestParkingNote": "אורחים נכנסים לחניון עם האישור שאתה שולח מניהול אורחים.",
+    "howToScan": "הציגו את הקוד לשומר בשער. הוא מתחלף כל 30 שניות, ולכן צילום מסך לא יעבוד.",
+    "lost": "אבד",
+    "cancelled": "בוטל",
+    "reportThisLost": "דיווח על אובדן הכרטיס",
+    "reportLostConfirm": "כרטיס {{number}} יסומן כאבוד והמשרד יעודכן כדי לחסום אותו.",
+    "reportedLost": "המשרד עודכן. בקשו מהם כרטיס חדש.",
+    "noCards": "המשרד עדיין לא הנפיק לך כרטיסי כניסה.",
+    "noParking": "עדיין לא רשומים כלי רכב על שמך.",
+    "pending": "ממתין לאישור",
+    "off": "לא פעיל"
   },
   "notifications": {
     "title": "התראות",

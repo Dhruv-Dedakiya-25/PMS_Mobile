@@ -290,7 +290,30 @@
       "NoticePeriod": "Okres wypowiedzenia",
       "Cancelled": "Anulowano",
       "Renewed": "Odnowiono"
-    }
+    },
+    "escalationRenewalIntro": "Zgodnie z umową czynsz rośnie o {{percent}}% przy każdym przedłużeniu.",
+    "noEscalation": "Twoja umowa nie przewiduje podwyżki czynszu przy przedłużeniu.",
+    "termN": "Okres {{n}}",
+    "riseOnLast": "O {{percent}}% więcej niż w poprzednim okresie",
+    "escalationOnRenewal": "{{percent}}% przy przedłużeniu",
+    "requestWaitingDetail": "Dostaniesz powiadomienie, gdy biuro odpowie.",
+    "lastDeclined": "Biuro odrzuciło Twój ostatni wniosek: {{reason}}",
+    "renewalAccepted": "Twój wniosek o przedłużenie został przyjęty",
+    "renewalAcceptedDetail": "Biuro przygotowuje nową umowę i skontaktuje się w sprawie podpisu.",
+    "noticeWaiting": "Twoje wypowiedzenie jest w biurze",
+    "noticeAccepted": "Twoje wypowiedzenie zostało przyjęte",
+    "moveOutOn": "Data wyprowadzki: {{date}}",
+    "noticeGiven": "Wypowiedziałeś tę umowę, więc nie można jej przedłużyć.",
+    "requestPending": "Masz już wniosek oczekujący w biurze dla tej umowy.",
+    "noNoticeDates": "Twoja umowa kończy się {{date}}, zanim wypowiedzenie złożone dziś mogłoby zacząć obowiązywać. Skontaktuj się z biurem.",
+    "rentLine_Quarterly": "Na podstawie tej umowy płacisz {{amount}} czynszu kwartalnie. Otwórz Czynsz i płatności.",
+    "rentLine_HalfYearly": "Na podstawie tej umowy płacisz {{amount}} czynszu co pół roku. Otwórz Czynsz i płatności.",
+    "rentLine_Annual": "Na podstawie tej umowy płacisz {{amount}} czynszu rocznie. Otwórz Czynsz i płatności.",
+    "rentLine_Custom": "Na podstawie tej umowy płacisz {{amount}} czynszu za ratę. Otwórz Czynsz i płatności.",
+    "monthlyRent_Quarterly": "Czynsz kwartalny",
+    "monthlyRent_HalfYearly": "Czynsz półroczny",
+    "monthlyRent_Annual": "Czynsz roczny",
+    "monthlyRent_Custom": "Czynsz za ratę"
   },
   "pay": {
     "title": "Czynsz i płatności",
@@ -349,7 +372,11 @@
     "totalOverdue": "Łącznie po terminie",
     "nothingOverdue": "Brak zaległości. Wszystko opłacone.",
     "comingUp": "Wkrótce",
-    "dueOn": "Termin {{date}}"
+    "dueOn": "Termin {{date}}",
+    "perMonth_Quarterly": "{{amount}} / kwartał",
+    "perMonth_HalfYearly": "{{amount}} / 6 miesięcy",
+    "perMonth_Annual": "{{amount}} / rok",
+    "perMonth_Custom": "{{amount}} / rata"
   },
   "util": {
     "title": "Media",
@@ -623,7 +650,17 @@
     "parkingAccess": "Dostęp do parkingu",
     "barrier": "Dostęp przez szlaban",
     "enabled": "Włączony",
-    "guestParkingNote": "Goście wjeżdżają na parking z przepustką wysłaną z Zarządzania gośćmi."
+    "guestParkingNote": "Goście wjeżdżają na parking z przepustką wysłaną z Zarządzania gośćmi.",
+    "howToScan": "Pokaż ten kod ochroniarzowi przy bramie. Zmienia się co 30 sekund, więc zrzut ekranu nie zadziała.",
+    "lost": "Zgubiona",
+    "cancelled": "Anulowana",
+    "reportThisLost": "Zgłoś zgubienie tej karty",
+    "reportLostConfirm": "Karta {{number}} zostanie oznaczona jako zgubiona, a biuro powiadomione, aby ją zablokować.",
+    "reportedLost": "Biuro zostało powiadomione. Poproś o nową kartę.",
+    "noCards": "Biuro nie wydało Ci jeszcze żadnych kart dostępu.",
+    "noParking": "Nie masz jeszcze zarejestrowanych pojazdów.",
+    "pending": "Czeka na zatwierdzenie",
+    "off": "Nieaktywny"
   },
   "notifications": {
     "title": "Powiadomienia",

@@ -5,31 +5,43 @@ import { View } from 'react-native';
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Card, Note, Pill } from '@/components/ui';
+import { useLease } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { longDate, omr } from '@/lib/format';
-import { omanToday } from '@/mock/clock';
-import { escalation, lease } from '@/mock/data';
 import { radius, space, usePalette } from '@/theme/tokens';
 
-/** The rent year by year under the escalation clause, the current year marked. */
+/**
+ * The rent term by term: this lease and the ones it renewed, the current term marked, and
+ * what the rent becomes if renewed again. The lease's escalation is the rise at each renewal.
+ */
 export default function Escalation() {
   const { t } = useTranslation();
   const palette = usePalette();
   const { language } = useLanguage();
   const code = language.code;
-  const top = Math.max(...escalation.map((e) => e.rent));
-  const nextRent = Math.round(lease.rent * (1 + lease.escalationPercent / 100));
+  const { lease, loading, error, refresh, refreshing } = useLease();
+  const terms = lease.history.length > 0 ? lease.history : [{ from: lease.start, rent: lease.rent, frequency: lease.frequency }];
+  const top = Math.max(...terms.map((e) => e.rent), 1);
+  const last = terms[terms.length - 1];
+  const nextRent = Math.round(last.rent * (1 + lease.escalationPercent / 100) * 1000) / 1000;
+  const per = (frequency: string) => t(`lease.frequencies.${frequency}`, { defaultValue: frequency });
+
   return (
-    <Page title={t('lease.escalation')}>
-      <Note icon={IconInfoCircle} text={t('lease.escalationIntro', { percent: lease.escalationPercent })} />
+    <Page title={t('lease.escalation')} loading={loading} error={error} onRetry={refresh} refreshing={refreshing} onRefresh={refresh}>
+      <Note
+        icon={IconInfoCircle}
+        text={lease.escalationPercent > 0 ? t('lease.escalationRenewalIntro', { percent: lease.escalationPercent }) : t('lease.noEscalation')}
+      />
       <Card>
-        {escalation.map((e, i) => {
-          const current = e.from.slice(0, 4) === omanToday().slice(0, 4);
+        {terms.map((e, i) => {
+          const current = i === terms.length - 1;
+          const before = i > 0 ? terms[i - 1].rent : 0;
+          const rise = before > 0 ? Math.round(((e.rent - before) / before) * 1000) / 10 : 0;
           return (
-            <View key={e.from} style={{ gap: space.xs, paddingTop: i ? space.sm : 0 }}>
+            <View key={`${e.from}-${i}`} style={{ gap: space.xs, paddingTop: i ? space.sm : 0 }}>
               <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }}>
                 <AppText weight="semibold" style={{ flex: 1 }}>
-                  {t('lease.yearN', { n: i + 1 })} · {longDate(e.from, code)}
+                  {t('lease.termN', { n: i + 1 })} · {longDate(e.from, code)}
                 </AppText>
                 {current ? <Pill label={t('lease.current')} accent="primary" /> : null}
               </View>
@@ -42,7 +54,7 @@ export default function Escalation() {
                 </AppText>
               </View>
               <AppText variant="caption" tone="muted">
-                {e.percent ? t('lease.risePercent', { percent: e.percent }) : t('lease.startingRent')}
+                {per(e.frequency)} · {i === 0 ? t('lease.startingRent') : t('lease.riseOnLast', { percent: rise })}
               </AppText>
             </View>
           );

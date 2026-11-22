@@ -42,12 +42,12 @@ export default function LeaseDetails() {
       <Details
         title={t('lease.money')}
         rows={[
-          [t('lease.monthlyRent'), omr(lease.rent, code)],
+          [t('lease.monthlyRent', { context: lease.frequency }), omr(lease.rent, code)],
           [t('lease.frequency'), t(`lease.frequencies.${lease.frequency}`, { defaultValue: lease.frequency })],
           [t('lease.deposit'), omr(lease.deposit, code)],
           [
             t('lease.escalation'),
-            lease.escalationText || (lease.escalationStated ? t('lease.escalationDetail', { percent: lease.escalationPercent }) : '—'),
+            lease.escalationStated ? t('lease.escalationOnRenewal', { percent: lease.escalationPercent }) : '—',
           ],
           [t('lease.notice'), t('lease.days', { count: lease.noticeDays })],
         ]}

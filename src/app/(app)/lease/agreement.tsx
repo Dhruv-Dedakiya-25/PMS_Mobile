@@ -35,7 +35,7 @@ export default function Agreement() {
     ['Term', `${longDate(lease.start, 'en')} to ${longDate(lease.end, 'en')}`],
     ['Monthly rent', omr(lease.rent, 'en')],
     ['Security deposit', omr(lease.deposit, 'en')],
-    ['Escalation', lease.escalationText || (lease.escalationStated ? `${lease.escalationPercent}% per year` : '—')],
+    ['Escalation', lease.escalationStated ? `${lease.escalationPercent}% on renewal` : '—'],
   ];
   return (
     <Page

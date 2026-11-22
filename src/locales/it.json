@@ -268,7 +268,30 @@
       "NoticePeriod": "Periodo di preavviso",
       "Cancelled": "Annullato",
       "Renewed": "Rinnovato"
-    }
+    },
+    "escalationRenewalIntro": "Secondo il tuo contratto, l'affitto aumenta del {{percent}}% a ogni rinnovo.",
+    "noEscalation": "Il tuo contratto non prevede aumenti dell'affitto al rinnovo.",
+    "termN": "Periodo {{n}}",
+    "riseOnLast": "+{{percent}}% rispetto al periodo precedente",
+    "escalationOnRenewal": "{{percent}}% al rinnovo",
+    "requestWaitingDetail": "Riceverai una notifica quando l'ufficio risponde.",
+    "lastDeclined": "L'ufficio ha rifiutato la tua ultima richiesta: {{reason}}",
+    "renewalAccepted": "La tua richiesta di rinnovo è stata accettata",
+    "renewalAcceptedDetail": "L'ufficio sta preparando il nuovo contratto e ti contatterà per la firma.",
+    "noticeWaiting": "La tua disdetta è all'ufficio",
+    "noticeAccepted": "La tua disdetta è stata accettata",
+    "moveOutOn": "Data di uscita: {{date}}",
+    "noticeGiven": "Hai dato disdetta per questo contratto, quindi non può essere rinnovato.",
+    "requestPending": "Hai già una richiesta in attesa presso l'ufficio per questo contratto.",
+    "noNoticeDates": "Il tuo contratto termina il {{date}}, prima che una disdetta data oggi possa avere effetto. Contatta l'ufficio.",
+    "rentLine_Quarterly": "Con questo contratto si pagano {{amount}} di affitto a trimestre. Apri Affitto e pagamenti.",
+    "rentLine_HalfYearly": "Con questo contratto si pagano {{amount}} di affitto a semestre. Apri Affitto e pagamenti.",
+    "rentLine_Annual": "Con questo contratto si pagano {{amount}} di affitto all'anno. Apri Affitto e pagamenti.",
+    "rentLine_Custom": "Con questo contratto si pagano {{amount}} di affitto a rata. Apri Affitto e pagamenti.",
+    "monthlyRent_Quarterly": "Canone trimestrale",
+    "monthlyRent_HalfYearly": "Canone semestrale",
+    "monthlyRent_Annual": "Canone annuale",
+    "monthlyRent_Custom": "Canone per rata"
   },
   "pay": {
     "title": "Affitto e pagamenti",
@@ -323,7 +346,11 @@
     "totalOverdue": "Totale scaduto",
     "nothingOverdue": "Nulla di scaduto. Tutto pagato.",
     "comingUp": "Prossimamente",
-    "dueOn": "Scade il {{date}}"
+    "dueOn": "Scade il {{date}}",
+    "perMonth_Quarterly": "{{amount}} / trimestre",
+    "perMonth_HalfYearly": "{{amount}} / 6 mesi",
+    "perMonth_Annual": "{{amount}} / anno",
+    "perMonth_Custom": "{{amount}} / rata"
   },
   "util": {
     "title": "Utenze",
@@ -587,7 +614,17 @@
     "parkingAccess": "Accesso al parcheggio",
     "barrier": "Accesso sbarra",
     "enabled": "Attivo",
-    "guestParkingNote": "Gli ospiti accedono al parcheggio con il pass che invii da Gestione visitatori."
+    "guestParkingNote": "Gli ospiti accedono al parcheggio con il pass che invii da Gestione visitatori.",
+    "howToScan": "Mostra questo codice alla guardia al cancello. Cambia ogni 30 secondi, quindi uno screenshot non funziona.",
+    "lost": "Smarrito",
+    "cancelled": "Annullato",
+    "reportThisLost": "Segnala lo smarrimento di questo badge",
+    "reportLostConfirm": "Il badge {{number}} sarà segnato come smarrito e l'ufficio avvisato per bloccarlo.",
+    "reportedLost": "L'ufficio è stato avvisato. Chiedi loro un nuovo badge.",
+    "noCards": "L'ufficio non ti ha ancora consegnato badge di accesso.",
+    "noParking": "Non hai ancora veicoli registrati.",
+    "pending": "In attesa di approvazione",
+    "off": "Non attivo"
   },
   "notifications": {
     "title": "Notifiche",

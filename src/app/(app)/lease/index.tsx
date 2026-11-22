@@ -8,6 +8,7 @@ import { AppText } from '@/components/app-text';
 import { PaperThumb } from '@/components/art';
 import { Page } from '@/components/page';
 import { Button, Card, IconTile, ListRow, Note, Pill } from '@/components/ui';
+import { useLeaseRequests } from '@/hooks/use-resident';
 import { useLease } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { daysUntil, longDate, omr } from '@/lib/format';
@@ -17,19 +18,20 @@ import { space, type Accent } from '@/theme/tokens';
 export default function LeaseManagement() {
   const { t } = useTranslation();
   const { language } = useLanguage();
-  const { lease, renewal, loading, refreshing, error, refresh } = useLease();
+  const { lease, loading, refreshing, error, refresh } = useLease();
+  const { renewalState: renewal, notice } = useLeaseRequests();
   const [downloaded, setDownloaded] = useState(false);
   const code = language.code;
 
   const rows: { icon: Icon; accent: Accent; label: string; detail: string; href: Href }[] = [
     { icon: IconFileDescription, accent: 'success', label: t('lease.details'), detail: lease.leaseNo, href: '/lease/details' },
     { icon: IconRefresh, accent: 'primary', label: t('lease.renewal'), detail: t(`lease.renewalStatus.${renewal}`), href: '/lease/renewal' },
-    { icon: IconCalendarX, accent: 'orange', label: t('lease.termination'), detail: t('lease.terminationDetail', { days: lease.noticeDays }), href: '/lease/termination' },
+    { icon: IconCalendarX, accent: 'orange', label: t('lease.termination'), detail: notice && notice.status !== 'Declined' ? `${notice.requestNumber} · ${t(notice.status === 'Accepted' ? 'lease.noticeAccepted' : 'lease.noticeWaiting')}` : t('lease.terminationDetail', { days: lease.noticeDays }), href: '/lease/termination' },
     {
       icon: IconTrendingUp,
       accent: 'danger',
       label: t('lease.escalation'),
-      detail: lease.escalationText || (lease.escalationStated ? t('lease.escalationDetail', { percent: lease.escalationPercent }) : '—'),
+      detail: lease.escalationStated ? t('lease.escalationOnRenewal', { percent: lease.escalationPercent }) : '—',
       href: '/lease/escalation',
     },
     { icon: IconShieldCheck, accent: 'primary', label: t('lease.deposit'), detail: omr(lease.deposit, code), href: '/lease/deposit' },
@@ -73,7 +75,7 @@ export default function LeaseManagement() {
       <Card style={{ flexDirection: 'row', alignItems: 'center' }} onPress={() => router.push('/payments')}>
         <IconTile icon={IconArrowsExchange} size={34} />
         <AppText variant="small" style={{ flex: 1 }}>
-          {t('lease.rentLine', { amount: omr(lease.rent, code) })}
+          {t('lease.rentLine', { amount: omr(lease.rent, code), context: lease.frequency })}
         </AppText>
       </Card>
     </Page>

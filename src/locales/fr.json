@@ -268,7 +268,30 @@
       "NoticePeriod": "Période de préavis",
       "Cancelled": "Annulé",
       "Renewed": "Renouvelé"
-    }
+    },
+    "escalationRenewalIntro": "Selon votre bail, le loyer augmente de {{percent}} % à chaque renouvellement.",
+    "noEscalation": "Votre bail ne prévoit pas de hausse de loyer au renouvellement.",
+    "termN": "Période {{n}}",
+    "riseOnLast": "+{{percent}} % par rapport à la période précédente",
+    "escalationOnRenewal": "{{percent}} % au renouvellement",
+    "requestWaitingDetail": "Vous recevrez une notification dès que le bureau répondra.",
+    "lastDeclined": "Le bureau a refusé votre dernière demande : {{reason}}",
+    "renewalAccepted": "Votre demande de renouvellement a été acceptée",
+    "renewalAcceptedDetail": "Le bureau prépare votre nouveau bail et vous contactera pour la signature.",
+    "noticeWaiting": "Votre préavis est entre les mains du bureau",
+    "noticeAccepted": "Votre préavis a été accepté",
+    "moveOutOn": "Date de départ : {{date}}",
+    "noticeGiven": "Vous avez donné votre préavis sur ce bail, il ne peut donc pas être renouvelé.",
+    "requestPending": "Vous avez déjà une demande en attente auprès du bureau pour ce bail.",
+    "noNoticeDates": "Votre bail se termine le {{date}}, avant qu'un préavis donné aujourd'hui puisse prendre effet. Contactez le bureau.",
+    "rentLine_Quarterly": "Ce bail prévoit un loyer de {{amount}} par trimestre. Ouvrir Loyer et paiements.",
+    "rentLine_HalfYearly": "Ce bail prévoit un loyer de {{amount}} par semestre. Ouvrir Loyer et paiements.",
+    "rentLine_Annual": "Ce bail prévoit un loyer de {{amount}} par an. Ouvrir Loyer et paiements.",
+    "rentLine_Custom": "Ce bail prévoit un loyer de {{amount}} par échéance. Ouvrir Loyer et paiements.",
+    "monthlyRent_Quarterly": "Loyer trimestriel",
+    "monthlyRent_HalfYearly": "Loyer semestriel",
+    "monthlyRent_Annual": "Loyer annuel",
+    "monthlyRent_Custom": "Loyer par échéance"
   },
   "pay": {
     "title": "Loyer et paiements",
@@ -323,7 +346,11 @@
     "totalOverdue": "Total en retard",
     "nothingOverdue": "Rien en retard. Tout est payé.",
     "comingUp": "À venir",
-    "dueOn": "Échéance le {{date}}"
+    "dueOn": "Échéance le {{date}}",
+    "perMonth_Quarterly": "{{amount}} / trimestre",
+    "perMonth_HalfYearly": "{{amount}} / 6 mois",
+    "perMonth_Annual": "{{amount}} / an",
+    "perMonth_Custom": "{{amount}} / échéance"
   },
   "util": {
     "title": "Charges",
@@ -587,7 +614,17 @@
     "parkingAccess": "Accès au parking",
     "barrier": "Accès barrière",
     "enabled": "Activé",
-    "guestParkingNote": "Les visiteurs accèdent au parking avec le laissez-passer que vous leur envoyez depuis la gestion des visiteurs."
+    "guestParkingNote": "Les visiteurs accèdent au parking avec le laissez-passer que vous leur envoyez depuis la gestion des visiteurs.",
+    "howToScan": "Montrez ce code au gardien à l'entrée. Il change toutes les 30 secondes : une capture d'écran ne fonctionnera pas.",
+    "lost": "Perdu",
+    "cancelled": "Annulé",
+    "reportThisLost": "Signaler la perte de ce badge",
+    "reportLostConfirm": "Le badge {{number}} sera marqué comme perdu et le bureau prévenu pour le bloquer.",
+    "reportedLost": "Le bureau a été prévenu. Demandez-lui un nouveau badge.",
+    "noCards": "Le bureau ne vous a encore remis aucun badge d'accès.",
+    "noParking": "Aucun véhicule n'est encore enregistré à votre nom.",
+    "pending": "En attente d'approbation",
+    "off": "Inactif"
   },
   "notifications": {
     "title": "Notifications",

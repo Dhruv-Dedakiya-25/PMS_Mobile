@@ -268,7 +268,30 @@
       "NoticePeriod": "Thời gian báo trước",
       "Cancelled": "Đã huỷ",
       "Renewed": "Đã gia hạn"
-    }
+    },
+    "escalationRenewalIntro": "Theo hợp đồng, tiền thuê tăng {{percent}}% mỗi lần gia hạn.",
+    "noEscalation": "Hợp đồng của bạn không quy định tăng tiền thuê khi gia hạn.",
+    "termN": "Kỳ {{n}}",
+    "riseOnLast": "Tăng {{percent}}% so với kỳ trước",
+    "escalationOnRenewal": "{{percent}}% khi gia hạn",
+    "requestWaitingDetail": "Bạn sẽ nhận thông báo khi văn phòng trả lời.",
+    "lastDeclined": "Văn phòng đã từ chối yêu cầu gần nhất của bạn: {{reason}}",
+    "renewalAccepted": "Yêu cầu gia hạn của bạn đã được chấp nhận",
+    "renewalAcceptedDetail": "Văn phòng đang chuẩn bị hợp đồng mới và sẽ liên hệ để bạn ký.",
+    "noticeWaiting": "Thông báo của bạn đang ở văn phòng",
+    "noticeAccepted": "Thông báo của bạn đã được chấp nhận",
+    "moveOutOn": "Ngày dọn đi: {{date}}",
+    "noticeGiven": "Bạn đã báo dọn đi cho hợp đồng này nên không thể gia hạn.",
+    "requestPending": "Bạn đã có một yêu cầu đang chờ văn phòng cho hợp đồng này.",
+    "noNoticeDates": "Hợp đồng của bạn kết thúc vào {{date}}, trước khi thông báo hôm nay có hiệu lực. Vui lòng liên hệ văn phòng.",
+    "rentLine_Quarterly": "Tiền thuê {{amount}} mỗi quý theo hợp đồng này. Mở Tiền thuê & thanh toán.",
+    "rentLine_HalfYearly": "Tiền thuê {{amount}} mỗi sáu tháng theo hợp đồng này. Mở Tiền thuê & thanh toán.",
+    "rentLine_Annual": "Tiền thuê {{amount}} mỗi năm theo hợp đồng này. Mở Tiền thuê & thanh toán.",
+    "rentLine_Custom": "Tiền thuê {{amount}} mỗi kỳ theo hợp đồng này. Mở Tiền thuê & thanh toán.",
+    "monthlyRent_Quarterly": "Tiền thuê hằng quý",
+    "monthlyRent_HalfYearly": "Tiền thuê nửa năm",
+    "monthlyRent_Annual": "Tiền thuê hằng năm",
+    "monthlyRent_Custom": "Tiền thuê mỗi kỳ"
   },
   "pay": {
     "title": "Tiền thuê & thanh toán",
@@ -323,7 +346,11 @@
     "totalOverdue": "Tổng quá hạn",
     "nothingOverdue": "Không có khoản quá hạn. Đã thanh toán đủ.",
     "comingUp": "Sắp đến hạn",
-    "dueOn": "Hạn {{date}}"
+    "dueOn": "Hạn {{date}}",
+    "perMonth_Quarterly": "{{amount}} / quý",
+    "perMonth_HalfYearly": "{{amount}} / 6 tháng",
+    "perMonth_Annual": "{{amount}} / năm",
+    "perMonth_Custom": "{{amount}} / kỳ"
   },
   "util": {
     "title": "Tiện ích",
@@ -587,7 +614,17 @@
     "parkingAccess": "Ra vào bãi đỗ",
     "barrier": "Ra vào barie",
     "enabled": "Đã bật",
-    "guestParkingNote": "Khách vào bãi đỗ bằng thẻ bạn gửi từ Quản lý khách."
+    "guestParkingNote": "Khách vào bãi đỗ bằng thẻ bạn gửi từ Quản lý khách.",
+    "howToScan": "Đưa mã này cho bảo vệ ở cổng. Mã đổi mỗi 30 giây nên ảnh chụp màn hình sẽ không dùng được.",
+    "lost": "Bị mất",
+    "cancelled": "Đã hủy",
+    "reportThisLost": "Báo mất thẻ này",
+    "reportLostConfirm": "Thẻ {{number}} sẽ được đánh dấu bị mất và văn phòng được báo để khóa thẻ.",
+    "reportedLost": "Đã báo văn phòng. Hãy xin họ thẻ mới.",
+    "noCards": "Văn phòng chưa cấp thẻ ra vào nào cho bạn.",
+    "noParking": "Chưa có phương tiện nào đăng ký tên bạn.",
+    "pending": "Đang chờ duyệt",
+    "off": "Không hoạt động"
   },
   "notifications": {
     "title": "Thông báo",

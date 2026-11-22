@@ -3,11 +3,15 @@
  */
 import { apiGet, apiImage, apiPost, apiPut, apiUploadPhoto, sendAuthed } from '@/api/client';
 import type {
+  ApiMoveOutReason,
   BookMyFacilityDto,
   CreateMyServiceRequestDto,
   InspectionDto,
   InviteMyVisitorDto,
+  MyAccessCardDto,
+  MyAccessKeyDto,
   MyAnnouncementDto,
+  MyContactDto,
   MyDocumentDto,
   MyFacilityBookingDto,
   MyFacilityDto,
@@ -15,6 +19,7 @@ import type {
   MyInstallmentDto,
   MyInvoiceDto,
   MyLeaseDto,
+  MyLeaseRequestDto,
   MyNotificationDto,
   MyProfileDto,
   MyReceiptDetailDto,
@@ -141,3 +146,20 @@ export const getMyViolationEvidenceFile = (id: string) => fileFrom(`/My/getMyVio
 /** Appeals a violation or asks the office about it; refused while an earlier one is still pending. */
 export const appealMyViolation = (violationId: string, body: { type: ViolationAppealType; reason: string }) =>
   apiPost<MyViolationAppealDto>(`/My/appealMyViolation/${violationId}`, body);
+
+export const getMyContacts = () => apiGet<MyContactDto[]>('/My/getMyContacts');
+
+export const getMyLeaseRequests = () => apiGet<MyLeaseRequestDto[]>('/My/getMyLeaseRequests');
+
+export const requestMyRenewal = (termMonths: 12 | 24, note?: string) =>
+  apiPost<MyLeaseRequestDto>('/My/requestMyRenewal', { termMonths, note });
+
+export const giveMyNotice = (moveOutDate: string, reason: ApiMoveOutReason, note?: string) =>
+  apiPost<MyLeaseRequestDto>('/My/giveMyNotice', { moveOutDate, reason, note });
+
+export const getMyAccessKey = () => apiGet<MyAccessKeyDto>('/My/getMyAccessKey');
+
+export const getMyAccessCards = () => apiGet<MyAccessCardDto[]>('/My/getMyAccessCards');
+
+export const reportMyAccessCardLost = (id: string) => apiPut<MyAccessCardDto>(`/My/reportMyAccessCardLost/${id}`, {});
+

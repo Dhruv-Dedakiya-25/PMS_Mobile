@@ -268,7 +268,30 @@
       "NoticePeriod": "Masa Pemberitahuan",
       "Cancelled": "Dibatalkan",
       "Renewed": "Diperbarui"
-    }
+    },
+    "escalationRenewalIntro": "Sesuai sewa Anda, uang sewa naik {{percent}}% setiap kali diperpanjang.",
+    "noEscalation": "Sewa Anda tidak menyebut kenaikan sewa saat perpanjangan.",
+    "termN": "Masa {{n}}",
+    "riseOnLast": "Naik {{percent}}% dari masa sebelumnya",
+    "escalationOnRenewal": "{{percent}}% saat perpanjangan",
+    "requestWaitingDetail": "Anda akan mendapat notifikasi saat kantor menjawab.",
+    "lastDeclined": "Kantor menolak permintaan terakhir Anda: {{reason}}",
+    "renewalAccepted": "Permintaan perpanjangan Anda diterima",
+    "renewalAcceptedDetail": "Kantor sedang menyiapkan sewa baru Anda dan akan menghubungi Anda untuk penandatanganan.",
+    "noticeWaiting": "Pemberitahuan Anda ada di kantor",
+    "noticeAccepted": "Pemberitahuan Anda diterima",
+    "moveOutOn": "Tanggal pindah: {{date}}",
+    "noticeGiven": "Anda sudah memberi pemberitahuan pindah untuk sewa ini, jadi tidak bisa diperpanjang.",
+    "requestPending": "Anda sudah punya permintaan yang menunggu kantor untuk sewa ini.",
+    "noNoticeDates": "Sewa Anda berakhir pada {{date}}, sebelum pemberitahuan hari ini bisa berlaku. Silakan hubungi kantor.",
+    "rentLine_Quarterly": "Sewa sebesar {{amount}} per kuartal dibayar berdasarkan perjanjian ini. Buka Sewa & Pembayaran.",
+    "rentLine_HalfYearly": "Sewa sebesar {{amount}} per enam bulan dibayar berdasarkan perjanjian ini. Buka Sewa & Pembayaran.",
+    "rentLine_Annual": "Sewa sebesar {{amount}} per tahun dibayar berdasarkan perjanjian ini. Buka Sewa & Pembayaran.",
+    "rentLine_Custom": "Sewa sebesar {{amount}} per angsuran dibayar berdasarkan perjanjian ini. Buka Sewa & Pembayaran.",
+    "monthlyRent_Quarterly": "Sewa per kuartal",
+    "monthlyRent_HalfYearly": "Sewa per semester",
+    "monthlyRent_Annual": "Sewa tahunan",
+    "monthlyRent_Custom": "Sewa per angsuran"
   },
   "pay": {
     "title": "Sewa & Pembayaran",
@@ -323,7 +346,11 @@
     "totalOverdue": "Total tunggakan",
     "nothingOverdue": "Tidak ada tunggakan. Semua lunas.",
     "comingUp": "Segera",
-    "dueOn": "Jatuh tempo {{date}}"
+    "dueOn": "Jatuh tempo {{date}}",
+    "perMonth_Quarterly": "{{amount}} / kuartal",
+    "perMonth_HalfYearly": "{{amount}} / 6 bulan",
+    "perMonth_Annual": "{{amount}} / tahun",
+    "perMonth_Custom": "{{amount}} / angsuran"
   },
   "util": {
     "title": "Utilitas",
@@ -587,7 +614,17 @@
     "parkingAccess": "Akses parkir",
     "barrier": "Akses palang",
     "enabled": "Aktif",
-    "guestParkingNote": "Tamu mendapat akses parkir melalui kartu yang Anda kirim dari Manajemen tamu."
+    "guestParkingNote": "Tamu mendapat akses parkir melalui kartu yang Anda kirim dari Manajemen tamu.",
+    "howToScan": "Tunjukkan kode ini kepada penjaga di gerbang. Kode berubah setiap 30 detik, jadi tangkapan layar tidak akan berfungsi.",
+    "lost": "Hilang",
+    "cancelled": "Dibatalkan",
+    "reportThisLost": "Laporkan kartu ini hilang",
+    "reportLostConfirm": "Kartu {{number}} akan ditandai hilang dan kantor diberi tahu agar dapat diblokir.",
+    "reportedLost": "Kantor sudah diberi tahu. Mintalah kartu baru kepada mereka.",
+    "noCards": "Kantor belum memberi Anda kartu akses.",
+    "noParking": "Belum ada kendaraan yang terdaftar atas nama Anda.",
+    "pending": "Menunggu persetujuan",
+    "off": "Tidak aktif"
   },
   "notifications": {
     "title": "Notifikasi",

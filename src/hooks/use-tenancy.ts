@@ -66,6 +66,7 @@ import {
   facilities as mockFacilities,
   lease as mockLease,
   parking as mockParking,
+  escalation as mockEscalation,
   property as mockProperty,
   rentalSchedule as mockRentalSchedule,
   tenant as mockTenant,
@@ -154,6 +155,10 @@ function notifyCache() {
   cache = { ...cache };
   cacheListeners.forEach((l) => l());
 }
+
+/** Whether the car park barrier opens for a vehicle: only while its permit is active. */
+const barrierOf = (permitStatus?: string | null): 'enabled' | 'pending' | 'off' =>
+  permitStatus === 'Active' ? 'enabled' : permitStatus === 'Pending' ? 'pending' : 'off';
 
 export function clearTenancyCache() {
   cache = { receiptDetails: {}, requestDetails: {}, requestPhotos: {}, announcementDetails: {} };
@@ -411,6 +416,7 @@ function mapProfileData(dto: MyProfileDto | undefined, isAr: boolean, fallbackNa
             vehicle: vehicleLabel,
             plate: vehicle?.plateNumber || '—',
             tag: vehicle?.permitNo || '—',
+            barrier: barrierOf(vehicle?.permitStatus),
           };
         })
       : dto.vehicles.map((v) => ({
@@ -420,6 +426,7 @@ function mapProfileData(dto: MyProfileDto | undefined, isAr: boolean, fallbackNa
           vehicle: [v.make, v.model, v.colour ? `(${v.colour})` : ''].filter(Boolean).join(' ') || v.vehicleType,
           plate: v.plateNumber || '—',
           tag: v.permitNo || '—',
+          barrier: barrierOf(v.permitStatus),
         }));
 
   const startDate = dto.currentLease?.startDate?.slice(0, 10) || omanToday();
@@ -627,6 +634,7 @@ export function useLease() {
         frequency: 'Monthly',
         escalationText: null as string | null,
         escalationStated: true,
+        history: mockEscalation.map((e) => ({ from: e.from, rent: e.rent, frequency: 'Monthly' })),
       },
       depositInfo: {
         amount: mockLease.deposit,
@@ -656,10 +664,9 @@ export function useLease() {
   const depositAmount = Number(
     l?.securityDepositAmount ?? firstDeposit?.receivedAmount ?? firstDeposit?.requiredAmount ?? 0,
   );
-  const parsedPercent = l?.escalationRuleRef?.match(/(\d+(?:\.\d+)?)\s*%/)?.[1];
-  // The renewal and escalation pages are still sample pages and need a figure to work with;
-  // the lease pages show "—" when the lease states no escalation rule.
-  const escalationPercent = parsedPercent ? Number(parsedPercent) : mockLease.escalationPercent;
+  // The website keeps the rise on renewal as a bare number ("5"); older leases may say "5%".
+  const parsedPercent = l?.escalationRuleRef?.match(/(\d+(?:\.\d+)?)/)?.[1];
+  const escalationPercent = parsedPercent ? Number(parsedPercent) : 0;
   const current = live.profile?.currentLease;
 
   return {
@@ -673,9 +680,14 @@ export function useLease() {
       status: l?.status ?? current?.status ?? 'Active',
       frequency: l?.rentFrequency ?? current?.rentFrequency ?? 'Monthly',
       escalationPercent,
-      escalationText: l?.escalationRuleRef || null,
-      escalationStated: Boolean(l?.escalationRuleRef),
-      noticeDays: l?.noticePeriodDays ?? mockLease.noticeDays,
+      escalationText: null as string | null,
+      escalationStated: parsedPercent !== undefined,
+      noticeDays: l?.noticePeriodDays ?? 0,
+      history: (l?.history ?? []).map((h) => ({
+        from: h.startDate?.slice(0, 10) ?? start,
+        rent: Number(h.rentAmount),
+        frequency: h.rentFrequency,
+      })),
     },
     depositInfo: {
       amount: Number(firstDeposit?.balanceAmount || firstDeposit?.receivedAmount || depositAmount),

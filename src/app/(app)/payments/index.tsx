@@ -31,7 +31,7 @@ export default function RentPayments() {
           {t('pay.currentRent')}
         </AppText>
         <AppText variant="heading" weight="bold">
-          {t('pay.perMonth', { amount: omr(rentAmount, code) })}
+          {t('pay.perMonth', { amount: omr(rentAmount, code), context: scheduleFrequency ?? undefined })}
         </AppText>
       </View>
       <Card>

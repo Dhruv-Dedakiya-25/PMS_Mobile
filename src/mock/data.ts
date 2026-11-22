@@ -76,7 +76,7 @@ export const escalation = [0, 1, 2].map((year) => ({
 
 // ── Parking · ParkingBay API ─────────────────────────────────────────────────
 export const parking = [
-  { bay: 'B12', level: 'Basement 1', kind: 'covered' as const, vehicle: 'Toyota Land Cruiser', plate: '12345 AB', tag: 'RFID-88231' },
+  { bay: 'B12', level: 'Basement 1', kind: 'covered' as const, vehicle: 'Toyota Land Cruiser', plate: '12345 AB', tag: 'RFID-88231', barrier: 'enabled' as 'enabled' | 'pending' | 'off' },
 ];
 
 // ── Rent · Invoice and Receipt APIs ──────────────────────────────────────────

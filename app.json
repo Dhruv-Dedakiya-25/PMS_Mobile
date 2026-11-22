@@ -2,12 +2,15 @@
   "expo": {
     "name": "EstateFlow",
     "slug": "pms-mobile",
+    "owner": "dhruvdedakiyas-team",
     "version": "1.0.0",
     "orientation": "portrait",
     "scheme": "estateflow",
     "userInterfaceStyle": "automatic",
     "ios": {
+      "bundleIdentifier": "om.co.sactech.estateflow",
       "supportsTablet": true,
+      "requireFullScreen": true,
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
@@ -49,6 +52,12 @@
       "typedRoutes": true,
       "reactCompiler": true
     },
-    "icon": "./assets/images/icon.png"
+    "icon": "./assets/images/icon.png",
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "2d1008e6-574a-4dd2-b63e-f7fc4a292318"
+      }
+    }
   }
 }

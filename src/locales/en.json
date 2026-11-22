@@ -268,7 +268,30 @@
       "NoticePeriod": "Notice Period",
       "Cancelled": "Cancelled",
       "Renewed": "Renewed"
-    }
+    },
+    "escalationRenewalIntro": "Under your lease the rent rises by {{percent}}% each time it is renewed.",
+    "noEscalation": "Your lease states no rent rise on renewal.",
+    "termN": "Term {{n}}",
+    "riseOnLast": "Up {{percent}}% on the term before",
+    "escalationOnRenewal": "{{percent}}% on renewal",
+    "requestWaitingDetail": "You will get a notification when the office answers.",
+    "lastDeclined": "The office declined your last request: {{reason}}",
+    "renewalAccepted": "Your renewal request was accepted",
+    "renewalAcceptedDetail": "The office is preparing your new lease and will contact you to sign it.",
+    "noticeWaiting": "Your notice is with the office",
+    "noticeAccepted": "Your notice was accepted",
+    "moveOutOn": "Move-out date: {{date}}",
+    "noticeGiven": "You have given notice on this lease, so it cannot be renewed.",
+    "requestPending": "You already have a request waiting for the office on this lease.",
+    "noNoticeDates": "Your lease ends on {{date}}, before a notice given today could take effect. Please contact the office.",
+    "rentLine_Quarterly": "Rent of {{amount}} a quarter is paid under this lease. Open Rent & Payments.",
+    "rentLine_HalfYearly": "Rent of {{amount}} every six months is paid under this lease. Open Rent & Payments.",
+    "rentLine_Annual": "Rent of {{amount}} a year is paid under this lease. Open Rent & Payments.",
+    "rentLine_Custom": "Rent of {{amount}} per instalment is paid under this lease. Open Rent & Payments.",
+    "monthlyRent_Quarterly": "Quarterly rent",
+    "monthlyRent_HalfYearly": "Half-yearly rent",
+    "monthlyRent_Annual": "Annual rent",
+    "monthlyRent_Custom": "Rent per instalment"
   },
   "pay": {
     "title": "Rent & Payments",
@@ -323,7 +346,11 @@
     "totalOverdue": "Total overdue",
     "nothingOverdue": "Nothing overdue. All paid up.",
     "comingUp": "Coming up",
-    "dueOn": "Due {{date}}"
+    "dueOn": "Due {{date}}",
+    "perMonth_Quarterly": "{{amount}} / quarter",
+    "perMonth_HalfYearly": "{{amount}} / 6 months",
+    "perMonth_Annual": "{{amount}} / year",
+    "perMonth_Custom": "{{amount}} / instalment"
   },
   "util": {
     "title": "Utilities",
@@ -587,7 +614,17 @@
     "parkingAccess": "Parking access",
     "barrier": "Barrier access",
     "enabled": "Enabled",
-    "guestParkingNote": "Visitors get parking access through the pass you send them from Visitor Management."
+    "guestParkingNote": "Visitors get parking access through the pass you send them from Visitor Management.",
+    "howToScan": "Show this code to the guard at the gate. It changes every 30 seconds, so a screenshot will not work.",
+    "lost": "Lost",
+    "cancelled": "Cancelled",
+    "reportThisLost": "Report this card lost",
+    "reportLostConfirm": "Card {{number}} will be marked lost and the office told, so it can be blocked.",
+    "reportedLost": "The office has been told. Ask them for a new card.",
+    "noCards": "The office has not issued you any access cards yet.",
+    "noParking": "No vehicles are registered to you yet.",
+    "pending": "Waiting for approval",
+    "off": "Not active"
   },
   "notifications": {
     "title": "Notifications",

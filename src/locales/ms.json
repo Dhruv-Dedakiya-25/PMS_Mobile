@@ -268,7 +268,30 @@
       "NoticePeriod": "Tempoh Notis",
       "Cancelled": "Dibatalkan",
       "Renewed": "Diperbaharui"
-    }
+    },
+    "escalationRenewalIntro": "Mengikut pajakan anda, sewa naik {{percent}}% setiap kali diperbaharui.",
+    "noEscalation": "Pajakan anda tidak menyatakan kenaikan sewa semasa pembaharuan.",
+    "termN": "Tempoh {{n}}",
+    "riseOnLast": "Naik {{percent}}% berbanding tempoh sebelumnya",
+    "escalationOnRenewal": "{{percent}}% semasa pembaharuan",
+    "requestWaitingDetail": "Anda akan menerima pemberitahuan apabila pejabat menjawab.",
+    "lastDeclined": "Pejabat menolak permintaan terakhir anda: {{reason}}",
+    "renewalAccepted": "Permintaan pembaharuan anda diterima",
+    "renewalAcceptedDetail": "Pejabat sedang menyediakan pajakan baharu anda dan akan menghubungi anda untuk menandatangan.",
+    "noticeWaiting": "Notis anda ada di pejabat",
+    "noticeAccepted": "Notis anda diterima",
+    "moveOutOn": "Tarikh keluar: {{date}}",
+    "noticeGiven": "Anda telah memberi notis untuk pajakan ini, jadi ia tidak boleh diperbaharui.",
+    "requestPending": "Anda sudah ada permintaan yang menunggu pejabat untuk pajakan ini.",
+    "noNoticeDates": "Pajakan anda tamat pada {{date}}, sebelum notis yang diberi hari ini boleh berkuat kuasa. Sila hubungi pejabat.",
+    "rentLine_Quarterly": "Sewa {{amount}} setiap suku tahun dibayar di bawah perjanjian ini. Buka Sewa & Bayaran.",
+    "rentLine_HalfYearly": "Sewa {{amount}} setiap enam bulan dibayar di bawah perjanjian ini. Buka Sewa & Bayaran.",
+    "rentLine_Annual": "Sewa {{amount}} setahun dibayar di bawah perjanjian ini. Buka Sewa & Bayaran.",
+    "rentLine_Custom": "Sewa {{amount}} setiap ansuran dibayar di bawah perjanjian ini. Buka Sewa & Bayaran.",
+    "monthlyRent_Quarterly": "Sewa suku tahunan",
+    "monthlyRent_HalfYearly": "Sewa setengah tahunan",
+    "monthlyRent_Annual": "Sewa tahunan",
+    "monthlyRent_Custom": "Sewa setiap ansuran"
   },
   "pay": {
     "title": "Sewa & Bayaran",
@@ -323,7 +346,11 @@
     "totalOverdue": "Jumlah tertunggak",
     "nothingOverdue": "Tiada tunggakan. Semua dibayar.",
     "comingUp": "Akan datang",
-    "dueOn": "Perlu dibayar {{date}}"
+    "dueOn": "Perlu dibayar {{date}}",
+    "perMonth_Quarterly": "{{amount}} / suku tahun",
+    "perMonth_HalfYearly": "{{amount}} / 6 bulan",
+    "perMonth_Annual": "{{amount}} / tahun",
+    "perMonth_Custom": "{{amount}} / ansuran"
   },
   "util": {
     "title": "Utiliti",
@@ -587,7 +614,17 @@
     "parkingAccess": "Akses parkir",
     "barrier": "Akses palang",
     "enabled": "Diaktifkan",
-    "guestParkingNote": "Pelawat mendapat akses parkir melalui pas yang anda hantar dari Pengurusan pelawat."
+    "guestParkingNote": "Pelawat mendapat akses parkir melalui pas yang anda hantar dari Pengurusan pelawat.",
+    "howToScan": "Tunjukkan kod ini kepada pengawal di pintu pagar. Ia berubah setiap 30 saat, jadi tangkapan skrin tidak akan berfungsi.",
+    "lost": "Hilang",
+    "cancelled": "Dibatalkan",
+    "reportThisLost": "Laporkan kad ini hilang",
+    "reportLostConfirm": "Kad {{number}} akan ditanda hilang dan pejabat dimaklumkan supaya ia boleh disekat.",
+    "reportedLost": "Pejabat telah dimaklumkan. Minta kad baharu daripada mereka.",
+    "noCards": "Pejabat belum mengeluarkan sebarang kad akses kepada anda.",
+    "noParking": "Belum ada kenderaan didaftarkan atas nama anda.",
+    "pending": "Menunggu kelulusan",
+    "off": "Tidak aktif"
   },
   "notifications": {
     "title": "Pemberitahuan",

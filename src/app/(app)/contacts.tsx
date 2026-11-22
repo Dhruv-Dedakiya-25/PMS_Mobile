@@ -6,7 +6,8 @@ import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Button, Card, IconTile } from '@/components/ui';
 import { ltr } from '@/lib/format';
-import { contacts, type ContactRole } from '@/mock/data';
+import { useContacts } from '@/hooks/use-resident';
+import type { ContactRole } from '@/mock/data';
 import { space, type Accent } from '@/theme/tokens';
 
 const look: Record<ContactRole, { icon: Icon; accent: Accent }> = {
@@ -20,14 +21,15 @@ const look: Record<ContactRole, { icon: Icon; accent: Accent }> = {
 /** Who to call: the property manager, the maintenance desk, reception, security and emergency services. */
 export default function Contacts() {
   const { t } = useTranslation();
+  const { contacts, loading, error, refresh, refreshing } = useContacts();
   const dial = (phone: string) => Linking.openURL(`tel:${phone.replace(/\s/g, '')}`);
   return (
-    <Page title={t('contacts.title')}>
+    <Page title={t('contacts.title')} loading={loading} error={error} onRetry={refresh} refreshing={refreshing} onRefresh={refresh}>
       <AppText tone="secondary">{t('contacts.intro')}</AppText>
       {contacts.map((c) => {
         const l = look[c.role];
         return (
-          <Card key={c.role}>
+          <Card key={`${c.role}-${c.name}-${c.phone}`}>
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.md }}>
               <IconTile icon={l.icon} accent={l.accent} size={44} />
               <View style={{ flex: 1 }}>
@@ -36,7 +38,7 @@ export default function Contacts() {
                 </AppText>
                 <AppText weight="semibold">{c.name}</AppText>
                 <AppText variant="caption" tone="muted">
-                  {ltr(c.phone)} · {ltr(c.hours)}
+                  {c.hours ? `${ltr(c.phone)} · ${ltr(c.hours)}` : ltr(c.phone)}
                 </AppText>
               </View>
             </View>

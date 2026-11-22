@@ -268,7 +268,30 @@
       "NoticePeriod": "İhbar Süresi",
       "Cancelled": "İptal Edildi",
       "Renewed": "Yenilendi"
-    }
+    },
+    "escalationRenewalIntro": "Sözleşmenize göre kira her yenilemede %{{percent}} artar.",
+    "noEscalation": "Sözleşmenizde yenilemede kira artışı yok.",
+    "termN": "Dönem {{n}}",
+    "riseOnLast": "Önceki döneme göre %{{percent}} fazla",
+    "escalationOnRenewal": "Yenilemede %{{percent}}",
+    "requestWaitingDetail": "Ofis yanıt verdiğinde bildirim alacaksınız.",
+    "lastDeclined": "Ofis son talebinizi reddetti: {{reason}}",
+    "renewalAccepted": "Yenileme talebiniz kabul edildi",
+    "renewalAcceptedDetail": "Ofis yeni sözleşmenizi hazırlıyor ve imza için sizinle iletişime geçecek.",
+    "noticeWaiting": "Bildiriminiz ofiste",
+    "noticeAccepted": "Bildiriminiz kabul edildi",
+    "moveOutOn": "Çıkış tarihi: {{date}}",
+    "noticeGiven": "Bu sözleşme için çıkış bildirimi verdiniz, bu yüzden yenilenemez.",
+    "requestPending": "Bu sözleşmede zaten ofisin yanıtını bekleyen bir talebiniz var.",
+    "noNoticeDates": "Sözleşmeniz {{date}} tarihinde, bugün verilecek bir bildirim geçerli olmadan önce bitiyor. Lütfen ofisle iletişime geçin.",
+    "rentLine_Quarterly": "Bu sözleşmeyle üç ayda bir {{amount}} kira ödenir. Kira ve ödemeleri açın.",
+    "rentLine_HalfYearly": "Bu sözleşmeyle altı ayda bir {{amount}} kira ödenir. Kira ve ödemeleri açın.",
+    "rentLine_Annual": "Bu sözleşmeyle yılda {{amount}} kira ödenir. Kira ve ödemeleri açın.",
+    "rentLine_Custom": "Bu sözleşmeyle taksit başına {{amount}} kira ödenir. Kira ve ödemeleri açın.",
+    "monthlyRent_Quarterly": "Üç aylık kira",
+    "monthlyRent_HalfYearly": "Altı aylık kira",
+    "monthlyRent_Annual": "Yıllık kira",
+    "monthlyRent_Custom": "Taksit başına kira"
   },
   "pay": {
     "title": "Kira ve ödemeler",
@@ -323,7 +346,11 @@
     "totalOverdue": "Toplam gecikme",
     "nothingOverdue": "Gecikme yok. Hepsi ödendi.",
     "comingUp": "Yakında",
-    "dueOn": "Son ödeme {{date}}"
+    "dueOn": "Son ödeme {{date}}",
+    "perMonth_Quarterly": "{{amount}} / çeyrek",
+    "perMonth_HalfYearly": "{{amount}} / 6 ay",
+    "perMonth_Annual": "{{amount}} / yıl",
+    "perMonth_Custom": "{{amount}} / taksit"
   },
   "util": {
     "title": "Faturalar",
@@ -587,7 +614,17 @@
     "parkingAccess": "Otopark erişimi",
     "barrier": "Bariyer erişimi",
     "enabled": "Etkin",
-    "guestParkingNote": "Misafirler, Ziyaretçi yönetiminden gönderdiğiniz kartla otoparka girer."
+    "guestParkingNote": "Misafirler, Ziyaretçi yönetiminden gönderdiğiniz kartla otoparka girer.",
+    "howToScan": "Bu kodu kapıdaki güvenlik görevlisine gösterin. Her 30 saniyede değişir, bu yüzden ekran görüntüsü işe yaramaz.",
+    "lost": "Kayıp",
+    "cancelled": "İptal edildi",
+    "reportThisLost": "Bu kartın kaybını bildir",
+    "reportLostConfirm": "{{number}} numaralı kart kayıp olarak işaretlenecek ve engellenmesi için ofise bildirilecek.",
+    "reportedLost": "Ofise bildirildi. Onlardan yeni bir kart isteyin.",
+    "noCards": "Ofis size henüz giriş kartı vermedi.",
+    "noParking": "Adınıza henüz kayıtlı araç yok.",
+    "pending": "Onay bekliyor",
+    "off": "Etkin değil"
   },
   "notifications": {
     "title": "Bildirimler",

@@ -268,7 +268,30 @@
       "NoticePeriod": "通知期",
       "Cancelled": "已取消",
       "Renewed": "已续签"
-    }
+    },
+    "escalationRenewalIntro": "根据您的租约，每次续租时租金上涨 {{percent}}%。",
+    "noEscalation": "您的租约未规定续租时上涨租金。",
+    "termN": "第 {{n}} 期",
+    "riseOnLast": "比上一期上涨 {{percent}}%",
+    "escalationOnRenewal": "续租时上涨 {{percent}}%",
+    "requestWaitingDetail": "办公室答复后您会收到通知。",
+    "lastDeclined": "办公室拒绝了您上次的申请：{{reason}}",
+    "renewalAccepted": "您的续租申请已被接受",
+    "renewalAcceptedDetail": "办公室正在准备您的新租约，并会联系您签署。",
+    "noticeWaiting": "您的退租通知已交给办公室",
+    "noticeAccepted": "您的退租通知已被接受",
+    "moveOutOn": "搬出日期：{{date}}",
+    "noticeGiven": "您已就此租约发出退租通知，因此无法续租。",
+    "requestPending": "此租约已有一项申请在等待办公室答复。",
+    "noNoticeDates": "您的租约将于 {{date}} 结束，早于今天发出的通知生效的时间。请联系办公室。",
+    "rentLine_Quarterly": "本租约每季度租金为 {{amount}}。打开租金与缴费。",
+    "rentLine_HalfYearly": "本租约每半年租金为 {{amount}}。打开租金与缴费。",
+    "rentLine_Annual": "本租约每年租金为 {{amount}}。打开租金与缴费。",
+    "rentLine_Custom": "本租约每期租金为 {{amount}}。打开租金与缴费。",
+    "monthlyRent_Quarterly": "季度租金",
+    "monthlyRent_HalfYearly": "半年租金",
+    "monthlyRent_Annual": "年租金",
+    "monthlyRent_Custom": "每期租金"
   },
   "pay": {
     "title": "租金与缴费",
@@ -323,7 +346,11 @@
     "totalOverdue": "逾期总额",
     "nothingOverdue": "没有逾期，已全部付清。",
     "comingUp": "即将到期",
-    "dueOn": "{{date}} 到期"
+    "dueOn": "{{date}} 到期",
+    "perMonth_Quarterly": "{{amount}} / 季度",
+    "perMonth_HalfYearly": "{{amount}} / 6 个月",
+    "perMonth_Annual": "{{amount}} / 年",
+    "perMonth_Custom": "{{amount}} / 期"
   },
   "util": {
     "title": "水电费",
@@ -587,7 +614,17 @@
     "parkingAccess": "停车场通行",
     "barrier": "道闸通行",
     "enabled": "已启用",
-    "guestParkingNote": "访客凭您在访客管理中发送的访客证进入停车场。"
+    "guestParkingNote": "访客凭您在访客管理中发送的访客证进入停车场。",
+    "howToScan": "请向门口保安出示此码。此码每 30 秒更换一次，截图无法使用。",
+    "lost": "已挂失",
+    "cancelled": "已取消",
+    "reportThisLost": "挂失此卡",
+    "reportLostConfirm": "卡 {{number}} 将被标记为挂失，并通知办公室以便停用。",
+    "reportedLost": "已通知办公室。请向他们申请新卡。",
+    "noCards": "办公室尚未向您发放门禁卡。",
+    "noParking": "您名下还没有登记车辆。",
+    "pending": "等待审批",
+    "off": "未启用"
   },
   "notifications": {
     "title": "通知",

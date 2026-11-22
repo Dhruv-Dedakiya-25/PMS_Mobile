@@ -1,0 +1,14 @@
+{
+  "cli": {
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_AUTH_MODE": "api",
+        "EXPO_PUBLIC_API_URL": "https://sactech-001-site24.itempurl.com/api"
+      }
+    }
+  }
+}

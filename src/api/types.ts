@@ -116,6 +116,8 @@ export interface MyVehicleDto {
   colour?: string | null;
   vehicleType: string;
   permitNo?: string | null;
+  /** Pending, Active, Expired or Revoked: the barrier lets the car in only while Active. */
+  permitStatus?: string | null;
   permitExpiryDate?: string | null;
   parkingBayId?: string | null;
   bayCode?: string | null;
@@ -182,6 +184,17 @@ export interface MyLeaseDto {
   comments?: string | null;
   charges: MyLeaseChargeDto[];
   deposits: MyDepositDto[];
+  /** This lease and the ones it renewed, oldest first. */
+  history?: MyLeaseTermDto[];
+}
+
+export interface MyLeaseTermDto {
+  id: string;
+  leaseNumber: string;
+  startDate?: string | null;
+  endDate?: string | null;
+  rentAmount: number;
+  rentFrequency: string;
 }
 
 export type ApiInstallmentStatus = 'Scheduled' | 'Invoiced' | 'Paid' | 'Overdue' | 'Cancelled';
@@ -585,3 +598,53 @@ export interface InboxDto {
   unread: number;
   items: InboxItemDto[];
 }
+
+export type ApiContactRole = 'PropertyManager' | 'MaintenanceDesk' | 'Reception' | 'Security' | 'Emergency';
+
+/** Someone the tenant can call: their property's contacts, the office, or emergency services. */
+export interface MyContactDto {
+  role: ApiContactRole;
+  name: string;
+  phone: string;
+  email?: string | null;
+  hours?: string | null;
+  propertyName?: string | null;
+}
+
+export type ApiMoveOutReason = 'Relocating' | 'Buying' | 'Job' | 'Size' | 'Other';
+
+/** A renewal request or notice the tenant sent, and the office's answer. */
+export interface MyLeaseRequestDto {
+  id: string;
+  requestNumber: string;
+  type: 'Renewal' | 'Termination';
+  status: 'Pending' | 'Accepted' | 'Declined';
+  termMonths?: number | null;
+  moveOutDate?: string | null;
+  reason?: ApiMoveOutReason | null;
+  note?: string | null;
+  response?: string | null;
+  decidedAtUtc?: string | null;
+  renewalLeaseNumber?: string | null;
+  createdOn: string;
+}
+
+/** The mobile key's code for now; it changes every periodSeconds. */
+export interface MyAccessKeyDto {
+  code: string;
+  secondsLeft: number;
+  periodSeconds: number;
+}
+
+export interface MyAccessCardDto {
+  id: string;
+  cardNumber: string;
+  holderName: string;
+  isPrimary: boolean;
+  zones?: string | null;
+  validUntil?: string | null;
+  status: 'Active' | 'Lost' | 'Cancelled';
+  lostReportedAtUtc?: string | null;
+  propertyName?: string | null;
+}
+

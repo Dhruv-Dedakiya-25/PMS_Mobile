@@ -268,7 +268,30 @@
       "NoticePeriod": "Kündigungsfrist",
       "Cancelled": "Storniert",
       "Renewed": "Verlängert"
-    }
+    },
+    "escalationRenewalIntro": "Laut Ihrem Mietvertrag steigt die Miete bei jeder Verlängerung um {{percent}} %.",
+    "noEscalation": "Ihr Mietvertrag sieht keine Mieterhöhung bei Verlängerung vor.",
+    "termN": "Laufzeit {{n}}",
+    "riseOnLast": "{{percent}} % mehr als die Laufzeit davor",
+    "escalationOnRenewal": "{{percent}} % bei Verlängerung",
+    "requestWaitingDetail": "Sie erhalten eine Benachrichtigung, wenn das Büro antwortet.",
+    "lastDeclined": "Das Büro hat Ihre letzte Anfrage abgelehnt: {{reason}}",
+    "renewalAccepted": "Ihre Verlängerungsanfrage wurde angenommen",
+    "renewalAcceptedDetail": "Das Büro bereitet Ihren neuen Mietvertrag vor und meldet sich zur Unterschrift.",
+    "noticeWaiting": "Ihre Kündigung liegt beim Büro",
+    "noticeAccepted": "Ihre Kündigung wurde angenommen",
+    "moveOutOn": "Auszugsdatum: {{date}}",
+    "noticeGiven": "Sie haben diesen Mietvertrag gekündigt, daher kann er nicht verlängert werden.",
+    "requestPending": "Sie haben bereits eine offene Anfrage zu diesem Mietvertrag beim Büro.",
+    "noNoticeDates": "Ihr Mietvertrag endet am {{date}}, bevor eine heute ausgesprochene Kündigung wirksam würde. Bitte wenden Sie sich an das Büro.",
+    "rentLine_Quarterly": "Unter diesem Vertrag werden {{amount}} Miete pro Quartal gezahlt. Miete & Zahlungen öffnen.",
+    "rentLine_HalfYearly": "Unter diesem Vertrag werden {{amount}} Miete pro Halbjahr gezahlt. Miete & Zahlungen öffnen.",
+    "rentLine_Annual": "Unter diesem Vertrag werden {{amount}} Miete pro Jahr gezahlt. Miete & Zahlungen öffnen.",
+    "rentLine_Custom": "Unter diesem Vertrag werden {{amount}} Miete pro Rate gezahlt. Miete & Zahlungen öffnen.",
+    "monthlyRent_Quarterly": "Quartalsmiete",
+    "monthlyRent_HalfYearly": "Halbjahresmiete",
+    "monthlyRent_Annual": "Jahresmiete",
+    "monthlyRent_Custom": "Miete pro Rate"
   },
   "pay": {
     "title": "Miete & Zahlungen",
@@ -323,7 +346,11 @@
     "totalOverdue": "Überfällig gesamt",
     "nothingOverdue": "Nichts überfällig. Alles bezahlt.",
     "comingUp": "Demnächst",
-    "dueOn": "Fällig am {{date}}"
+    "dueOn": "Fällig am {{date}}",
+    "perMonth_Quarterly": "{{amount}} / Quartal",
+    "perMonth_HalfYearly": "{{amount}} / 6 Monate",
+    "perMonth_Annual": "{{amount}} / Jahr",
+    "perMonth_Custom": "{{amount}} / Rate"
   },
   "util": {
     "title": "Nebenkosten",
@@ -587,7 +614,17 @@
     "parkingAccess": "Parkzugang",
     "barrier": "Schrankenzugang",
     "enabled": "Aktiviert",
-    "guestParkingNote": "Besucher erhalten Parkzugang über den Ausweis, den Sie ihnen aus der Besucherverwaltung senden."
+    "guestParkingNote": "Besucher erhalten Parkzugang über den Ausweis, den Sie ihnen aus der Besucherverwaltung senden.",
+    "howToScan": "Zeigen Sie diesen Code dem Wachpersonal am Tor. Er ändert sich alle 30 Sekunden, ein Screenshot funktioniert also nicht.",
+    "lost": "Verloren",
+    "cancelled": "Storniert",
+    "reportThisLost": "Diese Karte als verloren melden",
+    "reportLostConfirm": "Karte {{number}} wird als verloren markiert und das Büro informiert, damit sie gesperrt werden kann.",
+    "reportedLost": "Das Büro wurde informiert. Fragen Sie dort nach einer neuen Karte.",
+    "noCards": "Das Büro hat Ihnen noch keine Zugangskarten ausgegeben.",
+    "noParking": "Auf Sie sind noch keine Fahrzeuge registriert.",
+    "pending": "Wartet auf Genehmigung",
+    "off": "Nicht aktiv"
   },
   "notifications": {
     "title": "Benachrichtigungen",

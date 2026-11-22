@@ -268,7 +268,30 @@
       "NoticePeriod": "Opzegtermijn",
       "Cancelled": "Geannuleerd",
       "Renewed": "Verlengd"
-    }
+    },
+    "escalationRenewalIntro": "Volgens uw huurcontract stijgt de huur bij elke verlenging met {{percent}}%.",
+    "noEscalation": "Uw huurcontract vermeldt geen huurverhoging bij verlenging.",
+    "termN": "Termijn {{n}}",
+    "riseOnLast": "{{percent}}% hoger dan de termijn ervoor",
+    "escalationOnRenewal": "{{percent}}% bij verlenging",
+    "requestWaitingDetail": "U krijgt een melding zodra het kantoor antwoordt.",
+    "lastDeclined": "Het kantoor heeft uw laatste verzoek afgewezen: {{reason}}",
+    "renewalAccepted": "Uw verlengingsverzoek is geaccepteerd",
+    "renewalAcceptedDetail": "Het kantoor bereidt uw nieuwe huurcontract voor en neemt contact op om te tekenen.",
+    "noticeWaiting": "Uw opzegging ligt bij het kantoor",
+    "noticeAccepted": "Uw opzegging is geaccepteerd",
+    "moveOutOn": "Verhuisdatum: {{date}}",
+    "noticeGiven": "U heeft dit huurcontract opgezegd, dus het kan niet worden verlengd.",
+    "requestPending": "U heeft al een verzoek bij het kantoor openstaan voor dit huurcontract.",
+    "noNoticeDates": "Uw huurcontract eindigt op {{date}}, voordat een opzegging van vandaag ingaat. Neem contact op met het kantoor.",
+    "rentLine_Quarterly": "Onder dit contract betaalt u {{amount}} huur per kwartaal. Open Huur en betalingen.",
+    "rentLine_HalfYearly": "Onder dit contract betaalt u {{amount}} huur per halfjaar. Open Huur en betalingen.",
+    "rentLine_Annual": "Onder dit contract betaalt u {{amount}} huur per jaar. Open Huur en betalingen.",
+    "rentLine_Custom": "Onder dit contract betaalt u {{amount}} huur per termijn. Open Huur en betalingen.",
+    "monthlyRent_Quarterly": "Kwartaalhuur",
+    "monthlyRent_HalfYearly": "Halfjaarlijkse huur",
+    "monthlyRent_Annual": "Jaarhuur",
+    "monthlyRent_Custom": "Huur per termijn"
   },
   "pay": {
     "title": "Huur en betalingen",
@@ -323,7 +346,11 @@
     "totalOverdue": "Totaal achterstallig",
     "nothingOverdue": "Niets achterstallig. Alles betaald.",
     "comingUp": "Binnenkort",
-    "dueOn": "Te betalen op {{date}}"
+    "dueOn": "Te betalen op {{date}}",
+    "perMonth_Quarterly": "{{amount}} / kwartaal",
+    "perMonth_HalfYearly": "{{amount}} / 6 maanden",
+    "perMonth_Annual": "{{amount}} / jaar",
+    "perMonth_Custom": "{{amount}} / termijn"
   },
   "util": {
     "title": "Nutsvoorzieningen",
@@ -587,7 +614,17 @@
     "parkingAccess": "Parkeertoegang",
     "barrier": "Slagboomtoegang",
     "enabled": "Ingeschakeld",
-    "guestParkingNote": "Bezoekers krijgen parkeertoegang via de pas die u stuurt vanuit Bezoekersbeheer."
+    "guestParkingNote": "Bezoekers krijgen parkeertoegang via de pas die u stuurt vanuit Bezoekersbeheer.",
+    "howToScan": "Laat deze code zien aan de bewaker bij de poort. Hij verandert elke 30 seconden, dus een screenshot werkt niet.",
+    "lost": "Verloren",
+    "cancelled": "Geannuleerd",
+    "reportThisLost": "Deze pas als verloren melden",
+    "reportLostConfirm": "Pas {{number}} wordt als verloren gemarkeerd en het kantoor wordt ingelicht, zodat hij geblokkeerd kan worden.",
+    "reportedLost": "Het kantoor is ingelicht. Vraag om een nieuwe pas.",
+    "noCards": "Het kantoor heeft u nog geen toegangspassen gegeven.",
+    "noParking": "Er staan nog geen voertuigen op uw naam.",
+    "pending": "Wacht op goedkeuring",
+    "off": "Niet actief"
   },
   "notifications": {
     "title": "Meldingen",

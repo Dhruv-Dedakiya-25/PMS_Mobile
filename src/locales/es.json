@@ -268,7 +268,30 @@
       "NoticePeriod": "Período de preaviso",
       "Cancelled": "Cancelado",
       "Renewed": "Renovado"
-    }
+    },
+    "escalationRenewalIntro": "Según tu contrato, el alquiler sube un {{percent}} % cada vez que se renueva.",
+    "noEscalation": "Tu contrato no indica subida del alquiler al renovar.",
+    "termN": "Plazo {{n}}",
+    "riseOnLast": "Un {{percent}} % más que el plazo anterior",
+    "escalationOnRenewal": "{{percent}} % al renovar",
+    "requestWaitingDetail": "Recibirás una notificación cuando la oficina responda.",
+    "lastDeclined": "La oficina rechazó tu última solicitud: {{reason}}",
+    "renewalAccepted": "Tu solicitud de renovación fue aceptada",
+    "renewalAcceptedDetail": "La oficina está preparando tu nuevo contrato y te contactará para firmarlo.",
+    "noticeWaiting": "Tu aviso está en la oficina",
+    "noticeAccepted": "Tu aviso fue aceptado",
+    "moveOutOn": "Fecha de salida: {{date}}",
+    "noticeGiven": "Ya diste aviso de salida en este contrato, así que no se puede renovar.",
+    "requestPending": "Ya tienes una solicitud pendiente con la oficina para este contrato.",
+    "noNoticeDates": "Tu contrato termina el {{date}}, antes de que un aviso dado hoy pueda surtir efecto. Contacta con la oficina.",
+    "rentLine_Quarterly": "Con este contrato se pagan {{amount}} de alquiler al trimestre. Abre Alquiler y pagos.",
+    "rentLine_HalfYearly": "Con este contrato se pagan {{amount}} de alquiler cada seis meses. Abre Alquiler y pagos.",
+    "rentLine_Annual": "Con este contrato se pagan {{amount}} de alquiler al año. Abre Alquiler y pagos.",
+    "rentLine_Custom": "Con este contrato se pagan {{amount}} de alquiler por plazo. Abre Alquiler y pagos.",
+    "monthlyRent_Quarterly": "Alquiler trimestral",
+    "monthlyRent_HalfYearly": "Alquiler semestral",
+    "monthlyRent_Annual": "Alquiler anual",
+    "monthlyRent_Custom": "Alquiler por plazo"
   },
   "pay": {
     "title": "Alquiler y pagos",
@@ -323,7 +346,11 @@
     "totalOverdue": "Total vencido",
     "nothingOverdue": "Nada vencido. Todo pagado.",
     "comingUp": "Próximamente",
-    "dueOn": "Vence el {{date}}"
+    "dueOn": "Vence el {{date}}",
+    "perMonth_Quarterly": "{{amount}} / trimestre",
+    "perMonth_HalfYearly": "{{amount}} / 6 meses",
+    "perMonth_Annual": "{{amount}} / año",
+    "perMonth_Custom": "{{amount}} / plazo"
   },
   "util": {
     "title": "Suministros",
@@ -587,7 +614,17 @@
     "parkingAccess": "Acceso al aparcamiento",
     "barrier": "Acceso por barrera",
     "enabled": "Activado",
-    "guestParkingNote": "Las visitas acceden al aparcamiento con el pase que les envías desde Gestión de visitas."
+    "guestParkingNote": "Las visitas acceden al aparcamiento con el pase que les envías desde Gestión de visitas.",
+    "howToScan": "Muestra este código al guardia de la puerta. Cambia cada 30 segundos, así que una captura de pantalla no sirve.",
+    "lost": "Perdida",
+    "cancelled": "Cancelada",
+    "reportThisLost": "Avisar de que perdí esta tarjeta",
+    "reportLostConfirm": "La tarjeta {{number}} se marcará como perdida y se avisará a la oficina para bloquearla.",
+    "reportedLost": "Se ha avisado a la oficina. Pídeles una tarjeta nueva.",
+    "noCards": "La oficina aún no te ha entregado tarjetas de acceso.",
+    "noParking": "Aún no tienes vehículos registrados.",
+    "pending": "Pendiente de aprobación",
+    "off": "No activo"
   },
   "notifications": {
     "title": "Notificaciones",
