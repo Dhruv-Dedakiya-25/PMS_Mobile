@@ -820,7 +820,8 @@
       "SuperAdmin": "Системний адміністратор",
       "PropertyManager": "Управитель об'єкта",
       "Maintenance": "Обслуговування",
-      "Tenant": "Орендар"
+      "Tenant": "Орендар",
+      "PropertyConsultant": "Консультант з нерухомості"
     },
     "property": "Нерухомість",
     "unit": "Одиниця",

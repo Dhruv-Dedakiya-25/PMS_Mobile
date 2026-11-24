@@ -784,7 +784,8 @@
       "SuperAdmin": "Pentadbir sistem",
       "PropertyManager": "Pengurus hartanah",
       "Maintenance": "Penyelenggaraan",
-      "Tenant": "Penyewa"
+      "Tenant": "Penyewa",
+      "PropertyConsultant": "Perunding Hartanah"
     },
     "property": "Hartanah",
     "unit": "Unit",

@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
 import {
   getStaffLeases,
@@ -13,9 +13,10 @@ import {
   type StaffTenant,
   type StaffUnit,
 } from '@/api/staff';
+import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
-import { Card, Onward, Pill, Segmented } from '@/components/ui';
+import { Avatar, Card, Onward, Pill, Segmented } from '@/components/ui';
 import { useLanguage } from '@/i18n';
 import { omr } from '@/lib/format';
 import { space } from '@/theme/tokens';
@@ -25,7 +26,9 @@ type Section = 'properties' | 'units' | 'leases' | 'tenants';
 export default function StaffProperties() {
   const { t } = useTranslation();
   const { language } = useLanguage();
+  const { isPropertyConsultant, user } = useAppSession();
   const code = language.code;
+  const staffName = user?.displayName || user?.username || 'Property Consultant';
   const [section, setSection] = useState<Section>('properties');
 
   const [properties, setProperties] = useState<StaffProperty[]>([]);
@@ -103,6 +106,13 @@ export default function StaffProperties() {
   return (
     <Screen
       title={t('tabs.properties')}
+      action={
+        isPropertyConsultant ? (
+          <Pressable onPress={() => router.push('/profile')} accessibilityRole="button" accessibilityLabel={t('profile.title')}>
+            <Avatar name={staffName} size={36} />
+          </Pressable>
+        ) : undefined
+      }
       loading={loading}
       refreshing={refreshing}
       onRefresh={onRefresh}

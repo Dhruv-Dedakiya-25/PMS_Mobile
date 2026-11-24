@@ -784,7 +784,8 @@
       "SuperAdmin": "Sistem yöneticisi",
       "PropertyManager": "Mülk yöneticisi",
       "Maintenance": "Bakım",
-      "Tenant": "Kiracı"
+      "Tenant": "Kiracı",
+      "PropertyConsultant": "Gayrimenkul Danışmanı"
     },
     "property": "Mülk",
     "unit": "Birim",

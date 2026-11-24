@@ -784,7 +784,8 @@
       "SuperAdmin": "ವ್ಯವಸ್ಥೆ ನಿರ್ವಾಹಕ",
       "PropertyManager": "ಆಸ್ತಿ ವ್ಯವಸ್ಥಾಪಕ",
       "Maintenance": "ನಿರ್ವಹಣೆ",
-      "Tenant": "ಬಾಡಿಗೆದಾರ"
+      "Tenant": "ಬಾಡಿಗೆದಾರ",
+      "PropertyConsultant": "ಆಸ್ತಿ ಸಲಹೆಗಾರ"
     },
     "property": "ಆಸ್ತಿ",
     "unit": "ಘಟಕ",

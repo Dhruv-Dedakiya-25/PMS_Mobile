@@ -12,6 +12,7 @@ import {
   type StaffInvoice,
   type StaffReceipt,
 } from '@/api/staff';
+import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
 import { Button, Card, Onward, Pill, Segmented } from '@/components/ui';
@@ -24,6 +25,8 @@ type Section = 'invoices' | 'receipts' | 'installments';
 export default function StaffFinance() {
   const { t } = useTranslation();
   const { language } = useLanguage();
+  const { accessTo } = useAppSession();
+  const canRecordPayment = accessTo('/staff/payment/new') !== null;
   const code = language.code;
   const [section, setSection] = useState<Section>('invoices');
 
@@ -99,12 +102,14 @@ export default function StaffFinance() {
       title={t('tabs.finance')}
       subtitle={t('staff.finance')}
       action={
-        <Button
-          label={t('staff.recordPayment')}
-          icon={IconPlus}
-          compact
-          onPress={() => router.push('/staff/payment/new')}
-        />
+        canRecordPayment ? (
+          <Button
+            label={t('staff.recordPayment')}
+            icon={IconPlus}
+            compact
+            onPress={() => router.push('/staff/payment/new')}
+          />
+        ) : undefined
       }
       loading={loading}
       refreshing={refreshing}

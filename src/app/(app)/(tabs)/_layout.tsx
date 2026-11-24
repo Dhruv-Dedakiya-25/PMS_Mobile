@@ -23,7 +23,7 @@ export default function TabLayout() {
   const palette = usePalette();
   const insets = useSafeAreaInsets();
   const { isRTL } = useLanguage();
-  const { isMaintenance, isPropertyManager, isSuperAdmin, isStaff, accessTo, home } = useAppSession();
+  const { isMaintenance, isPropertyConsultant, isPropertyManager, isSuperAdmin, isStaff, accessTo, home } = useAppSession();
   const pathname = usePathname();
 
   // A staff account landing on root '/' goes straight to its own home
@@ -72,7 +72,7 @@ export default function TabLayout() {
       );
     }
 
-    if (isPropertyManager || isSuperAdmin) {
+    if (isPropertyManager || isSuperAdmin || isPropertyConsultant) {
       return (
         <>
           {can('/staff/dashboard') && (

@@ -784,7 +784,8 @@
       "SuperAdmin": "Systeembeheerder",
       "PropertyManager": "Vastgoedbeheerder",
       "Maintenance": "Onderhoud",
-      "Tenant": "Huurder"
+      "Tenant": "Huurder",
+      "PropertyConsultant": "Vastgoedadviseur"
     },
     "property": "Pand",
     "unit": "Eenheid",

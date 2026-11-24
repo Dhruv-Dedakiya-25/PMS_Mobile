@@ -820,7 +820,8 @@
       "SuperAdmin": "Administrator systemu",
       "PropertyManager": "Zarządca nieruchomości",
       "Maintenance": "Konserwacja",
-      "Tenant": "Najemca"
+      "Tenant": "Najemca",
+      "PropertyConsultant": "Konsultant ds. nieruchomości"
     },
     "property": "Nieruchomość",
     "unit": "Lokal",

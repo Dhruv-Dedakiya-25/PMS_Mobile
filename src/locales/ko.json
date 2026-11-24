@@ -784,7 +784,8 @@
       "SuperAdmin": "시스템 관리자",
       "PropertyManager": "자산 관리자",
       "Maintenance": "유지보수",
-      "Tenant": "임차인"
+      "Tenant": "임차인",
+      "PropertyConsultant": "부동산 컨설턴트"
     },
     "property": "부동산",
     "unit": "세대",

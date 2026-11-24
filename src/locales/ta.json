@@ -784,7 +784,8 @@
       "SuperAdmin": "அமைப்பு நிர்வாகி",
       "PropertyManager": "சொத்து மேலாளர்",
       "Maintenance": "பராமரிப்பு",
-      "Tenant": "குத்தகைதாரர்"
+      "Tenant": "குத்தகைதாரர்",
+      "PropertyConsultant": "சொத்து ஆலோசகர்"
     },
     "property": "சொத்து",
     "unit": "பிரிவு",

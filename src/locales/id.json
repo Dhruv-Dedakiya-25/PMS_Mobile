@@ -784,7 +784,8 @@
       "SuperAdmin": "Administrator sistem",
       "PropertyManager": "Manajer properti",
       "Maintenance": "Pemeliharaan",
-      "Tenant": "Penyewa"
+      "Tenant": "Penyewa",
+      "PropertyConsultant": "Konsultan Properti"
     },
     "property": "Properti",
     "unit": "Unit",

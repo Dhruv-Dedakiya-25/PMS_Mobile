@@ -784,7 +784,8 @@
       "SuperAdmin": "مدیر سامانه",
       "PropertyManager": "مدیر ملک",
       "Maintenance": "نگهداری",
-      "Tenant": "مستأجر"
+      "Tenant": "مستأجر",
+      "PropertyConsultant": "مشاور املاک"
     },
     "property": "ملک",
     "unit": "واحد",

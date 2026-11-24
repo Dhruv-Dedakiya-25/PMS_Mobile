@@ -784,7 +784,8 @@
       "SuperAdmin": "प्रणाली प्रशासक",
       "PropertyManager": "सम्पत्ति प्रबन्धक",
       "Maintenance": "मर्मत",
-      "Tenant": "भाडावाल"
+      "Tenant": "भाडावाल",
+      "PropertyConsultant": "सम्पत्ति परामर्शदाता"
     },
     "property": "सम्पत्ति",
     "unit": "इकाई",

@@ -844,7 +844,8 @@
       "SuperAdmin": "مدير النظام",
       "PropertyManager": "مدير العقار",
       "Maintenance": "صيانة",
-      "Tenant": "مستأجر"
+      "Tenant": "مستأجر",
+      "PropertyConsultant": "مستشار عقاري"
     },
     "property": "العقار",
     "unit": "الوحدة",

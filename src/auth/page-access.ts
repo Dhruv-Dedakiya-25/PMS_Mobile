@@ -1,4 +1,4 @@
-export type UserType = 'SuperAdmin' | 'PropertyManager' | 'Maintenance' | 'Tenant';
+export type UserType = 'SuperAdmin' | 'PropertyManager' | 'PropertyConsultant' | 'Maintenance' | 'Tenant';
 /** Module to actions, as the API's PermissionCatalog names them ("Lease": ["View", "Edit"]). */
 export type Permissions = Record<string, string[]>;
 export type Access = 'full' | 'edit' | 'view';
@@ -44,6 +44,18 @@ const RULES: Record<UserType, Record<string, Access | null>> = {
     language: 'full',
     done: 'full',
   },
+  PropertyConsultant: {
+    staff: null,
+    'staff/properties': 'view',
+    'staff/property': 'view',
+    'staff/lease': 'edit',
+    'staff/finance': 'view',
+    'staff/invoice': 'view',
+    'staff/profile': 'view',
+    profile: 'full',
+    language: 'full',
+    done: 'full',
+  },
   Maintenance: {
     staff: null,
     'staff/facility': 'view',
@@ -70,6 +82,7 @@ const RULES: Record<UserType, Record<string, Access | null>> = {
 const HOME: Record<UserType, string> = {
   SuperAdmin: '/staff/dashboard',
   PropertyManager: '/staff/dashboard',
+  PropertyConsultant: '/staff/properties',
   Maintenance: '/staff/facility',
   Tenant: '/',
 };

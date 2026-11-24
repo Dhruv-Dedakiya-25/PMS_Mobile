@@ -784,7 +784,8 @@
       "SuperAdmin": "System Administrator",
       "PropertyManager": "Property Manager",
       "Maintenance": "Maintenance",
-      "Tenant": "Tenant"
+      "Tenant": "Tenant",
+      "PropertyConsultant": "Property Consultant"
     },
     "property": "Property",
     "unit": "Unit",

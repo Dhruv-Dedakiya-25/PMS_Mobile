@@ -784,7 +784,8 @@
       "SuperAdmin": "系统管理员",
       "PropertyManager": "物业经理",
       "Maintenance": "维护",
-      "Tenant": "租户"
+      "Tenant": "租户",
+      "PropertyConsultant": "物业顾问"
     },
     "property": "物业",
     "unit": "单元",

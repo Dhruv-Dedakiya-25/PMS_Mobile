@@ -784,7 +784,8 @@
       "SuperAdmin": "സിസ്റ്റം അഡ്മിനിസ്ട്രേറ്റർ",
       "PropertyManager": "വസ്തു മാനേജർ",
       "Maintenance": "അറ്റകുറ്റപ്പണി",
-      "Tenant": "വാടകക്കാരൻ"
+      "Tenant": "വാടകക്കാരൻ",
+      "PropertyConsultant": "പ്രോപ്പർട്ടി കൺസൾട്ടന്റ്"
     },
     "property": "വസ്തു",
     "unit": "യൂണിറ്റ്",

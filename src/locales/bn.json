@@ -784,7 +784,8 @@
       "SuperAdmin": "সিস্টেম প্রশাসক",
       "PropertyManager": "সম্পত্তি ব্যবস্থাপক",
       "Maintenance": "রক্ষণাবেক্ষণ",
-      "Tenant": "ভাড়াটিয়া"
+      "Tenant": "ভাড়াটিয়া",
+      "PropertyConsultant": "সম্পত্তি পরামর্শদাতা"
     },
     "property": "সম্পত্তি",
     "unit": "ইউনিট",

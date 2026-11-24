@@ -784,7 +784,8 @@
       "SuperAdmin": "سسٹم منتظم",
       "PropertyManager": "پراپرٹی مینیجر",
       "Maintenance": "دیکھ بھال",
-      "Tenant": "کرایہ دار"
+      "Tenant": "کرایہ دار",
+      "PropertyConsultant": "پراپرٹی کنسلٹنٹ"
     },
     "property": "جائیداد",
     "unit": "یونٹ",

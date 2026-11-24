@@ -36,6 +36,7 @@ export function useAppSession() {
     userType,
     isTenant: userType === 'Tenant',
     isMaintenance: userType === 'Maintenance',
+    isPropertyConsultant: userType === 'PropertyConsultant',
     isPropertyManager: userType === 'PropertyManager',
     isSuperAdmin: userType === 'SuperAdmin',
     isStaff: userType !== 'Tenant',

@@ -784,7 +784,8 @@
       "SuperAdmin": "ผู้ดูแลระบบ",
       "PropertyManager": "ผู้จัดการโครงการ",
       "Maintenance": "การบำรุงรักษา",
-      "Tenant": "ผู้เช่า"
+      "Tenant": "ผู้เช่า",
+      "PropertyConsultant": "ที่ปรึกษาอสังหาริมทรัพย์"
     },
     "property": "อสังหาริมทรัพย์",
     "unit": "หน่วย",

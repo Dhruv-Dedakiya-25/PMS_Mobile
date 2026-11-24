@@ -784,7 +784,8 @@
       "SuperAdmin": "システム管理者",
       "PropertyManager": "物件マネージャー",
       "Maintenance": "メンテナンス",
-      "Tenant": "テナント"
+      "Tenant": "テナント",
+      "PropertyConsultant": "物件コンサルタント"
     },
     "property": "物件",
     "unit": "住戸",

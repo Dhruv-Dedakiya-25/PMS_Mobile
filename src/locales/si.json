@@ -784,7 +784,8 @@
       "SuperAdmin": "පද්ධති පරිපාලක",
       "PropertyManager": "දේපළ කළමනාකරු",
       "Maintenance": "නඩත්තුව",
-      "Tenant": "කුලී නිවැසියා"
+      "Tenant": "කුලී නිවැසියා",
+      "PropertyConsultant": "දේපළ උපදේශක"
     },
     "property": "දේපළ",
     "unit": "ඒකකය",

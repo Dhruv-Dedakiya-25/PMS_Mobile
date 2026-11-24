@@ -784,7 +784,8 @@
       "SuperAdmin": "מנהל מערכת",
       "PropertyManager": "מנהל הנכס",
       "Maintenance": "תחזוקה",
-      "Tenant": "דייר"
+      "Tenant": "דייר",
+      "PropertyConsultant": "יועץ נכסים"
     },
     "property": "נכס",
     "unit": "יחידה",

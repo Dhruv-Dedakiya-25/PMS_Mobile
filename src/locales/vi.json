@@ -784,7 +784,8 @@
       "SuperAdmin": "Quản trị hệ thống",
       "PropertyManager": "Quản lý dự án",
       "Maintenance": "Bảo trì",
-      "Tenant": "Khách thuê"
+      "Tenant": "Khách thuê",
+      "PropertyConsultant": "Chuyên viên tư vấn bất động sản"
     },
     "property": "Bất động sản",
     "unit": "Căn hộ",
