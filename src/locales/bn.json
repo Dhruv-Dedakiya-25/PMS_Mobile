@@ -654,7 +654,13 @@
     "themeSystem": "স্বয়ংক্রিয়",
     "themeLight": "হালকা",
     "themeDark": "গাঢ়",
-    "signOut": "সাইন আউট"
+    "signOut": "সাইন আউট",
+    "lock": {
+      "title": "Face ID বা আঙুলের ছাপ দিয়ে আনলক",
+      "onHint": "অ্যাপ খুললে এবং ৫ মিনিট দূরে থাকার পর চাওয়া হয়।",
+      "offHint": "বন্ধ: প্রতিবার অ্যাপ খুললে পাসওয়ার্ড দিয়ে সাইন ইন করবেন।",
+      "unavailable": "এটি ব্যবহার করতে এই ফোনে Face ID, আঙুলের ছাপ বা পাসকোড সেট করুন।"
+    }
   },
   "done": {
     "home": "ড্যাশবোর্ডে ফিরে যান",
@@ -754,6 +760,7 @@
     "assignedTo": "দায়িত্বপ্রাপ্ত",
     "category": "বিভাগ",
     "priority": "অগ্রাধিকার",
+    "preferredVisitTime": "পছন্দের পরিদর্শনের সময়",
     "status": "অবস্থা",
     "description": "বিবরণ",
     "saveChanges": "পরিবর্তন সংরক্ষণ",
@@ -792,7 +799,132 @@
     "general": "সাধারণ",
     "buildingWide": "পুরো ভবন",
     "noAnnouncements": "কোনো বিজ্ঞপ্তি পাওয়া যায়নি",
-    "userType": "ব্যবহারকারীর ধরন"
+    "userType": "ব্যবহারকারীর ধরন",
+    "searchProperties": "সম্পত্তির নাম, কোড বা শহর খুঁজুন",
+    "searchBuildingsAndUnits": "ভবন, ভিলা, স্থান বা কোড খুঁজুন",
+    "searchUnitsInBuilding": "এই ভবনে ইউনিট কোড, নাম বা ভাড়াটে খুঁজুন",
+    "searchUnits": "ইউনিট কোড, নাম বা ভাড়াটে খুঁজুন",
+    "searchLeases": "ইজারা নম্বর, ভাড়াটে বা ইউনিট খুঁজুন",
+    "searchTenants": "ভাড়াটের নাম, নম্বর, মোবাইল বা ইমেইল খুঁজুন",
+    "searchInvoices": "চালান নম্বর, ভাড়াটে বা ইউনিট খুঁজুন",
+    "searchReceipts": "রসিদ নম্বর, ভাড়াটে বা রেফারেন্স খুঁজুন",
+    "searchInstallments": "ইজারা নম্বর, ভাড়াটে বা ইউনিট খুঁজুন",
+    "searchTickets": "টিকিট নম্বর, বিভাগ বা বিবরণ খুঁজুন",
+    "searchWorkOrders": "ওয়ার্ক অর্ডার, টিকিট বা দায়িত্বপ্রাপ্ত ব্যক্তি খুঁজুন",
+    "searchAssets": "সম্পদের নাম, ট্যাগ, বিভাগ বা অবস্থান খুঁজুন",
+    "searchInspections": "পরিদর্শন নম্বর, শিরোনাম, ইউনিট বা পরিদর্শক খুঁজুন",
+    "searchFacilities": "সুবিধার নাম বা কোড খুঁজুন",
+    "searchInventory": "আইটেমের নাম, কোড, বিভাগ বা অবস্থান খুঁজুন",
+    "searchRequisitions": "রিকুইজিশন নম্বর, টিকিট বা আইটেম খুঁজুন",
+    "searchAnnouncements": "বিজ্ঞপ্তির শিরোনাম, বিভাগ বা সম্পত্তি খুঁজুন",
+    "searchApprovals": "রেফারেন্স, বিষয় বা আবেদনকারী খুঁজুন",
+    "showMore": "আরও দেখুন ({{count}}টি বাকি)",
+    "allProperties": "সব সম্পত্তি",
+    "allStructures": "সব কাঠামো",
+    "allTypes": "সব ধরন",
+    "hasVacantUnits": "খালি ইউনিট আছে",
+    "fullyOccupied": "সম্পূর্ণ ভাড়া দেওয়া",
+    "structure": {
+      "Individual": "একক",
+      "Group": "গ্রুপ"
+    },
+    "sortNewestDue": "নতুন নির্ধারিত তারিখ",
+    "sortOldestDue": "পুরোনো নির্ধারিত তারিখ",
+    "rangeThisMonth": "এই মাস",
+    "rangeLastMonth": "গত মাস",
+    "rangeAllDates": "সব তারিখ",
+    "bookable": "বুকিংযোগ্য",
+    "nonBookable": "বুকিংযোগ্য নয়",
+    "stockOk": "মজুদ আছে",
+    "waitingForMe": "আমার সিদ্ধান্তের অপেক্ষায়",
+    "buildingsSection": "ভবনসমূহ",
+    "villasOtherSpaces": "ভিলা ও অন্যান্য স্থান",
+    "floorsSection": "তলাসমূহ",
+    "otherUnits": "অন্যান্য ইউনিট",
+    "buildingDetails": "ভবনের বিবরণ",
+    "floorDetails": "তলার বিবরণ",
+    "unitDetails": "ইউনিটের বিবরণ",
+    "building": "ভবন",
+    "floor": "তলা",
+    "type": "ধরন",
+    "code": "কোড",
+    "name": "নাম",
+    "city": "শহর",
+    "beds": "শয়নকক্ষ",
+    "baths": "স্নানঘর",
+    "sqm": "বর্গমিটার",
+    "area": "আয়তন",
+    "furnishingLabel": "আসবাবপত্র",
+    "furnishing": {
+      "Unfurnished": "আসবাবহীন",
+      "SemiFurnished": "আংশিক সজ্জিত",
+      "Furnished": "সজ্জিত"
+    },
+    "noticePeriodCount": "নোটিশ পিরিয়ড",
+    "noticeCount": "{{n}} নোটিশ পিরিয়ড",
+    "currentLease": "বর্তমান ইজারা",
+    "noCurrentLease": "এই ইউনিটে কোনো বর্তমান ইজারা নেই",
+    "tenant": "ভাড়াটে",
+    "mobile": "মোবাইল",
+    "leaseOutstanding": "ইজারার বকেয়া",
+    "overdueCount": "মেয়াদোত্তীর্ণ ({{count}})",
+    "collectedMonth": "এই মাসে আদায়",
+    "unitStatus": {
+      "Occupied": "ভাড়া দেওয়া",
+      "Vacant": "খালি",
+      "NoticePeriod": "নোটিশ পিরিয়ড",
+      "Reserved": "সংরক্ষিত",
+      "UnderMaintenance": "রক্ষণাবেক্ষণে",
+      "Blocked": "অবরুদ্ধ",
+      "OwnerOccupied": "মালিক অধ্যুষিত"
+    },
+    "invoiceStatus": {
+      "Overdue": "মেয়াদোত্তীর্ণ",
+      "Posted": "অপরিশোধিত",
+      "PartPaid": "আংশিক পরিশোধিত",
+      "Paid": "পরিশোধিত",
+      "Draft": "খসড়া",
+      "Cancelled": "বাতিল"
+    },
+    "receiptStatus": {
+      "Posted": "পোস্টকৃত",
+      "Draft": "খসড়া",
+      "Reversed": "প্রত্যাহৃত"
+    },
+    "installmentStatus": {
+      "Due": "প্রদেয়",
+      "Overdue": "মেয়াদোত্তীর্ণ",
+      "Paid": "পরিশোধিত",
+      "Cancelled": "বাতিল"
+    },
+    "ticketStatus": {
+      "Open": "খোলা",
+      "InProgress": "চলমান",
+      "OnHold": "স্থগিত",
+      "Resolved": "সমাধানকৃত",
+      "Closed": "বন্ধ"
+    },
+    "priorityLevel": {
+      "Low": "কম",
+      "Medium": "মাঝারি",
+      "High": "উচ্চ",
+      "Emergency": "জরুরি"
+    },
+    "paymentMethods": {
+      "Cash": "নগদ",
+      "Cheque": "চেক",
+      "BankTransfer": "ব্যাংক ট্রান্সফার",
+      "Card": "কার্ড",
+      "OnlineGateway": "অনলাইন গেটওয়ে",
+      "Other": "অন্যান্য"
+    },
+    "unitsSummary_one": "{{count}}টি ইউনিট · {{occupied}}টি ভাড়া · {{vacant}}টি খালি",
+    "unitsSummary_other": "{{count}}টি ইউনিট · {{occupied}}টি ভাড়া · {{vacant}}টি খালি",
+    "allBuildingsAndVillas": "সব ভবন ও ভিলা",
+    "allFloors": "সব তলা",
+    "allUnits": "সব ইউনিট",
+    "tenantNoCurrentLease": "বর্তমান কোনো লিজ নেই",
+    "searchOptions": "খুঁজুন…"
   },
   "inventory": {
     "subtitle": "মেরামতের সামগ্রী, স্টকের স্তর ও রিকুইজিশন",
@@ -1013,5 +1145,12 @@
       "Waived": "মওকুফ করা হয়েছে",
       "Cancelled": "বাতিল"
     }
+  },
+  "lock": {
+    "title": "আবার স্বাগতম, {{name}}",
+    "hint": "Face ID, আঙুলের ছাপ বা ফোনের পাসকোড দিয়ে আনলক করুন।",
+    "unlock": "আনলক করুন",
+    "prompt": "EstateFlow আনলক করুন",
+    "usePassword": "এর বদলে পাসওয়ার্ড দিয়ে সাইন ইন করুন"
   }
 }

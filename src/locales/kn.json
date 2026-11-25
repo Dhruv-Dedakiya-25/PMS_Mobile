@@ -654,7 +654,13 @@
     "themeSystem": "ಸ್ವಯಂಚಾಲಿತ",
     "themeLight": "ಲೈಟ್",
     "themeDark": "ಡಾರ್ಕ್",
-    "signOut": "ಸೈನ್ ಔಟ್"
+    "signOut": "ಸೈನ್ ಔಟ್",
+    "lock": {
+      "title": "Face ID ಅಥವಾ ಬೆರಳಚ್ಚಿನಿಂದ ಅನ್‌ಲಾಕ್",
+      "onHint": "ಆ್ಯಪ್ ತೆರೆದಾಗ ಮತ್ತು 5 ನಿಮಿಷ ದೂರವಿದ್ದ ನಂತರ ಕೇಳಲಾಗುತ್ತದೆ.",
+      "offHint": "ಆಫ್: ಪ್ರತಿ ಬಾರಿ ಆ್ಯಪ್ ತೆರೆದಾಗ ಪಾಸ್‌ವರ್ಡ್‌ನಿಂದ ಸೈನ್ ಇನ್ ಮಾಡುತ್ತೀರಿ.",
+      "unavailable": "ಇದನ್ನು ಬಳಸಲು ಈ ಫೋನ್‌ನಲ್ಲಿ Face ID, ಬೆರಳಚ್ಚು ಅಥವಾ ಪಾಸ್‌ಕೋಡ್ ಹೊಂದಿಸಿ."
+    }
   },
   "done": {
     "home": "ಡ್ಯಾಶ್‌ಬೋರ್ಡ್‌ಗೆ ಹಿಂತಿರುಗಿ",
@@ -754,6 +760,7 @@
     "assignedTo": "ನಿಯೋಜಿತರು",
     "category": "ವರ್ಗ",
     "priority": "ಆದ್ಯತೆ",
+    "preferredVisitTime": "ಆದ್ಯತೆಯ ಭೇಟಿ ಸಮಯ",
     "status": "ಸ್ಥಿತಿ",
     "description": "ವಿವರಣೆ",
     "saveChanges": "ಬದಲಾವಣೆಗಳನ್ನು ಉಳಿಸಿ",
@@ -792,7 +799,132 @@
     "general": "ಸಾಮಾನ್ಯ",
     "buildingWide": "ಇಡೀ ಕಟ್ಟಡ",
     "noAnnouncements": "ಯಾವುದೇ ಪ್ರಕಟಣೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ",
-    "userType": "ಬಳಕೆದಾರರ ಪ್ರಕಾರ"
+    "userType": "ಬಳಕೆದಾರರ ಪ್ರಕಾರ",
+    "searchProperties": "ಆಸ್ತಿ ಹೆಸರು, ಕೋಡ್ ಅಥವಾ ನಗರ ಹುಡುಕಿ",
+    "searchBuildingsAndUnits": "ಕಟ್ಟಡ, ವಿಲ್ಲಾ, ಸ್ಥಳ ಅಥವಾ ಕೋಡ್ ಹುಡುಕಿ",
+    "searchUnitsInBuilding": "ಈ ಕಟ್ಟಡದಲ್ಲಿ ಘಟಕ ಕೋಡ್, ಹೆಸರು ಅಥವಾ ಬಾಡಿಗೆದಾರರನ್ನು ಹುಡುಕಿ",
+    "searchUnits": "ಘಟಕ ಕೋಡ್, ಹೆಸರು ಅಥವಾ ಬಾಡಿಗೆದಾರರನ್ನು ಹುಡುಕಿ",
+    "searchLeases": "ಗುತ್ತಿಗೆ ಸಂಖ್ಯೆ, ಬಾಡಿಗೆದಾರ ಅಥವಾ ಘಟಕ ಹುಡುಕಿ",
+    "searchTenants": "ಬಾಡಿಗೆದಾರರ ಹೆಸರು, ಸಂಖ್ಯೆ, ಮೊಬೈಲ್ ಅಥವಾ ಇಮೇಲ್ ಹುಡುಕಿ",
+    "searchInvoices": "ಇನ್‌ವಾಯ್ಸ್ ಸಂಖ್ಯೆ, ಬಾಡಿಗೆದಾರ ಅಥವಾ ಘಟಕ ಹುಡುಕಿ",
+    "searchReceipts": "ರಸೀದಿ ಸಂಖ್ಯೆ, ಬಾಡಿಗೆದಾರ ಅಥವಾ ಉಲ್ಲೇಖ ಹುಡುಕಿ",
+    "searchInstallments": "ಗುತ್ತಿಗೆ ಸಂಖ್ಯೆ, ಬಾಡಿಗೆದಾರ ಅಥವಾ ಘಟಕ ಹುಡುಕಿ",
+    "searchTickets": "ಟಿಕೆಟ್ ಸಂಖ್ಯೆ, ವರ್ಗ ಅಥವಾ ವಿವರಣೆ ಹುಡುಕಿ",
+    "searchWorkOrders": "ಕಾರ್ಯ ಆದೇಶ, ಟಿಕೆಟ್ ಅಥವಾ ಜವಾಬ್ದಾರರನ್ನು ಹುಡುಕಿ",
+    "searchAssets": "ಆಸ್ತಿ ಹೆಸರು, ಟ್ಯಾಗ್, ವರ್ಗ ಅಥವಾ ಸ್ಥಳ ಹುಡುಕಿ",
+    "searchInspections": "ಪರಿಶೀಲನೆ ಸಂಖ್ಯೆ, ಶೀರ್ಷಿಕೆ, ಘಟಕ ಅಥವಾ ಪರಿಶೀಲಕರನ್ನು ಹುಡುಕಿ",
+    "searchFacilities": "ಸೌಲಭ್ಯದ ಹೆಸರು ಅಥವಾ ಕೋಡ್ ಹುಡುಕಿ",
+    "searchInventory": "ವಸ್ತುವಿನ ಹೆಸರು, ಕೋಡ್, ವರ್ಗ ಅಥವಾ ಸ್ಥಳ ಹುಡುಕಿ",
+    "searchRequisitions": "ಬೇಡಿಕೆ ಸಂಖ್ಯೆ, ಟಿಕೆಟ್ ಅಥವಾ ವಸ್ತು ಹುಡುಕಿ",
+    "searchAnnouncements": "ಪ್ರಕಟಣೆ ಶೀರ್ಷಿಕೆ, ವರ್ಗ ಅಥವಾ ಆಸ್ತಿ ಹುಡುಕಿ",
+    "searchApprovals": "ಉಲ್ಲೇಖ, ವಿಷಯ ಅಥವಾ ಅರ್ಜಿದಾರರನ್ನು ಹುಡುಕಿ",
+    "showMore": "ಇನ್ನಷ್ಟು ತೋರಿಸಿ ({{count}} ಉಳಿದಿದೆ)",
+    "allProperties": "ಎಲ್ಲಾ ಆಸ್ತಿಗಳು",
+    "allStructures": "ಎಲ್ಲಾ ರಚನೆಗಳು",
+    "allTypes": "ಎಲ್ಲಾ ಪ್ರಕಾರಗಳು",
+    "hasVacantUnits": "ಖಾಲಿ ಘಟಕಗಳಿವೆ",
+    "fullyOccupied": "ಪೂರ್ಣವಾಗಿ ಭರ್ತಿಯಾಗಿದೆ",
+    "structure": {
+      "Individual": "ವೈಯಕ್ತಿಕ",
+      "Group": "ಗುಂಪು"
+    },
+    "sortNewestDue": "ಹೊಸ ಅಂತಿಮ ದಿನಾಂಕ",
+    "sortOldestDue": "ಹಳೆಯ ಅಂತಿಮ ದಿನಾಂಕ",
+    "rangeThisMonth": "ಈ ತಿಂಗಳು",
+    "rangeLastMonth": "ಕಳೆದ ತಿಂಗಳು",
+    "rangeAllDates": "ಎಲ್ಲಾ ದಿನಾಂಕಗಳು",
+    "bookable": "ಬುಕಿಂಗ್ ಲಭ್ಯ",
+    "nonBookable": "ಬುಕಿಂಗ್ ಲಭ್ಯವಿಲ್ಲ",
+    "stockOk": "ಸ್ಟಾಕ್‌ನಲ್ಲಿದೆ",
+    "waitingForMe": "ನನ್ನ ನಿರ್ಧಾರಕ್ಕಾಗಿ ಕಾಯುತ್ತಿದೆ",
+    "buildingsSection": "ಕಟ್ಟಡಗಳು",
+    "villasOtherSpaces": "ವಿಲ್ಲಾಗಳು ಮತ್ತು ಇತರ ಸ್ಥಳಗಳು",
+    "floorsSection": "ಮಹಡಿಗಳು",
+    "otherUnits": "ಇತರ ಘಟಕಗಳು",
+    "buildingDetails": "ಕಟ್ಟಡದ ವಿವರಗಳು",
+    "floorDetails": "ಮಹಡಿಯ ವಿವರಗಳು",
+    "unitDetails": "ಘಟಕದ ವಿವರಗಳು",
+    "building": "ಕಟ್ಟಡ",
+    "floor": "ಮಹಡಿ",
+    "type": "ಪ್ರಕಾರ",
+    "code": "ಕೋಡ್",
+    "name": "ಹೆಸರು",
+    "city": "ನಗರ",
+    "beds": "ಮಲಗುವ ಕೋಣೆಗಳು",
+    "baths": "ಸ್ನಾನಗೃಹಗಳು",
+    "sqm": "ಚ.ಮೀ",
+    "area": "ವಿಸ್ತೀರ್ಣ",
+    "furnishingLabel": "ಪೀಠೋಪಕರಣ",
+    "furnishing": {
+      "Unfurnished": "ಪೀಠೋಪಕರಣ ರಹಿತ",
+      "SemiFurnished": "ಅರೆ ಪೀಠೋಪಕರಣ",
+      "Furnished": "ಪೂರ್ಣ ಪೀಠೋಪಕರಣ"
+    },
+    "noticePeriodCount": "ನೋಟಿಸ್ ಅವಧಿ",
+    "noticeCount": "{{n}} ನೋಟಿಸ್ ಅವಧಿ",
+    "currentLease": "ಪ್ರಸ್ತುತ ಗುತ್ತಿಗೆ",
+    "noCurrentLease": "ಈ ಘಟಕಕ್ಕೆ ಯಾವುದೇ ಪ್ರಸ್ತುತ ಗುತ್ತಿಗೆ ಇಲ್ಲ",
+    "tenant": "ಬಾಡಿಗೆದಾರ",
+    "mobile": "ಮೊಬೈಲ್",
+    "leaseOutstanding": "ಗುತ್ತಿಗೆ ಬಾಕಿ ಮೊತ್ತ",
+    "overdueCount": "ಬಾಕಿ ಮೀರಿದವು ({{count}})",
+    "collectedMonth": "ಈ ತಿಂಗಳು ಸಂಗ್ರಹಿಸಲಾಗಿದೆ",
+    "unitStatus": {
+      "Occupied": "ಭರ್ತಿಯಾಗಿದೆ",
+      "Vacant": "ಖಾಲಿ",
+      "NoticePeriod": "ನೋಟಿಸ್ ಅವಧಿ",
+      "Reserved": "ಮೀಸಲಿಟ್ಟಿದೆ",
+      "UnderMaintenance": "ನಿರ್ವಹಣೆಯಲ್ಲಿದೆ",
+      "Blocked": "ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ",
+      "OwnerOccupied": "ಮಾಲೀಕರ ವಾಸ"
+    },
+    "invoiceStatus": {
+      "Overdue": "ಗಡುವು ಮೀರಿದೆ",
+      "Posted": "ಪೋಸ್ಟ್ ಮಾಡಲಾಗಿದೆ / ಬಾಕಿ",
+      "PartPaid": "ಭಾಗಶಃ ಪಾವತಿ",
+      "Paid": "ಪಾವತಿಸಲಾಗಿದೆ",
+      "Draft": "ಕರಡು",
+      "Cancelled": "ರದ್ದುಗೊಂಡಿದೆ"
+    },
+    "receiptStatus": {
+      "Posted": "ದಾಖಲಾಗಿದೆ",
+      "Draft": "ಕರಡು",
+      "Reversed": "ಹಿಂಪಡೆಯಲಾಗಿದೆ"
+    },
+    "installmentStatus": {
+      "Due": "ಪಾವತಿಗೆ ಬಾಕಿ",
+      "Overdue": "ಗಡುವು ಮೀರಿದೆ",
+      "Paid": "ಪಾವತಿಸಲಾಗಿದೆ",
+      "Cancelled": "ರದ್ದುಗೊಂಡಿದೆ"
+    },
+    "ticketStatus": {
+      "Open": "ತೆರೆದಿದೆ",
+      "InProgress": "ಪ್ರಗತಿಯಲ್ಲಿದೆ",
+      "OnHold": "ತಡೆಹಿಡಿಯಲಾಗಿದೆ",
+      "Resolved": "ಪರಿಹರಿಸಲಾಗಿದೆ",
+      "Closed": "ಮುಚ್ಚಲಾಗಿದೆ"
+    },
+    "priorityLevel": {
+      "Low": "ಕಡಿಮೆ",
+      "Medium": "ಮಧ್ಯಮ",
+      "High": "ಹೆಚ್ಚು",
+      "Emergency": "ತುರ್ತು"
+    },
+    "paymentMethods": {
+      "Cash": "ನಗದು",
+      "Cheque": "ಚೆಕ್",
+      "BankTransfer": "ಬ್ಯಾಂಕ್ ವರ್ಗಾವಣೆ",
+      "Card": "ಕಾರ್ಡ್",
+      "OnlineGateway": "ಆನ್‌ಲೈನ್ ಗೇಟ್‌ವೇ",
+      "Other": "ಇತರೆ"
+    },
+    "unitsSummary_one": "{{count}} ಘಟಕ · {{occupied}} ಭರ್ತಿ · {{vacant}} ಖಾಲಿ",
+    "unitsSummary_other": "{{count}} ಘಟಕಗಳು · {{occupied}} ಭರ್ತಿ · {{vacant}} ಖಾಲಿ",
+    "allBuildingsAndVillas": "ಎಲ್ಲಾ ಕಟ್ಟಡಗಳು ಮತ್ತು ವಿಲ್ಲಾಗಳು",
+    "allFloors": "ಎಲ್ಲಾ ಮಹಡಿಗಳು",
+    "allUnits": "ಎಲ್ಲಾ ಘಟಕಗಳು",
+    "tenantNoCurrentLease": "ಪ್ರಸ್ತುತ ಗುತ್ತಿಗೆ ಇಲ್ಲ",
+    "searchOptions": "ಹುಡುಕಿ…"
   },
   "inventory": {
     "subtitle": "ದುರಸ್ತಿ ಸಾಮಗ್ರಿಗಳು, ದಾಸ್ತಾನು ಮಟ್ಟಗಳು ಮತ್ತು ಬೇಡಿಕೆಗಳು",
@@ -1013,5 +1145,12 @@
       "Waived": "ಮನ್ನಾ ಮಾಡಲಾಗಿದೆ",
       "Cancelled": "ರದ್ದುಗೊಂಡಿದೆ"
     }
+  },
+  "lock": {
+    "title": "ಮತ್ತೆ ಸ್ವಾಗತ, {{name}}",
+    "hint": "Face ID, ಬೆರಳಚ್ಚು ಅಥವಾ ಫೋನ್‌ನ ಪಾಸ್‌ಕೋಡ್ ಬಳಸಿ ಅನ್‌ಲಾಕ್ ಮಾಡಿ.",
+    "unlock": "ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
+    "prompt": "EstateFlow ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
+    "usePassword": "ಬದಲಿಗೆ ಪಾಸ್‌ವರ್ಡ್‌ನಿಂದ ಸೈನ್ ಇನ್ ಮಾಡಿ"
   }
 }

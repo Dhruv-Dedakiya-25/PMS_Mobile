@@ -5,20 +5,21 @@ import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
 import { AppText } from '@/components/app-text';
-import { categoryIcon } from '@/components/category-look';
+import { getCategoryIcon } from '@/components/category-look';
 import { Page } from '@/components/page';
 import { stageAccent } from '@/components/request-stage';
 import { Button, Card, Empty, IconTile, Pill, Segmented } from '@/components/ui';
 import { useRequests } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { longDate } from '@/lib/format';
+import { formatTicketCategory } from '@/lib/service-categories';
 import { space } from '@/theme/tokens';
 
 /** The tenant's repair requests: the open ones with the technician's progress, and the finished ones. */
 export default function MaintenanceRequests() {
   const { t } = useTranslation();
   const { language } = useLanguage();
-  const { requests, loading, refreshing, error, refresh } = useRequests();
+  const { requests, categories, loading, refreshing, error, refresh } = useRequests();
   const [view, setView] = useState<'active' | 'completed'>('active');
   const shown = requests.filter((r) => (view === 'active') === (r.stage !== 'completed'));
 
@@ -43,9 +44,11 @@ export default function MaintenanceRequests() {
       {shown.map((r) => (
         <Card key={r.id} onPress={() => router.push({ pathname: '/requests/maintenance/[id]', params: { id: r.id } })}>
           <View style={{ flexDirection: 'row', alignItems: 'flex-start', gap: space.md }}>
-            <IconTile icon={categoryIcon[r.category]} accent={stageAccent[r.stage]} />
+            <IconTile icon={getCategoryIcon(r.categoryCode)} accent={stageAccent[r.stage]} />
             <View style={{ flex: 1, gap: 2 }}>
-              <AppText weight="semibold">{r.categoryLabel ?? t(`maint.category.${r.category}`)}</AppText>
+              <AppText weight="semibold">
+                {formatTicketCategory(r.rawCategory ?? r.category, categories, t, language.code)}
+              </AppText>
               <AppText variant="caption" tone="muted">
                 {r.requestNo}
               </AppText>

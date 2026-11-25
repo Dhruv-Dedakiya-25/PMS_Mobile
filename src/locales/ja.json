@@ -654,7 +654,13 @@
     "themeSystem": "自動",
     "themeLight": "ライト",
     "themeDark": "ダーク",
-    "signOut": "ログアウト"
+    "signOut": "ログアウト",
+    "lock": {
+      "title": "Face ID または指紋でロック解除",
+      "onHint": "アプリを開いたときと、5分以上離れた後に求められます。",
+      "offHint": "オフ: アプリを開くたびにパスワードでサインインします。",
+      "unavailable": "使用するには、この端末で Face ID、指紋、またはパスコードを設定してください。"
+    }
   },
   "done": {
     "home": "ホームに戻る",
@@ -754,6 +760,7 @@
     "assignedTo": "担当者",
     "category": "カテゴリ",
     "priority": "優先度",
+    "preferredVisitTime": "希望訪問時間",
     "status": "ステータス",
     "description": "説明",
     "saveChanges": "変更を保存",
@@ -792,7 +799,132 @@
     "general": "一般",
     "buildingWide": "建物全体",
     "noAnnouncements": "お知らせはありません",
-    "userType": "ユーザー種別"
+    "userType": "ユーザー種別",
+    "searchProperties": "物件名、コード、または都市で検索",
+    "searchBuildingsAndUnits": "棟、ヴィラ、スペース、またはコードで検索",
+    "searchUnitsInBuilding": "この棟の部屋コード、名前、または入居者で検索",
+    "searchUnits": "部屋コード、名前、または入居者で検索",
+    "searchLeases": "契約番号、入居者、または部屋で検索",
+    "searchTenants": "入居者名、番号、携帯、またはメールで検索",
+    "searchInvoices": "請求書番号、入居者、または部屋で検索",
+    "searchReceipts": "領収書番号、入居者、または参照番号で検索",
+    "searchInstallments": "契約番号、入居者、または部屋で検索",
+    "searchTickets": "チケット番号、カテゴリ、または内容で検索",
+    "searchWorkOrders": "作業指示、チケット、または担当者で検索",
+    "searchAssets": "設備名、タグ、カテゴリ、または場所で検索",
+    "searchInspections": "点検番号、件名、部屋、または点検員で検索",
+    "searchFacilities": "施設名またはコードで検索",
+    "searchInventory": "品目名、コード、カテゴリ、または保管場所で検索",
+    "searchRequisitions": "出庫申請番号、チケット、または品目で検索",
+    "searchAnnouncements": "お知らせ件名、カテゴリ、または物件で検索",
+    "searchApprovals": "参照番号、件名、または申請者で検索",
+    "showMore": "さらに表示（残り{{count}}件）",
+    "allProperties": "すべての物件",
+    "allStructures": "すべての構造",
+    "allTypes": "すべての種別",
+    "hasVacantUnits": "空室あり",
+    "fullyOccupied": "満室",
+    "structure": {
+      "Individual": "単独",
+      "Group": "グループ"
+    },
+    "sortNewestDue": "支払期限の新しい順",
+    "sortOldestDue": "支払期限の古い順",
+    "rangeThisMonth": "今月",
+    "rangeLastMonth": "先月",
+    "rangeAllDates": "全期間",
+    "bookable": "予約可能",
+    "nonBookable": "予約不可",
+    "stockOk": "在庫あり",
+    "waitingForMe": "自分の承認待ち",
+    "buildingsSection": "建物・棟",
+    "villasOtherSpaces": "ヴィラ・その他の区画",
+    "floorsSection": "フロア",
+    "otherUnits": "その他の区画",
+    "buildingDetails": "建物の詳細",
+    "floorDetails": "フロアの詳細",
+    "unitDetails": "区画の詳細",
+    "building": "建物",
+    "floor": "フロア",
+    "type": "種別",
+    "code": "コード",
+    "name": "名称",
+    "city": "都市",
+    "beds": "寝室",
+    "baths": "浴室",
+    "sqm": "㎡",
+    "area": "面積",
+    "furnishingLabel": "家具設備",
+    "furnishing": {
+      "Unfurnished": "家具なし",
+      "SemiFurnished": "一部家具付き",
+      "Furnished": "家具付き"
+    },
+    "noticePeriodCount": "解約予告中",
+    "noticeCount": "{{n}} 解約予告中",
+    "currentLease": "現在の賃貸契約",
+    "noCurrentLease": "この区画には有効な賃貸契約がありません",
+    "tenant": "入居者",
+    "mobile": "携帯番号",
+    "leaseOutstanding": "契約の未払残高",
+    "overdueCount": "延滞 ({{count}})",
+    "collectedMonth": "今月の回収額",
+    "unitStatus": {
+      "Occupied": "入居中",
+      "Vacant": "空室",
+      "NoticePeriod": "解約予告中",
+      "Reserved": "予約済",
+      "UnderMaintenance": "メンテナンス中",
+      "Blocked": "利用停止",
+      "OwnerOccupied": "オーナー使用"
+    },
+    "invoiceStatus": {
+      "Overdue": "延滞",
+      "Posted": "発行済・未払",
+      "PartPaid": "一部支払済",
+      "Paid": "支払済",
+      "Draft": "下書き",
+      "Cancelled": "キャンセル"
+    },
+    "receiptStatus": {
+      "Posted": "計上済",
+      "Draft": "下書き",
+      "Reversed": "取消済"
+    },
+    "installmentStatus": {
+      "Due": "支払期日",
+      "Overdue": "延滞",
+      "Paid": "支払済",
+      "Cancelled": "キャンセル"
+    },
+    "ticketStatus": {
+      "Open": "未対応",
+      "InProgress": "対応中",
+      "OnHold": "保留",
+      "Resolved": "解決済",
+      "Closed": "完了"
+    },
+    "priorityLevel": {
+      "Low": "低",
+      "Medium": "中",
+      "High": "高",
+      "Emergency": "緊急"
+    },
+    "paymentMethods": {
+      "Cash": "現金",
+      "Cheque": "小切手",
+      "BankTransfer": "銀行振込",
+      "Card": "カード",
+      "OnlineGateway": "オンライン決済",
+      "Other": "その他"
+    },
+    "unitsSummary_one": "{{count}}区画 · 入居{{occupied}} · 空室{{vacant}}",
+    "unitsSummary_other": "{{count}}区画 · 入居{{occupied}} · 空室{{vacant}}",
+    "allBuildingsAndVillas": "すべての棟・ヴィラ",
+    "allFloors": "すべての階",
+    "allUnits": "すべての区画",
+    "tenantNoCurrentLease": "現在の契約なし",
+    "searchOptions": "検索…"
   },
   "inventory": {
     "subtitle": "修理資材、在庫水準、資材請求",
@@ -1013,5 +1145,12 @@
       "Waived": "免除済み",
       "Cancelled": "キャンセル済み"
     }
+  },
+  "lock": {
+    "title": "おかえりなさい、{{name}}さん",
+    "hint": "Face ID、指紋、または端末のパスコードでロックを解除します。",
+    "unlock": "ロックを解除",
+    "prompt": "EstateFlow のロックを解除",
+    "usePassword": "パスワードでサインイン"
   }
 }

@@ -654,7 +654,13 @@
     "themeSystem": "อัตโนมัติ",
     "themeLight": "สว่าง",
     "themeDark": "มืด",
-    "signOut": "ออกจากระบบ"
+    "signOut": "ออกจากระบบ",
+    "lock": {
+      "title": "ปลดล็อกด้วย Face ID หรือลายนิ้วมือ",
+      "onHint": "ถามเมื่อเปิดแอปและหลังจากไม่ได้ใช้ 5 นาที",
+      "offHint": "ปิด: ลงชื่อเข้าใช้ด้วยรหัสผ่านทุกครั้งที่เปิดแอป",
+      "unavailable": "ตั้งค่า Face ID ลายนิ้วมือ หรือรหัสผ่านบนโทรศัพท์เครื่องนี้เพื่อใช้งาน"
+    }
   },
   "done": {
     "home": "กลับไปแดชบอร์ด",
@@ -754,6 +760,7 @@
     "assignedTo": "มอบหมายให้",
     "category": "หมวดหมู่",
     "priority": "ลำดับความสำคัญ",
+    "preferredVisitTime": "เวลาเข้าตรวจที่ต้องการ",
     "status": "สถานะ",
     "description": "รายละเอียด",
     "saveChanges": "บันทึกการเปลี่ยนแปลง",
@@ -792,7 +799,132 @@
     "general": "ทั่วไป",
     "buildingWide": "ทั้งอาคาร",
     "noAnnouncements": "ไม่พบประกาศ",
-    "userType": "ประเภทผู้ใช้"
+    "userType": "ประเภทผู้ใช้",
+    "searchProperties": "ค้นหาชื่ออสังหาริมทรัพย์ รหัส หรือเมือง",
+    "searchBuildingsAndUnits": "ค้นหาอาคาร วิลล่า พื้นที่ หรือรหัส",
+    "searchUnitsInBuilding": "ค้นหารหัสยูนิต ชื่อ หรือผู้เช่าในอาคารนี้",
+    "searchUnits": "ค้นหารหัสยูนิต ชื่อ หรือผู้เช่า",
+    "searchLeases": "ค้นหาเลขที่สัญญา ผู้เช่า หรือยูนิต",
+    "searchTenants": "ค้นหาชื่อผู้เช่า หมายเลข โทรศัพท์ หรืออีเมล",
+    "searchInvoices": "ค้นหาเลขที่ใบแจ้งหนี้ ผู้เช่า หรือยูนิต",
+    "searchReceipts": "ค้นหาเลขที่ใบเสร็จ ผู้เช่า หรือเลขอ้างอิง",
+    "searchInstallments": "ค้นหาเลขที่สัญญา ผู้เช่า หรือยูนิต",
+    "searchTickets": "ค้นหาเลขที่ใบแจ้งซ่อม หมวดหมู่ หรือรายละเอียด",
+    "searchWorkOrders": "ค้นหาใบสั่งงาน ใบแจ้งซ่อม หรือผู้รับผิดชอบ",
+    "searchAssets": "ค้นหาชื่อทรัพย์สิน แท็ก หมวดหมู่ หรือสถานที่",
+    "searchInspections": "ค้นหาเลขที่การตรวจ หัวข้อ ยูนิต หรือผู้ตรวจ",
+    "searchFacilities": "ค้นหาชื่อสิ่งอำนวยความสะดวกหรือรหัส",
+    "searchInventory": "ค้นหาชื่อพัสดุ รหัส หมวดหมู่ หรือสถานที่เก็บ",
+    "searchRequisitions": "ค้นหาเลขที่ใบเบิก ใบแจ้งซ่อม หรือพัสดุ",
+    "searchAnnouncements": "ค้นหาหัวข้อประกาศ หมวดหมู่ หรืออสังหาริมทรัพย์",
+    "searchApprovals": "ค้นหาเลขอ้างอิง หัวข้อ หรือผู้ขออนุมัติ",
+    "showMore": "แสดงเพิ่มเติม (เหลืออีก {{count}})",
+    "allProperties": "อสังหาริมทรัพย์ทั้งหมด",
+    "allStructures": "โครงสร้างทั้งหมด",
+    "allTypes": "ประเภททั้งหมด",
+    "hasVacantUnits": "มียูนิตว่าง",
+    "fullyOccupied": "เต็มทุกยูนิต",
+    "structure": {
+      "Individual": "เดี่ยว",
+      "Group": "กลุ่ม"
+    },
+    "sortNewestDue": "วันครบกำหนดล่าสุด",
+    "sortOldestDue": "วันครบกำหนดเก่าสุด",
+    "rangeThisMonth": "เดือนนี้",
+    "rangeLastMonth": "เดือนที่แล้ว",
+    "rangeAllDates": "ทุกวันที่",
+    "bookable": "จองได้",
+    "nonBookable": "จองไม่ได้",
+    "stockOk": "มีสินค้าในคลัง",
+    "waitingForMe": "รอการอนุมัติจากฉัน",
+    "buildingsSection": "อาคาร",
+    "villasOtherSpaces": "วิลล่าและพื้นที่อื่นๆ",
+    "floorsSection": "ชั้น",
+    "otherUnits": "ยูนิตอื่นๆ",
+    "buildingDetails": "รายละเอียดอาคาร",
+    "floorDetails": "รายละเอียดชั้น",
+    "unitDetails": "รายละเอียดยูนิต",
+    "building": "อาคาร",
+    "floor": "ชั้น",
+    "type": "ประเภท",
+    "code": "รหัส",
+    "name": "ชื่อ",
+    "city": "เมือง",
+    "beds": "ห้องนอน",
+    "baths": "ห้องน้ำ",
+    "sqm": "ตร.ม.",
+    "area": "พื้นที่",
+    "furnishingLabel": "เฟอร์นิเจอร์",
+    "furnishing": {
+      "Unfurnished": "ไม่มีเฟอร์นิเจอร์",
+      "SemiFurnished": "มีเฟอร์นิเจอร์บางส่วน",
+      "Furnished": "ตกแต่งพร้อมเฟอร์นิเจอร์"
+    },
+    "noticePeriodCount": "แจ้งย้ายออก",
+    "noticeCount": "{{n}} แจ้งย้ายออก",
+    "currentLease": "สัญญาเช่าปัจจุบัน",
+    "noCurrentLease": "ไม่มีสัญญาเช่าปัจจุบันในยูนิตนี้",
+    "tenant": "ผู้เช่า",
+    "mobile": "มือถือ",
+    "leaseOutstanding": "ยอดค้างชำระตามสัญญา",
+    "overdueCount": "เกินกำหนด ({{count}})",
+    "collectedMonth": "เก็บได้ในเดือนนี้",
+    "unitStatus": {
+      "Occupied": "มีผู้เช่า",
+      "Vacant": "ว่าง",
+      "NoticePeriod": "ช่วงแจ้งย้ายออก",
+      "Reserved": "จองแล้ว",
+      "UnderMaintenance": "อยู่ระหว่างซ่อมบำรุง",
+      "Blocked": "ระงับการใช้งาน",
+      "OwnerOccupied": "เจ้าของพักอาศัยเอง"
+    },
+    "invoiceStatus": {
+      "Overdue": "เกินกำหนด",
+      "Posted": "ออกแล้ว / ค้างชำระ",
+      "PartPaid": "ชำระบางส่วน",
+      "Paid": "ชำระแล้ว",
+      "Draft": "ฉบับร่าง",
+      "Cancelled": "ยกเลิกแล้ว"
+    },
+    "receiptStatus": {
+      "Posted": "บันทึกแล้ว",
+      "Draft": "ฉบับร่าง",
+      "Reversed": "กลับรายการแล้ว"
+    },
+    "installmentStatus": {
+      "Due": "ครบกำหนด",
+      "Overdue": "เกินกำหนด",
+      "Paid": "ชำระแล้ว",
+      "Cancelled": "ยกเลิกแล้ว"
+    },
+    "ticketStatus": {
+      "Open": "เปิด",
+      "InProgress": "กำลังดำเนินการ",
+      "OnHold": "พักไว้",
+      "Resolved": "แก้ไขแล้ว",
+      "Closed": "ปิดแล้ว"
+    },
+    "priorityLevel": {
+      "Low": "ต่ำ",
+      "Medium": "ปานกลาง",
+      "High": "สูง",
+      "Emergency": "ฉุกเฉิน"
+    },
+    "paymentMethods": {
+      "Cash": "เงินสด",
+      "Cheque": "เช็ค",
+      "BankTransfer": "โอนเงินผ่านธนาคาร",
+      "Card": "บัตร",
+      "OnlineGateway": "ช่องทางชำระเงินออนไลน์",
+      "Other": "อื่นๆ"
+    },
+    "unitsSummary_one": "{{count}} ยูนิต · มีผู้เช่า {{occupied}} · ว่าง {{vacant}}",
+    "unitsSummary_other": "{{count}} ยูนิต · มีผู้เช่า {{occupied}} · ว่าง {{vacant}}",
+    "allBuildingsAndVillas": "อาคารและวิลล่าทั้งหมด",
+    "allFloors": "ทุกชั้น",
+    "allUnits": "ทุกยูนิต",
+    "tenantNoCurrentLease": "ไม่มีสัญญาเช่าปัจจุบัน",
+    "searchOptions": "ค้นหา…"
   },
   "inventory": {
     "subtitle": "วัสดุซ่อม ระดับสต็อก และใบเบิก",
@@ -1013,5 +1145,12 @@
       "Waived": "ยกเว้นแล้ว",
       "Cancelled": "ยกเลิกแล้ว"
     }
+  },
+  "lock": {
+    "title": "ยินดีต้อนรับกลับ {{name}}",
+    "hint": "ปลดล็อกด้วย Face ID ลายนิ้วมือ หรือรหัสผ่านของโทรศัพท์",
+    "unlock": "ปลดล็อก",
+    "prompt": "ปลดล็อก EstateFlow",
+    "usePassword": "ลงชื่อเข้าใช้ด้วยรหัสผ่านแทน"
   }
 }

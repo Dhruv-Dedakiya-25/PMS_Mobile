@@ -654,7 +654,13 @@
     "themeSystem": "Automatico",
     "themeLight": "Chiaro",
     "themeDark": "Scuro",
-    "signOut": "Esci"
+    "signOut": "Esci",
+    "lock": {
+      "title": "Sblocca con Face ID o impronta",
+      "onHint": "Richiesto all'apertura dell'app e dopo 5 minuti di assenza.",
+      "offHint": "Disattivato: accedi con la password ogni volta che apri l'app.",
+      "unavailable": "Configura Face ID, un'impronta o un codice su questo telefono per usarlo."
+    }
   },
   "done": {
     "home": "Torna alla home",
@@ -754,6 +760,7 @@
     "assignedTo": "Assegnato a",
     "category": "Categoria",
     "priority": "Priorità",
+    "preferredVisitTime": "Orario di visita preferito",
     "status": "Stato",
     "description": "Descrizione",
     "saveChanges": "Salva modifiche",
@@ -792,7 +799,132 @@
     "general": "Generale",
     "buildingWide": "Intero edificio",
     "noAnnouncements": "Nessun avviso trovato",
-    "userType": "Tipo di utente"
+    "userType": "Tipo di utente",
+    "searchProperties": "Cerca nome proprietà, codice o città",
+    "searchBuildingsAndUnits": "Cerca edificio, villa, spazio o codice",
+    "searchUnitsInBuilding": "Cerca codice unità, nome o inquilino in questo edificio",
+    "searchUnits": "Cerca codice unità, nome o inquilino",
+    "searchLeases": "Cerca numero contratto, inquilino o unità",
+    "searchTenants": "Cerca nome inquilino, numero, cellulare o email",
+    "searchInvoices": "Cerca numero fattura, inquilino o unità",
+    "searchReceipts": "Cerca numero ricevuta, inquilino o riferimento",
+    "searchInstallments": "Cerca numero contratto, inquilino o unità",
+    "searchTickets": "Cerca numero ticket, categoria o descrizione",
+    "searchWorkOrders": "Cerca ordine di lavoro, ticket o incaricato",
+    "searchAssets": "Cerca nome bene, codice, categoria o posizione",
+    "searchInspections": "Cerca numero ispezione, titolo, unità o ispettore",
+    "searchFacilities": "Cerca nome struttura o codice",
+    "searchInventory": "Cerca nome articolo, codice, categoria o posizione",
+    "searchRequisitions": "Cerca numero richiesta, ticket o articolo",
+    "searchAnnouncements": "Cerca titolo avviso, categoria o proprietà",
+    "searchApprovals": "Cerca riferimento, oggetto o richiedente",
+    "showMore": "Mostra altri ({{count}} rimanenti)",
+    "allProperties": "Tutte le proprietà",
+    "allStructures": "Tutte le strutture",
+    "allTypes": "Tutti i tipi",
+    "hasVacantUnits": "Con unità libere",
+    "fullyOccupied": "Completamente occupata",
+    "structure": {
+      "Individual": "Singola",
+      "Group": "Gruppo"
+    },
+    "sortNewestDue": "Scadenza più recente",
+    "sortOldestDue": "Scadenza meno recente",
+    "rangeThisMonth": "Questo mese",
+    "rangeLastMonth": "Mese scorso",
+    "rangeAllDates": "Tutte le date",
+    "bookable": "Prenotabile",
+    "nonBookable": "Non prenotabile",
+    "stockOk": "Disponibile",
+    "waitingForMe": "In attesa di mia decisione",
+    "buildingsSection": "Edifici",
+    "villasOtherSpaces": "Ville e altri spazi",
+    "floorsSection": "Piani",
+    "otherUnits": "Altre unità",
+    "buildingDetails": "Dettagli edificio",
+    "floorDetails": "Dettagli piano",
+    "unitDetails": "Dettagli unità",
+    "building": "Edificio",
+    "floor": "Piano",
+    "type": "Tipo",
+    "code": "Codice",
+    "name": "Nome",
+    "city": "Città",
+    "beds": "Camere",
+    "baths": "Bagni",
+    "sqm": "m²",
+    "area": "Superficie",
+    "furnishingLabel": "Arredamento",
+    "furnishing": {
+      "Unfurnished": "Non arredato",
+      "SemiFurnished": "Semiarredato",
+      "Furnished": "Arredato"
+    },
+    "noticePeriodCount": "Preavviso",
+    "noticeCount": "{{n}} preavviso",
+    "currentLease": "Contratto attuale",
+    "noCurrentLease": "Nessun contratto attivo per questa unità",
+    "tenant": "Inquilino",
+    "mobile": "Cellulare",
+    "leaseOutstanding": "Residuo sul contratto",
+    "overdueCount": "Scadute ({{count}})",
+    "collectedMonth": "Incassato questo mese",
+    "unitStatus": {
+      "Occupied": "Occupata",
+      "Vacant": "Libera",
+      "NoticePeriod": "In preavviso",
+      "Reserved": "Riservata",
+      "UnderMaintenance": "In manutenzione",
+      "Blocked": "Bloccata",
+      "OwnerOccupied": "Occupata dal proprietario"
+    },
+    "invoiceStatus": {
+      "Overdue": "Scaduta",
+      "Posted": "Emessa / Non pagata",
+      "PartPaid": "Parzialmente pagata",
+      "Paid": "Pagata",
+      "Draft": "Bozza",
+      "Cancelled": "Annullata"
+    },
+    "receiptStatus": {
+      "Posted": "Registrata",
+      "Draft": "Bozza",
+      "Reversed": "Stornata"
+    },
+    "installmentStatus": {
+      "Due": "In scadenza",
+      "Overdue": "Scaduta",
+      "Paid": "Pagata",
+      "Cancelled": "Annullata"
+    },
+    "ticketStatus": {
+      "Open": "Aperto",
+      "InProgress": "In corso",
+      "OnHold": "In sospeso",
+      "Resolved": "Risolto",
+      "Closed": "Chiuso"
+    },
+    "priorityLevel": {
+      "Low": "Bassa",
+      "Medium": "Media",
+      "High": "Alta",
+      "Emergency": "Emergenza"
+    },
+    "paymentMethods": {
+      "Cash": "Contanti",
+      "Cheque": "Assegno",
+      "BankTransfer": "Bonifico bancario",
+      "Card": "Carta",
+      "OnlineGateway": "Gateway online",
+      "Other": "Altro"
+    },
+    "unitsSummary_one": "{{count}} unità · {{occupied}} occupate · {{vacant}} libere",
+    "unitsSummary_other": "{{count}} unità · {{occupied}} occupate · {{vacant}} libere",
+    "allBuildingsAndVillas": "Tutti gli edifici e le ville",
+    "allFloors": "Tutti i piani",
+    "allUnits": "Tutte le unità",
+    "tenantNoCurrentLease": "Nessun contratto attivo",
+    "searchOptions": "Cerca…"
   },
   "inventory": {
     "subtitle": "Materiali di riparazione, giacenze e richieste di prelievo",
@@ -1013,5 +1145,12 @@
       "Waived": "Condonato",
       "Cancelled": "Annullato"
     }
+  },
+  "lock": {
+    "title": "Ciao di nuovo, {{name}}",
+    "hint": "Sblocca con Face ID, l'impronta digitale o il codice del telefono.",
+    "unlock": "Sblocca",
+    "prompt": "Sblocca EstateFlow",
+    "usePassword": "Accedi con la password"
   }
 }

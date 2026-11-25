@@ -654,7 +654,13 @@
     "themeSystem": "Tự động",
     "themeLight": "Sáng",
     "themeDark": "Tối",
-    "signOut": "Đăng xuất"
+    "signOut": "Đăng xuất",
+    "lock": {
+      "title": "Mở khóa bằng Face ID hoặc vân tay",
+      "onHint": "Được hỏi khi mở ứng dụng và sau 5 phút rời đi.",
+      "offHint": "Tắt: bạn đăng nhập bằng mật khẩu mỗi lần mở ứng dụng.",
+      "unavailable": "Hãy thiết lập Face ID, vân tay hoặc mật mã trên điện thoại này để sử dụng."
+    }
   },
   "done": {
     "home": "Về trang chủ",
@@ -754,6 +760,7 @@
     "assignedTo": "Người phụ trách",
     "category": "Danh mục",
     "priority": "Mức độ ưu tiên",
+    "preferredVisitTime": "Thời gian thăm ưu tiên",
     "status": "Trạng thái",
     "description": "Mô tả",
     "saveChanges": "Lưu thay đổi",
@@ -792,7 +799,132 @@
     "general": "Chung",
     "buildingWide": "Toàn bộ toà nhà",
     "noAnnouncements": "Không có thông báo nào",
-    "userType": "Loại người dùng"
+    "userType": "Loại người dùng",
+    "searchProperties": "Tìm tên bất động sản, mã hoặc thành phố",
+    "searchBuildingsAndUnits": "Tìm tòa nhà, biệt thự, không gian hoặc mã",
+    "searchUnitsInBuilding": "Tìm mã căn, tên hoặc khách thuê trong tòa nhà này",
+    "searchUnits": "Tìm mã căn, tên hoặc khách thuê",
+    "searchLeases": "Tìm số hợp đồng, khách thuê hoặc căn",
+    "searchTenants": "Tìm tên khách thuê, mã số, điện thoại hoặc email",
+    "searchInvoices": "Tìm số hóa đơn, khách thuê hoặc căn",
+    "searchReceipts": "Tìm số biên lai, khách thuê hoặc mã tham chiếu",
+    "searchInstallments": "Tìm số hợp đồng, khách thuê hoặc căn",
+    "searchTickets": "Tìm số yêu cầu, danh mục hoặc mô tả",
+    "searchWorkOrders": "Tìm lệnh công việc, yêu cầu hoặc người phụ trách",
+    "searchAssets": "Tìm tên thiết bị, mã thẻ, danh mục hoặc vị trí",
+    "searchInspections": "Tìm số kiểm tra, tiêu đề, căn hoặc kiểm tra viên",
+    "searchFacilities": "Tìm tên tiện ích hoặc mã",
+    "searchInventory": "Tìm tên vật tư, mã, danh mục hoặc vị trí kho",
+    "searchRequisitions": "Tìm số phiếu lĩnh vật tư, yêu cầu hoặc vật tư",
+    "searchAnnouncements": "Tìm tiêu đề thông báo, danh mục hoặc bất động sản",
+    "searchApprovals": "Tìm mã tham chiếu, chủ đề hoặc người yêu cầu",
+    "showMore": "Xem thêm (còn {{count}})",
+    "allProperties": "Tất cả bất động sản",
+    "allStructures": "Tất cả cấu trúc",
+    "allTypes": "Tất cả loại hình",
+    "hasVacantUnits": "Có căn trống",
+    "fullyOccupied": "Đã lấp đầy",
+    "structure": {
+      "Individual": "Đơn lẻ",
+      "Group": "Tổ hợp"
+    },
+    "sortNewestDue": "Hạn thanh toán mới nhất",
+    "sortOldestDue": "Hạn thanh toán cũ nhất",
+    "rangeThisMonth": "Tháng này",
+    "rangeLastMonth": "Tháng trước",
+    "rangeAllDates": "Tất cả ngày",
+    "bookable": "Có thể đặt chỗ",
+    "nonBookable": "Không đặt chỗ",
+    "stockOk": "Còn hàng",
+    "waitingForMe": "Chờ tôi duyệt",
+    "buildingsSection": "Tòa nhà",
+    "villasOtherSpaces": "Biệt thự & không gian khác",
+    "floorsSection": "Tầng",
+    "otherUnits": "Căn khác",
+    "buildingDetails": "Chi tiết tòa nhà",
+    "floorDetails": "Chi tiết tầng",
+    "unitDetails": "Chi tiết căn",
+    "building": "Tòa nhà",
+    "floor": "Tầng",
+    "type": "Loại",
+    "code": "Mã",
+    "name": "Tên",
+    "city": "Thành phố",
+    "beds": "Phòng ngủ",
+    "baths": "Phòng tắm",
+    "sqm": "m²",
+    "area": "Diện tích",
+    "furnishingLabel": "Nội thất",
+    "furnishing": {
+      "Unfurnished": "Không nội thất",
+      "SemiFurnished": "Nội thất cơ bản",
+      "Furnished": "Đầy đủ nội thất"
+    },
+    "noticePeriodCount": "Thời gian báo trước",
+    "noticeCount": "{{n}} thời gian báo trước",
+    "currentLease": "Hợp đồng thuê hiện tại",
+    "noCurrentLease": "Chưa có hợp đồng thuê hiện tại cho căn này",
+    "tenant": "Khách thuê",
+    "mobile": "Di động",
+    "leaseOutstanding": "Còn nợ theo hợp đồng",
+    "overdueCount": "Quá hạn ({{count}})",
+    "collectedMonth": "Đã thu trong tháng này",
+    "unitStatus": {
+      "Occupied": "Đang thuê",
+      "Vacant": "Trống",
+      "NoticePeriod": "Đã báo trả",
+      "Reserved": "Đã giữ chỗ",
+      "UnderMaintenance": "Đang bảo trì",
+      "Blocked": "Đã khóa",
+      "OwnerOccupied": "Chủ sở hữu ở"
+    },
+    "invoiceStatus": {
+      "Overdue": "Quá hạn",
+      "Posted": "Đã phát hành / Chưa trả",
+      "PartPaid": "Trả một phần",
+      "Paid": "Đã thanh toán",
+      "Draft": "Bản nháp",
+      "Cancelled": "Đã hủy"
+    },
+    "receiptStatus": {
+      "Posted": "Đã ghi sổ",
+      "Draft": "Bản nháp",
+      "Reversed": "Đã hoàn tác"
+    },
+    "installmentStatus": {
+      "Due": "Đến hạn",
+      "Overdue": "Quá hạn",
+      "Paid": "Đã thanh toán",
+      "Cancelled": "Đã hủy"
+    },
+    "ticketStatus": {
+      "Open": "Mở",
+      "InProgress": "Đang xử lý",
+      "OnHold": "Tạm dừng",
+      "Resolved": "Đã giải quyết",
+      "Closed": "Đã đóng"
+    },
+    "priorityLevel": {
+      "Low": "Thấp",
+      "Medium": "Trung bình",
+      "High": "Cao",
+      "Emergency": "Khẩn cấp"
+    },
+    "paymentMethods": {
+      "Cash": "Tiền mặt",
+      "Cheque": "Séc",
+      "BankTransfer": "Chuyển khoản ngân hàng",
+      "Card": "Thẻ",
+      "OnlineGateway": "Cổng thanh toán trực tuyến",
+      "Other": "Khác"
+    },
+    "unitsSummary_one": "{{count}} căn · {{occupied}} đang thuê · {{vacant}} trống",
+    "unitsSummary_other": "{{count}} căn · {{occupied}} đang thuê · {{vacant}} trống",
+    "allBuildingsAndVillas": "Tất cả tòa nhà & biệt thự",
+    "allFloors": "Tất cả các tầng",
+    "allUnits": "Tất cả căn",
+    "tenantNoCurrentLease": "Không có hợp đồng hiện tại",
+    "searchOptions": "Tìm kiếm…"
   },
   "inventory": {
     "subtitle": "Vật tư sửa chữa, mức tồn kho và phiếu đề nghị",
@@ -1013,5 +1145,12 @@
       "Waived": "Đã miễn",
       "Cancelled": "Đã hủy"
     }
+  },
+  "lock": {
+    "title": "Chào mừng trở lại, {{name}}",
+    "hint": "Mở khóa bằng Face ID, vân tay hoặc mật mã điện thoại.",
+    "unlock": "Mở khóa",
+    "prompt": "Mở khóa EstateFlow",
+    "usePassword": "Đăng nhập bằng mật khẩu"
   }
 }

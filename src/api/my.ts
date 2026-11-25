@@ -29,6 +29,7 @@ import type {
   MyViolationDto,
   MyViolationEvidenceDto,
   MyVisitorDto,
+  ServiceCategoryOptionDto,
   ViolationAppealType,
 } from '@/api/types';
 
@@ -57,6 +58,8 @@ export async function fileFrom(path: string): Promise<{ blob: Blob; contentType:
   const match = disposition.match(/filename="?([^";]+)"?/i);
   return { blob, contentType, fileName: match?.[1] };
 }
+
+export const getMyServiceCategories = () => apiGet<ServiceCategoryOptionDto[]>('/My/getServiceCategories');
 
 export const getMyServiceRequests = () => apiGet<MyServiceRequestDto[]>('/My/getMyServiceRequests');
 

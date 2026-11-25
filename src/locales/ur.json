@@ -654,7 +654,13 @@
     "themeSystem": "خودکار",
     "themeLight": "روشن",
     "themeDark": "تاریک",
-    "signOut": "سائن آؤٹ"
+    "signOut": "سائن آؤٹ",
+    "lock": {
+      "title": "Face ID یا فنگر پرنٹ سے ان لاک",
+      "onHint": "ایپ کھولنے پر اور 5 منٹ دور رہنے کے بعد پوچھا جاتا ہے۔",
+      "offHint": "بند: ہر بار ایپ کھولنے پر پاس ورڈ سے سائن ان کریں گے۔",
+      "unavailable": "اسے استعمال کرنے کے لیے اس فون پر Face ID، فنگر پرنٹ یا پاس کوڈ سیٹ کریں۔"
+    }
   },
   "done": {
     "home": "ہوم پر واپس",
@@ -754,6 +760,7 @@
     "assignedTo": "تفویض کردہ",
     "category": "زمرہ",
     "priority": "ترجیح",
+    "preferredVisitTime": "ترجیحی وقتِ ملاقات",
     "status": "حالت",
     "description": "تفصیل",
     "saveChanges": "تبدیلیاں محفوظ کریں",
@@ -792,7 +799,132 @@
     "general": "عام",
     "buildingWide": "پوری عمارت",
     "noAnnouncements": "کوئی نوٹس نہیں ملا",
-    "userType": "صارف کی قسم"
+    "userType": "صارف کی قسم",
+    "searchProperties": "جائیداد کا نام، کوڈ یا شہر تلاش کریں",
+    "searchBuildingsAndUnits": "عمارت، ولا، جگہ یا کوڈ تلاش کریں",
+    "searchUnitsInBuilding": "اس عمارت میں یونٹ کوڈ، نام یا کرایہ دار تلاش کریں",
+    "searchUnits": "یونٹ کوڈ، نام یا کرایہ دار تلاش کریں",
+    "searchLeases": "لیز نمبر، کرایہ دار یا یونٹ تلاش کریں",
+    "searchTenants": "کرایہ دار کا نام، نمبر، موبائل یا ای میل تلاش کریں",
+    "searchInvoices": "انوائس نمبر، کرایہ دار یا یونٹ تلاش کریں",
+    "searchReceipts": "رسید نمبر، کرایہ دار یا حوالہ تلاش کریں",
+    "searchInstallments": "لیز نمبر، کرایہ دار یا یونٹ تلاش کریں",
+    "searchTickets": "ٹکٹ نمبر، زمرہ یا تفصیل تلاش کریں",
+    "searchWorkOrders": "ورک آرڈر، ٹکٹ یا ذمہ دار تلاش کریں",
+    "searchAssets": "اثاثے کا نام، ٹیگ، زمرہ یا مقام تلاش کریں",
+    "searchInspections": "معائنہ نمبر، عنوان، یونٹ یا معائنہ کار تلاش کریں",
+    "searchFacilities": "سہولت کا نام یا کوڈ تلاش کریں",
+    "searchInventory": "آئٹم کا نام، کوڈ، زمرہ یا مقام تلاش کریں",
+    "searchRequisitions": "درخواست نمبر، ٹکٹ یا آئٹم تلاش کریں",
+    "searchAnnouncements": "اعلان کا عنوان، زمرہ یا جائیداد تلاش کریں",
+    "searchApprovals": "حوالہ، موضوع یا درخواست گزار تلاش کریں",
+    "showMore": "مزید دکھائیں ({{count}} باقی)",
+    "allProperties": "تمام جائیدادیں",
+    "allStructures": "تمام ڈھانچے",
+    "allTypes": "تمام اقسام",
+    "hasVacantUnits": "خالی یونٹس موجود",
+    "fullyOccupied": "مکمل طور پر زیرِ استعمال",
+    "structure": {
+      "Individual": "انفرادی",
+      "Group": "گروپ"
+    },
+    "sortNewestDue": "نئی مقررہ تاریخ",
+    "sortOldestDue": "پرانی مقررہ تاریخ",
+    "rangeThisMonth": "اس ماہ",
+    "rangeLastMonth": "پچھلے ماہ",
+    "rangeAllDates": "تمام تاریخیں",
+    "bookable": "بکنگ کے قابل",
+    "nonBookable": "ناقابلِ بکنگ",
+    "stockOk": "اسٹاک میں موجود",
+    "waitingForMe": "میرے فیصلے کا منتظر",
+    "buildingsSection": "عمارتیں",
+    "villasOtherSpaces": "ولاز اور دیگر جگہیں",
+    "floorsSection": "منزلیں",
+    "otherUnits": "دیگر یونٹس",
+    "buildingDetails": "عمارت کی تفصیلات",
+    "floorDetails": "منزل کی تفصیلات",
+    "unitDetails": "یونٹ کی تفصیلات",
+    "building": "عمارت",
+    "floor": "منزل",
+    "type": "قسم",
+    "code": "کوڈ",
+    "name": "نام",
+    "city": "شہر",
+    "beds": "خواب گاہیں",
+    "baths": "غسل خانے",
+    "sqm": "مربع میٹر",
+    "area": "رقبہ",
+    "furnishingLabel": "آرائش و فرنیچر",
+    "furnishing": {
+      "Unfurnished": "بغیر فرنیچر",
+      "SemiFurnished": "نیم فرنشڈ",
+      "Furnished": "مکمل فرنشڈ"
+    },
+    "noticePeriodCount": "نوٹس کی مدت",
+    "noticeCount": "{{n}} نوٹس کی مدت",
+    "currentLease": "موجودہ لیز",
+    "noCurrentLease": "اس یونٹ پر کوئی موجودہ لیز نہیں ہے",
+    "tenant": "کرایہ دار",
+    "mobile": "موبائل",
+    "leaseOutstanding": "لیز پر واجب الادا رقم",
+    "overdueCount": "زائد المیعاد ({{count}})",
+    "collectedMonth": "اس ماہ وصول شدہ",
+    "unitStatus": {
+      "Occupied": "زیرِ استعمال",
+      "Vacant": "خالی",
+      "NoticePeriod": "نوٹس کی مدت",
+      "Reserved": "محفوظ شدہ",
+      "UnderMaintenance": "زیرِ مرمت",
+      "Blocked": "مسدود",
+      "OwnerOccupied": "مالک کے زیرِ رہائش"
+    },
+    "invoiceStatus": {
+      "Overdue": "زائد المیعاد",
+      "Posted": "جاری شدہ / غیر ادا شدہ",
+      "PartPaid": "جزوی ادا شدہ",
+      "Paid": "ادا شدہ",
+      "Draft": "مسودہ",
+      "Cancelled": "منسوخ شدہ"
+    },
+    "receiptStatus": {
+      "Posted": "درج شدہ",
+      "Draft": "مسودہ",
+      "Reversed": "واپس شدہ"
+    },
+    "installmentStatus": {
+      "Due": "واجب الادا",
+      "Overdue": "زائد المیعاد",
+      "Paid": "ادا شدہ",
+      "Cancelled": "منسوخ شدہ"
+    },
+    "ticketStatus": {
+      "Open": "کھلا",
+      "InProgress": "جاری",
+      "OnHold": "روکا گیا",
+      "Resolved": "حل شدہ",
+      "Closed": "بند"
+    },
+    "priorityLevel": {
+      "Low": "کم",
+      "Medium": "درمیانہ",
+      "High": "زیادہ",
+      "Emergency": "ہنگامی"
+    },
+    "paymentMethods": {
+      "Cash": "نقد",
+      "Cheque": "چیک",
+      "BankTransfer": "بینک ٹرانسفر",
+      "Card": "کارڈ",
+      "OnlineGateway": "آن لائن پیمنٹ گیٹ وے",
+      "Other": "دیگر"
+    },
+    "unitsSummary_one": "{{count}} یونٹ · {{occupied}} زیرِ استعمال · {{vacant}} خالی",
+    "unitsSummary_other": "{{count}} یونٹس · {{occupied}} زیرِ استعمال · {{vacant}} خالی",
+    "allBuildingsAndVillas": "تمام عمارتیں اور ولاز",
+    "allFloors": "تمام منزلیں",
+    "allUnits": "تمام یونٹس",
+    "tenantNoCurrentLease": "کوئی موجودہ کرایہ نامہ نہیں",
+    "searchOptions": "تلاش کریں…"
   },
   "inventory": {
     "subtitle": "مرمت کا سامان، اسٹاک کی سطح اور طلبیاں",
@@ -1013,5 +1145,12 @@
       "Waived": "معاف شدہ",
       "Cancelled": "منسوخ"
     }
+  },
+  "lock": {
+    "title": "دوبارہ خوش آمدید، {{name}}",
+    "hint": "Face ID، فنگر پرنٹ یا فون کے پاس کوڈ سے ان لاک کریں۔",
+    "unlock": "ان لاک کریں",
+    "prompt": "EstateFlow ان لاک کریں",
+    "usePassword": "اس کے بجائے پاس ورڈ سے سائن ان کریں"
   }
 }

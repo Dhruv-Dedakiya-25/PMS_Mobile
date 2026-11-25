@@ -9,11 +9,16 @@ import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Button, Details, Field, Note, Select } from '@/components/ui';
 import { useRequests } from '@/hooks/use-tenancy';
+import { useLanguage } from '@/i18n';
+import {
+  DEFAULT_SERVICE_CATEGORIES,
+  formatServiceCategoryLabel,
+  formatTicketCategory,
+} from '@/lib/service-categories';
 import { shrinkPhoto } from '@/lib/shrink-photo';
-import type { RequestCategory, RequestPriority } from '@/mock/data';
+import type { RequestPriority } from '@/mock/data';
 import { radius, space, usePalette } from '@/theme/tokens';
 
-const categories: RequestCategory[] = ['airConditioning', 'plumbing', 'electrical', 'appliance', 'carpentry', 'pestControl', 'cleaning', 'other'];
 const priorities: RequestPriority[] = ['low', 'normal', 'high', 'urgent'];
 const steps = ['details', 'photos', 'submit'] as const;
 const MAX_PHOTOS = 4;
@@ -51,15 +56,19 @@ function Steps({ current }: { current: number }) {
 /** Reports an issue in three steps: what and how urgent, photos of it, then a check before sending. */
 export default function NewMaintenanceRequest() {
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const palette = usePalette();
-  const { isDemo, submitRequest } = useRequests();
+  const { isDemo, categories, submitRequest } = useRequests();
   const [step, setStep] = useState(0);
-  const [category, setCategory] = useState<RequestCategory>('airConditioning');
+  const [category, setCategory] = useState<string>(DEFAULT_SERVICE_CATEGORIES[0].nameEn);
   const [priority, setPriority] = useState<RequestPriority>('normal');
   const [description, setDescription] = useState('');
   const [photos, setPhotos] = useState<string[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const selectedCategory = categories.some((c) => c.nameEn === category)
+    ? category
+    : (categories[0]?.nameEn ?? DEFAULT_SERVICE_CATEGORIES[0].nameEn);
 
   const addPhoto = async (camera: boolean) => {
     if (camera && Platform.OS !== 'web') {
@@ -79,7 +88,7 @@ export default function NewMaintenanceRequest() {
     setSubmitError(null);
     setSubmitting(true);
     try {
-      const created = await submitRequest({ category, priority, description: description.trim(), photos });
+      const created = await submitRequest({ category: selectedCategory, priority, description: description.trim(), photos });
       router.replace({ pathname: '/done', params: { kind: 'maintenance', ref: created.requestNo } });
     } catch (e) {
       setSubmitError(e instanceof Error ? e.message : t('common.errorLoad'));
@@ -113,7 +122,15 @@ export default function NewMaintenanceRequest() {
 
       {step === 0 ? (
         <>
-          <Select label={t('maint.selectCategory')} value={category} onChange={setCategory} options={categories.map((c) => ({ value: c, label: t(`maint.category.${c}`) }))} />
+          <Select
+            label={t('maint.selectCategory')}
+            value={selectedCategory}
+            onChange={setCategory}
+            options={categories.map((c) => ({
+              value: c.nameEn,
+              label: formatServiceCategoryLabel(c, t, language.code),
+            }))}
+          />
           <Select label={t('maint.priority')} value={priority} onChange={setPriority} options={priorities.map((p) => ({ value: p, label: t(`maint.priorities.${p}`) }))} />
           <View style={{ gap: 4 }}>
             <Field
@@ -176,7 +193,7 @@ export default function NewMaintenanceRequest() {
           <Details
             title={t('maint.review')}
             rows={[
-              [t('maint.selectCategory'), t(`maint.category.${category}`)],
+              [t('maint.selectCategory'), formatTicketCategory(selectedCategory, categories, t, language.code)],
               [t('maint.priority'), t(`maint.priorities.${priority}`)],
               [t('maint.photos'), String(photos.length)],
             ]}

@@ -714,7 +714,13 @@
     "themeSystem": "تلقائي",
     "themeLight": "فاتح",
     "themeDark": "داكن",
-    "signOut": "تسجيل الخروج"
+    "signOut": "تسجيل الخروج",
+    "lock": {
+      "title": "فتح القفل بـ Face ID أو البصمة",
+      "onHint": "يُطلب عند فتح التطبيق وبعد 5 دقائق من الابتعاد عنه.",
+      "offHint": "متوقف: تسجّل الدخول بكلمة المرور في كل مرة تفتح فيها التطبيق.",
+      "unavailable": "اضبط Face ID أو البصمة أو رمز قفل على هذا الهاتف لاستخدام هذه الميزة."
+    }
   },
   "done": {
     "home": "العودة إلى الرئيسية",
@@ -814,6 +820,7 @@
     "assignedTo": "مُسند إلى",
     "category": "فئة",
     "priority": "أولوية",
+    "preferredVisitTime": "وقت الزيارة المفضل",
     "status": "الحالة",
     "description": "الوصف",
     "saveChanges": "حفظ التغييرات",
@@ -852,7 +859,136 @@
     "general": "عام",
     "buildingWide": "لكامل المبنى",
     "noAnnouncements": "لا توجد إعلانات",
-    "userType": "نوع المستخدم"
+    "userType": "نوع المستخدم",
+    "searchProperties": "ابحث باسم العقار أو الرمز أو المدينة",
+    "searchBuildingsAndUnits": "ابحث عن مبنى أو فيلا أو مساحة أو رمز",
+    "searchUnitsInBuilding": "ابحث برمز الوحدة أو الاسم أو المستأجر في هذا المبنى",
+    "searchUnits": "ابحث برمز الوحدة أو الاسم أو المستأجر",
+    "searchLeases": "ابحث برقم العقد أو المستأجر أو الوحدة",
+    "searchTenants": "ابحث باسم المستأجر أو الرقم أو الهاتف أو البريد",
+    "searchInvoices": "ابحث برقم الفاتورة أو المستأجر أو الوحدة",
+    "searchReceipts": "ابحث برقم الإيصال أو المستأجر أو المرجع",
+    "searchInstallments": "ابحث برقم العقد أو المستأجر أو الوحدة",
+    "searchTickets": "ابحث برقم البلاغ أو الفئة أو الوصف",
+    "searchWorkOrders": "ابحث بأمر العمل أو البلاغ أو المسؤول",
+    "searchAssets": "ابحث باسم الأصل أو الرمز أو الفئة أو الموقع",
+    "searchInspections": "ابحث برقم الفحص أو العنوان أو الوحدة أو الفاحص",
+    "searchFacilities": "ابحث باسم المرفق أو الرمز",
+    "searchInventory": "ابحث باسم الصنف أو الرمز أو الفئة أو الموقع",
+    "searchRequisitions": "ابحث برقم الطلب أو البلاغ أو الصنف",
+    "searchAnnouncements": "ابحث بعنوان الإشعار أو الفئة أو العقار",
+    "searchApprovals": "ابحث بالمرجع أو الموضوع أو مقدم الطلب",
+    "showMore": "عرض المزيد (متبقي {{count}})",
+    "allProperties": "جميع العقارات",
+    "allStructures": "جميع الهياكل",
+    "allTypes": "جميع الأنواع",
+    "hasVacantUnits": "يوجد وحدات شاغرة",
+    "fullyOccupied": "مشغول بالكامل",
+    "structure": {
+      "Individual": "فردي",
+      "Group": "مجموعة"
+    },
+    "sortNewestDue": "أحدث تاريخ استحقاق",
+    "sortOldestDue": "أقدم تاريخ استحقاق",
+    "rangeThisMonth": "هذا الشهر",
+    "rangeLastMonth": "الشهر الماضي",
+    "rangeAllDates": "كل التواريخ",
+    "bookable": "قابل للحجز",
+    "nonBookable": "غير قابل للحجز",
+    "stockOk": "متوفر",
+    "waitingForMe": "بانتظار قراري",
+    "buildingsSection": "المباني",
+    "villasOtherSpaces": "الفلل والمساحات الأخرى",
+    "floorsSection": "الطوابق",
+    "otherUnits": "وحدات أخرى",
+    "buildingDetails": "تفاصيل المبنى",
+    "floorDetails": "تفاصيل الطابق",
+    "unitDetails": "تفاصيل الوحدة",
+    "building": "المبنى",
+    "floor": "الطابق",
+    "type": "النوع",
+    "code": "الرمز",
+    "name": "الاسم",
+    "city": "المدينة",
+    "beds": "غرف نوم",
+    "baths": "حمامات",
+    "sqm": "م²",
+    "area": "المساحة",
+    "furnishingLabel": "التأثيث",
+    "furnishing": {
+      "Unfurnished": "غير مؤثث",
+      "SemiFurnished": "نصف مؤثث",
+      "Furnished": "مؤثث"
+    },
+    "noticePeriodCount": "فترة إشعار",
+    "noticeCount": "{{n}} فترة إشعار",
+    "currentLease": "عقد الإيجار الحالي",
+    "noCurrentLease": "لا يوجد عقد إيجار حالي لهذه الوحدة",
+    "tenant": "المستأجر",
+    "mobile": "الجوال",
+    "leaseOutstanding": "المستحق على العقد",
+    "overdueCount": "متأخرة ({{count}})",
+    "collectedMonth": "المحصّل هذا الشهر",
+    "unitStatus": {
+      "Occupied": "مشغولة",
+      "Vacant": "شاغرة",
+      "NoticePeriod": "فترة إشعار",
+      "Reserved": "محجوزة",
+      "UnderMaintenance": "تحت الصيانة",
+      "Blocked": "محظورة",
+      "OwnerOccupied": "يسكنها المالك"
+    },
+    "invoiceStatus": {
+      "Overdue": "متأخرة",
+      "Posted": "مرحّلة / غير مدفوعة",
+      "PartPaid": "مدفوعة جزئياً",
+      "Paid": "مدفوعة",
+      "Draft": "مسودة",
+      "Cancelled": "ملغاة"
+    },
+    "receiptStatus": {
+      "Posted": "مُرحّل",
+      "Draft": "مسودة",
+      "Reversed": "معكوس"
+    },
+    "installmentStatus": {
+      "Due": "مستحق",
+      "Overdue": "متأخر",
+      "Paid": "مدفوع",
+      "Cancelled": "ملغى"
+    },
+    "ticketStatus": {
+      "Open": "مفتوح",
+      "InProgress": "قيد التنفيذ",
+      "OnHold": "معلّق",
+      "Resolved": "تم الحل",
+      "Closed": "مغلق"
+    },
+    "priorityLevel": {
+      "Low": "منخفضة",
+      "Medium": "متوسطة",
+      "High": "عالية",
+      "Emergency": "طارئة"
+    },
+    "paymentMethods": {
+      "Cash": "نقداً",
+      "Cheque": "شيك",
+      "BankTransfer": "تحويل بنكي",
+      "Card": "بطاقة",
+      "OnlineGateway": "بوابة دفع إلكترونية",
+      "Other": "أخرى"
+    },
+    "unitsSummary_one": "وحدة واحدة · {{occupied}} مشغولة · {{vacant}} شاغرة",
+    "unitsSummary_other": "{{count}} وحدة · {{occupied}} مشغولة · {{vacant}} شاغرة",
+    "unitsSummary_zero": "{{count}} وحدة · {{occupied}} مشغولة · {{vacant}} شاغرة",
+    "unitsSummary_two": "{{count}} وحدتان · {{occupied}} مشغولة · {{vacant}} شاغرة",
+    "unitsSummary_few": "{{count}} وحدات · {{occupied}} مشغولة · {{vacant}} شاغرة",
+    "unitsSummary_many": "{{count}} وحدة · {{occupied}} مشغولة · {{vacant}} شاغرة",
+    "allBuildingsAndVillas": "كل المباني والفلل",
+    "allFloors": "كل الطوابق",
+    "allUnits": "كل الوحدات",
+    "tenantNoCurrentLease": "لا يوجد عقد حالي",
+    "searchOptions": "بحث…"
   },
   "inventory": {
     "subtitle": "مواد الإصلاح ومستويات المخزون وطلبات الصرف",
@@ -1073,5 +1209,12 @@
       "Waived": "معفى",
       "Cancelled": "ملغى"
     }
+  },
+  "lock": {
+    "title": "مرحبًا بعودتك، {{name}}",
+    "hint": "افتح التطبيق باستخدام Face ID أو بصمة إصبعك أو رمز قفل هاتفك.",
+    "unlock": "فتح القفل",
+    "prompt": "فتح قفل EstateFlow",
+    "usePassword": "تسجيل الدخول بكلمة المرور بدلًا من ذلك"
   }
 }

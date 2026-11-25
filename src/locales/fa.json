@@ -654,7 +654,13 @@
     "themeSystem": "خودکار",
     "themeLight": "روشن",
     "themeDark": "تیره",
-    "signOut": "خروج"
+    "signOut": "خروج",
+    "lock": {
+      "title": "باز کردن قفل با Face ID یا اثر انگشت",
+      "onHint": "هنگام باز کردن برنامه و پس از ۵ دقیقه دوری درخواست می‌شود.",
+      "offHint": "خاموش: هر بار که برنامه را باز می‌کنید با گذرواژه وارد می‌شوید.",
+      "unavailable": "برای استفاده، Face ID، اثر انگشت یا رمز را روی این گوشی تنظیم کنید."
+    }
   },
   "done": {
     "home": "بازگشت به خانه",
@@ -754,6 +760,7 @@
     "assignedTo": "واگذار شده به",
     "category": "دسته‌بندی",
     "priority": "اولویت",
+    "preferredVisitTime": "زمان ترجیحی بازدید",
     "status": "وضعیت",
     "description": "توضیحات",
     "saveChanges": "ذخیره تغییرات",
@@ -792,7 +799,132 @@
     "general": "عمومی",
     "buildingWide": "سرتاسر ساختمان",
     "noAnnouncements": "هیچ اعلانی یافت نشد",
-    "userType": "نوع کاربر"
+    "userType": "نوع کاربر",
+    "searchProperties": "جستجوی نام ملک، کد یا شهر",
+    "searchBuildingsAndUnits": "جستجوی ساختمان، ویلا، فضا یا کد",
+    "searchUnitsInBuilding": "جستجوی کد واحد، نام یا مستأجر در این ساختمان",
+    "searchUnits": "جستجوی کد واحد، نام یا مستأجر",
+    "searchLeases": "جستجوی شماره قرارداد، مستأجر یا واحد",
+    "searchTenants": "جستجوی نام مستأجر، شماره، موبایل یا ایمیل",
+    "searchInvoices": "جستجوی شماره فاکتور، مستأجر یا واحد",
+    "searchReceipts": "جستجوی شماره رسید، مستأجر یا مرجع",
+    "searchInstallments": "جستجوی شماره قرارداد، مستأجر یا واحد",
+    "searchTickets": "جستجوی شماره تیکت، دسته‌بندی یا توضیحات",
+    "searchWorkOrders": "جستجوی دستور کار، تیکت یا مسئول",
+    "searchAssets": "جستجوی نام دارایی، برچسب، دسته‌بندی یا مکان",
+    "searchInspections": "جستجوی شماره بازرسی، عنوان، واحد یا بازرس",
+    "searchFacilities": "جستجوی نام امکانات یا کد",
+    "searchInventory": "جستجوی نام کالا، کد، دسته‌بندی یا مکان",
+    "searchRequisitions": "جستجوی شماره درخواست، تیکت یا کالا",
+    "searchAnnouncements": "جستجوی عنوان اطلاعیه، دسته‌بندی یا ملک",
+    "searchApprovals": "جستجوی مرجع، موضوع یا درخواست‌کننده",
+    "showMore": "نمایش بیشتر ({{count}} باقی‌مانده)",
+    "allProperties": "همه املاک",
+    "allStructures": "همه ساختارها",
+    "allTypes": "همه انواع",
+    "hasVacantUnits": "دارای واحد خالی",
+    "fullyOccupied": "کاملاً اشغال‌شده",
+    "structure": {
+      "Individual": "انفرادی",
+      "Group": "گروهی"
+    },
+    "sortNewestDue": "جدیدترین سررسید",
+    "sortOldestDue": "قدیمی‌ترین سررسید",
+    "rangeThisMonth": "این ماه",
+    "rangeLastMonth": "ماه گذشته",
+    "rangeAllDates": "همه تاریخ‌ها",
+    "bookable": "قابل رزرو",
+    "nonBookable": "غیرقابل رزرو",
+    "stockOk": "موجود در انبار",
+    "waitingForMe": "در انتظار تصمیم من",
+    "buildingsSection": "ساختمان‌ها",
+    "villasOtherSpaces": "ویلاها و سایر فضاها",
+    "floorsSection": "طبقات",
+    "otherUnits": "سایر واحدها",
+    "buildingDetails": "جزئیات ساختمان",
+    "floorDetails": "جزئیات طبقه",
+    "unitDetails": "جزئیات واحد",
+    "building": "ساختمان",
+    "floor": "طبقه",
+    "type": "نوع",
+    "code": "کد",
+    "name": "نام",
+    "city": "شهر",
+    "beds": "خواب",
+    "baths": "سرویس",
+    "sqm": "مترمربع",
+    "area": "مساحت",
+    "furnishingLabel": "مبلمان",
+    "furnishing": {
+      "Unfurnished": "غیرمبله",
+      "SemiFurnished": "نیمه‌مبله",
+      "Furnished": "مبله"
+    },
+    "noticePeriodCount": "دوره اخطار",
+    "noticeCount": "{{n}} دوره اخطار",
+    "currentLease": "قرارداد اجاره فعلی",
+    "noCurrentLease": "قرارداد اجاره فعلی برای این واحد وجود ندارد",
+    "tenant": "مستأجر",
+    "mobile": "موبایل",
+    "leaseOutstanding": "مانده بدهی قرارداد",
+    "overdueCount": "معوق ({{count}})",
+    "collectedMonth": "وصولی این ماه",
+    "unitStatus": {
+      "Occupied": "اشغال‌شده",
+      "Vacant": "خالی",
+      "NoticePeriod": "دوره اخطار",
+      "Reserved": "رزروشده",
+      "UnderMaintenance": "در حال تعمیر",
+      "Blocked": "مسدود",
+      "OwnerOccupied": "ساکن مالک"
+    },
+    "invoiceStatus": {
+      "Overdue": "معوق",
+      "Posted": "ثبت‌شده / پرداخت‌نشده",
+      "PartPaid": "پرداخت جزئی",
+      "Paid": "پرداخت‌شده",
+      "Draft": "پیش‌نویس",
+      "Cancelled": "لغوشده"
+    },
+    "receiptStatus": {
+      "Posted": "ثبت‌شده",
+      "Draft": "پیش‌نویس",
+      "Reversed": "برگشت‌خورده"
+    },
+    "installmentStatus": {
+      "Due": "سررسید",
+      "Overdue": "معوق",
+      "Paid": "پرداخت‌شده",
+      "Cancelled": "لغوشده"
+    },
+    "ticketStatus": {
+      "Open": "باز",
+      "InProgress": "در حال انجام",
+      "OnHold": "متوقف",
+      "Resolved": "حل‌شده",
+      "Closed": "بسته"
+    },
+    "priorityLevel": {
+      "Low": "کم",
+      "Medium": "متوسط",
+      "High": "زیاد",
+      "Emergency": "اضطراری"
+    },
+    "paymentMethods": {
+      "Cash": "نقدی",
+      "Cheque": "چک",
+      "BankTransfer": "انتقال بانکی",
+      "Card": "کارت",
+      "OnlineGateway": "درگاه آنلاین",
+      "Other": "سایر"
+    },
+    "unitsSummary_one": "{{count}} واحد · {{occupied}} اشغال · {{vacant}} خالی",
+    "unitsSummary_other": "{{count}} واحد · {{occupied}} اشغال · {{vacant}} خالی",
+    "allBuildingsAndVillas": "همه ساختمان‌ها و ویلاها",
+    "allFloors": "همه طبقات",
+    "allUnits": "همه واحدها",
+    "tenantNoCurrentLease": "بدون قرارداد جاری",
+    "searchOptions": "جستجو…"
   },
   "inventory": {
     "subtitle": "مصالح تعمیرات، سطح موجودی و درخواست‌های کالا",
@@ -1013,5 +1145,12 @@
       "Waived": "بخشیده شده",
       "Cancelled": "لغو شده"
     }
+  },
+  "lock": {
+    "title": "خوش برگشتید، {{name}}",
+    "hint": "با Face ID، اثر انگشت یا رمز گوشی قفل را باز کنید.",
+    "unlock": "باز کردن قفل",
+    "prompt": "باز کردن قفل EstateFlow",
+    "usePassword": "ورود با گذرواژه به‌جای آن"
   }
 }

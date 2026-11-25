@@ -11,7 +11,12 @@ import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Pressable, View } from 'react-native';
 
-import { getStaffDashboardSummary, type StaffDashboardSummary } from '@/api/staff';
+import {
+  getStaffDashboardSummary,
+  getStaffServiceCategories,
+  type StaffDashboardSummary,
+} from '@/api/staff';
+import type { ServiceCategoryOptionDto } from '@/api/types';
 import { accountLabel, useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
@@ -19,15 +24,17 @@ import { Avatar, Button, Card, IconTile, Onward, Pill } from '@/components/ui';
 import { StaffBell } from '@/components/staff-bell';
 import { useLanguage } from '@/i18n';
 import { omr } from '@/lib/format';
+import { DEFAULT_SERVICE_CATEGORIES, formatTicketCategory } from '@/lib/service-categories';
 import { space } from '@/theme/tokens';
 
 export default function StaffDashboard() {
   const { t } = useTranslation();
   const { language } = useLanguage();
-  const { user } = useAppSession();
+  const { user, isDemo } = useAppSession();
   const code = language.code;
 
   const [summary, setSummary] = useState<StaffDashboardSummary | null>(null);
+  const [categories, setCategories] = useState<ServiceCategoryOptionDto[]>(DEFAULT_SERVICE_CATEGORIES);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -36,9 +43,13 @@ export default function StaffDashboard() {
     if (isRefresh) setRefreshing(true);
     else setLoading(true);
 
-    getStaffDashboardSummary()
-      .then((data) => {
+    Promise.all([
+      getStaffDashboardSummary(),
+      isDemo ? Promise.resolve(DEFAULT_SERVICE_CATEGORIES) : getStaffServiceCategories().catch(() => DEFAULT_SERVICE_CATEGORIES),
+    ])
+      .then(([data, cats]) => {
         setSummary(data);
+        if (cats.length > 0) setCategories(cats);
         setError(null);
       })
       .catch((e) => {
@@ -48,14 +59,18 @@ export default function StaffDashboard() {
         setLoading(false);
         setRefreshing(false);
       });
-  }, [t]);
+  }, [isDemo, t]);
 
   useEffect(() => {
     let cancelled = false;
-    getStaffDashboardSummary()
-      .then((data) => {
+    Promise.all([
+      getStaffDashboardSummary(),
+      isDemo ? Promise.resolve(DEFAULT_SERVICE_CATEGORIES) : getStaffServiceCategories().catch(() => DEFAULT_SERVICE_CATEGORIES),
+    ])
+      .then(([data, cats]) => {
         if (!cancelled) {
           setSummary(data);
+          if (cats.length > 0) setCategories(cats);
           setError(null);
         }
       })
@@ -73,7 +88,7 @@ export default function StaffDashboard() {
     return () => {
       cancelled = true;
     };
-  }, [t]);
+  }, [isDemo, t]);
 
   const onRefresh = () => {
     fetchSummary(true);
@@ -266,7 +281,7 @@ export default function StaffDashboard() {
               </AppText>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: space.xs }}>
                 <AppText variant="caption" tone="muted">
-                  {item.category} {item.unitCode ? `• ${item.unitCode}` : ''}
+                  {formatTicketCategory(item.category, categories, t, code)} {item.unitCode ? `• ${item.unitCode}` : ''}
                 </AppText>
                 <Onward />
               </View>

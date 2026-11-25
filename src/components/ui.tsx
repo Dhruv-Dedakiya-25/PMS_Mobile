@@ -1,7 +1,8 @@
 // The small building blocks every screen uses: cards, buttons, icon tiles, list rows, status
 // pills, segmented filters, chips, inputs, pickers and progress bars.
-import { IconCheck, IconChevronLeft, IconChevronRight, IconSelector, type Icon } from '@tabler/icons-react-native';
+import { IconCheck, IconChevronLeft, IconChevronRight, IconSearch, IconSelector, IconX, type Icon } from '@tabler/icons-react-native';
 import { useState, type ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Modal, Pressable, ScrollView, TextInput, View, type TextInputProps, type ViewStyle } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -159,16 +160,23 @@ export function Segmented<T extends string>({ options, value, onChange }: { opti
             style={{
               flex: 1,
               paddingVertical: 9,
-              paddingHorizontal: 6,
+              paddingHorizontal: 4,
               borderRadius: radius.md,
               backgroundColor: on ? palette.card : 'transparent',
               alignItems: 'center',
+              justifyContent: 'center',
               shadowColor: palette.shadow,
               shadowOpacity: on ? 0.08 : 0,
               shadowRadius: 4,
               shadowOffset: { width: 0, height: 1 },
             }}>
-            <AppText variant="small" weight={on ? 'semibold' : 'medium'} tone={on ? 'primary' : 'secondary'} align="center" numberOfLines={1} adjustsFontSizeToFit minimumFontScale={0.8}>
+            <AppText
+              variant="caption"
+              weight={on ? 'semibold' : 'medium'}
+              tone={on ? 'primary' : 'secondary'}
+              align="center"
+              numberOfLines={1}
+              style={{ fontSize: 12.5 }}>
               {o.label}
             </AppText>
           </Pressable>
@@ -179,12 +187,21 @@ export function Segmented<T extends string>({ options, value, onChange }: { opti
 }
 
 /** A scrolling row of filters, the active one filled: the design's All / Notices / Events. */
-export function Chips<T extends string>({ options, value, onChange }: { options: { value: T; label: string }[]; value: T; onChange: (v: T) => void }) {
+export function Chips<T extends string>({
+  options,
+  value,
+  onChange,
+}: {
+  options: { value: T; label: string; count?: number }[];
+  value: T;
+  onChange: (v: T) => void;
+}) {
   const palette = usePalette();
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: space.sm, paddingVertical: 2 }} style={{ flexGrow: 0 }}>
       {options.map((o) => {
         const on = o.value === value;
+        const text = o.count !== undefined ? `${o.label} (${o.count})` : o.label;
         return (
           <Pressable
             key={o.value}
@@ -193,7 +210,7 @@ export function Chips<T extends string>({ options, value, onChange }: { options:
             accessibilityState={{ selected: on }}
             style={{ paddingHorizontal: space.lg, paddingVertical: 8, borderRadius: radius.pill, backgroundColor: on ? palette.primary : palette.surfaceStrong }}>
             <AppText variant="small" weight={on ? 'semibold' : 'medium'} style={{ color: on ? palette.onPrimary : palette.textSecondary }}>
-              {o.label}
+              {text}
             </AppText>
           </Pressable>
         );
@@ -279,52 +296,129 @@ export function Field({ label, hint, error, left, right, ...input }: TextInputPr
 
 /** A field that opens a list to choose from, in a sheet rising from the bottom. */
 export function Select<T extends string>({
-  label, value, options, onChange, placeholder,
-}: { label: string; value?: T; options: { value: T; label: string }[]; onChange: (v: T) => void; placeholder?: string }) {
+  label, value, options, onChange, placeholder, compact,
+}: { label: string; value?: T; options: { value: T; label: string }[]; onChange: (v: T) => void; placeholder?: string; compact?: boolean }) {
+  const { t } = useTranslation();
   const palette = usePalette();
+  const { isRTL } = useLanguage();
   const insets = useSafeAreaInsets();
   const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState('');
   const chosen = options.find((o) => o.value === value);
+  const searchable = options.length > 10;
+  const q = query.trim().toLowerCase();
+  const filteredOptions = searchable && q ? options.filter((o) => o.label.toLowerCase().includes(q)) : options;
+
+  const closeModal = () => {
+    setOpen(false);
+    setQuery('');
+  };
+
   return (
-    <View style={{ gap: 6 }}>
-      <AppText variant="small" weight="medium" tone="secondary">
-        {label}
-      </AppText>
+    <View
+      style={{
+        gap: compact ? 0 : 6,
+        flexGrow: compact ? 1 : undefined,
+        flexBasis: compact ? '46%' : undefined,
+        minWidth: compact ? 140 : undefined,
+      }}>
+      {!compact ? (
+        <AppText variant="small" weight="medium" tone="secondary">
+          {label}
+        </AppText>
+      ) : null}
       <Pressable
-        onPress={() => setOpen(true)}
+        onPress={() => {
+          setQuery('');
+          setOpen(true);
+        }}
         accessibilityRole="button"
         accessibilityLabel={`${label}: ${chosen?.label ?? placeholder ?? ''}`}
         style={({ pressed }) => ({
           flexDirection: 'row',
           alignItems: 'center',
-          minHeight: 48,
+          gap: space.xs,
+          minHeight: compact ? 38 : 48,
           borderWidth: 1.5,
           borderColor: palette.border,
           borderRadius: radius.md,
           paddingHorizontal: space.md,
           backgroundColor: pressed ? palette.surface : palette.card,
         })}>
-        <AppText tone={chosen ? 'default' : 'muted'} style={{ flex: 1 }}>
-          {chosen?.label ?? placeholder}
+        <AppText variant={compact ? 'small' : 'body'} tone={chosen ? 'default' : 'muted'} numberOfLines={1} style={{ flex: 1 }}>
+          {chosen?.label ?? placeholder ?? label}
         </AppText>
-        <IconSelector size={18} color={palette.textMuted} />
+        <IconSelector size={compact ? 16 : 18} color={palette.textMuted} />
       </Pressable>
-      <Modal visible={open} transparent animationType="fade" onRequestClose={() => setOpen(false)}>
-        <Pressable style={{ flex: 1, backgroundColor: 'rgba(8,15,32,0.45)', justifyContent: 'flex-end' }} onPress={() => setOpen(false)} accessibilityLabel={label}>
-          <Pressable style={{ backgroundColor: palette.card, borderTopLeftRadius: radius.xl, borderTopRightRadius: radius.xl, paddingTop: space.md, paddingBottom: Math.max(insets.bottom, space.lg), width: '100%', maxWidth: 520, alignSelf: 'center' }}>
+      <Modal visible={open} transparent animationType="fade" onRequestClose={closeModal}>
+        <Pressable
+          style={{ flex: 1, backgroundColor: 'rgba(8,15,32,0.45)', justifyContent: 'flex-end', direction: isRTL ? 'rtl' : 'ltr' }}
+          onPress={closeModal}
+          accessibilityLabel={label}>
+          <Pressable
+            onPress={() => {}}
+            style={{
+              backgroundColor: palette.card,
+              borderTopLeftRadius: radius.xl,
+              borderTopRightRadius: radius.xl,
+              paddingTop: space.md,
+              paddingBottom: Math.max(insets.bottom, space.lg),
+              width: '100%',
+              maxWidth: 520,
+              alignSelf: 'center',
+            }}>
             <View style={{ alignSelf: 'center', width: 40, height: 4, borderRadius: 2, backgroundColor: palette.border, marginBottom: space.md }} />
             <AppText variant="bodyLarge" weight="semibold" style={{ paddingHorizontal: space.xl, marginBottom: space.sm }}>
               {label}
             </AppText>
-            <ScrollView style={{ maxHeight: 420 }}>
-              {options.map((o) => {
+            {searchable ? (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  gap: space.sm,
+                  borderWidth: 1.5,
+                  borderColor: palette.border,
+                  borderRadius: radius.md,
+                  backgroundColor: palette.surface,
+                  marginHorizontal: space.xl,
+                  marginBottom: space.sm,
+                  paddingHorizontal: space.md,
+                  minHeight: 38,
+                }}>
+                <IconSearch size={16} color={palette.textMuted} />
+                <TextInput
+                  value={query}
+                  onChangeText={setQuery}
+                  placeholder={t('staff.searchOptions')}
+                  placeholderTextColor={palette.textMuted}
+                  accessibilityLabel={t('staff.searchOptions')}
+                  style={{
+                    flex: 1,
+                    minHeight: 36,
+                    color: palette.text,
+                    fontFamily: fonts.regular,
+                    fontSize: type.small.fontSize,
+                    textAlign: isRTL ? 'right' : 'left',
+                    writingDirection: isRTL ? 'rtl' : 'ltr',
+                  }}
+                />
+                {query ? (
+                  <Pressable onPress={() => setQuery('')} accessibilityRole="button" hitSlop={8}>
+                    <IconX size={15} color={palette.textMuted} />
+                  </Pressable>
+                ) : null}
+              </View>
+            ) : null}
+            <ScrollView style={{ maxHeight: 420 }} keyboardShouldPersistTaps="handled">
+              {filteredOptions.map((o) => {
                 const on = o.value === value;
                 return (
                   <Pressable
                     key={o.value}
                     onPress={() => {
                       onChange(o.value);
-                      setOpen(false);
+                      closeModal();
                     }}
                     accessibilityRole="radio"
                     accessibilityState={{ selected: on }}
@@ -341,6 +435,167 @@ export function Select<T extends string>({
         </Pressable>
       </Modal>
     </View>
+  );
+}
+
+export interface FilterSelectConfig {
+  key?: string;
+  label: string;
+  value: string;
+  options: { value: string; label: string }[];
+  onChange: (v: string) => void;
+}
+
+/** Shared search box, compact select filters and status chips with counts for all staff lists. */
+export function SearchFilterBar<T extends string = string>({
+  search,
+  onSearchChange,
+  placeholder,
+  selects,
+  chips,
+  chipValue,
+  onChipChange,
+}: {
+  search: string;
+  onSearchChange: (v: string) => void;
+  placeholder: string;
+  selects?: FilterSelectConfig[];
+  chips?: { value: T; label: string; count?: number }[];
+  chipValue?: T;
+  onChipChange?: (v: T) => void;
+}) {
+  const palette = usePalette();
+  const { isRTL } = useLanguage();
+  return (
+    <View style={{ gap: space.sm }}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          gap: space.sm,
+          borderWidth: 1.5,
+          borderColor: palette.border,
+          borderRadius: radius.md,
+          backgroundColor: palette.card,
+          paddingHorizontal: space.md,
+          minHeight: 42,
+        }}>
+        <IconSearch size={18} color={palette.textMuted} />
+        <TextInput
+          value={search}
+          onChangeText={onSearchChange}
+          placeholder={placeholder}
+          placeholderTextColor={palette.textMuted}
+          accessibilityLabel={placeholder}
+          style={{
+            flex: 1,
+            minHeight: 40,
+            color: palette.text,
+            fontFamily: fonts.regular,
+            fontSize: type.small.fontSize,
+            textAlign: isRTL ? 'right' : 'left',
+            writingDirection: isRTL ? 'rtl' : 'ltr',
+          }}
+        />
+        {search ? (
+          <Pressable
+            onPress={() => onSearchChange('')}
+            accessibilityRole="button"
+            hitSlop={8}
+            style={{ padding: 2 }}>
+            <IconX size={16} color={palette.textMuted} />
+          </Pressable>
+        ) : null}
+      </View>
+      {selects && selects.length > 0 ? (
+        <View style={{ flexDirection: 'row', gap: space.sm, flexWrap: 'wrap' }}>
+          {selects.map((s, idx) => (
+            <Select
+              key={s.key ?? `${s.label}-${idx}`}
+              compact
+              label={s.label}
+              value={s.value}
+              options={s.options}
+              onChange={s.onChange}
+            />
+          ))}
+        </View>
+      ) : null}
+      {chips && chips.length > 0 && chipValue !== undefined && onChipChange ? (
+        <Chips options={chips} value={chipValue} onChange={onChipChange} />
+      ) : null}
+    </View>
+  );
+}
+
+/** Clickable breadcrumb trail that wraps cleanly onto a second line on narrow screens. */
+export function Breadcrumb({ items }: { items: { label: string; onPress?: () => void }[] }) {
+  const palette = usePalette();
+  const { isRTL } = useLanguage();
+  const Sep = isRTL ? IconChevronLeft : IconChevronRight;
+  if (!items.length) return null;
+  return (
+    <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', columnGap: 4, rowGap: 2 }}>
+      {items.map((item, idx) => {
+        const last = idx === items.length - 1;
+        return (
+          <View key={`${item.label}-${idx}`} style={{ flexDirection: 'row', alignItems: 'center', gap: 4 }}>
+            {idx > 0 ? <Sep size={13} color={palette.textMuted} /> : null}
+            {item.onPress && !last ? (
+              <Pressable onPress={item.onPress} accessibilityRole="link" hitSlop={6}>
+                <AppText variant="caption" weight="semibold" tone="primary">
+                  {item.label}
+                </AppText>
+              </Pressable>
+            ) : (
+              <AppText variant="caption" weight={last ? 'semibold' : 'regular'} tone={last ? 'default' : 'secondary'}>
+                {item.label}
+              </AppText>
+            )}
+          </View>
+        );
+      })}
+    </View>
+  );
+}
+
+/** Compact grid of KPI summary figures at the top of a property, building, floor, or finance screen. */
+export function SummaryStrip({
+  items,
+  columns,
+}: {
+  items: { label: string; value: string | number; tone?: 'default' | 'primary' | 'secondary' | 'muted' | 'danger' | 'success' | 'warning' }[];
+  columns?: 2 | 3;
+}) {
+  const palette = usePalette();
+  const cols = columns ?? (items.length <= 4 ? 2 : 3);
+  const cellWidth = cols === 2 ? '50%' : '33.33%';
+  return (
+    <Card style={{ padding: space.md }}>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', rowGap: space.md }}>
+        {items.map((item, idx) => (
+          <View
+            key={`${item.label}-${idx}`}
+            style={{
+              width: cols === 2 && items.length % 2 === 1 && idx === items.length - 1 ? '100%' : cellWidth,
+              paddingHorizontal: space.xs,
+              gap: 2,
+              borderLeftWidth: idx % cols !== 0 ? 1 : 0,
+              borderLeftColor: palette.border,
+            }}>
+            <AppText variant="caption" tone="muted" numberOfLines={1}>
+              {item.label}
+            </AppText>
+            <AppText
+              variant="body"
+              weight="bold"
+              tone={item.tone ?? 'default'}>
+              {item.value}
+            </AppText>
+          </View>
+        ))}
+      </View>
+    </Card>
   );
 }
 

@@ -654,7 +654,13 @@
     "themeSystem": "Automatisch",
     "themeLight": "Licht",
     "themeDark": "Donker",
-    "signOut": "Uitloggen"
+    "signOut": "Uitloggen",
+    "lock": {
+      "title": "Ontgrendelen met Face ID of vingerafdruk",
+      "onHint": "Gevraagd bij het openen van de app en na 5 minuten weg.",
+      "offHint": "Uit: u logt elke keer dat u de app opent in met uw wachtwoord.",
+      "unavailable": "Stel Face ID, een vingerafdruk of een toegangscode in op deze telefoon om dit te gebruiken."
+    }
   },
   "done": {
     "home": "Terug naar overzicht",
@@ -754,6 +760,7 @@
     "assignedTo": "Toegewezen aan",
     "category": "Categorie",
     "priority": "Prioriteit",
+    "preferredVisitTime": "Voorkeurstijd bezoek",
     "status": "Toestand",
     "description": "Omschrijving",
     "saveChanges": "Wijzigingen opslaan",
@@ -792,7 +799,132 @@
     "general": "Algemeen",
     "buildingWide": "Hele gebouw",
     "noAnnouncements": "Geen berichten gevonden",
-    "userType": "Gebruikerstype"
+    "userType": "Gebruikerstype",
+    "searchProperties": "Zoek vastgoednaam, code of stad",
+    "searchBuildingsAndUnits": "Zoek gebouw, villa, ruimte of code",
+    "searchUnitsInBuilding": "Zoek eenheidscode, naam of huurder in dit gebouw",
+    "searchUnits": "Zoek eenheidscode, naam of huurder",
+    "searchLeases": "Zoek contractnummer, huurder of eenheid",
+    "searchTenants": "Zoek naam huurder, nummer, mobiel of e-mail",
+    "searchInvoices": "Zoek factuurnummer, huurder of eenheid",
+    "searchReceipts": "Zoek kwitantienummer, huurder of referentie",
+    "searchInstallments": "Zoek contractnummer, huurder of eenheid",
+    "searchTickets": "Zoek ticketnummer, categorie of beschrijving",
+    "searchWorkOrders": "Zoek werkorder, ticket of behandelaar",
+    "searchAssets": "Zoek naam bedrijfsmiddel, tag, categorie of locatie",
+    "searchInspections": "Zoek inspectienummer, titel, eenheid of inspecteur",
+    "searchFacilities": "Zoek naam voorziening of code",
+    "searchInventory": "Zoek artikelnaam, code, categorie of locatie",
+    "searchRequisitions": "Zoek aanvraagnummer, ticket of artikel",
+    "searchAnnouncements": "Zoek titel mededeling, categorie of vastgoed",
+    "searchApprovals": "Zoek referentie, onderwerp of aanvrager",
+    "showMore": "Meer tonen ({{count}} resterend)",
+    "allProperties": "Al het vastgoed",
+    "allStructures": "Alle structuren",
+    "allTypes": "Alle typen",
+    "hasVacantUnits": "Met vrije eenheden",
+    "fullyOccupied": "Volledig verhuurd",
+    "structure": {
+      "Individual": "Individueel",
+      "Group": "Groep"
+    },
+    "sortNewestDue": "Nieuwste vervaldatum",
+    "sortOldestDue": "Oudste vervaldatum",
+    "rangeThisMonth": "Deze maand",
+    "rangeLastMonth": "Vorige maand",
+    "rangeAllDates": "Alle datums",
+    "bookable": "Reserveerbaar",
+    "nonBookable": "Niet reserveerbaar",
+    "stockOk": "Op voorraad",
+    "waitingForMe": "Wacht op mijn beslissing",
+    "buildingsSection": "Gebouwen",
+    "villasOtherSpaces": "Villa’s & overige ruimtes",
+    "floorsSection": "Verdiepingen",
+    "otherUnits": "Overige eenheden",
+    "buildingDetails": "Gebouwgegevens",
+    "floorDetails": "Verdiepingsgegevens",
+    "unitDetails": "Eenheidsgegevens",
+    "building": "Gebouw",
+    "floor": "Verdieping",
+    "type": "Type",
+    "code": "Code",
+    "name": "Naam",
+    "city": "Stad",
+    "beds": "Slaapkamers",
+    "baths": "Badkamers",
+    "sqm": "m²",
+    "area": "Oppervlakte",
+    "furnishingLabel": "Inrichting",
+    "furnishing": {
+      "Unfurnished": "Ongemeubileerd",
+      "SemiFurnished": "Gestoffeerd",
+      "Furnished": "Gemeubileerd"
+    },
+    "noticePeriodCount": "Opzegtermijn",
+    "noticeCount": "{{n}} opzegtermijn",
+    "currentLease": "Huidig huurcontract",
+    "noCurrentLease": "Geen lopend huurcontract op deze eenheid",
+    "tenant": "Huurder",
+    "mobile": "Mobiel",
+    "leaseOutstanding": "Openstaand op huurcontract",
+    "overdueCount": "Achterstallig ({{count}})",
+    "collectedMonth": "Geïnd deze maand",
+    "unitStatus": {
+      "Occupied": "Bezet",
+      "Vacant": "Vrij",
+      "NoticePeriod": "Opzegtermijn",
+      "Reserved": "Gereserveerd",
+      "UnderMaintenance": "In onderhoud",
+      "Blocked": "Geblokkeerd",
+      "OwnerOccupied": "Bewoond door eigenaar"
+    },
+    "invoiceStatus": {
+      "Overdue": "Achterstallig",
+      "Posted": "Geboekt / Onbetaald",
+      "PartPaid": "Deels betaald",
+      "Paid": "Betaald",
+      "Draft": "Concept",
+      "Cancelled": "Geannuleerd"
+    },
+    "receiptStatus": {
+      "Posted": "Geboekt",
+      "Draft": "Concept",
+      "Reversed": "Teruggedraaid"
+    },
+    "installmentStatus": {
+      "Due": "Verschuldigd",
+      "Overdue": "Achterstallig",
+      "Paid": "Betaald",
+      "Cancelled": "Geannuleerd"
+    },
+    "ticketStatus": {
+      "Open": "Open",
+      "InProgress": "In behandeling",
+      "OnHold": "In wacht",
+      "Resolved": "Opgelost",
+      "Closed": "Gesloten"
+    },
+    "priorityLevel": {
+      "Low": "Laag",
+      "Medium": "Gemiddeld",
+      "High": "Hoog",
+      "Emergency": "Spoed"
+    },
+    "paymentMethods": {
+      "Cash": "Contant",
+      "Cheque": "Cheque",
+      "BankTransfer": "Bankoverschrijving",
+      "Card": "Kaart",
+      "OnlineGateway": "Online betaalmethode",
+      "Other": "Overig"
+    },
+    "unitsSummary_one": "{{count}} eenheid · {{occupied}} bezet · {{vacant}} vrij",
+    "unitsSummary_other": "{{count}} eenheden · {{occupied}} bezet · {{vacant}} vrij",
+    "allBuildingsAndVillas": "Alle gebouwen & villa’s",
+    "allFloors": "Alle verdiepingen",
+    "allUnits": "Alle eenheden",
+    "tenantNoCurrentLease": "Geen lopend huurcontract",
+    "searchOptions": "Zoeken…"
   },
   "inventory": {
     "subtitle": "Reparatiematerialen, voorraadniveaus en aanvragen",
@@ -1013,5 +1145,12 @@
       "Waived": "Kwijtgescholden",
       "Cancelled": "Geannuleerd"
     }
+  },
+  "lock": {
+    "title": "Welkom terug, {{name}}",
+    "hint": "Ontgrendel met Face ID, uw vingerafdruk of de toegangscode van uw telefoon.",
+    "unlock": "Ontgrendelen",
+    "prompt": "EstateFlow ontgrendelen",
+    "usePassword": "Inloggen met wachtwoord"
   }
 }

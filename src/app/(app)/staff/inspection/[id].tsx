@@ -26,6 +26,7 @@ import {
   completeStaffInspection,
   getStaffInspection,
   getStaffInspectionPhotoUri,
+  getStaffServiceCategories,
   raiseStaffInspectionTicket,
   removeStaffInspectionItem,
   removeStaffInspectionPhoto,
@@ -37,8 +38,10 @@ import type {
   InspectionCondition,
   InspectionDto,
   InspectionItemDto,
+  ServiceCategoryOptionDto,
   UpdateInspectionDto,
 } from '@/api/types';
+import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Button, Card, Field, Pill, Select } from '@/components/ui';
@@ -55,30 +58,13 @@ import {
   TYPE_LABEL,
   usePhotoUris,
 } from '@/lib/inspections';
+import {
+  DEFAULT_SERVICE_CATEGORIES,
+  formatServiceCategoryLabel,
+  normalizeCategoryName,
+} from '@/lib/service-categories';
 import { shrinkPhoto } from '@/lib/shrink-photo';
 import { radius, space, usePalette } from '@/theme/tokens';
-
-const CATEGORY_KEYS = [
-  'airConditioning',
-  'plumbing',
-  'electrical',
-  'appliance',
-  'carpentry',
-  'pestControl',
-  'cleaning',
-  'other',
-] as const;
-
-const CATEGORY_NAMES: Record<string, string> = {
-  airConditioning: 'Air Conditioning',
-  plumbing: 'Plumbing',
-  electrical: 'Electrical',
-  appliance: 'Appliances',
-  carpentry: 'Doors & Carpentry',
-  pestControl: 'Pest Control',
-  cleaning: 'Cleaning',
-  other: 'Other',
-};
 
 const CATEGORY_FOR_TEMPLATE: Record<string, string> = {
   'systems.airConditioning': 'airConditioning',
@@ -102,9 +88,11 @@ export default function StaffInspectionDetail() {
   const { t } = useTranslation();
   const palette = usePalette();
   const { language } = useLanguage();
+  const { isDemo } = useAppSession();
   const code = language.code;
 
   const [inspection, setInspection] = useState<InspectionDto | null>(null);
+  const [serviceCategories, setServiceCategories] = useState<ServiceCategoryOptionDto[]>(DEFAULT_SERVICE_CATEGORIES);
   const [itemNotes, setItemNotes] = useState<Record<string, string>>({});
   const [itemCharges, setItemCharges] = useState<Record<string, string>>({});
 
@@ -119,7 +107,7 @@ export default function StaffInspectionDetail() {
 
   // Ticket modal state
   const [ticketItem, setTicketItem] = useState<InspectionItemDto | null>(null);
-  const [ticketCategory, setTicketCategory] = useState('other');
+  const [ticketCategory, setTicketCategory] = useState('Other');
   const [ticketPriority, setTicketPriority] = useState('Medium');
   const [raisingTicket, setRaisingTicket] = useState(false);
 
@@ -230,6 +218,21 @@ export default function StaffInspectionDetail() {
       cancelled = true;
     };
   }, [id, t]);
+
+  useEffect(() => {
+    if (isDemo) return;
+    let cancelled = false;
+    getStaffServiceCategories()
+      .then((cats) => {
+        if (!cancelled && cats.length > 0) {
+          setServiceCategories(cats);
+        }
+      })
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, [isDemo]);
 
   const photoUris = usePhotoUris(inspection?.items, getStaffInspectionPhotoUri);
 
@@ -346,8 +349,12 @@ export default function StaffInspectionDetail() {
 
   // Raise Ticket
   const openTicketModal = (item: InspectionItemDto) => {
-    const defaultCat = (item.templateKey && CATEGORY_FOR_TEMPLATE[item.templateKey]) || 'other';
-    setTicketCategory(defaultCat);
+    const preferredCode = (item.templateKey && CATEGORY_FOR_TEMPLATE[item.templateKey]) || 'other';
+    const matched =
+      serviceCategories.find((c) => c.code === preferredCode) ??
+      serviceCategories.find((c) => c.code === 'other' || normalizeCategoryName(c.nameEn) === 'other') ??
+      serviceCategories[0];
+    setTicketCategory(matched?.nameEn ?? 'Other');
     setTicketPriority('Medium');
     setTicketItem(item);
   };
@@ -357,7 +364,7 @@ export default function StaffInspectionDetail() {
     setRaisingTicket(true);
     try {
       const updated = await raiseStaffInspectionTicket(ticketItem.id, {
-        category: CATEGORY_NAMES[ticketCategory] || ticketCategory,
+        category: ticketCategory,
         priority: ticketPriority,
       });
       setInspection((prev) =>
@@ -1062,9 +1069,9 @@ export default function StaffInspectionDetail() {
               label={t('inspection.category')}
               value={ticketCategory}
               onChange={setTicketCategory}
-              options={CATEGORY_KEYS.map((k) => ({
-                value: k,
-                label: t(`maint.category.${k}`),
+              options={serviceCategories.map((c) => ({
+                value: c.nameEn,
+                label: formatServiceCategoryLabel(c, t, code),
               }))}
             />
 

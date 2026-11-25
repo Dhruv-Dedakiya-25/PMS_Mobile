@@ -690,7 +690,13 @@
     "themeSystem": "Автоматично",
     "themeLight": "Світле",
     "themeDark": "Темне",
-    "signOut": "Вийти"
+    "signOut": "Вийти",
+    "lock": {
+      "title": "Розблокування Face ID або відбитком",
+      "onHint": "Запитується під час відкриття застосунку та після 5 хвилин відсутності.",
+      "offHint": "Вимкнено: щоразу під час відкриття застосунку ви входите з паролем.",
+      "unavailable": "Щоб користуватися цим, налаштуйте на телефоні Face ID, відбиток або код-пароль."
+    }
   },
   "done": {
     "home": "На головну",
@@ -790,6 +796,7 @@
     "assignedTo": "Виконавець",
     "category": "Категорія",
     "priority": "Пріоритет",
+    "preferredVisitTime": "Бажаний час візиту",
     "status": "Статус",
     "description": "Опис",
     "saveChanges": "Зберегти зміни",
@@ -828,7 +835,134 @@
     "general": "Загальне",
     "buildingWide": "Вся будівля",
     "noAnnouncements": "Оголошень не знайдено",
-    "userType": "Тип користувача"
+    "userType": "Тип користувача",
+    "searchProperties": "Пошук за назвою об’єкта, кодом або містом",
+    "searchBuildingsAndUnits": "Пошук за будівлею, віллою, приміщенням або кодом",
+    "searchUnitsInBuilding": "Пошук за кодом приміщення, назвою або орендарем у цій будівлі",
+    "searchUnits": "Пошук за кодом приміщення, назвою або орендарем",
+    "searchLeases": "Пошук за номером договору, орендарем або приміщенням",
+    "searchTenants": "Пошук за ім’ям орендаря, номером, телефоном або ел. поштою",
+    "searchInvoices": "Пошук за номером рахунку, орендарем або приміщенням",
+    "searchReceipts": "Пошук за номером квитанції, орендарем або референсом",
+    "searchInstallments": "Пошук за номером договору, орендарем або приміщенням",
+    "searchTickets": "Пошук за номером заявки, категорією або описом",
+    "searchWorkOrders": "Пошук за нарядом на роботи, заявкою або виконавцем",
+    "searchAssets": "Пошук за назвою обладнання, тегом, категорією або місцем",
+    "searchInspections": "Пошук за номером огляду, назвою, приміщенням або інспектором",
+    "searchFacilities": "Пошук за назвою об’єкта інфраструктури або кодом",
+    "searchInventory": "Пошук за назвою матеріалу, кодом, категорією або складом",
+    "searchRequisitions": "Пошук за номером вимоги, заявкою або матеріалом",
+    "searchAnnouncements": "Пошук за заголовком оголошення, категорією або об’єктом",
+    "searchApprovals": "Пошук за номером, темою або заявником",
+    "showMore": "Показати ще (залишилося {{count}})",
+    "allProperties": "Усі об’єкти",
+    "allStructures": "Усі структури",
+    "allTypes": "Усі типи",
+    "hasVacantUnits": "Є вільні приміщення",
+    "fullyOccupied": "Повністю зайнятий",
+    "structure": {
+      "Individual": "Окремий",
+      "Group": "Група"
+    },
+    "sortNewestDue": "Спочатку новіші за терміном оплати",
+    "sortOldestDue": "Спочатку старіші за терміном оплати",
+    "rangeThisMonth": "Цей місяць",
+    "rangeLastMonth": "Минулий місяць",
+    "rangeAllDates": "Усі дати",
+    "bookable": "Доступно для бронювання",
+    "nonBookable": "Без бронювання",
+    "stockOk": "У наявності",
+    "waitingForMe": "Очікує мого рішення",
+    "buildingsSection": "Будівлі",
+    "villasOtherSpaces": "Вілли та інші приміщення",
+    "floorsSection": "Поверхи",
+    "otherUnits": "Інші приміщення",
+    "buildingDetails": "Відомості про будівлю",
+    "floorDetails": "Відомості про поверх",
+    "unitDetails": "Відомості про приміщення",
+    "building": "Будівля",
+    "floor": "Поверх",
+    "type": "Тип",
+    "code": "Код",
+    "name": "Назва",
+    "city": "Місто",
+    "beds": "Спальні",
+    "baths": "Санвузли",
+    "sqm": "м²",
+    "area": "Площа",
+    "furnishingLabel": "Меблювання",
+    "furnishing": {
+      "Unfurnished": "Без меблів",
+      "SemiFurnished": "Частково мебльовано",
+      "Furnished": "Мебльовано"
+    },
+    "noticePeriodCount": "Період попередження",
+    "noticeCount": "{{n}} період попередження",
+    "currentLease": "Поточний договір оренди",
+    "noCurrentLease": "Для цього приміщення немає чинного договору оренди",
+    "tenant": "Орендар",
+    "mobile": "Мобільний",
+    "leaseOutstanding": "Заборгованість за договором",
+    "overdueCount": "Прострочено ({{count}})",
+    "collectedMonth": "Зібрано за цей місяць",
+    "unitStatus": {
+      "Occupied": "Зайнято",
+      "Vacant": "Вільно",
+      "NoticePeriod": "Період попередження",
+      "Reserved": "Заброньовано",
+      "UnderMaintenance": "На обслуговуванні",
+      "Blocked": "Заблоковано",
+      "OwnerOccupied": "Зайнято власником"
+    },
+    "invoiceStatus": {
+      "Overdue": "Прострочений",
+      "Posted": "Виставлений / Не сплачений",
+      "PartPaid": "Частково сплачений",
+      "Paid": "Сплачений",
+      "Draft": "Чернетка",
+      "Cancelled": "Скасований"
+    },
+    "receiptStatus": {
+      "Posted": "Проведена",
+      "Draft": "Чернетка",
+      "Reversed": "Сторнована"
+    },
+    "installmentStatus": {
+      "Due": "До сплати",
+      "Overdue": "Прострочений",
+      "Paid": "Сплачений",
+      "Cancelled": "Скасований"
+    },
+    "ticketStatus": {
+      "Open": "Відкрита",
+      "InProgress": "У роботі",
+      "OnHold": "На паузі",
+      "Resolved": "Вирішена",
+      "Closed": "Закрита"
+    },
+    "priorityLevel": {
+      "Low": "Низький",
+      "Medium": "Середній",
+      "High": "Високий",
+      "Emergency": "Екстрений"
+    },
+    "paymentMethods": {
+      "Cash": "Готівка",
+      "Cheque": "Чек",
+      "BankTransfer": "Банківський переказ",
+      "Card": "Картка",
+      "OnlineGateway": "Онлайн-шлюз",
+      "Other": "Інше"
+    },
+    "unitsSummary_one": "{{count}} приміщення · {{occupied}} зайнято · {{vacant}} вільно",
+    "unitsSummary_other": "{{count}} приміщень · {{occupied}} зайнято · {{vacant}} вільно",
+    "unitsSummary_few": "{{count}} приміщення · {{occupied}} зайнято · {{vacant}} вільно",
+    "unitsSummary_many": "{{count}} приміщень · {{occupied}} зайнято · {{vacant}} вільно",
+    "allBuildingsAndVillas": "Усі будівлі та вілли",
+    "allFloors": "Усі поверхи",
+    "allUnits": "Усі приміщення",
+    "tenantNoCurrentLease": "Немає поточного договору",
+    "searchOptions": "Пошук…"
   },
   "inventory": {
     "subtitle": "Ремонтні матеріали, залишки та вимоги на видачу",
@@ -1049,5 +1183,12 @@
       "Waived": "Прощено",
       "Cancelled": "Скасовано"
     }
+  },
+  "lock": {
+    "title": "З поверненням, {{name}}",
+    "hint": "Розблокуйте за допомогою Face ID, відбитка пальця або код-пароля телефону.",
+    "unlock": "Розблокувати",
+    "prompt": "Розблокувати EstateFlow",
+    "usePassword": "Увійти з паролем"
   }
 }

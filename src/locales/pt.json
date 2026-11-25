@@ -654,7 +654,13 @@
     "themeSystem": "Automático",
     "themeLight": "Claro",
     "themeDark": "Escuro",
-    "signOut": "Terminar sessão"
+    "signOut": "Terminar sessão",
+    "lock": {
+      "title": "Desbloquear com Face ID ou impressão digital",
+      "onHint": "Pedido ao abrir a app e após 5 minutos de ausência.",
+      "offHint": "Desligado: inicia sessão com a palavra-passe sempre que abre a app.",
+      "unavailable": "Configure Face ID, uma impressão digital ou um código neste telemóvel para o usar."
+    }
   },
   "done": {
     "home": "Voltar ao início",
@@ -754,6 +760,7 @@
     "assignedTo": "Atribuído a",
     "category": "Categoria",
     "priority": "Prioridade",
+    "preferredVisitTime": "Horário de visita preferido",
     "status": "Estado",
     "description": "Descrição",
     "saveChanges": "Guardar alterações",
@@ -792,7 +799,132 @@
     "general": "Geral",
     "buildingWide": "Todo o edifício",
     "noAnnouncements": "Nenhum aviso encontrado",
-    "userType": "Tipo de utilizador"
+    "userType": "Tipo de utilizador",
+    "searchProperties": "Pesquisar nome do imóvel, código ou cidade",
+    "searchBuildingsAndUnits": "Pesquisar edifício, moradia, espaço ou código",
+    "searchUnitsInBuilding": "Pesquisar código da unidade, nome ou inquilino neste edifício",
+    "searchUnits": "Pesquisar código da unidade, nome ou inquilino",
+    "searchLeases": "Pesquisar número do contrato, inquilino ou unidade",
+    "searchTenants": "Pesquisar nome do inquilino, número, telemóvel ou e-mail",
+    "searchInvoices": "Pesquisar número da fatura, inquilino ou unidade",
+    "searchReceipts": "Pesquisar número do recibo, inquilino ou referência",
+    "searchInstallments": "Pesquisar número do contrato, inquilino ou unidade",
+    "searchTickets": "Pesquisar número do chamado, categoria ou descrição",
+    "searchWorkOrders": "Pesquisar ordem de serviço, chamado ou responsável",
+    "searchAssets": "Pesquisar nome do equipamento, código, categoria ou local",
+    "searchInspections": "Pesquisar número da vistoria, título, unidade ou inspetor",
+    "searchFacilities": "Pesquisar nome da instalação ou código",
+    "searchInventory": "Pesquisar nome do item, código, categoria ou local",
+    "searchRequisitions": "Pesquisar número da requisição, chamado ou item",
+    "searchAnnouncements": "Pesquisar título do aviso, categoria ou imóvel",
+    "searchApprovals": "Pesquisar referência, assunto ou solicitante",
+    "showMore": "Mostrar mais ({{count}} restantes)",
+    "allProperties": "Todos os imóveis",
+    "allStructures": "Todas as estruturas",
+    "allTypes": "Todos os tipos",
+    "hasVacantUnits": "Com unidades vagas",
+    "fullyOccupied": "Totalmente ocupado",
+    "structure": {
+      "Individual": "Individual",
+      "Group": "Grupo"
+    },
+    "sortNewestDue": "Vencimento mais recente",
+    "sortOldestDue": "Vencimento mais antigo",
+    "rangeThisMonth": "Este mês",
+    "rangeLastMonth": "Mês passado",
+    "rangeAllDates": "Todas as datas",
+    "bookable": "Reservável",
+    "nonBookable": "Não reservável",
+    "stockOk": "Em estoque",
+    "waitingForMe": "Aguardando minha decisão",
+    "buildingsSection": "Edifícios",
+    "villasOtherSpaces": "Moradias e outros espaços",
+    "floorsSection": "Andares",
+    "otherUnits": "Outras unidades",
+    "buildingDetails": "Detalhes do edifício",
+    "floorDetails": "Detalhes do andar",
+    "unitDetails": "Detalhes da unidade",
+    "building": "Edifício",
+    "floor": "Andar",
+    "type": "Tipo",
+    "code": "Código",
+    "name": "Nome",
+    "city": "Cidade",
+    "beds": "Quartos",
+    "baths": "Banheiros",
+    "sqm": "m²",
+    "area": "Área",
+    "furnishingLabel": "Mobília",
+    "furnishing": {
+      "Unfurnished": "Sem mobília",
+      "SemiFurnished": "Semimobiliado",
+      "Furnished": "Mobiliado"
+    },
+    "noticePeriodCount": "Aviso prévio",
+    "noticeCount": "{{n}} aviso prévio",
+    "currentLease": "Contrato atual",
+    "noCurrentLease": "Nenhum contrato vigente nesta unidade",
+    "tenant": "Inquilino",
+    "mobile": "Telemóvel",
+    "leaseOutstanding": "Em aberto no contrato",
+    "overdueCount": "Em atraso ({{count}})",
+    "collectedMonth": "Recebido neste mês",
+    "unitStatus": {
+      "Occupied": "Ocupada",
+      "Vacant": "Vaga",
+      "NoticePeriod": "Em aviso prévio",
+      "Reserved": "Reservada",
+      "UnderMaintenance": "Em manutenção",
+      "Blocked": "Bloqueada",
+      "OwnerOccupied": "Ocupada pelo proprietário"
+    },
+    "invoiceStatus": {
+      "Overdue": "Em atraso",
+      "Posted": "Emitida / Em aberto",
+      "PartPaid": "Parcialmente paga",
+      "Paid": "Paga",
+      "Draft": "Rascunho",
+      "Cancelled": "Cancelada"
+    },
+    "receiptStatus": {
+      "Posted": "Lançado",
+      "Draft": "Rascunho",
+      "Reversed": "Estornado"
+    },
+    "installmentStatus": {
+      "Due": "A vencer",
+      "Overdue": "Em atraso",
+      "Paid": "Paga",
+      "Cancelled": "Cancelada"
+    },
+    "ticketStatus": {
+      "Open": "Aberto",
+      "InProgress": "Em andamento",
+      "OnHold": "Em espera",
+      "Resolved": "Resolvido",
+      "Closed": "Fechado"
+    },
+    "priorityLevel": {
+      "Low": "Baixa",
+      "Medium": "Média",
+      "High": "Alta",
+      "Emergency": "Emergência"
+    },
+    "paymentMethods": {
+      "Cash": "Dinheiro",
+      "Cheque": "Cheque",
+      "BankTransfer": "Transferência bancária",
+      "Card": "Cartão",
+      "OnlineGateway": "Pagamento online",
+      "Other": "Outro"
+    },
+    "unitsSummary_one": "{{count}} unidade · {{occupied}} ocupadas · {{vacant}} vagas",
+    "unitsSummary_other": "{{count}} unidades · {{occupied}} ocupadas · {{vacant}} vagas",
+    "allBuildingsAndVillas": "Todos os edifícios e moradias",
+    "allFloors": "Todos os pisos",
+    "allUnits": "Todas as unidades",
+    "tenantNoCurrentLease": "Sem contrato atual",
+    "searchOptions": "Pesquisar…"
   },
   "inventory": {
     "subtitle": "Materiais de reparo, níveis de estoque e requisições",
@@ -1013,5 +1145,12 @@
       "Waived": "Isentado",
       "Cancelled": "Cancelado"
     }
+  },
+  "lock": {
+    "title": "Olá de novo, {{name}}",
+    "hint": "Desbloqueie com Face ID, impressão digital ou o código do telemóvel.",
+    "unlock": "Desbloquear",
+    "prompt": "Desbloquear EstateFlow",
+    "usePassword": "Iniciar sessão com a palavra-passe"
   }
 }

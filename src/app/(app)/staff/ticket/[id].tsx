@@ -7,6 +7,7 @@ import { Alert, Image, View } from 'react-native';
 import {
   deleteStaffTicket,
   getStaffProperties,
+  getStaffServiceCategories,
   getStaffTicket,
   getStaffTicketPhotoUris,
   getStaffUnits,
@@ -15,12 +16,14 @@ import {
   type StaffTicket,
   type StaffUnit,
 } from '@/api/staff';
+import type { ServiceCategoryOptionDto } from '@/api/types';
 import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Button, Card, Field, Pill, Select } from '@/components/ui';
 import { useLanguage } from '@/i18n';
-import { dateTime } from '@/lib/format';
+import { dateTime, longDate } from '@/lib/format';
+import { DEFAULT_SERVICE_CATEGORIES, formatTicketCategory } from '@/lib/service-categories';
 import { radius, space } from '@/theme/tokens';
 
 export default function TicketDetail() {
@@ -34,6 +37,7 @@ export default function TicketDetail() {
   const [ticket, setTicket] = useState<StaffTicket | null>(null);
   const [properties, setProperties] = useState<StaffProperty[]>([]);
   const [units, setUnits] = useState<StaffUnit[]>([]);
+  const [categories, setCategories] = useState<ServiceCategoryOptionDto[]>(DEFAULT_SERVICE_CATEGORIES);
   const [status, setStatus] = useState<string>('Open');
   const [assignedTo, setAssignedTo] = useState<string>('');
   const [photos, setPhotos] = useState<string[]>([]);
@@ -51,12 +55,14 @@ export default function TicketDetail() {
       getStaffProperties().catch(() => []),
       getStaffUnits().catch(() => []),
       getStaffTicketPhotoUris(id).catch(() => [] as string[]),
+      isDemo ? Promise.resolve(DEFAULT_SERVICE_CATEGORIES) : getStaffServiceCategories().catch(() => DEFAULT_SERVICE_CATEGORIES),
     ])
-      .then(([data, allProps, allUnits, ticketPhotos]) => {
+      .then(([data, allProps, allUnits, ticketPhotos, cats]) => {
         setTicket(data);
         setProperties(allProps);
         setUnits(allUnits);
         setPhotos(ticketPhotos);
+        if (cats.length > 0) setCategories(cats);
         setStatus(data.status || 'Open');
         setAssignedTo(data.assignedTo || '');
         setError(null);
@@ -67,7 +73,7 @@ export default function TicketDetail() {
       .finally(() => {
         setLoading(false);
       });
-  }, [id, t]);
+  }, [id, isDemo, t]);
 
   useEffect(() => {
     if (!id) return;
@@ -77,13 +83,15 @@ export default function TicketDetail() {
       getStaffProperties().catch(() => []),
       getStaffUnits().catch(() => []),
       getStaffTicketPhotoUris(id).catch(() => [] as string[]),
+      isDemo ? Promise.resolve(DEFAULT_SERVICE_CATEGORIES) : getStaffServiceCategories().catch(() => DEFAULT_SERVICE_CATEGORIES),
     ])
-      .then(([data, allProps, allUnits, ticketPhotos]) => {
+      .then(([data, allProps, allUnits, ticketPhotos, cats]) => {
         if (!cancelled) {
           setTicket(data);
           setProperties(allProps);
           setUnits(allUnits);
           setPhotos(ticketPhotos);
+          if (cats.length > 0) setCategories(cats);
           setStatus(data.status || 'Open');
           setAssignedTo(data.assignedTo || '');
           setError(null);
@@ -102,7 +110,7 @@ export default function TicketDetail() {
     return () => {
       cancelled = true;
     };
-  }, [id, t]);
+  }, [id, isDemo, t]);
 
   const handleSave = async () => {
     if (!id || !ticket || saving) return;
@@ -215,7 +223,7 @@ export default function TicketDetail() {
               />
             </View>
             <AppText variant="caption" tone="secondary">
-              {t('staff.category')}: {ticket.category}
+              {t('staff.category')}: {formatTicketCategory(ticket.category, categories, t, language.code)}
             </AppText>
             {propMatch ? (
               <AppText variant="caption" tone="secondary">
@@ -237,7 +245,9 @@ export default function TicketDetail() {
             ) : null}
             {ticket.preferredVisitTime ? (
               <AppText variant="caption" tone="muted">
-                Visit: {ticket.preferredVisitTime}
+                {/^\d{4}-\d{2}-\d{2}/.test(ticket.preferredVisitTime)
+                  ? t('maint.visitOn', { date: `${longDate(ticket.preferredVisitTime, language.code)}, ${ticket.preferredVisitTime.slice(11, 16)}` })
+                  : ticket.preferredVisitTime}
               </AppText>
             ) : null}
             <AppText variant="caption" tone="muted">

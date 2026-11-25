@@ -11,23 +11,29 @@ import { useTranslation } from 'react-i18next';
 import { Pressable, View } from 'react-native';
 
 import {
+  getStaffServiceCategories,
   getStaffTickets,
   type StaffTicket,
 } from '@/api/staff';
+import type { ServiceCategoryOptionDto } from '@/api/types';
 import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Screen } from '@/components/screen';
 import { StaffWorkOrders } from '@/components/staff-work-orders';
 import { Avatar, Button, Card, IconTile, Onward, Pill } from '@/components/ui';
 import { StaffBell } from '@/components/staff-bell';
+import { useLanguage } from '@/i18n';
+import { DEFAULT_SERVICE_CATEGORIES, formatTicketCategory } from '@/lib/service-categories';
 import { space } from '@/theme/tokens';
 
 export default function FacilityDashboard() {
   const { t } = useTranslation();
-  const { user, permissionsFor } = useAppSession();
+  const { language } = useLanguage();
+  const { user, permissionsFor, isDemo } = useAppSession();
   const ticketPermissions = permissionsFor('staff/tickets');
 
   const [tickets, setTickets] = useState<StaffTicket[]>([]);
+  const [categories, setCategories] = useState<ServiceCategoryOptionDto[]>(DEFAULT_SERVICE_CATEGORIES);
   const [reloadKey, setReloadKey] = useState(0);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -37,9 +43,13 @@ export default function FacilityDashboard() {
     if (isRefresh) setRefreshing(true);
     else setLoading(true);
 
-    getStaffTickets()
-      .then((data) => {
+    Promise.all([
+      getStaffTickets(),
+      isDemo ? Promise.resolve(DEFAULT_SERVICE_CATEGORIES) : getStaffServiceCategories().catch(() => DEFAULT_SERVICE_CATEGORIES),
+    ])
+      .then(([data, cats]) => {
         setTickets(data);
+        if (cats.length > 0) setCategories(cats);
         setError(null);
       })
       .catch((e) => {
@@ -49,14 +59,18 @@ export default function FacilityDashboard() {
         setLoading(false);
         setRefreshing(false);
       });
-  }, [t]);
+  }, [isDemo, t]);
 
   useEffect(() => {
     let cancelled = false;
-    getStaffTickets()
-      .then((data) => {
+    Promise.all([
+      getStaffTickets(),
+      isDemo ? Promise.resolve(DEFAULT_SERVICE_CATEGORIES) : getStaffServiceCategories().catch(() => DEFAULT_SERVICE_CATEGORIES),
+    ])
+      .then(([data, cats]) => {
         if (!cancelled) {
           setTickets(data);
+          if (cats.length > 0) setCategories(cats);
           setError(null);
         }
       })
@@ -74,7 +88,7 @@ export default function FacilityDashboard() {
     return () => {
       cancelled = true;
     };
-  }, [t]);
+  }, [isDemo, t]);
 
   const onRefresh = () => {
     fetchTickets(true);
@@ -222,7 +236,7 @@ export default function FacilityDashboard() {
               </AppText>
               <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: space.xs }}>
                 <AppText variant="caption" tone="muted">
-                  {tk.category} • {tk.status}
+                  {formatTicketCategory(tk.category, categories, t, language.code)} • {tk.status}
                 </AppText>
                 <Onward />
               </View>

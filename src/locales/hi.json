@@ -654,7 +654,13 @@
     "themeSystem": "स्वचालित",
     "themeLight": "लाइट",
     "themeDark": "डार्क",
-    "signOut": "साइन आउट"
+    "signOut": "साइन आउट",
+    "lock": {
+      "title": "Face ID या फ़िंगरप्रिंट से अनलॉक",
+      "onHint": "ऐप खोलने पर और 5 मिनट दूर रहने के बाद पूछा जाता है।",
+      "offHint": "बंद: हर बार ऐप खोलने पर पासवर्ड से साइन इन करना होगा।",
+      "unavailable": "इसे इस्तेमाल करने के लिए इस फ़ोन पर Face ID, फ़िंगरप्रिंट या पासकोड सेट करें।"
+    }
   },
   "done": {
     "home": "डैशबोर्ड पर वापस",
@@ -754,6 +760,7 @@
     "assignedTo": "सौंपा गया",
     "category": "श्रेणी",
     "priority": "प्राथमिकता",
+    "preferredVisitTime": "पसंदीदा विज़िट समय",
     "status": "स्थिति",
     "description": "विवरण",
     "saveChanges": "परिवर्तन सहेजें",
@@ -792,7 +799,132 @@
     "general": "सामान्य",
     "buildingWide": "पूरी इमारत",
     "noAnnouncements": "कोई सूचना नहीं मिली",
-    "userType": "उपयोगकर्ता प्रकार"
+    "userType": "उपयोगकर्ता प्रकार",
+    "searchProperties": "संपत्ति का नाम, कोड या शहर खोजें",
+    "searchBuildingsAndUnits": "भवन, विला, स्थान या कोड खोजें",
+    "searchUnitsInBuilding": "इस भवन में इकाई कोड, नाम या किरायेदार खोजें",
+    "searchUnits": "इकाई कोड, नाम या किरायेदार खोजें",
+    "searchLeases": "पट्टा संख्या, किरायेदार या इकाई खोजें",
+    "searchTenants": "किरायेदार का नाम, संख्या, मोबाइल या ईमेल खोजें",
+    "searchInvoices": "चालान संख्या, किरायेदार या इकाई खोजें",
+    "searchReceipts": "रसीद संख्या, किरायेदार या संदर्भ खोजें",
+    "searchInstallments": "पट्टा संख्या, किरायेदार या इकाई खोजें",
+    "searchTickets": "टिकट संख्या, श्रेणी या विवरण खोजें",
+    "searchWorkOrders": "कार्य आदेश, टिकट या प्रभारी खोजें",
+    "searchAssets": "संपत्ति का नाम, टैग, श्रेणी या स्थान खोजें",
+    "searchInspections": "निरीक्षण संख्या, शीर्षक, इकाई या निरीक्षक खोजें",
+    "searchFacilities": "सुविधा का नाम या कोड खोजें",
+    "searchInventory": "वस्तु का नाम, कोड, श्रेणी या स्थान खोजें",
+    "searchRequisitions": "मांग संख्या, टिकट या वस्तु खोजें",
+    "searchAnnouncements": "सूचना शीर्षक, श्रेणी या संपत्ति खोजें",
+    "searchApprovals": "संदर्भ, विषय या अनुरोधकर्ता खोजें",
+    "showMore": "और दिखाएँ ({{count}} शेष)",
+    "allProperties": "सभी संपत्तियाँ",
+    "allStructures": "सभी संरचनाएँ",
+    "allTypes": "सभी प्रकार",
+    "hasVacantUnits": "खाली इकाइयाँ उपलब्ध",
+    "fullyOccupied": "पूर्णतः अधिभोगित",
+    "structure": {
+      "Individual": "एकल",
+      "Group": "समूह"
+    },
+    "sortNewestDue": "नवीनतम देय तिथि",
+    "sortOldestDue": "पुरानी देय तिथि",
+    "rangeThisMonth": "इस महीने",
+    "rangeLastMonth": "पिछले महीने",
+    "rangeAllDates": "सभी तिथियाँ",
+    "bookable": "बुकिंग योग्य",
+    "nonBookable": "बुकिंग योग्य नहीं",
+    "stockOk": "स्टॉक में उपलब्ध",
+    "waitingForMe": "मेरी प्रतीक्षा में",
+    "buildingsSection": "भवन",
+    "villasOtherSpaces": "विला और अन्य स्थान",
+    "floorsSection": "मंजिलें",
+    "otherUnits": "अन्य इकाइयाँ",
+    "buildingDetails": "भवन विवरण",
+    "floorDetails": "मंजिल विवरण",
+    "unitDetails": "इकाई विवरण",
+    "building": "भवन",
+    "floor": "मंजिल",
+    "type": "प्रकार",
+    "code": "कोड",
+    "name": "नाम",
+    "city": "शहर",
+    "beds": "शयनकक्ष",
+    "baths": "स्नानघर",
+    "sqm": "वर्ग मीटर",
+    "area": "क्षेत्रफल",
+    "furnishingLabel": "सुसज्जा",
+    "furnishing": {
+      "Unfurnished": "असुसज्जित",
+      "SemiFurnished": "अर्ध-सुसज्जित",
+      "Furnished": "सुसज्जित"
+    },
+    "noticePeriodCount": "नोटिस अवधि",
+    "noticeCount": "{{n}} नोटिस अवधि",
+    "currentLease": "वर्तमान पट्टा",
+    "noCurrentLease": "इस इकाई पर कोई वर्तमान पट्टा नहीं है",
+    "tenant": "किरायेदार",
+    "mobile": "मोबाइल",
+    "leaseOutstanding": "पट्टे पर बकाया",
+    "overdueCount": "अतिदेय ({{count}})",
+    "collectedMonth": "इस महीने संग्रहित",
+    "unitStatus": {
+      "Occupied": "अधिभोगित",
+      "Vacant": "खाली",
+      "NoticePeriod": "नोटिस अवधि",
+      "Reserved": "आरक्षित",
+      "UnderMaintenance": "रखरखाव में",
+      "Blocked": "अवरुद्ध",
+      "OwnerOccupied": "मालिक द्वारा अधिभोगित"
+    },
+    "invoiceStatus": {
+      "Overdue": "अतिदेय",
+      "Posted": "जारी / अदत्त",
+      "PartPaid": "आंशिक भुगतान",
+      "Paid": "भुगतान किया गया",
+      "Draft": "ड्राफ्ट",
+      "Cancelled": "रद्द"
+    },
+    "receiptStatus": {
+      "Posted": "दर्ज",
+      "Draft": "ड्राफ्ट",
+      "Reversed": "उलटा गया"
+    },
+    "installmentStatus": {
+      "Due": "देय",
+      "Overdue": "अतिदेय",
+      "Paid": "भुगतान किया गया",
+      "Cancelled": "रद्द"
+    },
+    "ticketStatus": {
+      "Open": "खुला",
+      "InProgress": "प्रगति पर",
+      "OnHold": "रोक पर",
+      "Resolved": "समाधानित",
+      "Closed": "बंद"
+    },
+    "priorityLevel": {
+      "Low": "कम",
+      "Medium": "मध्यम",
+      "High": "उच्च",
+      "Emergency": "आपातकालीन"
+    },
+    "paymentMethods": {
+      "Cash": "नकद",
+      "Cheque": "चेक",
+      "BankTransfer": "बैंक ट्रांसफर",
+      "Card": "कार्ड",
+      "OnlineGateway": "ऑनलाइन गेटवे",
+      "Other": "अन्य"
+    },
+    "unitsSummary_one": "{{count}} इकाई · {{occupied}} अधिभोगित · {{vacant}} खाली",
+    "unitsSummary_other": "{{count}} इकाइयाँ · {{occupied}} अधिभोगित · {{vacant}} खाली",
+    "allBuildingsAndVillas": "सभी इमारतें और विला",
+    "allFloors": "सभी मंज़िलें",
+    "allUnits": "सभी इकाइयाँ",
+    "tenantNoCurrentLease": "कोई वर्तमान लीज़ नहीं",
+    "searchOptions": "खोजें…"
   },
   "inventory": {
     "subtitle": "मरम्मत सामग्री, स्टॉक स्तर और अधियाचन",
@@ -1013,5 +1145,12 @@
       "Waived": "माफ किया गया",
       "Cancelled": "रद्द"
     }
+  },
+  "lock": {
+    "title": "फिर से स्वागत है, {{name}}",
+    "hint": "Face ID, फ़िंगरप्रिंट या फ़ोन के पासकोड से अनलॉक करें।",
+    "unlock": "अनलॉक करें",
+    "prompt": "EstateFlow अनलॉक करें",
+    "usePassword": "इसके बजाय पासवर्ड से साइन इन करें"
   }
 }

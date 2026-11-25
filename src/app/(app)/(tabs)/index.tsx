@@ -14,6 +14,7 @@ import { Avatar, Button, Card, IconTile, Onward, Pill, RoundIcon } from '@/compo
 import { useAnnouncements, useNotifications, usePayments, useProfile, useRequests } from '@/hooks/use-tenancy';
 import { useLanguage } from '@/i18n';
 import { daysUntil, longDate, omr } from '@/lib/format';
+import { formatTicketCategory } from '@/lib/service-categories';
 import { radius, space, usePalette, type Accent } from '@/theme/tokens';
 
 const greetingKey = () => {
@@ -160,7 +161,7 @@ export default function Dashboard() {
             style={({ pressed }) => ({ flexDirection: 'row', alignItems: 'center', gap: space.md, paddingHorizontal: space.lg, paddingVertical: space.md, borderTopWidth: 1, borderTopColor: palette.border, backgroundColor: pressed ? palette.surface : 'transparent' })}>
             <View style={{ flex: 1 }}>
               <AppText variant="small" weight="medium" numberOfLines={1}>
-                {r.categoryLabel ?? t(`maint.category.${r.category}`)}
+                {formatTicketCategory(r.rawCategory ?? r.category, requests.categories, t, code)}
               </AppText>
               <AppText variant="caption" tone="muted">
                 {r.requestNo}

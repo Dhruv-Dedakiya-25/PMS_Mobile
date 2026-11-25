@@ -262,11 +262,11 @@
     "statuses": {
       "Active": "Aktif",
       "Draft": "Taslak",
-      "PendingApproval": "Onay Bekliyor",
-      "Expired": "Süresi Doldu",
+      "PendingApproval": "Onay bekliyor",
+      "Expired": "Süresi doldu",
       "Terminated": "Feshedildi",
-      "NoticePeriod": "İhbar Süresi",
-      "Cancelled": "İptal Edildi",
+      "NoticePeriod": "İhbar süresi",
+      "Cancelled": "İptal edildi",
       "Renewed": "Yenilendi"
     },
     "escalationRenewalIntro": "Sözleşmenize göre kira her yenilemede %{{percent}} artar.",
@@ -654,7 +654,13 @@
     "themeSystem": "Otomatik",
     "themeLight": "Açık",
     "themeDark": "Koyu",
-    "signOut": "Çıkış yap"
+    "signOut": "Çıkış yap",
+    "lock": {
+      "title": "Face ID veya parmak iziyle kilidi aç",
+      "onHint": "Uygulamayı açtığınızda ve 5 dakika uzak kaldıktan sonra sorulur.",
+      "offHint": "Kapalı: uygulamayı her açtığınızda parolanızla oturum açarsınız.",
+      "unavailable": "Kullanmak için bu telefonda Face ID, parmak izi veya şifre ayarlayın."
+    }
   },
   "done": {
     "home": "Ana sayfaya dön",
@@ -754,6 +760,7 @@
     "assignedTo": "Atanan kişi",
     "category": "Kategori",
     "priority": "Öncelik",
+    "preferredVisitTime": "Tercih edilen ziyaret saati",
     "status": "Durum",
     "description": "Açıklama",
     "saveChanges": "Değişiklikleri kaydet",
@@ -792,7 +799,132 @@
     "general": "Genel",
     "buildingWide": "Bina Geneli",
     "noAnnouncements": "Duyuru bulunamadı",
-    "userType": "Kullanıcı türü"
+    "userType": "Kullanıcı türü",
+    "searchProperties": "Mülk adı, kodu veya şehir ara",
+    "searchBuildingsAndUnits": "Bina, villa, alan veya kod ara",
+    "searchUnitsInBuilding": "Bu binada birim kodu, adı veya kiracı ara",
+    "searchUnits": "Birim kodu, adı veya kiracı ara",
+    "searchLeases": "Sözleşme numarası, kiracı veya birim ara",
+    "searchTenants": "Kiracı adı, numarası, telefon veya e-posta ara",
+    "searchInvoices": "Fatura numarası, kiracı veya birim ara",
+    "searchReceipts": "Makbuz numarası, kiracı veya referans ara",
+    "searchInstallments": "Sözleşme numarası, kiracı veya birim ara",
+    "searchTickets": "Talep numarası, kategori veya açıklama ara",
+    "searchWorkOrders": "İş emri, talep veya sorumlu ara",
+    "searchAssets": "Demirbaş adı, etiketi, kategori veya konum ara",
+    "searchInspections": "Denetim numarası, başlık, birim veya denetçi ara",
+    "searchFacilities": "Tesis adı veya kodu ara",
+    "searchInventory": "Malzeme adı, kodu, kategori veya konum ara",
+    "searchRequisitions": "Malzeme talep numarası, bilet veya ürün ara",
+    "searchAnnouncements": "Duyuru başlığı, kategori veya mülk ara",
+    "searchApprovals": "Referans, konu veya talep eden ara",
+    "showMore": "Daha fazla göster ({{count}} kaldı)",
+    "allProperties": "Tüm mülkler",
+    "allStructures": "Tüm yapılar",
+    "allTypes": "Tüm türler",
+    "hasVacantUnits": "Boş birimi olanlar",
+    "fullyOccupied": "Tamamen dolu",
+    "structure": {
+      "Individual": "Bireysel",
+      "Group": "Grup"
+    },
+    "sortNewestDue": "En yeni vade tarihi",
+    "sortOldestDue": "En eski vade tarihi",
+    "rangeThisMonth": "Bu ay",
+    "rangeLastMonth": "Geçen ay",
+    "rangeAllDates": "Tüm tarihler",
+    "bookable": "Rezerve edilebilir",
+    "nonBookable": "Rezerve edilemez",
+    "stockOk": "Stokta var",
+    "waitingForMe": "Onayımı bekleyenler",
+    "buildingsSection": "Binalar",
+    "villasOtherSpaces": "Villalar ve diğer alanlar",
+    "floorsSection": "Katlar",
+    "otherUnits": "Diğer birimler",
+    "buildingDetails": "Bina detayları",
+    "floorDetails": "Kat detayları",
+    "unitDetails": "Birim detayları",
+    "building": "Bina",
+    "floor": "Kat",
+    "type": "Tür",
+    "code": "Kod",
+    "name": "Ad",
+    "city": "Şehir",
+    "beds": "Yatak odası",
+    "baths": "Banyo",
+    "sqm": "m²",
+    "area": "Alan",
+    "furnishingLabel": "Eşya durumu",
+    "furnishing": {
+      "Unfurnished": "Eşyasız",
+      "SemiFurnished": "Yarı eşyalı",
+      "Furnished": "Eşyalı"
+    },
+    "noticePeriodCount": "İhbar süresi",
+    "noticeCount": "{{n}} ihbar süresinde",
+    "currentLease": "Mevcut kira sözleşmesi",
+    "noCurrentLease": "Bu birimde aktif kira sözleşmesi yok",
+    "tenant": "Kiracı",
+    "mobile": "Cep telefonu",
+    "leaseOutstanding": "Sözleşme kalan borcu",
+    "overdueCount": "Gecikmiş ({{count}})",
+    "collectedMonth": "Bu ay tahsil edilen",
+    "unitStatus": {
+      "Occupied": "Dolu",
+      "Vacant": "Boş",
+      "NoticePeriod": "İhbar süresinde",
+      "Reserved": "Rezerve",
+      "UnderMaintenance": "Bakımda",
+      "Blocked": "Blokeli",
+      "OwnerOccupied": "Mülk sahibi oturuyor"
+    },
+    "invoiceStatus": {
+      "Overdue": "Gecikmiş",
+      "Posted": "Kesildi / Ödenmedi",
+      "PartPaid": "Kısmen ödendi",
+      "Paid": "Ödendi",
+      "Draft": "Taslak",
+      "Cancelled": "İptal edildi"
+    },
+    "receiptStatus": {
+      "Posted": "İşlendi",
+      "Draft": "Taslak",
+      "Reversed": "Ters kayıt"
+    },
+    "installmentStatus": {
+      "Due": "Vadesi gelen",
+      "Overdue": "Gecikmiş",
+      "Paid": "Ödendi",
+      "Cancelled": "İptal edildi"
+    },
+    "ticketStatus": {
+      "Open": "Açık",
+      "InProgress": "İşlemde",
+      "OnHold": "Beklemede",
+      "Resolved": "Çözüldü",
+      "Closed": "Kapatıldı"
+    },
+    "priorityLevel": {
+      "Low": "Düşük",
+      "Medium": "Orta",
+      "High": "Yüksek",
+      "Emergency": "Acil"
+    },
+    "paymentMethods": {
+      "Cash": "Nakit",
+      "Cheque": "Çek",
+      "BankTransfer": "Banka havalesi",
+      "Card": "Kart",
+      "OnlineGateway": "Online ödeme",
+      "Other": "Diğer"
+    },
+    "unitsSummary_one": "{{count}} birim · {{occupied}} dolu · {{vacant}} boş",
+    "unitsSummary_other": "{{count}} birim · {{occupied}} dolu · {{vacant}} boş",
+    "allBuildingsAndVillas": "Tüm binalar ve villalar",
+    "allFloors": "Tüm katlar",
+    "allUnits": "Tüm birimler",
+    "tenantNoCurrentLease": "Mevcut kira sözleşmesi yok",
+    "searchOptions": "Ara…"
   },
   "inventory": {
     "subtitle": "Onarım malzemeleri, stok seviyeleri ve malzeme talepleri",
@@ -1013,5 +1145,12 @@
       "Waived": "Feragat Edildi",
       "Cancelled": "İptal Edildi"
     }
+  },
+  "lock": {
+    "title": "Tekrar hoş geldiniz, {{name}}",
+    "hint": "Face ID, parmak izi veya telefonunuzun şifresiyle kilidi açın.",
+    "unlock": "Kilidi aç",
+    "prompt": "EstateFlow kilidini aç",
+    "usePassword": "Bunun yerine parolayla oturum aç"
   }
 }

@@ -654,7 +654,13 @@
     "themeSystem": "אוטומטי",
     "themeLight": "בהיר",
     "themeDark": "כהה",
-    "signOut": "יציאה"
+    "signOut": "יציאה",
+    "lock": {
+      "title": "ביטול נעילה עם Face ID או טביעת אצבע",
+      "onHint": "נדרש בפתיחת האפליקציה ואחרי 5 דקות של היעדרות.",
+      "offHint": "כבוי: נכנסים עם סיסמה בכל פתיחה של האפליקציה.",
+      "unavailable": "כדי להשתמש בזה, הגדירו Face ID, טביעת אצבע או קוד בטלפון."
+    }
   },
   "done": {
     "home": "חזרה לראשי",
@@ -754,6 +760,7 @@
     "assignedTo": "הוקצה ל",
     "category": "קטגוריה",
     "priority": "עדיפות",
+    "preferredVisitTime": "מועד ביקור מועדף",
     "status": "סטטוס",
     "description": "תיאור",
     "saveChanges": "שמור שינויים",
@@ -792,7 +799,134 @@
     "general": "כללי",
     "buildingWide": "כל הבניין",
     "noAnnouncements": "לא נמצאו הודעות",
-    "userType": "סוג משתמש"
+    "userType": "סוג משתמש",
+    "searchProperties": "חפש שם נכס, קוד או עיר",
+    "searchBuildingsAndUnits": "חפש בניין, וילה, שטח או קוד",
+    "searchUnitsInBuilding": "חפש קוד יחידה, שם או שוכר בבניין זה",
+    "searchUnits": "חפש קוד יחידה, שם או שוכר",
+    "searchLeases": "חפש מספר חוזה, שוכר או יחידה",
+    "searchTenants": "חפש שם שוכר, מספר, נייד או אימייל",
+    "searchInvoices": "חפש מספר חשבונית, שוכר או יחידה",
+    "searchReceipts": "חפש מספר קבלה, שוכר או אסמכתא",
+    "searchInstallments": "חפש מספר חוזה, שוכר או יחידה",
+    "searchTickets": "חפש מספר קריאה, קטגוריה או תיאור",
+    "searchWorkOrders": "חפש הזמנת עבודה, קריאה או אחראי",
+    "searchAssets": "חפש שם ציוד, תג, קטגוריה או מיקום",
+    "searchInspections": "חפש מספר בדיקה, כותרת, יחידה או בודק",
+    "searchFacilities": "חפש שם מתקן או קוד",
+    "searchInventory": "חפש שם פריט, קוד, קטגוריה או מיקום",
+    "searchRequisitions": "חפש מספר דרישה, קריאה או פריט",
+    "searchAnnouncements": "חפש כותרת הודעה, קטגוריה או נכס",
+    "searchApprovals": "חפש אסמכתא, נושא או מבקש",
+    "showMore": "הצג עוד ({{count}} נותרו)",
+    "allProperties": "כל הנכסים",
+    "allStructures": "כל המבנים",
+    "allTypes": "כל הסוגים",
+    "hasVacantUnits": "כולל יחידות פנויות",
+    "fullyOccupied": "בתפוסה מלאה",
+    "structure": {
+      "Individual": "בודד",
+      "Group": "קבוצה"
+    },
+    "sortNewestDue": "תאריך יעד חדש ביותר",
+    "sortOldestDue": "תאריך יעד ישן ביותר",
+    "rangeThisMonth": "החודש",
+    "rangeLastMonth": "חודש שעבר",
+    "rangeAllDates": "כל התאריכים",
+    "bookable": "ניתן להזמנה",
+    "nonBookable": "לא ניתן להזמנה",
+    "stockOk": "במלאי",
+    "waitingForMe": "ממתין להחלטתי",
+    "buildingsSection": "בניינים",
+    "villasOtherSpaces": "וילות ושטחים אחרים",
+    "floorsSection": "קומות",
+    "otherUnits": "יחידות אחרות",
+    "buildingDetails": "פרטי בניין",
+    "floorDetails": "פרטי קומה",
+    "unitDetails": "פרטי יחידה",
+    "building": "בניין",
+    "floor": "קומה",
+    "type": "סוג",
+    "code": "קוד",
+    "name": "שם",
+    "city": "עיר",
+    "beds": "חדרי שינה",
+    "baths": "חדרי רחצה",
+    "sqm": "מ״ר",
+    "area": "שטח",
+    "furnishingLabel": "ריהוט",
+    "furnishing": {
+      "Unfurnished": "לא מרוהט",
+      "SemiFurnished": "מרוהט חלקית",
+      "Furnished": "מרוהט"
+    },
+    "noticePeriodCount": "תקופת הודעה",
+    "noticeCount": "{{n}} תקופת הודעה",
+    "currentLease": "חוזה שכירות נוכחי",
+    "noCurrentLease": "אין חוזה שכירות נוכחי ליחידה זו",
+    "tenant": "שוכר",
+    "mobile": "נייד",
+    "leaseOutstanding": "יתרה לתשלום בחוזה",
+    "overdueCount": "בפיגור ({{count}})",
+    "collectedMonth": "נגבה החודש",
+    "unitStatus": {
+      "Occupied": "מאוכלסת",
+      "Vacant": "פנויה",
+      "NoticePeriod": "בתקופת הודעה",
+      "Reserved": "שמורה",
+      "UnderMaintenance": "בתחזוקה",
+      "Blocked": "חסומה",
+      "OwnerOccupied": "מגורי בעלים"
+    },
+    "invoiceStatus": {
+      "Overdue": "בפיגור",
+      "Posted": "רשומה / לא שולמה",
+      "PartPaid": "שולמה חלקית",
+      "Paid": "שולמה",
+      "Draft": "טיוטה",
+      "Cancelled": "בוטלה"
+    },
+    "receiptStatus": {
+      "Posted": "רשומה",
+      "Draft": "טיוטה",
+      "Reversed": "בוטלה בהיפוך"
+    },
+    "installmentStatus": {
+      "Due": "לתשלום",
+      "Overdue": "בפיגור",
+      "Paid": "שולם",
+      "Cancelled": "בוטל"
+    },
+    "ticketStatus": {
+      "Open": "פתוח",
+      "InProgress": "בטיפול",
+      "OnHold": "בהמתנה",
+      "Resolved": "נפתר",
+      "Closed": "סגור"
+    },
+    "priorityLevel": {
+      "Low": "נמוכה",
+      "Medium": "בינונית",
+      "High": "גבוהה",
+      "Emergency": "חירום"
+    },
+    "paymentMethods": {
+      "Cash": "מזומן",
+      "Cheque": "המחאה",
+      "BankTransfer": "העברה בנקאית",
+      "Card": "כרטיס אשראי",
+      "OnlineGateway": "שער תשלום מקוון",
+      "Other": "אחר"
+    },
+    "unitsSummary_one": "{{count}} יחידה · {{occupied}} תפוסות · {{vacant}} פנויות",
+    "unitsSummary_other": "{{count}} יחידות · {{occupied}} תפוסות · {{vacant}} פנויות",
+    "unitsSummary_two": "{{count}} יחידות · {{occupied}} תפוסות · {{vacant}} פנויות",
+    "unitsSummary_many": "{{count}} יחידות · {{occupied}} תפוסות · {{vacant}} פנויות",
+    "allBuildingsAndVillas": "כל הבניינים והווילות",
+    "allFloors": "כל הקומות",
+    "allUnits": "כל היחידות",
+    "tenantNoCurrentLease": "אין חוזה נוכחי",
+    "searchOptions": "חיפוש…"
   },
   "inventory": {
     "subtitle": "חומרי תיקון, רמות מלאי ודרישות",
@@ -1013,5 +1147,12 @@
       "Waived": "פטור",
       "Cancelled": "בוטל"
     }
+  },
+  "lock": {
+    "title": "שמחים לראות אותך שוב, {{name}}",
+    "hint": "פתיחה עם Face ID, טביעת אצבע או קוד הטלפון.",
+    "unlock": "ביטול נעילה",
+    "prompt": "ביטול הנעילה של EstateFlow",
+    "usePassword": "כניסה עם סיסמה במקום"
   }
 }

@@ -6,6 +6,7 @@ import type {
   InspectionItemRequestDto,
   InspectionStatus,
   InspectionType,
+  ServiceCategoryOptionDto,
   UpdateInspectionDto,
 } from './types';
 
@@ -83,17 +84,63 @@ export interface StaffProperty {
   propertyCode: string;
   propertyNameEn: string;
   propertyNameAr?: string;
-  propertyTypeId: string;
+  structure?: 'Individual' | 'Group';
+  propertyTypeId?: string;
+  propertyClassificationId?: string;
   addressLine1: string;
   city?: string;
   countryCode: string;
   isActive: boolean;
 }
 
+export interface StaffPropertyType {
+  id: string;
+  code: string;
+  nameEn: string;
+  nameAr?: string;
+  holdsUnits: boolean;
+  isActive: boolean;
+}
+
+export interface StaffBuilding {
+  id: string;
+  propertyId: string;
+  buildingCode: string;
+  buildingNameEn: string;
+  buildingNameAr?: string;
+  propertyTypeId?: string;
+  buildingTypeId?: string;
+  noOfFloors?: number;
+  isActive: boolean;
+}
+
+export interface StaffFloorZone {
+  id: string;
+  buildingId: string;
+  parentFloorZoneId?: string | null;
+  zoneTypeId?: string;
+  code?: string;
+  nameEn: string;
+  nameAr?: string;
+  floorNumber?: number | null;
+  sortOrder?: number | null;
+  isActive: boolean;
+}
+
+export interface StaffUnitType {
+  id: string;
+  unitTypeCode: string;
+  nameEn: string;
+  nameAr?: string;
+  isActive: boolean;
+}
+
 export interface StaffUnit {
   id: string;
   propertyId: string;
-  buildingId?: string;
+  buildingId?: string | null;
+  floorZoneId?: string | null;
+  propertyTypeId?: string | null;
   unitTypeId: string;
   unitCode: string;
   unitNameEn?: string;
@@ -102,6 +149,7 @@ export interface StaffUnit {
   bedrooms?: number;
   bathrooms?: number;
   areaSqm?: number;
+  furnishingStatus?: 'Unfurnished' | 'SemiFurnished' | 'Furnished' | string;
   isActive: boolean;
 }
 
@@ -183,7 +231,8 @@ export interface StaffInstallment {
 
 export interface PagedResult<T> {
   items: T[];
-  totalCount: number;
+  total: number;
+  totalCount?: number;
   page: number;
   pageSize: number;
 }
@@ -192,6 +241,8 @@ export interface PagedResult<T> {
 export const getStaffDashboardSummary = () => apiGet<StaffDashboardSummary>('/Dashboard/getDashboardSummary');
 
 /** Service request CRUD */
+export const getStaffServiceCategories = () =>
+  apiGet<ServiceCategoryOptionDto[]>('/ServiceRequest/getServiceCategories');
 export const getStaffTickets = () => apiGet<StaffTicket[]>('/ServiceRequest/getServiceRequest');
 export const getStaffTicket = (id: string) => apiGet<StaffTicket>(`/ServiceRequest/getServiceRequest/${id}`);
 export const createStaffTicket = (ticket: Partial<StaffTicket>) =>
@@ -204,6 +255,7 @@ export const deleteStaffTicket = (id: string) => apiDelete(`/ServiceRequest/dele
 export interface StaffWorkOrder {
   id: string;
   serviceRequestId: string;
+  propertyId?: string | null;
   ticketNumber?: string;
   workOrderNumber: string;
   status: 'Pending' | 'Scheduled' | 'InProgress' | 'Completed' | 'Cancelled';
@@ -221,6 +273,7 @@ export interface StaffAsset {
   assetTag: string;
   name: string;
   category: string;
+  propertyId?: string | null;
   propertyName?: string | null;
   location?: string | null;
   status: 'Operational' | 'UnderMaintenance' | 'Faulty' | 'Retired';
@@ -234,24 +287,30 @@ export async function getStaffTicketPhotoUris(id: string): Promise<string[]> {
   return Promise.all(list.map((p) => apiImage(`/ServiceRequest/getServiceRequestPhotoFile/${p.id}`)));
 }
 
-/** Properties, Units, Facilities */
+/** Properties, Buildings, Floors, Units, Facilities */
 export const getStaffProperties = () => apiGet<StaffProperty[]>('/Property/getProperty');
+export const getStaffPropertyTypes = () => apiGet<StaffPropertyType[]>('/PropertyType/getPropertyType');
+export const getStaffBuildings = () => apiGet<StaffBuilding[]>('/Building/getBuilding');
+export const getStaffFloorZones = () => apiGet<StaffFloorZone[]>('/FloorZone/getFloorZone');
 export const getStaffUnits = () => apiGet<StaffUnit[]>('/Unit/getUnit');
+export const getStaffUnitTypes = () => apiGet<StaffUnitType[]>('/UnitType/getUnitType');
 export const getStaffFacilities = () => apiGet<StaffFacility[]>('/Facility/getFacility');
 
 /** Leases & Tenants */
 export const getStaffLeases = () => apiGet<StaffLease[]>('/Lease/getLease');
 export const getStaffTenants = () => apiGet<StaffTenant[]>('/Tenant/getTenant');
 
-/** Finance */
-export const getStaffInvoices = () =>
-  apiGet<PagedResult<StaffInvoice>>('/Invoice/getInvoicePaged?page=1&pageSize=50').then((r) => r.items ?? []);
-export const getStaffReceipts = () =>
-  apiGet<PagedResult<StaffReceipt>>('/Receipt/getReceiptPaged?page=1&pageSize=50').then((r) => r.items ?? []);
+/**
+ * Finance: loads the unpaged lists once and filters on the phone (showing 20 at a time with
+ * "Show more"), because the paged endpoints only accept page, pageSize (max 200) and search with
+ * no property or status filter. This is fine for hundreds of records; server-side property and
+ * status filters are the upgrade path for thousands.
+ */
+export const getStaffInvoices = () => apiGet<StaffInvoice[]>('/Invoice/getInvoice');
+export const getStaffReceipts = () => apiGet<StaffReceipt[]>('/Receipt/getReceipt');
 export const createStaffReceipt = (receipt: Partial<StaffReceipt>) =>
   apiPost<StaffReceipt>('/Receipt/createReceipt', receipt);
-export const getStaffInstallments = () =>
-  apiGet<PagedResult<StaffInstallment>>('/Installment/getInstallmentPaged?page=1&pageSize=50').then((r) => r.items ?? []);
+export const getStaffInstallments = () => apiGet<StaffInstallment[]>('/Installment/getInstallment');
 
 // ==========================================
 // Sample data for areas with no live API yet
@@ -297,6 +356,7 @@ export interface StaffAnnouncementDto {
 
 export interface StaffAnnouncementItem {
   id: string;
+  propertyId?: string | null;
   title: string;
   titleEn: string;
   titleAr?: string | null;
@@ -316,6 +376,7 @@ export async function getStaffAnnouncements(): Promise<StaffAnnouncementItem[]> 
     .filter((a) => a.status === 'Published' || a.status === 3 || a.status === '3')
     .map((a) => ({
       id: a.id,
+      propertyId: a.propertyId || null,
       title: a.titleEn,
       titleEn: a.titleEn,
       titleAr: a.titleAr,

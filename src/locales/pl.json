@@ -690,7 +690,13 @@
     "themeSystem": "Automatyczny",
     "themeLight": "Jasny",
     "themeDark": "Ciemny",
-    "signOut": "Wyloguj się"
+    "signOut": "Wyloguj się",
+    "lock": {
+      "title": "Odblokuj Face ID lub odciskiem palca",
+      "onHint": "Wymagane przy otwieraniu aplikacji i po 5 minutach nieobecności.",
+      "offHint": "Wyłączone: przy każdym otwarciu aplikacji logujesz się hasłem.",
+      "unavailable": "Aby z tego korzystać, ustaw na tym telefonie Face ID, odcisk palca lub kod."
+    }
   },
   "done": {
     "home": "Wróć do pulpitu",
@@ -790,6 +796,7 @@
     "assignedTo": "Przypisano do",
     "category": "Kategoria",
     "priority": "Priorytet",
+    "preferredVisitTime": "Preferowany termin wizyty",
     "status": "Status",
     "description": "Opis",
     "saveChanges": "Zapisz zmiany",
@@ -828,7 +835,134 @@
     "general": "Ogólne",
     "buildingWide": "Cały budynek",
     "noAnnouncements": "Nie znaleziono ogłoszeń",
-    "userType": "Typ użytkownika"
+    "userType": "Typ użytkownika",
+    "searchProperties": "Szukaj nazwy nieruchomości, kodu lub miasta",
+    "searchBuildingsAndUnits": "Szukaj budynku, willi, powierzchni lub kodu",
+    "searchUnitsInBuilding": "Szukaj kodu lokalu, nazwy lub najemcy w tym budynku",
+    "searchUnits": "Szukaj kodu lokalu, nazwy lub najemcy",
+    "searchLeases": "Szukaj numeru umowy, najemcy lub lokalu",
+    "searchTenants": "Szukaj nazwy najemcy, numeru, telefonu lub e-maila",
+    "searchInvoices": "Szukaj numeru faktury, najemcy lub lokalu",
+    "searchReceipts": "Szukaj numeru pokwitowania, najemcy lub referencji",
+    "searchInstallments": "Szukaj numeru umowy, najemcy lub lokalu",
+    "searchTickets": "Szukaj numeru zgłoszenia, kategorii lub opisu",
+    "searchWorkOrders": "Szukaj zlecenia pracy, zgłoszenia lub wykonawcy",
+    "searchAssets": "Szukaj nazwy urządzenia, oznaczenia, kategorii lub lokalizacji",
+    "searchInspections": "Szukaj numeru inspekcji, tytułu, lokalu lub inspektora",
+    "searchFacilities": "Szukaj nazwy udogodnienia lub kodu",
+    "searchInventory": "Szukaj nazwy pozycji, kodu, kategorii lub lokalizacji",
+    "searchRequisitions": "Szukaj numeru zapotrzebowania, zgłoszenia lub pozycji",
+    "searchAnnouncements": "Szukaj tytułu ogłoszenia, kategorii lub nieruchomości",
+    "searchApprovals": "Szukaj referencji, tematu lub wnioskodawcy",
+    "showMore": "Pokaż więcej (pozostało {{count}})",
+    "allProperties": "Wszystkie nieruchomości",
+    "allStructures": "Wszystkie struktury",
+    "allTypes": "Wszystkie typy",
+    "hasVacantUnits": "Z wolnymi lokalami",
+    "fullyOccupied": "W pełni wynajęte",
+    "structure": {
+      "Individual": "Pojedyncza",
+      "Group": "Grupa"
+    },
+    "sortNewestDue": "Najnowszy termin płatności",
+    "sortOldestDue": "Najstarszy termin płatności",
+    "rangeThisMonth": "Ten miesiąc",
+    "rangeLastMonth": "Poprzedni miesiąc",
+    "rangeAllDates": "Wszystkie daty",
+    "bookable": "Do rezerwacji",
+    "nonBookable": "Bez rezerwacji",
+    "stockOk": "W magazynie",
+    "waitingForMe": "Czeka na moją decyzję",
+    "buildingsSection": "Budynki",
+    "villasOtherSpaces": "Wille i inne powierzchnie",
+    "floorsSection": "Piętra",
+    "otherUnits": "Inne lokale",
+    "buildingDetails": "Szczegóły budynku",
+    "floorDetails": "Szczegóły piętra",
+    "unitDetails": "Szczegóły lokalu",
+    "building": "Budynek",
+    "floor": "Piętro",
+    "type": "Typ",
+    "code": "Kod",
+    "name": "Nazwa",
+    "city": "Miasto",
+    "beds": "Sypialnie",
+    "baths": "Łazienki",
+    "sqm": "m²",
+    "area": "Powierzchnia",
+    "furnishingLabel": "Umeblowanie",
+    "furnishing": {
+      "Unfurnished": "Nieumeblowane",
+      "SemiFurnished": "Częściowo umeblowane",
+      "Furnished": "Umeblowane"
+    },
+    "noticePeriodCount": "Okres wypowiedzenia",
+    "noticeCount": "{{n}} okres wypowiedzenia",
+    "currentLease": "Aktualna umowa najmu",
+    "noCurrentLease": "Brak aktualnej umowy najmu dla tego lokalu",
+    "tenant": "Najemca",
+    "mobile": "Telefon",
+    "leaseOutstanding": "Zaległość na umowie",
+    "overdueCount": "Zaległe ({{count}})",
+    "collectedMonth": "Zebrano w tym miesiącu",
+    "unitStatus": {
+      "Occupied": "Zajęty",
+      "Vacant": "Wolny",
+      "NoticePeriod": "Wypowiedzenie",
+      "Reserved": "Zarezerwowany",
+      "UnderMaintenance": "W konserwacji",
+      "Blocked": "Zablokowany",
+      "OwnerOccupied": "Zajęty przez właściciela"
+    },
+    "invoiceStatus": {
+      "Overdue": "Zaległa",
+      "Posted": "Wystawiona / Nieopłacona",
+      "PartPaid": "Częściowo opłacona",
+      "Paid": "Opłacona",
+      "Draft": "Szkic",
+      "Cancelled": "Anulowana"
+    },
+    "receiptStatus": {
+      "Posted": "Zaksięgowane",
+      "Draft": "Szkic",
+      "Reversed": "Storno"
+    },
+    "installmentStatus": {
+      "Due": "Do zapłaty",
+      "Overdue": "Zaległa",
+      "Paid": "Opłacona",
+      "Cancelled": "Anulowana"
+    },
+    "ticketStatus": {
+      "Open": "Otwarte",
+      "InProgress": "W realizacji",
+      "OnHold": "Wstrzymane",
+      "Resolved": "Rozwiązane",
+      "Closed": "Zamknięte"
+    },
+    "priorityLevel": {
+      "Low": "Niski",
+      "Medium": "Średni",
+      "High": "Wysoki",
+      "Emergency": "Awaria"
+    },
+    "paymentMethods": {
+      "Cash": "Gotówka",
+      "Cheque": "Czek",
+      "BankTransfer": "Przelew bankowy",
+      "Card": "Karta",
+      "OnlineGateway": "Bramka płatności online",
+      "Other": "Inna"
+    },
+    "unitsSummary_one": "{{count}} lokal · {{occupied}} zajętych · {{vacant}} wolnych",
+    "unitsSummary_other": "{{count}} lokali · {{occupied}} zajętych · {{vacant}} wolnych",
+    "unitsSummary_few": "{{count}} lokale · {{occupied}} zajętych · {{vacant}} wolnych",
+    "unitsSummary_many": "{{count}} lokali · {{occupied}} zajętych · {{vacant}} wolnych",
+    "allBuildingsAndVillas": "Wszystkie budynki i wille",
+    "allFloors": "Wszystkie piętra",
+    "allUnits": "Wszystkie lokale",
+    "tenantNoCurrentLease": "Brak bieżącej umowy",
+    "searchOptions": "Szukaj…"
   },
   "inventory": {
     "subtitle": "Materiały naprawcze, stany magazynowe i zapotrzebowania",
@@ -1049,5 +1183,12 @@
       "Waived": "Umorzono",
       "Cancelled": "Anulowany"
     }
+  },
+  "lock": {
+    "title": "Witaj ponownie, {{name}}",
+    "hint": "Odblokuj za pomocą Face ID, odcisku palca lub kodu telefonu.",
+    "unlock": "Odblokuj",
+    "prompt": "Odblokuj EstateFlow",
+    "usePassword": "Zaloguj się hasłem"
   }
 }

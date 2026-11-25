@@ -279,6 +279,14 @@ export interface MyDocumentDto {
 export type ApiServicePriority = 'Low' | 'Medium' | 'High' | 'Emergency';
 export type ApiServiceStatus = 'Open' | 'InProgress' | 'OnHold' | 'Resolved' | 'Closed';
 
+export interface ServiceCategoryOptionDto {
+  id?: string;
+  code: string;
+  nameEn: string;
+  nameAr?: string | null;
+  sortOrder?: number;
+}
+
 export interface MyServiceRequestDto {
   id: string;
   ticketNumber: string;

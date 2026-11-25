@@ -25,6 +25,7 @@ import {
   getMyProfile,
   getMyReceipt,
   getMyReceipts,
+  getMyServiceCategories,
   getMyServiceRequest,
   getMyServiceRequestPhotoUris,
   getMyServiceRequests,
@@ -53,12 +54,18 @@ import type {
   MyServiceRequestDto,
   MyViolationDto,
   MyVisitorDto,
+  ServiceCategoryOptionDto,
   ViolationAppealType,
 } from '@/api/types';
 import { login, logout, restoreSession, useAuth } from '@/auth/session';
 import { authMode, brand } from '@/config';
 import { useLanguage } from '@/i18n';
 import { daysUntil } from '@/lib/format';
+import {
+  DEFAULT_SERVICE_CATEGORIES,
+  findServiceCategory,
+  normalizeCategoryName,
+} from '@/lib/service-categories';
 import { omanToday } from '@/mock/clock';
 import {
   announcements as mockAnnouncements,
@@ -112,6 +119,10 @@ export interface MappedDocument {
 export interface MappedMaintenanceRequest extends MaintenanceRequest {
   /** Custom category text when the API category does not match one of the 8 standard keys. */
   categoryLabel?: string;
+  /** The raw category text stored on the ticket. */
+  rawCategory?: string;
+  /** The matched ServiceCategory code when the ticket's category is found in the category list. */
+  categoryCode?: string;
   unitCode?: string;
 }
 
@@ -130,6 +141,7 @@ interface LiveCache {
   receipts?: MyReceiptDto[];
   receiptDetails: Record<string, MyReceiptDetailDto>;
   documents?: MyDocumentDto[];
+  serviceCategories?: ServiceCategoryOptionDto[];
   requests?: MyServiceRequestDto[];
   requestDetails: Record<string, MyServiceRequestDto>;
   /** A request's photos as data URIs, loaded with its detail. */
@@ -196,23 +208,7 @@ const CATEGORY_TO_API: Record<RequestCategory, string> = {
   other: 'Other',
 };
 
-const API_TO_CATEGORY: Record<string, RequestCategory> = {
-  airconditioning: 'airConditioning',
-  'air conditioning': 'airConditioning',
-  ac: 'airConditioning',
-  hvac: 'airConditioning',
-  plumbing: 'plumbing',
-  electrical: 'electrical',
-  appliance: 'appliance',
-  appliances: 'appliance',
-  carpentry: 'carpentry',
-  'doors & carpentry': 'carpentry',
-  'doors and carpentry': 'carpentry',
-  pestcontrol: 'pestControl',
-  'pest control': 'pestControl',
-  cleaning: 'cleaning',
-  other: 'other',
-};
+const SEEDED_CODES = new Set<string>(DEFAULT_SERVICE_CATEGORIES.map((c) => c.code));
 
 const PRIORITY_TO_API: Record<RequestPriority, ApiServicePriority> = {
   low: 'Low',
@@ -241,17 +237,34 @@ function mapStageFromApi(status: string, assignedTo?: string | null): RequestSta
   return 'submitted';
 }
 
-function mapCategoryFromApi(rawCategory: string): { category: RequestCategory; categoryLabel?: string } {
-  const normalized = (rawCategory ?? '').trim().toLowerCase();
-  const matched = API_TO_CATEGORY[normalized];
-  if (matched) return { category: matched };
+function mapCategoryFromApi(
+  rawCategory: string,
+  categories: readonly ServiceCategoryOptionDto[] = DEFAULT_SERVICE_CATEGORIES,
+): { category: RequestCategory; categoryCode?: string; categoryLabel?: string; rawCategory: string } {
   const trimmed = (rawCategory ?? '').trim();
-  return { category: 'other', categoryLabel: trimmed || undefined };
+  const matched = findServiceCategory(trimmed, categories);
+  if (matched) {
+    const isSeeded = SEEDED_CODES.has(matched.code);
+    return {
+      category: (isSeeded ? matched.code : 'other') as RequestCategory,
+      categoryCode: matched.code,
+      rawCategory: trimmed,
+    };
+  }
+  return {
+    category: 'other',
+    categoryCode: undefined,
+    categoryLabel: trimmed || undefined,
+    rawCategory: trimmed,
+  };
 }
 
-export function mapServiceRequestDto(dto: MyServiceRequestDto): MappedMaintenanceRequest {
+export function mapServiceRequestDto(
+  dto: MyServiceRequestDto,
+  categories: readonly ServiceCategoryOptionDto[] = DEFAULT_SERVICE_CATEGORIES,
+): MappedMaintenanceRequest {
   const stage = mapStageFromApi(dto.status, dto.assignedTo);
-  const { category, categoryLabel } = mapCategoryFromApi(dto.category);
+  const { category, categoryCode, categoryLabel, rawCategory } = mapCategoryFromApi(dto.category, categories);
   const raisedOn = (dto.createdAtUtc ?? omanToday()).slice(0, 10);
   const updatedOn = (dto.updatedAtUtc ?? dto.createdAtUtc ?? omanToday()).slice(0, 10);
   const resolvedOn = (dto.resolvedOn ?? dto.updatedAtUtc ?? dto.createdAtUtc ?? omanToday()).slice(0, 10);
@@ -271,7 +284,9 @@ export function mapServiceRequestDto(dto: MyServiceRequestDto): MappedMaintenanc
     id: dto.id,
     requestNo: dto.ticketNumber || dto.id.slice(0, 8).toUpperCase(),
     category,
+    categoryCode,
     categoryLabel,
+    rawCategory,
     priority: mapPriorityFromApi(dto.priority),
     description: dto.description,
     stage,
@@ -926,26 +941,41 @@ export function useRequests() {
   const live = useLiveCache();
 
   const fetchRequests = useCallback(async () => {
-    const data = await getMyServiceRequests();
+    const [data, cats] = await Promise.all([
+      getMyServiceRequests(),
+      getMyServiceCategories().catch(() => DEFAULT_SERVICE_CATEGORIES),
+    ]);
     cache.requests = data;
+    cache.serviceCategories = cats.length > 0 ? cats : DEFAULT_SERVICE_CATEGORIES;
     notifyCache();
   }, []);
 
-  const status = useResource(Boolean(live.requests), fetchRequests);
+  const status = useResource(Boolean(live.requests && live.serviceCategories), fetchRequests);
 
   const submitRequest = useCallback(
     async (input: {
-      category: RequestCategory;
+      category: string;
       priority: RequestPriority;
       description: string;
       photos: string[];
     }): Promise<{ requestNo: string }> => {
       if (isDemo) {
-        const created = raiseRequest(input);
+        const matchedCode = (
+          DEFAULT_SERVICE_CATEGORIES.find(
+            (c) => c.code === input.category || normalizeCategoryName(c.nameEn) === normalizeCategoryName(input.category),
+          )?.code ?? 'other'
+        ) as RequestCategory;
+        const created = raiseRequest({ ...input, category: matchedCode });
         return { requestNo: created.requestNo };
       }
+      const activeCategories =
+        cache.serviceCategories && cache.serviceCategories.length > 0
+          ? cache.serviceCategories
+          : DEFAULT_SERVICE_CATEGORIES;
+      const matched = findServiceCategory(input.category, activeCategories);
+      const categoryNameEn = matched ? matched.nameEn : (CATEGORY_TO_API[input.category as RequestCategory] ?? input.category);
       const created = await createMyServiceRequest({
-        category: CATEGORY_TO_API[input.category],
+        category: categoryNameEn,
         priority: PRIORITY_TO_API[input.priority],
         description: input.description,
       });
@@ -966,7 +996,8 @@ export function useRequests() {
   if (isDemo) {
     return {
       isDemo: true,
-      requests: mock.requests as MappedMaintenanceRequest[],
+      categories: DEFAULT_SERVICE_CATEGORIES,
+      requests: mock.requests.map((r) => ({ ...r, categoryCode: r.category, rawCategory: r.category })) as MappedMaintenanceRequest[],
       submitRequest,
       loading: false,
       refreshing: false,
@@ -975,9 +1006,15 @@ export function useRequests() {
     };
   }
 
+  const categories =
+    live.serviceCategories && live.serviceCategories.length > 0
+      ? live.serviceCategories
+      : DEFAULT_SERVICE_CATEGORIES;
+
   return {
     isDemo: false,
-    requests: (live.requests ?? []).map(mapServiceRequestDto),
+    categories,
+    requests: (live.requests ?? []).map((dto) => mapServiceRequestDto(dto, categories)),
     submitRequest,
     ...status,
   };
@@ -992,15 +1029,19 @@ export function useRequestDetail(id: string) {
 
   const fetchDetail = useCallback(async () => {
     if (!id) return;
-    const [profileData, detail, photos] = await Promise.all([
+    const [profileData, detail, photos, cats] = await Promise.all([
       cache.profile ? Promise.resolve(cache.profile) : fetchProfileOnce(),
       getMyServiceRequest(id),
       // The request still shows if its photos cannot be loaded.
       getMyServiceRequestPhotoUris(id).catch(() => [] as string[]),
+      cache.serviceCategories
+        ? Promise.resolve(cache.serviceCategories)
+        : getMyServiceCategories().catch(() => DEFAULT_SERVICE_CATEGORIES),
     ]);
     cache.profile = profileData;
     cache.requestDetails = { ...cache.requestDetails, [id]: detail };
     cache.requestPhotos = { ...cache.requestPhotos, [id]: photos };
+    cache.serviceCategories = cats.length > 0 ? cats : DEFAULT_SERVICE_CATEGORIES;
     notifyCache();
   }, [id]);
 
@@ -1009,7 +1050,8 @@ export function useRequestDetail(id: string) {
   if (isDemo) {
     const found = (mock.requests.find((x) => x.id === id) ?? mock.requests[0]) as MappedMaintenanceRequest;
     return {
-      request: { ...found, unitCode: mockProperty.unitNo },
+      categories: DEFAULT_SERVICE_CATEGORIES,
+      request: { ...found, categoryCode: found.category, rawCategory: found.category, unitCode: mockProperty.unitNo },
       loading: false,
       refreshing: false,
       error: null,
@@ -1017,13 +1059,18 @@ export function useRequestDetail(id: string) {
     };
   }
 
+  const categories =
+    live.serviceCategories && live.serviceCategories.length > 0
+      ? live.serviceCategories
+      : DEFAULT_SERVICE_CATEGORIES;
   const fallbackFromList = live.requests?.find((x) => x.id === id);
   const source = cachedDetail ?? fallbackFromList;
   const mapped = source
-    ? { ...mapServiceRequestDto(source), unitCode: live.profile?.unit?.unitCode || '—', photos: live.requestPhotos[id] ?? [] }
-    : ({ ...mock.requests[0], unitCode: live.profile?.unit?.unitCode || '—' } as MappedMaintenanceRequest);
+    ? { ...mapServiceRequestDto(source, categories), unitCode: live.profile?.unit?.unitCode || '—', photos: live.requestPhotos[id] ?? [] }
+    : ({ ...mock.requests[0], categoryCode: mock.requests[0].category, rawCategory: mock.requests[0].category, unitCode: live.profile?.unit?.unitCode || '—' } as MappedMaintenanceRequest);
 
   return {
+    categories,
     request: mapped,
     ...status,
   };

@@ -9,6 +9,7 @@ import { Page } from '@/components/page';
 import { Card, Pill } from '@/components/ui';
 import { useLanguage } from '@/i18n';
 import { omr } from '@/lib/format';
+import { effectiveInvoiceStatus, invoiceStatusAccent, translateInvoiceStatus } from '@/lib/staff-helpers';
 import { space } from '@/theme/tokens';
 
 export default function InvoiceDetail() {
@@ -80,14 +81,8 @@ export default function InvoiceDetail() {
               {invoice.invoiceNumber}
             </AppText>
             <Pill
-              accent={
-                invoice.status === 'Paid'
-                  ? 'success'
-                  : invoice.status === 'Overdue'
-                  ? 'danger'
-                  : 'warning'
-              }
-              label={invoice.status}
+              accent={invoiceStatusAccent(effectiveInvoiceStatus(invoice))}
+              label={translateInvoiceStatus(t, effectiveInvoiceStatus(invoice))}
             />
           </View>
 

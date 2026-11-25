@@ -3,8 +3,10 @@ import { router } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { View } from 'react-native';
 
+import { lockApplies } from '@/auth/lock';
 import { accountLabel, useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
+import { LockSetting } from '@/components/app-lock';
 import { Page } from '@/components/page';
 import { Avatar, Button, Card, Details, ListRow, Pill, Segmented } from '@/components/ui';
 import { setThemeChoice, useThemeChoice, type ThemeChoice } from '@/hooks/use-color-scheme';
@@ -49,6 +51,7 @@ export default function StaffProfile() {
       <Card padded={false} style={{ gap: 0, overflow: 'hidden' }}>
         <ListRow first icon={IconLanguage} label={t('profile.language')} detail={language.nativeName} onPress={() => router.push('/language')} />
       </Card>
+      {lockApplies ? <LockSetting /> : null}
 
       <Card>
         <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }}>

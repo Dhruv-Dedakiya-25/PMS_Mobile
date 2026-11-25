@@ -9,6 +9,7 @@ import { Page } from '@/components/page';
 import { Card, Pill } from '@/components/ui';
 import { useLanguage } from '@/i18n';
 import { omr } from '@/lib/format';
+import { leaseStatusAccent, translateLeaseStatus, translateRentFrequency } from '@/lib/staff-helpers';
 import { space } from '@/theme/tokens';
 
 export default function LeaseDetail() {
@@ -80,8 +81,8 @@ export default function LeaseDetail() {
               {lease.leaseNumber}
             </AppText>
             <Pill
-              accent={lease.status === 'Active' ? 'success' : 'primary'}
-              label={lease.status}
+              accent={leaseStatusAccent(lease.status)}
+              label={translateLeaseStatus(t, lease.status)}
             />
           </View>
 
@@ -90,7 +91,7 @@ export default function LeaseDetail() {
               {t('staff.rentAmount')}
             </AppText>
             <AppText variant="heading" weight="bold" tone="primary">
-              {omr(lease.rentAmount, code)} / {lease.rentFrequency}
+              {omr(lease.rentAmount, code)} / {translateRentFrequency(t, lease.rentFrequency)}
             </AppText>
           </View>
 

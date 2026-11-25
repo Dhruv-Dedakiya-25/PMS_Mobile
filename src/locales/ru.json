@@ -690,7 +690,13 @@
     "themeSystem": "Автоматически",
     "themeLight": "Светлое",
     "themeDark": "Тёмное",
-    "signOut": "Выйти"
+    "signOut": "Выйти",
+    "lock": {
+      "title": "Разблокировка по Face ID или отпечатку",
+      "onHint": "Запрашивается при открытии приложения и после 5 минут отсутствия.",
+      "offHint": "Выключено: при каждом открытии приложения вы входите с паролем.",
+      "unavailable": "Чтобы пользоваться этим, настройте на телефоне Face ID, отпечаток или код-пароль."
+    }
   },
   "done": {
     "home": "На главную",
@@ -790,6 +796,7 @@
     "assignedTo": "Исполнитель",
     "category": "Категория",
     "priority": "Приоритет",
+    "preferredVisitTime": "Предпочтительное время визита",
     "status": "Статус",
     "description": "Описание",
     "saveChanges": "Сохранить изменения",
@@ -828,7 +835,134 @@
     "general": "Общее",
     "buildingWide": "Все здание",
     "noAnnouncements": "Объявлений не найдено",
-    "userType": "Тип пользователя"
+    "userType": "Тип пользователя",
+    "searchProperties": "Поиск по названию объекта, коду или городу",
+    "searchBuildingsAndUnits": "Поиск по зданию, вилле, помещению или коду",
+    "searchUnitsInBuilding": "Поиск по коду помещения, названию или арендатору в здании",
+    "searchUnits": "Поиск по коду помещения, названию или арендатору",
+    "searchLeases": "Поиск по номеру договора, арендатору или помещению",
+    "searchTenants": "Поиск по имени арендатора, номеру, телефону или эл. почте",
+    "searchInvoices": "Поиск по номеру счёта, арендатору или помещению",
+    "searchReceipts": "Поиск по номеру квитанции, арендатору или референсу",
+    "searchInstallments": "Поиск по номеру договора, арендатору или помещению",
+    "searchTickets": "Поиск по номеру заявки, категории или описанию",
+    "searchWorkOrders": "Поиск по наряду на работы, заявке или исполнителю",
+    "searchAssets": "Поиск по названию оборудования, тегу, категории или месту",
+    "searchInspections": "Поиск по номеру осмотра, названию, помещению или инспектору",
+    "searchFacilities": "Поиск по названию объекта инфраструктуры или коду",
+    "searchInventory": "Поиск по названию материала, коду, категории или складу",
+    "searchRequisitions": "Поиск по номеру требования, заявке или материалу",
+    "searchAnnouncements": "Поиск по заголовку объявления, категории или объекту",
+    "searchApprovals": "Поиск по номеру, теме или заявителю",
+    "showMore": "Показать ещё (осталось {{count}})",
+    "allProperties": "Все объекты",
+    "allStructures": "Все структуры",
+    "allTypes": "Все типы",
+    "hasVacantUnits": "Есть свободные помещения",
+    "fullyOccupied": "Полностью занят",
+    "structure": {
+      "Individual": "Отдельный",
+      "Group": "Группа"
+    },
+    "sortNewestDue": "Сначала новые по сроку оплаты",
+    "sortOldestDue": "Сначала старые по сроку оплаты",
+    "rangeThisMonth": "Этот месяц",
+    "rangeLastMonth": "Прошлый месяц",
+    "rangeAllDates": "Все даты",
+    "bookable": "Доступно для брони",
+    "nonBookable": "Без бронирования",
+    "stockOk": "В наличии",
+    "waitingForMe": "Ожидает моего решения",
+    "buildingsSection": "Здания",
+    "villasOtherSpaces": "Виллы и другие помещения",
+    "floorsSection": "Этажи",
+    "otherUnits": "Прочие помещения",
+    "buildingDetails": "Сведения о здании",
+    "floorDetails": "Сведения об этаже",
+    "unitDetails": "Сведения о помещении",
+    "building": "Здание",
+    "floor": "Этаж",
+    "type": "Тип",
+    "code": "Код",
+    "name": "Название",
+    "city": "Город",
+    "beds": "Спальни",
+    "baths": "Санузлы",
+    "sqm": "м²",
+    "area": "Площадь",
+    "furnishingLabel": "Меблировка",
+    "furnishing": {
+      "Unfurnished": "Без мебели",
+      "SemiFurnished": "Частично меблировано",
+      "Furnished": "Меблировано"
+    },
+    "noticePeriodCount": "Уведомление о выезде",
+    "noticeCount": "{{n}} уведомление о выезде",
+    "currentLease": "Текущий договор аренды",
+    "noCurrentLease": "Для этого помещения нет действующего договора аренды",
+    "tenant": "Арендатор",
+    "mobile": "Мобильный",
+    "leaseOutstanding": "Задолженность по договору",
+    "overdueCount": "Просрочено ({{count}})",
+    "collectedMonth": "Собрано за этот месяц",
+    "unitStatus": {
+      "Occupied": "Занято",
+      "Vacant": "Свободно",
+      "NoticePeriod": "Период уведомления",
+      "Reserved": "Забронировано",
+      "UnderMaintenance": "На обслуживании",
+      "Blocked": "Заблокировано",
+      "OwnerOccupied": "Занято собственником"
+    },
+    "invoiceStatus": {
+      "Overdue": "Просрочен",
+      "Posted": "Выставлен / Не оплачен",
+      "PartPaid": "Частично оплачен",
+      "Paid": "Оплачен",
+      "Draft": "Черновик",
+      "Cancelled": "Отменён"
+    },
+    "receiptStatus": {
+      "Posted": "Проведена",
+      "Draft": "Черновик",
+      "Reversed": "Сторнирована"
+    },
+    "installmentStatus": {
+      "Due": "К оплате",
+      "Overdue": "Просрочен",
+      "Paid": "Оплачен",
+      "Cancelled": "Отменён"
+    },
+    "ticketStatus": {
+      "Open": "Открыта",
+      "InProgress": "В работе",
+      "OnHold": "На паузе",
+      "Resolved": "Решена",
+      "Closed": "Закрыта"
+    },
+    "priorityLevel": {
+      "Low": "Низкий",
+      "Medium": "Средний",
+      "High": "Высокий",
+      "Emergency": "Экстренный"
+    },
+    "paymentMethods": {
+      "Cash": "Наличные",
+      "Cheque": "Чек",
+      "BankTransfer": "Банковский перевод",
+      "Card": "Карта",
+      "OnlineGateway": "Онлайн-шлюз",
+      "Other": "Другое"
+    },
+    "unitsSummary_one": "{{count}} помещение · {{occupied}} занято · {{vacant}} свободно",
+    "unitsSummary_other": "{{count}} помещений · {{occupied}} занято · {{vacant}} свободно",
+    "unitsSummary_few": "{{count}} помещения · {{occupied}} занято · {{vacant}} свободно",
+    "unitsSummary_many": "{{count}} помещений · {{occupied}} занято · {{vacant}} свободно",
+    "allBuildingsAndVillas": "Все здания и виллы",
+    "allFloors": "Все этажи",
+    "allUnits": "Все помещения",
+    "tenantNoCurrentLease": "Нет текущего договора",
+    "searchOptions": "Поиск…"
   },
   "inventory": {
     "subtitle": "Ремонтные материалы, остатки и требования на выдачу",
@@ -1049,5 +1183,12 @@
       "Waived": "Списано",
       "Cancelled": "Отменён"
     }
+  },
+  "lock": {
+    "title": "С возвращением, {{name}}",
+    "hint": "Разблокируйте с помощью Face ID, отпечатка пальца или код-пароля телефона.",
+    "unlock": "Разблокировать",
+    "prompt": "Разблокировать EstateFlow",
+    "usePassword": "Войти с паролем"
   }
 }

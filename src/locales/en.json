@@ -262,10 +262,10 @@
     "statuses": {
       "Active": "Active",
       "Draft": "Draft",
-      "PendingApproval": "Pending Approval",
+      "PendingApproval": "Pending approval",
       "Expired": "Expired",
       "Terminated": "Terminated",
-      "NoticePeriod": "Notice Period",
+      "NoticePeriod": "Notice period",
       "Cancelled": "Cancelled",
       "Renewed": "Renewed"
     },
@@ -654,7 +654,13 @@
     "themeSystem": "Automatic",
     "themeLight": "Light",
     "themeDark": "Dark",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "lock": {
+      "title": "Unlock with Face ID or fingerprint",
+      "onHint": "Asked when you open the app, and after 5 minutes away.",
+      "offHint": "Off: you sign in with your password each time you open the app.",
+      "unavailable": "Set up Face ID, a fingerprint or a passcode on this phone to use this."
+    }
   },
   "done": {
     "home": "Back to Dashboard",
@@ -722,12 +728,12 @@
     "urgentTickets": "Urgent Tickets",
     "inProgress": "In progress",
     "resolved": "Resolved",
-    "totalUnits": "Total Units",
-    "occupiedUnits": "Occupied Units",
+    "totalUnits": "Total units",
+    "occupiedUnits": "Occupied units",
     "vacantUnits": "Vacant units",
-    "occupancyRate": "Occupancy Rate",
-    "activeLeases": "Active Leases",
-    "monthlyRentRoll": "Monthly Rent Roll",
+    "occupancyRate": "Occupancy rate",
+    "activeLeases": "Active leases",
+    "monthlyRentRoll": "Monthly rent roll",
     "billedThisMonth": "Billed This Month",
     "collectedThisMonth": "Collected",
     "outstanding": "Outstanding",
@@ -754,6 +760,7 @@
     "assignedTo": "Assigned To",
     "category": "Category",
     "priority": "Priority",
+    "preferredVisitTime": "Preferred Visit Time",
     "status": "Status",
     "description": "Description",
     "saveChanges": "Save Changes",
@@ -792,7 +799,132 @@
     "general": "General",
     "buildingWide": "Building Wide",
     "noAnnouncements": "No notices found",
-    "userType": "User Type"
+    "userType": "User Type",
+    "searchProperties": "Search property name, code or city",
+    "searchBuildingsAndUnits": "Search building, villa, space or code",
+    "searchUnitsInBuilding": "Search unit code, name or tenant in this building",
+    "searchUnits": "Search unit code, name or tenant",
+    "searchLeases": "Search lease number, tenant or unit",
+    "searchTenants": "Search tenant name, number, mobile or email",
+    "searchInvoices": "Search invoice number, tenant or unit",
+    "searchReceipts": "Search receipt number, tenant or reference",
+    "searchInstallments": "Search lease number, tenant or unit",
+    "searchTickets": "Search ticket number, category or description",
+    "searchWorkOrders": "Search work order, ticket or assignee",
+    "searchAssets": "Search asset name, tag, category or location",
+    "searchInspections": "Search inspection number, title, unit or inspector",
+    "searchFacilities": "Search facility name or code",
+    "searchInventory": "Search item name, code, category or location",
+    "searchRequisitions": "Search requisition number, ticket or item",
+    "searchAnnouncements": "Search notice title, category or property",
+    "searchApprovals": "Search reference, subject or requester",
+    "showMore": "Show more ({{count}} left)",
+    "allProperties": "All properties",
+    "allStructures": "All structures",
+    "allTypes": "All types",
+    "hasVacantUnits": "Has vacant units",
+    "fullyOccupied": "Fully occupied",
+    "structure": {
+      "Individual": "Individual",
+      "Group": "Group"
+    },
+    "sortNewestDue": "Newest due date",
+    "sortOldestDue": "Oldest due date",
+    "rangeThisMonth": "This month",
+    "rangeLastMonth": "Last month",
+    "rangeAllDates": "All dates",
+    "bookable": "Bookable",
+    "nonBookable": "Not bookable",
+    "stockOk": "In stock",
+    "waitingForMe": "Waiting for me",
+    "buildingsSection": "Buildings",
+    "villasOtherSpaces": "Villas & other spaces",
+    "floorsSection": "Floors",
+    "otherUnits": "Other units",
+    "buildingDetails": "Building details",
+    "floorDetails": "Floor details",
+    "unitDetails": "Unit details",
+    "building": "Building",
+    "floor": "Floor",
+    "type": "Type",
+    "code": "Code",
+    "name": "Name",
+    "city": "City",
+    "beds": "Beds",
+    "baths": "Baths",
+    "sqm": "sqm",
+    "area": "Area",
+    "furnishingLabel": "Furnishing",
+    "furnishing": {
+      "Unfurnished": "Unfurnished",
+      "SemiFurnished": "Semi-furnished",
+      "Furnished": "Furnished"
+    },
+    "noticePeriodCount": "Notice period",
+    "noticeCount": "{{n}} in notice period",
+    "currentLease": "Current lease",
+    "noCurrentLease": "No current lease on this unit",
+    "tenant": "Tenant",
+    "mobile": "Mobile",
+    "leaseOutstanding": "Outstanding on lease",
+    "overdueCount": "Overdue ({{count}})",
+    "collectedMonth": "Collected this month",
+    "unitStatus": {
+      "Occupied": "Occupied",
+      "Vacant": "Vacant",
+      "NoticePeriod": "Notice period",
+      "Reserved": "Reserved",
+      "UnderMaintenance": "Under maintenance",
+      "Blocked": "Blocked",
+      "OwnerOccupied": "Owner occupied"
+    },
+    "invoiceStatus": {
+      "Overdue": "Overdue",
+      "Posted": "Posted / Unpaid",
+      "PartPaid": "Partly paid",
+      "Paid": "Paid",
+      "Draft": "Draft",
+      "Cancelled": "Cancelled"
+    },
+    "receiptStatus": {
+      "Posted": "Posted",
+      "Draft": "Draft",
+      "Reversed": "Reversed"
+    },
+    "installmentStatus": {
+      "Due": "Due",
+      "Overdue": "Overdue",
+      "Paid": "Paid",
+      "Cancelled": "Cancelled"
+    },
+    "ticketStatus": {
+      "Open": "Open",
+      "InProgress": "In progress",
+      "OnHold": "On hold",
+      "Resolved": "Resolved",
+      "Closed": "Closed"
+    },
+    "priorityLevel": {
+      "Low": "Low",
+      "Medium": "Medium",
+      "High": "High",
+      "Emergency": "Emergency"
+    },
+    "paymentMethods": {
+      "Cash": "Cash",
+      "Cheque": "Cheque",
+      "BankTransfer": "Bank transfer",
+      "Card": "Card",
+      "OnlineGateway": "Online gateway",
+      "Other": "Other"
+    },
+    "unitsSummary_one": "{{count}} unit · {{occupied}} occupied · {{vacant}} vacant",
+    "unitsSummary_other": "{{count}} units · {{occupied}} occupied · {{vacant}} vacant",
+    "allBuildingsAndVillas": "All buildings & villas",
+    "allFloors": "All floors",
+    "allUnits": "All units",
+    "tenantNoCurrentLease": "No current lease",
+    "searchOptions": "Search…"
   },
   "inventory": {
     "subtitle": "Repair materials, stock levels and requisitions",
@@ -1013,5 +1145,12 @@
       "Waived": "Waived",
       "Cancelled": "Cancelled"
     }
+  },
+  "lock": {
+    "title": "Welcome back, {{name}}",
+    "hint": "Unlock with Face ID, your fingerprint or your phone's passcode.",
+    "unlock": "Unlock",
+    "prompt": "Unlock EstateFlow",
+    "usePassword": "Sign in with password instead"
   }
 }

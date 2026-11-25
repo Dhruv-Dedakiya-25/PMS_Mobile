@@ -654,7 +654,13 @@
     "themeSystem": "Automatique",
     "themeLight": "Clair",
     "themeDark": "Sombre",
-    "signOut": "Se déconnecter"
+    "signOut": "Se déconnecter",
+    "lock": {
+      "title": "Déverrouiller avec Face ID ou l'empreinte",
+      "onHint": "Demandé à l'ouverture de l'app et après 5 minutes d'absence.",
+      "offHint": "Désactivé : vous vous connectez avec votre mot de passe à chaque ouverture.",
+      "unavailable": "Configurez Face ID, une empreinte ou un code sur ce téléphone pour l'utiliser."
+    }
   },
   "done": {
     "home": "Retour à l’accueil",
@@ -754,6 +760,7 @@
     "assignedTo": "Assigné à",
     "category": "Catégorie",
     "priority": "Priorité",
+    "preferredVisitTime": "Créneau de visite souhaité",
     "status": "Statut",
     "description": "Description",
     "saveChanges": "Enregistrer les modifications",
@@ -792,7 +799,132 @@
     "general": "Général",
     "buildingWide": "Tout l'immeuble",
     "noAnnouncements": "Aucun avis trouvé",
-    "userType": "Type d'utilisateur"
+    "userType": "Type d'utilisateur",
+    "searchProperties": "Rechercher nom de propriété, code ou ville",
+    "searchBuildingsAndUnits": "Rechercher bâtiment, villa, espace ou code",
+    "searchUnitsInBuilding": "Rechercher code d’unité, nom ou locataire dans ce bâtiment",
+    "searchUnits": "Rechercher code d’unité, nom ou locataire",
+    "searchLeases": "Rechercher numéro de bail, locataire ou unité",
+    "searchTenants": "Rechercher nom de locataire, numéro, mobile ou e-mail",
+    "searchInvoices": "Rechercher numéro de facture, locataire ou unité",
+    "searchReceipts": "Rechercher numéro de reçu, locataire ou référence",
+    "searchInstallments": "Rechercher numéro de bail, locataire ou unité",
+    "searchTickets": "Rechercher numéro de ticket, catégorie ou description",
+    "searchWorkOrders": "Rechercher ordre de travail, ticket ou intervenant",
+    "searchAssets": "Rechercher nom d’équipement, code, catégorie ou emplacement",
+    "searchInspections": "Rechercher numéro d’inspection, titre, unité ou inspecteur",
+    "searchFacilities": "Rechercher nom d’installation ou code",
+    "searchInventory": "Rechercher nom d’article, code, catégorie ou emplacement",
+    "searchRequisitions": "Rechercher numéro de demande, ticket ou article",
+    "searchAnnouncements": "Rechercher titre d’annonce, catégorie ou propriété",
+    "searchApprovals": "Rechercher référence, objet ou demandeur",
+    "showMore": "Afficher plus ({{count}} restants)",
+    "allProperties": "Toutes les propriétés",
+    "allStructures": "Toutes les structures",
+    "allTypes": "Tous les types",
+    "hasVacantUnits": "Avec unités vacantes",
+    "fullyOccupied": "Entièrement occupée",
+    "structure": {
+      "Individual": "Individuelle",
+      "Group": "Groupe"
+    },
+    "sortNewestDue": "Échéance la plus récente",
+    "sortOldestDue": "Échéance la plus ancienne",
+    "rangeThisMonth": "Ce mois-ci",
+    "rangeLastMonth": "Le mois dernier",
+    "rangeAllDates": "Toutes les dates",
+    "bookable": "Réservable",
+    "nonBookable": "Non réservable",
+    "stockOk": "En stock",
+    "waitingForMe": "En attente de ma décision",
+    "buildingsSection": "Bâtiments",
+    "villasOtherSpaces": "Villas et autres espaces",
+    "floorsSection": "Étages",
+    "otherUnits": "Autres unités",
+    "buildingDetails": "Détails du bâtiment",
+    "floorDetails": "Détails de l’étage",
+    "unitDetails": "Détails de l’unité",
+    "building": "Bâtiment",
+    "floor": "Étage",
+    "type": "Type",
+    "code": "Code",
+    "name": "Nom",
+    "city": "Ville",
+    "beds": "Chambres",
+    "baths": "Salles de bain",
+    "sqm": "m²",
+    "area": "Surface",
+    "furnishingLabel": "Ameublement",
+    "furnishing": {
+      "Unfurnished": "Non meublé",
+      "SemiFurnished": "Semi-meublé",
+      "Furnished": "Meublé"
+    },
+    "noticePeriodCount": "Préavis",
+    "noticeCount": "{{n}} préavis",
+    "currentLease": "Bail en cours",
+    "noCurrentLease": "Aucun bail en cours pour cette unité",
+    "tenant": "Locataire",
+    "mobile": "Mobile",
+    "leaseOutstanding": "Solde dû sur le bail",
+    "overdueCount": "En retard ({{count}})",
+    "collectedMonth": "Encaissé ce mois-ci",
+    "unitStatus": {
+      "Occupied": "Occupée",
+      "Vacant": "Vacante",
+      "NoticePeriod": "En préavis",
+      "Reserved": "Réservée",
+      "UnderMaintenance": "En maintenance",
+      "Blocked": "Bloquée",
+      "OwnerOccupied": "Occupée par le propriétaire"
+    },
+    "invoiceStatus": {
+      "Overdue": "En retard",
+      "Posted": "Émise / Impayée",
+      "PartPaid": "Partiellement payée",
+      "Paid": "Payée",
+      "Draft": "Brouillon",
+      "Cancelled": "Annulée"
+    },
+    "receiptStatus": {
+      "Posted": "Validé",
+      "Draft": "Brouillon",
+      "Reversed": "Contrepassé"
+    },
+    "installmentStatus": {
+      "Due": "À payer",
+      "Overdue": "En retard",
+      "Paid": "Payée",
+      "Cancelled": "Annulée"
+    },
+    "ticketStatus": {
+      "Open": "Ouvert",
+      "InProgress": "En cours",
+      "OnHold": "En attente",
+      "Resolved": "Résolu",
+      "Closed": "Fermé"
+    },
+    "priorityLevel": {
+      "Low": "Basse",
+      "Medium": "Moyenne",
+      "High": "Haute",
+      "Emergency": "Urgence"
+    },
+    "paymentMethods": {
+      "Cash": "Espèces",
+      "Cheque": "Chèque",
+      "BankTransfer": "Virement bancaire",
+      "Card": "Carte bancaire",
+      "OnlineGateway": "Paiement en ligne",
+      "Other": "Autre"
+    },
+    "unitsSummary_one": "{{count}} unité · {{occupied}} occupées · {{vacant}} vacantes",
+    "unitsSummary_other": "{{count}} unités · {{occupied}} occupées · {{vacant}} vacantes",
+    "allBuildingsAndVillas": "Tous les bâtiments et villas",
+    "allFloors": "Tous les étages",
+    "allUnits": "Toutes les unités",
+    "tenantNoCurrentLease": "Aucun bail en cours",
+    "searchOptions": "Rechercher…"
   },
   "inventory": {
     "subtitle": "Matériaux de réparation, niveaux de stock et demandes",
@@ -1013,5 +1145,12 @@
       "Waived": "Exonéré",
       "Cancelled": "Annulé"
     }
+  },
+  "lock": {
+    "title": "Bon retour, {{name}}",
+    "hint": "Déverrouillez avec Face ID, votre empreinte ou le code de votre téléphone.",
+    "unlock": "Déverrouiller",
+    "prompt": "Déverrouiller EstateFlow",
+    "usePassword": "Se connecter avec le mot de passe"
   }
 }

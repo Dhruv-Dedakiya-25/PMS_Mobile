@@ -654,7 +654,13 @@
     "themeSystem": "自动",
     "themeLight": "浅色",
     "themeDark": "深色",
-    "signOut": "退出登录"
+    "signOut": "退出登录",
+    "lock": {
+      "title": "使用面容 ID 或指纹解锁",
+      "onHint": "打开应用时以及离开 5 分钟后会要求验证。",
+      "offHint": "关闭：每次打开应用都需用密码登录。",
+      "unavailable": "要使用此功能，请在这部手机上设置面容 ID、指纹或密码。"
+    }
   },
   "done": {
     "home": "返回首页",
@@ -754,6 +760,7 @@
     "assignedTo": "指派给",
     "category": "类别",
     "priority": "优先级",
+    "preferredVisitTime": "首选上门时间",
     "status": "状态",
     "description": "描述",
     "saveChanges": "保存更改",
@@ -792,7 +799,132 @@
     "general": "常规",
     "buildingWide": "整栋大楼",
     "noAnnouncements": "未找到公告",
-    "userType": "用户类型"
+    "userType": "用户类型",
+    "searchProperties": "搜索物业名称、编码或城市",
+    "searchBuildingsAndUnits": "搜索楼栋、别墅、空间或编码",
+    "searchUnitsInBuilding": "在此楼栋中搜索单元编码、名称或租户",
+    "searchUnits": "搜索单元编码、名称或租户",
+    "searchLeases": "搜索租约编号、租户或单元",
+    "searchTenants": "搜索租户姓名、编号、手机或邮箱",
+    "searchInvoices": "搜索账单编号、租户或单元",
+    "searchReceipts": "搜索收据编号、租户或参考号",
+    "searchInstallments": "搜索租约编号、租户或单元",
+    "searchTickets": "搜索工单编号、类别或描述",
+    "searchWorkOrders": "搜索派工单、工单或负责人",
+    "searchAssets": "搜索资产名称、标签、类别或位置",
+    "searchInspections": "搜索巡检编号、标题、单元或检查员",
+    "searchFacilities": "搜索设施名称或编码",
+    "searchInventory": "搜索物料名称、编码、类别或库位",
+    "searchRequisitions": "搜索领料单号、工单或物料",
+    "searchAnnouncements": "搜索公告标题、类别或物业",
+    "searchApprovals": "搜索编号、主题或申请人",
+    "showMore": "显示更多（剩余 {{count}} 项）",
+    "allProperties": "全部物业",
+    "allStructures": "全部结构",
+    "allTypes": "全部类型",
+    "hasVacantUnits": "有空置单元",
+    "fullyOccupied": "已满租",
+    "structure": {
+      "Individual": "独立物业",
+      "Group": "园区/组合"
+    },
+    "sortNewestDue": "最新到期日优先",
+    "sortOldestDue": "最早到期日优先",
+    "rangeThisMonth": "本月",
+    "rangeLastMonth": "上月",
+    "rangeAllDates": "全部日期",
+    "bookable": "可预订",
+    "nonBookable": "不可预订",
+    "stockOk": "库存充足",
+    "waitingForMe": "待我审批",
+    "buildingsSection": "楼栋",
+    "villasOtherSpaces": "别墅及其他空间",
+    "floorsSection": "楼层",
+    "otherUnits": "其他单元",
+    "buildingDetails": "楼栋详情",
+    "floorDetails": "楼层详情",
+    "unitDetails": "单元详情",
+    "building": "楼栋",
+    "floor": "楼层",
+    "type": "类型",
+    "code": "编码",
+    "name": "名称",
+    "city": "城市",
+    "beds": "卧室",
+    "baths": "卫浴",
+    "sqm": "平方米",
+    "area": "面积",
+    "furnishingLabel": "装修配置",
+    "furnishing": {
+      "Unfurnished": "无家具",
+      "SemiFurnished": "部分家具",
+      "Furnished": "全套家具"
+    },
+    "noticePeriodCount": "退租通知期",
+    "noticeCount": "{{n}} 退租通知期",
+    "currentLease": "当前租约",
+    "noCurrentLease": "该单元暂无生效租约",
+    "tenant": "租户",
+    "mobile": "手机号",
+    "leaseOutstanding": "租约未付余额",
+    "overdueCount": "逾期 ({{count}})",
+    "collectedMonth": "本月已收",
+    "unitStatus": {
+      "Occupied": "已租",
+      "Vacant": "空置",
+      "NoticePeriod": "退租通知期",
+      "Reserved": "已预订",
+      "UnderMaintenance": "维修中",
+      "Blocked": "已封锁",
+      "OwnerOccupied": "业主自住"
+    },
+    "invoiceStatus": {
+      "Overdue": "逾期",
+      "Posted": "已开具 / 未付",
+      "PartPaid": "部分已付",
+      "Paid": "已付",
+      "Draft": "草稿",
+      "Cancelled": "已取消"
+    },
+    "receiptStatus": {
+      "Posted": "已入账",
+      "Draft": "草稿",
+      "Reversed": "已冲销"
+    },
+    "installmentStatus": {
+      "Due": "应付",
+      "Overdue": "逾期",
+      "Paid": "已付",
+      "Cancelled": "已取消"
+    },
+    "ticketStatus": {
+      "Open": "待处理",
+      "InProgress": "处理中",
+      "OnHold": "已挂起",
+      "Resolved": "已解决",
+      "Closed": "已关闭"
+    },
+    "priorityLevel": {
+      "Low": "低",
+      "Medium": "中",
+      "High": "高",
+      "Emergency": "紧急"
+    },
+    "paymentMethods": {
+      "Cash": "现金",
+      "Cheque": "支票",
+      "BankTransfer": "银行转账",
+      "Card": "银行卡",
+      "OnlineGateway": "在线支付网关",
+      "Other": "其他"
+    },
+    "unitsSummary_one": "{{count}} 个单元 · {{occupied}} 已租 · {{vacant}} 空置",
+    "unitsSummary_other": "{{count}} 个单元 · {{occupied}} 已租 · {{vacant}} 空置",
+    "allBuildingsAndVillas": "全部楼栋与别墅",
+    "allFloors": "全部楼层",
+    "allUnits": "全部单元",
+    "tenantNoCurrentLease": "无当前租约",
+    "searchOptions": "搜索…"
   },
   "inventory": {
     "subtitle": "维修材料、库存水平和领料申请",
@@ -1013,5 +1145,12 @@
       "Waived": "已减免",
       "Cancelled": "已取消"
     }
+  },
+  "lock": {
+    "title": "欢迎回来，{{name}}",
+    "hint": "使用面容 ID、指纹或手机密码解锁。",
+    "unlock": "解锁",
+    "prompt": "解锁 EstateFlow",
+    "usePassword": "改用密码登录"
   }
 }

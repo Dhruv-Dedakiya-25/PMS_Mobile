@@ -7,18 +7,21 @@ import { Pressable, View } from 'react-native';
 import {
   createStaffMaterialRequisition,
   getStaffInventoryItems,
+  getStaffServiceCategories,
   getStaffTickets,
   sendStaffMaterialRequisition,
   updateStaffMaterialRequisition,
   type StaffInventoryItem,
   type StaffTicket,
 } from '@/api/staff';
+import type { ServiceCategoryOptionDto } from '@/api/types';
 import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
 import { Button, Card, Field, Select } from '@/components/ui';
 import { useLanguage } from '@/i18n';
 import { omr } from '@/lib/format';
+import { DEFAULT_SERVICE_CATEGORIES, formatTicketCategory } from '@/lib/service-categories';
 import { createRequest, useInventory } from '@/mock/inventory';
 import { space, usePalette } from '@/theme/tokens';
 
@@ -37,6 +40,7 @@ export default function NewRequisition() {
 
   const [apiItems, setApiItems] = useState<StaffInventoryItem[]>([]);
   const [tickets, setTickets] = useState<StaffTicket[]>([]);
+  const [categories, setCategories] = useState<ServiceCategoryOptionDto[]>(DEFAULT_SERVICE_CATEGORIES);
   const [loading, setLoading] = useState(!isDemo);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [attempt, setAttempt] = useState(0);
@@ -62,11 +66,13 @@ export default function NewRequisition() {
     Promise.all([
       getStaffInventoryItems(),
       getStaffTickets().catch(() => [] as StaffTicket[]),
+      getStaffServiceCategories().catch(() => DEFAULT_SERVICE_CATEGORIES),
     ])
-      .then(([loadedItems, rows]) => {
+      .then(([loadedItems, rows, cats]) => {
         if (!cancelled) {
           setApiItems(loadedItems.filter((i) => i.isActive !== false));
           setTickets(rows.filter((r) => r.status !== 'Closed' && r.status !== 'Resolved'));
+          if (cats.length > 0) setCategories(cats);
           setLoadError(null);
         }
       })
@@ -102,7 +108,10 @@ export default function NewRequisition() {
 
   const ticketOptions = [
     { value: '', label: t('inventory.generalUse') },
-    ...tickets.map((tk) => ({ value: tk.id, label: `${tk.ticketNumber} — ${tk.category}` })),
+    ...tickets.map((tk) => ({
+      value: tk.id,
+      label: `${tk.ticketNumber} — ${formatTicketCategory(tk.category, categories, t, language.code)}`,
+    })),
   ];
   // A ticket opened from its own page may already be closed to new work; keep it choosable.
   if (params.ticketId && !tickets.some((tk) => tk.id === params.ticketId)) {

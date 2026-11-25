@@ -262,10 +262,10 @@
     "statuses": {
       "Active": "Aktif",
       "Draft": "Draf",
-      "PendingApproval": "Menunggu Kelulusan",
-      "Expired": "Tamat Tempoh",
+      "PendingApproval": "Menunggu kelulusan",
+      "Expired": "Tamat tempoh",
       "Terminated": "Ditamatkan",
-      "NoticePeriod": "Tempoh Notis",
+      "NoticePeriod": "Tempoh notis",
       "Cancelled": "Dibatalkan",
       "Renewed": "Diperbaharui"
     },
@@ -654,7 +654,13 @@
     "themeSystem": "Automatik",
     "themeLight": "Cerah",
     "themeDark": "Gelap",
-    "signOut": "Log keluar"
+    "signOut": "Log keluar",
+    "lock": {
+      "title": "Buka kunci dengan Face ID atau cap jari",
+      "onHint": "Diminta apabila membuka aplikasi dan selepas 5 minit ditinggalkan.",
+      "offHint": "Mati: anda log masuk dengan kata laluan setiap kali membuka aplikasi.",
+      "unavailable": "Sediakan Face ID, cap jari atau kod laluan pada telefon ini untuk menggunakannya."
+    }
   },
   "done": {
     "home": "Kembali ke utama",
@@ -754,6 +760,7 @@
     "assignedTo": "Ditugaskan kepada",
     "category": "Kategori",
     "priority": "Keutamaan",
+    "preferredVisitTime": "Masa lawatan pilihan",
     "status": "Keadaan",
     "description": "Penerangan",
     "saveChanges": "Simpan perubahan",
@@ -792,7 +799,132 @@
     "general": "Umum",
     "buildingWide": "Seluruh Bangunan",
     "noAnnouncements": "Tiada notis dijumpai",
-    "userType": "Jenis pengguna"
+    "userType": "Jenis pengguna",
+    "searchProperties": "Cari nama hartanah, kod atau bandar",
+    "searchBuildingsAndUnits": "Cari bangunan, vila, ruang atau kod",
+    "searchUnitsInBuilding": "Cari kod unit, nama atau penyewa di bangunan ini",
+    "searchUnits": "Cari kod unit, nama atau penyewa",
+    "searchLeases": "Cari nombor pajakan, penyewa atau unit",
+    "searchTenants": "Cari nama penyewa, nombor, telefon atau e-mel",
+    "searchInvoices": "Cari nombor invois, penyewa atau unit",
+    "searchReceipts": "Cari nombor resit, penyewa atau rujukan",
+    "searchInstallments": "Cari nombor pajakan, penyewa atau unit",
+    "searchTickets": "Cari nombor tiket, kategori atau penerangan",
+    "searchWorkOrders": "Cari arahan kerja, tiket atau petugas",
+    "searchAssets": "Cari nama aset, tag, kategori atau lokasi",
+    "searchInspections": "Cari nombor pemeriksaan, tajuk, unit atau pemeriksa",
+    "searchFacilities": "Cari nama kemudahan atau kod",
+    "searchInventory": "Cari nama item, kod, kategori atau lokasi",
+    "searchRequisitions": "Cari nombor permohonan, tiket atau item",
+    "searchAnnouncements": "Cari tajuk notis, kategori atau hartanah",
+    "searchApprovals": "Cari rujukan, subjek atau pemohon",
+    "showMore": "Tunjuk lagi ({{count}} berbaki)",
+    "allProperties": "Semua hartanah",
+    "allStructures": "Semua struktur",
+    "allTypes": "Semua jenis",
+    "hasVacantUnits": "Ada unit kosong",
+    "fullyOccupied": "Dihuni sepenuhnya",
+    "structure": {
+      "Individual": "Individu",
+      "Group": "Kumpulan"
+    },
+    "sortNewestDue": "Tarikh akhir terkini",
+    "sortOldestDue": "Tarikh akhir terdahulu",
+    "rangeThisMonth": "Bulan ini",
+    "rangeLastMonth": "Bulan lepas",
+    "rangeAllDates": "Semua tarikh",
+    "bookable": "Boleh ditempah",
+    "nonBookable": "Tidak boleh ditempah",
+    "stockOk": "Dalam stok",
+    "waitingForMe": "Menunggu keputusan saya",
+    "buildingsSection": "Bangunan",
+    "villasOtherSpaces": "Vila & ruang lain",
+    "floorsSection": "Tingkat",
+    "otherUnits": "Unit lain",
+    "buildingDetails": "Butiran bangunan",
+    "floorDetails": "Butiran tingkat",
+    "unitDetails": "Butiran unit",
+    "building": "Bangunan",
+    "floor": "Tingkat",
+    "type": "Jenis",
+    "code": "Kod",
+    "name": "Nama",
+    "city": "Bandar",
+    "beds": "Bilik tidur",
+    "baths": "Bilik air",
+    "sqm": "m²",
+    "area": "Keluasan",
+    "furnishingLabel": "Perabot",
+    "furnishing": {
+      "Unfurnished": "Tanpa perabot",
+      "SemiFurnished": "Separuh perabot",
+      "Furnished": "Berperabot lengkap"
+    },
+    "noticePeriodCount": "Tempoh notis",
+    "noticeCount": "{{n}} tempoh notis",
+    "currentLease": "Pajakan semasa",
+    "noCurrentLease": "Tiada pajakan semasa bagi unit ini",
+    "tenant": "Penyewa",
+    "mobile": "Telefon bimbit",
+    "leaseOutstanding": "Tunggakan pajakan",
+    "overdueCount": "Tertunggak ({{count}})",
+    "collectedMonth": "Dikutip bulan ini",
+    "unitStatus": {
+      "Occupied": "Dihuni",
+      "Vacant": "Kosong",
+      "NoticePeriod": "Tempoh notis",
+      "Reserved": "Ditempah",
+      "UnderMaintenance": "Dalam penyelenggaraan",
+      "Blocked": "Disekat",
+      "OwnerOccupied": "Didiami pemilik"
+    },
+    "invoiceStatus": {
+      "Overdue": "Tertunggak",
+      "Posted": "Dikeluarkan / Belum dibayar",
+      "PartPaid": "Dibayar sebahagian",
+      "Paid": "Dibayar",
+      "Draft": "Draf",
+      "Cancelled": "Dibatalkan"
+    },
+    "receiptStatus": {
+      "Posted": "Direkodkan",
+      "Draft": "Draf",
+      "Reversed": "Dibalikkan"
+    },
+    "installmentStatus": {
+      "Due": "Perlu dibayar",
+      "Overdue": "Tertunggak",
+      "Paid": "Dibayar",
+      "Cancelled": "Dibatalkan"
+    },
+    "ticketStatus": {
+      "Open": "Dibuka",
+      "InProgress": "Dalam proses",
+      "OnHold": "Ditangguhkan",
+      "Resolved": "Diselesaikan",
+      "Closed": "Ditutup"
+    },
+    "priorityLevel": {
+      "Low": "Rendah",
+      "Medium": "Sederhana",
+      "High": "Tinggi",
+      "Emergency": "Kecemasan"
+    },
+    "paymentMethods": {
+      "Cash": "Tunai",
+      "Cheque": "Cek",
+      "BankTransfer": "Pindahan bank",
+      "Card": "Kad",
+      "OnlineGateway": "Gerbang dalam talian",
+      "Other": "Lain-lain"
+    },
+    "unitsSummary_one": "{{count}} unit · {{occupied}} dihuni · {{vacant}} kosong",
+    "unitsSummary_other": "{{count}} unit · {{occupied}} dihuni · {{vacant}} kosong",
+    "allBuildingsAndVillas": "Semua bangunan & vila",
+    "allFloors": "Semua tingkat",
+    "allUnits": "Semua unit",
+    "tenantNoCurrentLease": "Tiada pajakan semasa",
+    "searchOptions": "Cari…"
   },
   "inventory": {
     "subtitle": "Bahan pembaikan, paras stok dan permohonan barang",
@@ -1013,5 +1145,12 @@
       "Waived": "Diketepikan",
       "Cancelled": "Dibatalkan"
     }
+  },
+  "lock": {
+    "title": "Selamat kembali, {{name}}",
+    "hint": "Buka kunci dengan Face ID, cap jari atau kod laluan telefon anda.",
+    "unlock": "Buka kunci",
+    "prompt": "Buka kunci EstateFlow",
+    "usePassword": "Log masuk dengan kata laluan"
   }
 }

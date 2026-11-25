@@ -654,7 +654,13 @@
     "themeSystem": "ස්වයංක්‍රීය",
     "themeLight": "ආලෝක",
     "themeDark": "අඳුරු",
-    "signOut": "වරන්න"
+    "signOut": "වරන්න",
+    "lock": {
+      "title": "Face ID හෝ ඇඟිලි සලකුණෙන් අගුළු හරින්න",
+      "onHint": "යෙදුම විවෘත කරන විට සහ විනාඩි 5ක් ඈත් වූ පසු ඉල්ලනු ලැබේ.",
+      "offHint": "අක්‍රියයි: යෙදුම විවෘත කරන සෑම විටම මුරපදයෙන් පුරනය වේ.",
+      "unavailable": "මෙය භාවිත කිරීමට මෙම දුරකථනයේ Face ID, ඇඟිලි සලකුණ හෝ මුරකේතයක් සකසන්න."
+    }
   },
   "done": {
     "home": "උපකරණ පුවරුවට ආපසු",
@@ -754,6 +760,7 @@
     "assignedTo": "පවරා ඇත්තේ",
     "category": "වර්ගය",
     "priority": "ප්‍රමුඛතාවය",
+    "preferredVisitTime": "කැමති පැමිණීමේ වේලාව",
     "status": "තත්ත්වය",
     "description": "විස්තරය",
     "saveChanges": "වෙනස්කම් සුරකින්න",
@@ -792,7 +799,132 @@
     "general": "සාමාන්‍ය",
     "buildingWide": "මුළු ගොඩනැගිල්ලම",
     "noAnnouncements": "දැනුම්දීම් කිසිවක් හමු නොවීය",
-    "userType": "පරිශීලක වර්ගය"
+    "userType": "පරිශීලක වර්ගය",
+    "searchProperties": "දේපළ නම, කේතය හෝ නගරය සොයන්න",
+    "searchBuildingsAndUnits": "ගොඩනැගිල්ල, විලා, අවකාශය හෝ කේතය සොයන්න",
+    "searchUnitsInBuilding": "මෙම ගොඩනැගිල්ලේ ඒකක කේතය, නම හෝ කුලී නිවැසියා සොයන්න",
+    "searchUnits": "ඒකක කේතය, නම හෝ කුලී නිවැසියා සොයන්න",
+    "searchLeases": "බදු අංකය, කුලී නිවැසියා හෝ ඒකකය සොයන්න",
+    "searchTenants": "කුලී නිවැසියාගේ නම, අංකය, ජංගම දුරකථනය හෝ විද්‍යුත් තැපෑල සොයන්න",
+    "searchInvoices": "ඉන්වොයිස් අංකය, කුලී නිවැසියා හෝ ඒකකය සොයන්න",
+    "searchReceipts": "රිසිට්පත් අංකය, කුලී නිවැසියා හෝ යොමුව සොයන්න",
+    "searchInstallments": "බදු අංකය, කුලී නිවැසියා හෝ ඒකකය සොයන්න",
+    "searchTickets": "ටිකට් අංකය, ප්‍රවර්ගය හෝ විස්තරය සොයන්න",
+    "searchWorkOrders": "වැඩ ඇණවුම, ටිකට්පත හෝ භාරකරු සොයන්න",
+    "searchAssets": "වත්කම් නම, ටැගය, ප්‍රවර්ගය හෝ ස්ථානය සොයන්න",
+    "searchInspections": "පරීක්ෂණ අංකය, මාතෘකාව, ඒකකය හෝ පරීක්ෂක සොයන්න",
+    "searchFacilities": "පහසුකම් නම හෝ කේතය සොයන්න",
+    "searchInventory": "අයිතම නම, කේතය, ප්‍රවර්ගය හෝ ස්ථානය සොයන්න",
+    "searchRequisitions": "ඉල්ලුම් අංකය, ටිකට්පත හෝ අයිතමය සොයන්න",
+    "searchAnnouncements": "දැන්වීම් මාතෘකාව, ප්‍රවර්ගය හෝ දේපළ සොයන්න",
+    "searchApprovals": "යොමුව, විෂය හෝ ඉල්ලුම්කරු සොයන්න",
+    "showMore": "තවත් පෙන්වන්න ({{count}}ක් ඉතිරියි)",
+    "allProperties": "සියලුම දේපළ",
+    "allStructures": "සියලුම ව්‍යුහයන්",
+    "allTypes": "සියලුම වර්ග",
+    "hasVacantUnits": "හිස් ඒකක ඇත",
+    "fullyOccupied": "සම්පූර්ණයෙන් පදිංචි",
+    "structure": {
+      "Individual": "තනි",
+      "Group": "සමූහ"
+    },
+    "sortNewestDue": "නවතම ගෙවීම් දිනය",
+    "sortOldestDue": "පැරණිතම ගෙවීම් දිනය",
+    "rangeThisMonth": "මෙම මාසය",
+    "rangeLastMonth": "පසුගිය මාසය",
+    "rangeAllDates": "සියලුම දිනයන්",
+    "bookable": "වෙන්කළ හැකි",
+    "nonBookable": "වෙන්කළ නොහැකි",
+    "stockOk": "තොගයේ ඇත",
+    "waitingForMe": "මගේ තීරණය බලාපොරොත්තුවෙන්",
+    "buildingsSection": "ගොඩනැගිලි",
+    "villasOtherSpaces": "විලා සහ වෙනත් අවකාශ",
+    "floorsSection": "මහල්",
+    "otherUnits": "වෙනත් ඒකක",
+    "buildingDetails": "ගොඩනැගිලි විස්තර",
+    "floorDetails": "මහල් විස්තර",
+    "unitDetails": "ඒකක විස්තර",
+    "building": "ගොඩනැගිල්ල",
+    "floor": "මහල",
+    "type": "වර්ගය",
+    "code": "කේතය",
+    "name": "නම",
+    "city": "නගරය",
+    "beds": "නිදන කාමර",
+    "baths": "නාන කාමර",
+    "sqm": "ව.මී.",
+    "area": "වර්ගඵලය",
+    "furnishingLabel": "ගෘහ භාණ්ඩ",
+    "furnishing": {
+      "Unfurnished": "ගෘහ භාණ්ඩ රහිත",
+      "SemiFurnished": "අර්ධ ගෘහ භාණ්ඩ සහිත",
+      "Furnished": "ගෘහ භාණ්ඩ සහිත"
+    },
+    "noticePeriodCount": "දැනුම්දීමේ කාලය",
+    "noticeCount": "{{n}} දැනුම්දීමේ කාලය",
+    "currentLease": "වත්මන් බදු ගිවිසුම",
+    "noCurrentLease": "මෙම ඒකකයට වත්මන් බදු ගිවිසුමක් නැත",
+    "tenant": "කුලී නිවැසියා",
+    "mobile": "ජංගම දුරකථනය",
+    "leaseOutstanding": "බදු ගිවිසුමේ හිඟ මුදල",
+    "overdueCount": "කල් ඉකුත් වූ ({{count}})",
+    "collectedMonth": "මෙම මාසයේ එකතු කළ මුදල",
+    "unitStatus": {
+      "Occupied": "පදිංචි",
+      "Vacant": "හිස්",
+      "NoticePeriod": "දැනුම්දීමේ කාලය",
+      "Reserved": "වෙන්කළ",
+      "UnderMaintenance": "නඩත්තුව යටතේ",
+      "Blocked": "අවහිර කළ",
+      "OwnerOccupied": "හිමිකරු පදිංචි"
+    },
+    "invoiceStatus": {
+      "Overdue": "කල් ඉකුත් වූ",
+      "Posted": "නිකුත් කළ / නොගෙවූ",
+      "PartPaid": "කොටසක් ගෙවූ",
+      "Paid": "ගෙවූ",
+      "Draft": "කෙටුම්පත",
+      "Cancelled": "අවලංගු කළ"
+    },
+    "receiptStatus": {
+      "Posted": "සටහන් කළ",
+      "Draft": "කෙටුම්පත",
+      "Reversed": "ආපසු හැරවූ"
+    },
+    "installmentStatus": {
+      "Due": "ගෙවිය යුතු",
+      "Overdue": "කල් ඉකුත් වූ",
+      "Paid": "ගෙවූ",
+      "Cancelled": "අවලංගු කළ"
+    },
+    "ticketStatus": {
+      "Open": "විවෘත",
+      "InProgress": "ක්‍රියාත්මකයි",
+      "OnHold": "රඳවා ඇත",
+      "Resolved": "විසඳන ලදී",
+      "Closed": "වසා ඇත"
+    },
+    "priorityLevel": {
+      "Low": "අඩු",
+      "Medium": "මධ්‍යම",
+      "High": "ඉහළ",
+      "Emergency": "හදිසි"
+    },
+    "paymentMethods": {
+      "Cash": "මුදල්",
+      "Cheque": "චෙක්පත",
+      "BankTransfer": "බැංකු හුවමාරුව",
+      "Card": "කාඩ්පත",
+      "OnlineGateway": "මාර්ගගත ගෙවීම් ද්වාරය",
+      "Other": "වෙනත්"
+    },
+    "unitsSummary_one": "ඒකක {{count}} · පදිංචි {{occupied}} · හිස් {{vacant}}",
+    "unitsSummary_other": "ඒකක {{count}} · පදිංචි {{occupied}} · හිස් {{vacant}}",
+    "allBuildingsAndVillas": "සියලුම ගොඩනැගිලි සහ විලා",
+    "allFloors": "සියලුම මහල්",
+    "allUnits": "සියලුම ඒකක",
+    "tenantNoCurrentLease": "වත්මන් බදු ගිවිසුමක් නැත",
+    "searchOptions": "සොයන්න…"
   },
   "inventory": {
     "subtitle": "අලුත්වැඩියා ද්‍රව්‍ය, තොග මට්ටම් සහ ඉල්ලීම්",
@@ -1013,5 +1145,12 @@
       "Waived": "නිදහස් කරන ලදී",
       "Cancelled": "අවලංගුයි"
     }
+  },
+  "lock": {
+    "title": "නැවත සාදරයෙන් පිළිගනිමු, {{name}}",
+    "hint": "Face ID, ඇඟිලි සලකුණ හෝ දුරකථනයේ මුරකේතය මගින් අගුළු හරින්න.",
+    "unlock": "අගුළු හරින්න",
+    "prompt": "EstateFlow අගුළු හරින්න",
+    "usePassword": "ඒ වෙනුවට මුරපදයෙන් පුරනය වන්න"
   }
 }

@@ -6,12 +6,14 @@ import { ActivityIndicator, KeyboardAvoidingView, Platform, Pressable, RefreshCo
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { AppText } from '@/components/app-text';
-import { Button, Card } from '@/components/ui';
+import { Breadcrumb, Button, Card } from '@/components/ui';
 import { useLanguage } from '@/i18n';
 import { contentColumn, space, usePalette } from '@/theme/tokens';
 
 type PageProps = {
   title: string;
+  /** One-line clickable breadcrumb trail above the content, e.g. "Marina Heights › Tower A › Floor 3". */
+  breadcrumbs?: { label: string; onPress?: () => void }[];
   /** Shown at the end of the title bar, such as a status. */
   right?: ReactNode;
   children: ReactNode;
@@ -27,7 +29,7 @@ type PageProps = {
 };
 
 /** A screen opened from a tab: a back button and title, scrolling content, and optional actions pinned at the bottom. */
-export function Page({ title, right, children, footer, back = true, loading, error, onRetry, refreshing, onRefresh }: PageProps) {
+export function Page({ title, breadcrumbs, right, children, footer, back = true, loading, error, onRetry, refreshing, onRefresh }: PageProps) {
   const { t } = useTranslation();
   const palette = usePalette();
   const insets = useSafeAreaInsets();
@@ -52,6 +54,11 @@ export function Page({ title, right, children, footer, back = true, loading, err
         </AppText>
         {right}
       </View>
+      {breadcrumbs && breadcrumbs.length > 0 ? (
+        <View style={{ ...contentColumn, paddingHorizontal: space.xl, paddingBottom: space.xs }}>
+          <Breadcrumb items={breadcrumbs} />
+        </View>
+      ) : null}
       <ScrollView
         contentContainerStyle={{ ...contentColumn, paddingHorizontal: space.xl, paddingTop: space.sm, paddingBottom: footer ? space.xl : insets.bottom + space.xxxl, gap: space.lg }}
         keyboardShouldPersistTaps="handled"

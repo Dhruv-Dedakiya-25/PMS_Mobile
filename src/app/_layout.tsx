@@ -3,8 +3,10 @@ import { DarkTheme, DefaultTheme, Stack, ThemeProvider } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { Platform, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 
+import { clearLock, lockApplies, lockKeptSession, useLocked, watchAway } from '@/auth/lock';
+import { LockScreen } from '@/components/app-lock';
 import { restoreThemeChoice, useColorScheme } from '@/hooks/use-color-scheme';
 import { useSession } from '@/hooks/use-tenancy';
 import { restoreLanguage } from '@/i18n';
@@ -17,11 +19,17 @@ export default function RootLayout() {
   const [settingsReady, setSettingsReady] = useState(false);
   const scheme = useColorScheme();
   const palette = usePalette();
-  const { signedIn, ready: authReady, restore } = useSession();
+  const { signedIn, user, ready: authReady, restore } = useSession();
+  const locked = useLocked();
 
+  // A kept session opens behind the lock, so nothing of it shows before Face ID or a fingerprint.
   useEffect(() => {
-    Promise.all([restoreLanguage(), restoreThemeChoice(), restore()]).finally(() => setSettingsReady(true));
+    Promise.all([restoreLanguage(), restoreThemeChoice(), restore().then(lockKeptSession)]).finally(() => setSettingsReady(true));
   }, [restore]);
+  useEffect(() => (lockApplies ? watchAway() : undefined), []);
+  useEffect(() => {
+    if (!signedIn) clearLock();
+  }, [signedIn]);
 
   // A font that fails to load falls back to the system font rather than holding the splash screen.
   const ready = (fontsLoaded || fontError != null) && settingsReady && authReady;
@@ -55,6 +63,12 @@ export default function RootLayout() {
               <Stack.Screen name="(auth)" />
             </Stack.Protected>
           </Stack>
+          {/* Over the screens rather than instead of them: unlocking returns to where the person was. */}
+          {lockApplies && locked && user ? (
+            <View style={StyleSheet.absoluteFill}>
+              <LockScreen name={(user.displayName || user.username).split(' ')[0]} />
+            </View>
+          ) : null}
         </View>
       </View>
       <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
