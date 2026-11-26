@@ -2,17 +2,19 @@ import { IconCheck, IconPackage, IconTrash } from '@tabler/icons-react-native';
 import { router, useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Alert, Image, View } from 'react-native';
+import { Alert, Image, Platform, View } from 'react-native';
 
 import {
   deleteStaffTicket,
   getStaffProperties,
   getStaffServiceCategories,
+  getStaffTenants,
   getStaffTicket,
   getStaffTicketPhotoUris,
   getStaffUnits,
   updateStaffTicket,
   type StaffProperty,
+  type StaffTenant,
   type StaffTicket,
   type StaffUnit,
 } from '@/api/staff';
@@ -23,6 +25,7 @@ import { Page } from '@/components/page';
 import { Button, Card, Field, Pill, Select } from '@/components/ui';
 import { useLanguage } from '@/i18n';
 import { dateTime, longDate } from '@/lib/format';
+import { formatStaffTenantOptionLabel } from '@/lib/place-picker';
 import { DEFAULT_SERVICE_CATEGORIES, formatTicketCategory } from '@/lib/service-categories';
 import { radius, space } from '@/theme/tokens';
 
@@ -37,6 +40,7 @@ export default function TicketDetail() {
   const [ticket, setTicket] = useState<StaffTicket | null>(null);
   const [properties, setProperties] = useState<StaffProperty[]>([]);
   const [units, setUnits] = useState<StaffUnit[]>([]);
+  const [tenants, setTenants] = useState<StaffTenant[]>([]);
   const [categories, setCategories] = useState<ServiceCategoryOptionDto[]>(DEFAULT_SERVICE_CATEGORIES);
   const [status, setStatus] = useState<string>('Open');
   const [assignedTo, setAssignedTo] = useState<string>('');
@@ -54,13 +58,15 @@ export default function TicketDetail() {
       getStaffTicket(id),
       getStaffProperties().catch(() => []),
       getStaffUnits().catch(() => []),
+      getStaffTenants().catch(() => []),
       getStaffTicketPhotoUris(id).catch(() => [] as string[]),
       isDemo ? Promise.resolve(DEFAULT_SERVICE_CATEGORIES) : getStaffServiceCategories().catch(() => DEFAULT_SERVICE_CATEGORIES),
     ])
-      .then(([data, allProps, allUnits, ticketPhotos, cats]) => {
+      .then(([data, allProps, allUnits, allTenants, ticketPhotos, cats]) => {
         setTicket(data);
         setProperties(allProps);
         setUnits(allUnits);
+        setTenants(allTenants);
         setPhotos(ticketPhotos);
         if (cats.length > 0) setCategories(cats);
         setStatus(data.status || 'Open');
@@ -82,14 +88,16 @@ export default function TicketDetail() {
       getStaffTicket(id),
       getStaffProperties().catch(() => []),
       getStaffUnits().catch(() => []),
+      getStaffTenants().catch(() => []),
       getStaffTicketPhotoUris(id).catch(() => [] as string[]),
       isDemo ? Promise.resolve(DEFAULT_SERVICE_CATEGORIES) : getStaffServiceCategories().catch(() => DEFAULT_SERVICE_CATEGORIES),
     ])
-      .then(([data, allProps, allUnits, ticketPhotos, cats]) => {
+      .then(([data, allProps, allUnits, allTenants, ticketPhotos, cats]) => {
         if (!cancelled) {
           setTicket(data);
           setProperties(allProps);
           setUnits(allUnits);
+          setTenants(allTenants);
           setPhotos(ticketPhotos);
           if (cats.length > 0) setCategories(cats);
           setStatus(data.status || 'Open');
@@ -129,8 +137,35 @@ export default function TicketDetail() {
     }
   };
 
+  const doDelete = async () => {
+    if (!id || deleting) return;
+    setDeleting(true);
+    try {
+      await deleteStaffTicket(id);
+      if (router.canGoBack()) {
+        router.back();
+      } else {
+        router.replace('/staff/operations');
+      }
+    } catch (e) {
+      if (Platform.OS === 'web') {
+        window.alert(e instanceof Error ? e.message : t('common.errorLoad'));
+      } else {
+        Alert.alert(t('common.errorLoad'), e instanceof Error ? e.message : '');
+      }
+    } finally {
+      setDeleting(false);
+    }
+  };
+
   const handleDelete = () => {
     if (!id || deleting) return;
+    if (Platform.OS === 'web') {
+      if (window.confirm(t('staff.confirmDelete'))) {
+        void doDelete();
+      }
+      return;
+    }
     Alert.alert(
       t('staff.deleteTicket'),
       t('staff.confirmDelete'),
@@ -139,17 +174,7 @@ export default function TicketDetail() {
         {
           text: t('staff.deleteTicket'),
           style: 'destructive',
-          onPress: async () => {
-            setDeleting(true);
-            try {
-              await deleteStaffTicket(id);
-              router.back();
-            } catch (e) {
-              Alert.alert(t('common.errorLoad'), e instanceof Error ? e.message : '');
-            } finally {
-              setDeleting(false);
-            }
-          },
+          onPress: () => void doDelete(),
         },
       ],
     );
@@ -157,6 +182,7 @@ export default function TicketDetail() {
 
   const propMatch = properties.find((p) => p.id === ticket?.propertyId);
   const unitMatch = units.find((u) => u.id === ticket?.unitId);
+  const tenantMatch = tenants.find((tn) => tn.id === ticket?.tenantId);
 
   return (
     <Page
@@ -233,6 +259,11 @@ export default function TicketDetail() {
             {unitMatch ? (
               <AppText variant="caption" tone="secondary">
                 {t('staff.unit')}: {unitMatch.unitCode}
+              </AppText>
+            ) : null}
+            {tenantMatch ? (
+              <AppText variant="caption" tone="secondary">
+                {t('staff.tenant')}: {formatStaffTenantOptionLabel(tenantMatch, language.code)}
               </AppText>
             ) : null}
             <AppText>{ticket.description}</AppText>

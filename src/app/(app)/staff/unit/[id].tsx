@@ -1,7 +1,7 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
 import {
   getStaffBuildings,
@@ -23,27 +23,37 @@ import {
   type StaffUnit,
   type StaffUnitType,
 } from '@/api/staff';
+import { useAppSession } from '@/auth/use-app-session';
 import { AppText } from '@/components/app-text';
 import { Page } from '@/components/page';
-import { Card, Details, Onward, Pill } from '@/components/ui';
+import { Card, Details, Onward, Pill, SectionHeader } from '@/components/ui';
 import { useLanguage } from '@/i18n';
-import { omr } from '@/lib/format';
+import { longDate, omr } from '@/lib/format';
 import {
   byLang,
   isCurrentLease,
+  leaseEffectiveEnd,
   leaseStatusAccent,
+  sortLeasesCurrentFirst,
+  staffLeasePhase,
   translateFurnishing,
   translateLeaseStatus,
   translateRentFrequency,
   translateUnitStatus,
   unitStatusAccent,
+  wasEndedEarly,
 } from '@/lib/staff-helpers';
-import { space } from '@/theme/tokens';
+import { space, usePalette } from '@/theme/tokens';
 
 export default function UnitDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const { t } = useTranslation();
   const { language } = useLanguage();
+  const palette = usePalette();
+  const { accessTo } = useAppSession();
+  const canSeeFinance = accessTo('/staff/finance') !== null;
+  const canSeeLease = accessTo('/staff/lease') !== null;
+  const canSeeTenant = accessTo('/staff/tenant') !== null;
   const code = language.code;
 
   const [unit, setUnit] = useState<StaffUnit | null>(null);
@@ -53,6 +63,8 @@ export default function UnitDetail() {
   const [parentFloor, setParentFloor] = useState<StaffFloorZone | null>(null);
   const [unitType, setUnitType] = useState<StaffUnitType | null>(null);
   const [propertyType, setPropertyType] = useState<StaffPropertyType | null>(null);
+  const [unitLeases, setUnitLeases] = useState<StaffLease[]>([]);
+  const [allTenants, setAllTenants] = useState<StaffTenant[]>([]);
   const [currentLease, setCurrentLease] = useState<StaffLease | null>(null);
   const [tenant, setTenant] = useState<StaffTenant | null>(null);
   const [invoices, setInvoices] = useState<StaffInvoice[]>([]);
@@ -80,9 +92,9 @@ export default function UnitDetail() {
       quiet(getStaffFloorZones()),
       quiet(getStaffUnitTypes()),
       quiet(getStaffPropertyTypes()),
-      quiet(getStaffLeases()),
-      quiet(getStaffTenants()),
-      quiet(getStaffInvoices()),
+      canSeeLease ? quiet(getStaffLeases()) : Promise.resolve([] as StaffLease[]),
+      canSeeLease && canSeeTenant ? quiet(getStaffTenants()) : Promise.resolve([] as StaffTenant[]),
+      canSeeLease && canSeeFinance ? quiet(getStaffInvoices()) : Promise.resolve([] as StaffInvoice[]),
     ]);
     return {
       allUnits,
@@ -95,7 +107,7 @@ export default function UnitDetail() {
       allTenants,
       allInvoices,
     };
-  }, []);
+  }, [canSeeLease, canSeeTenant, canSeeFinance]);
 
   const applyData = useCallback(
     (res: Awaited<ReturnType<typeof loadAll>>) => {
@@ -117,8 +129,10 @@ export default function UnitDetail() {
       const pt = ptId ? res.allPropertyTypes.find((item) => item.id === ptId) ?? null : null;
       setPropertyType(pt);
 
-      const unitLeases = res.allLeases.filter((l) => l.unitId === id);
-      const cur = unitLeases.find((l) => isCurrentLease(l)) ?? null;
+      const leasesForUnit = sortLeasesCurrentFirst(res.allLeases.filter((l) => l.unitId === id));
+      setUnitLeases(leasesForUnit);
+      setAllTenants(res.allTenants);
+      const cur = leasesForUnit.find((l) => isCurrentLease(l)) ?? null;
       setCurrentLease(cur);
       const tn = cur ? res.allTenants.find((x) => x.id === cur.tenantId) ?? null : null;
       setTenant(tn);
@@ -191,6 +205,8 @@ export default function UnitDetail() {
     const ptName = propertyType ? byLang(code, propertyType.nameEn, propertyType.nameAr) : '';
     return [ptName, utName].filter(Boolean).join(' · ') || '—';
   }, [unitType, propertyType, code]);
+
+  const tenantById = useMemo(() => new Map(allTenants.map((tn) => [tn.id, tn])), [allTenants]);
 
   const leaseOutstanding = useMemo(
     () => invoices.reduce((sum, inv) => sum + (inv.outstandingAmount || 0), 0),
@@ -266,45 +282,164 @@ export default function UnitDetail() {
             ]}
           />
 
-          {currentLease ? (
-            <Card
-              onPress={() => router.push(`/staff/lease/${currentLease.id}` as any)}
-              style={{ gap: space.sm }}>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.sm }}>
-                <AppText variant="bodyLarge" weight="bold">
-                  {t('staff.currentLease')} · {currentLease.leaseNumber}
-                </AppText>
-                <Pill accent={leaseStatusAccent(currentLease.status)} label={translateLeaseStatus(t, currentLease.status)} />
+          {canSeeLease && (
+            <>
+              {currentLease ? (
+                <Card style={{ gap: space.md }}>
+                  {/* Current Tenant row (tap opens Tenant screen when permitted) */}
+                  <Pressable
+                    disabled={!tenant || !canSeeTenant}
+                    onPress={tenant && canSeeTenant ? () => router.push(`/staff/tenant/${tenant.id}` as any) : undefined}
+                    accessibilityRole={tenant && canSeeTenant ? 'button' : undefined}
+                    style={({ pressed }) => ({
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: space.sm,
+                      paddingBottom: space.sm,
+                      borderBottomWidth: 1,
+                      borderBottomColor: palette.border,
+                      opacity: pressed && tenant && canSeeTenant ? 0.75 : 1,
+                    })}>
+                    <View style={{ flex: 1, gap: 2 }}>
+                      <AppText variant="caption" tone="secondary">
+                        {t('staff.currentTenant')}
+                      </AppText>
+                      <AppText variant="bodyLarge" weight="bold" tone={tenant && canSeeTenant ? 'primary' : 'default'}>
+                        {tenant ? byLang(code, tenant.displayNameEn, tenant.displayNameAr) : '—'}
+                      </AppText>
+                      {tenant ? (
+                        <AppText variant="caption" tone="muted">
+                          {[tenant.tenantNumber, `${t('staff.mobile')}: ${tenant.primaryMobile}`].filter(Boolean).join(' • ')}
+                        </AppText>
+                      ) : null}
+                    </View>
+                    {tenant && canSeeTenant ? <Onward /> : null}
+                  </Pressable>
+
+                  {/* Current Lease row (tap opens Lease screen) */}
+                  <Pressable
+                    onPress={() => router.push(`/staff/lease/${currentLease.id}` as any)}
+                    accessibilityRole="button"
+                    style={({ pressed }) => ({
+                      gap: space.xs,
+                      opacity: pressed ? 0.75 : 1,
+                    })}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.sm }}>
+                      <AppText variant="bodyLarge" weight="bold" tone="primary">
+                        {t('staff.currentLease')} · {currentLease.leaseNumber}
+                      </AppText>
+                      <Pill accent={leaseStatusAccent(currentLease.status)} label={translateLeaseStatus(t, currentLease.status)} />
+                    </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: space.xs }}>
+                      <AppText variant="body" weight="bold">
+                        {omr(currentLease.rentAmount, code)} / {translateRentFrequency(t, currentLease.rentFrequency)}
+                      </AppText>
+                      <AppText variant="caption" tone="muted">
+                        {currentLease.startDate ? longDate(currentLease.startDate, code) : '—'} →{' '}
+                        {leaseEffectiveEnd(currentLease) ? longDate(leaseEffectiveEnd(currentLease)!, code) : '—'}
+                      </AppText>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingTop: 2 }}>
+                      {canSeeFinance ? (
+                        <AppText variant="small" tone={leaseOutstanding > 0 ? 'danger' : 'secondary'} weight="semibold">
+                          {t('staff.leaseOutstanding')}: {omr(leaseOutstanding, code)}
+                        </AppText>
+                      ) : (
+                        <View />
+                      )}
+                      <Onward />
+                    </View>
+                  </Pressable>
+                </Card>
+              ) : (
+                <Card style={{ alignItems: 'center', paddingVertical: space.lg }}>
+                  <AppText tone="secondary">{t('staff.noCurrentLease')}</AppText>
+                </Card>
+              )}
+
+              {/* Lease History for this unit */}
+              <View style={{ gap: space.sm }}>
+                <SectionHeader title={t('staff.leaseHistory')} count={unitLeases.length} />
+                {unitLeases.length === 0 ? (
+                  <Card style={{ alignItems: 'center', paddingVertical: space.lg }}>
+                    <AppText tone="secondary">{t('staff.noDataFound')}</AppText>
+                  </Card>
+                ) : (
+                  unitLeases.map((l) => {
+                    const lTenant = tenantById.get(l.tenantId);
+                    const phase = staffLeasePhase(l);
+                    const endIso = leaseEffectiveEnd(l);
+                    const canTapTenant = canSeeTenant && Boolean(l.tenantId);
+                    return (
+                      <Card key={l.id} style={{ gap: space.xs }}>
+                        {/* Lease row (tapping opens the Lease screen) */}
+                        <Pressable
+                          onPress={() => router.push(`/staff/lease/${l.id}` as any)}
+                          accessibilityRole="button"
+                          style={({ pressed }) => ({
+                            gap: 4,
+                            opacity: pressed ? 0.75 : 1,
+                          })}>
+                          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.sm }}>
+                            <AppText weight="bold" tone="primary">
+                              {l.leaseNumber}
+                            </AppText>
+                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
+                              {phase ? (
+                                <Pill
+                                  accent={phase === 'current' ? 'success' : phase === 'upcoming' ? 'teal' : 'primary'}
+                                  label={t(`staff.leasePhase.${phase}`)}
+                                />
+                              ) : null}
+                              {l.status !== 'Active' && l.status !== 'Draft' ? (
+                                <Pill accent={leaseStatusAccent(l.status)} label={translateLeaseStatus(t, l.status)} />
+                              ) : null}
+                            </View>
+                          </View>
+                          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: space.xs }}>
+                            <AppText variant="small" weight="bold">
+                              {omr(l.rentAmount, code)} / {translateRentFrequency(t, l.rentFrequency)}
+                            </AppText>
+                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.xs }}>
+                              <AppText variant="caption" tone="muted">
+                                {l.startDate ? longDate(l.startDate, code) : '—'} → {endIso ? longDate(endIso, code) : '—'}
+                              </AppText>
+                              <Onward />
+                            </View>
+                          </View>
+                          {wasEndedEarly(l) && l.endDate ? (
+                            <AppText variant="caption" tone="warning">
+                              {t('staff.endedEarly', { date: longDate(l.endDate, code) })}
+                            </AppText>
+                          ) : null}
+                        </Pressable>
+
+                        {/* Tenant row (tapping opens the Tenant screen when permitted) */}
+                        <Pressable
+                          disabled={!canTapTenant}
+                          onPress={canTapTenant ? () => router.push(`/staff/tenant/${l.tenantId}` as any) : undefined}
+                          accessibilityRole={canTapTenant ? 'button' : undefined}
+                          style={({ pressed }) => ({
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            paddingTop: space.xs,
+                            borderTopWidth: 1,
+                            borderTopColor: palette.border,
+                            opacity: pressed && canTapTenant ? 0.75 : 1,
+                          })}>
+                          <AppText variant="small" weight="semibold" tone={canTapTenant ? 'primary' : 'default'}>
+                            {lTenant ? byLang(code, lTenant.displayNameEn, lTenant.displayNameAr) : '—'}
+                          </AppText>
+                          {canTapTenant ? <Onward size={15} /> : null}
+                        </Pressable>
+                      </Card>
+                    );
+                  })
+                )}
               </View>
-              {tenant ? (
-                <View style={{ gap: 2 }}>
-                  <AppText weight="semibold">
-                    {byLang(code, tenant.displayNameEn, tenant.displayNameAr)}
-                  </AppText>
-                  <AppText variant="caption" tone="secondary">
-                    {t('staff.mobile')}: {tenant.primaryMobile}
-                  </AppText>
-                </View>
-              ) : null}
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                <AppText variant="bodyLarge" weight="bold" tone="primary">
-                  {omr(currentLease.rentAmount, code)} / {translateRentFrequency(t, currentLease.rentFrequency)}
-                </AppText>
-                <AppText variant="caption" tone="muted">
-                  {currentLease.startDate?.slice(0, 10) ?? '—'} → {currentLease.endDate?.slice(0, 10) ?? '—'}
-                </AppText>
-              </View>
-              <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingTop: space.xs }}>
-                <AppText variant="small" tone={leaseOutstanding > 0 ? 'danger' : 'secondary'} weight="semibold">
-                  {t('staff.leaseOutstanding')}: {omr(leaseOutstanding, code)}
-                </AppText>
-                <Onward />
-              </View>
-            </Card>
-          ) : (
-            <Card style={{ alignItems: 'center', paddingVertical: space.lg }}>
-              <AppText tone="secondary">{t('staff.noCurrentLease')}</AppText>
-            </Card>
+            </>
           )}
         </View>
       )}

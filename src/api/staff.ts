@@ -165,6 +165,7 @@ export interface StaffFacility {
 
 export interface StaffLease {
   id: string;
+  companyId?: string;
   leaseNumber: string;
   propertyId: string;
   unitId: string;
@@ -173,18 +174,141 @@ export interface StaffLease {
   // Empty on a lease that is still a draft.
   startDate: string | null;
   endDate: string | null;
+  signedDate?: string | null;
   rentAmount: number;
   rentFrequency: string;
+  billingDay?: number | null;
+  gracePeriodDays?: number | null;
+  securityDepositAmount?: number | null;
+  utilityDepositAmount?: number | null;
+  noticePeriodDays?: number | null;
+  renewalNoticeDate?: string | null;
+  escalationRuleRef?: string | null;
+  governmentRegistrationRef?: string | null;
+  previousLeaseId?: string | null;
+  terminationDate?: string | null;
+  terminationReason?: string | null;
+  comments?: string | null;
+  createdAtUtc?: string | null;
+  updatedAtUtc?: string | null;
   isActive: boolean;
+}
+
+export interface StaffTenantContact {
+  kind: 'Signatory' | 'Contact' | string;
+  name: string;
+  phone?: string | null;
+  email?: string | null;
 }
 
 export interface StaffTenant {
   id: string;
+  companyId?: string;
   tenantNumber: string;
+  tenantType?: 'Individual' | 'Corporate' | 'Government' | string;
+  tenantCategory?: string | null;
   displayNameEn: string;
   displayNameAr?: string;
+  nationalIdNo?: string | null;
+  passportNo?: string | null;
+  companyRegistrationNo?: string | null;
+  nationalityCode?: string | null;
   primaryMobile: string;
   primaryEmail?: string;
+  alternatePhone?: string | null;
+  preferredLanguage?: string | null;
+  preferredChannel?: string | null;
+  dateOfBirth?: string | null;
+  idExpiryDate?: string | null;
+  employer?: string | null;
+  monthlyIncome?: number | null;
+  emergencyContact?: string | null;
+  taxRegistrationNo?: string | null;
+  industry?: string | null;
+  registeredAddress?: string | null;
+  authorisedSignatory?: string | null;
+  contacts?: StaffTenantContact[] | null;
+  appUsername?: string | null;
+  createdAtUtc?: string | null;
+  updatedAtUtc?: string | null;
+  isActive: boolean;
+}
+
+export interface StaffOccupant {
+  id: string;
+  tenantId: string;
+  leaseId?: string | null;
+  occupantType: string;
+  fullNameEn: string;
+  fullNameAr?: string | null;
+  relationship?: string | null;
+  nationalityCode?: string | null;
+  nationalIdNo?: string | null;
+  passportNo?: string | null;
+  mobile?: string | null;
+  email?: string | null;
+  isEmergencyContact: boolean;
+  isActive: boolean;
+}
+
+export interface StaffTenantVehicle {
+  id: string;
+  tenantId: string;
+  plateNumber: string;
+  make?: string | null;
+  model?: string | null;
+  colour?: string | null;
+  vehicleType: string;
+  permitNo?: string | null;
+  parkingBayId?: string | null;
+  permitExpiryDate?: string | null;
+  permitStatus?: string | null;
+  isActive: boolean;
+}
+
+export interface StaffTenantDocument {
+  id: string;
+  tenantId: string;
+  occupantId?: string | null;
+  leaseId?: string | null;
+  documentType: string;
+  documentNumber?: string | null;
+  issueDate?: string | null;
+  expiryDate?: string | null;
+  fileName: string;
+  verificationStatus: string;
+  hasFile?: boolean;
+  fileSizeBytes?: number;
+  isActive: boolean;
+}
+
+export interface StaffDeposit {
+  id: string;
+  tenantId: string;
+  leaseId: string;
+  depositType: string;
+  requiredAmount: number;
+  receivedAmount: number;
+  adjustedAmount: number;
+  refundedAmount: number;
+  balanceAmount: number;
+  status: string;
+  receivedDate?: string | null;
+  refundDate?: string | null;
+  isActive: boolean;
+}
+
+export interface StaffLeaseCharge {
+  id: string;
+  leaseId: string;
+  chargeType: string;
+  description?: string | null;
+  amount: number;
+  taxRate?: number | null;
+  frequency?: string | null;
+  startDate?: string | null;
+  endDate?: string | null;
+  isRecurring: boolean;
   isActive: boolean;
 }
 
@@ -212,6 +336,7 @@ export interface StaffReceipt {
   amount: number;
   currencyCode: string;
   referenceNo?: string;
+  bankName?: string;
   status: string;
   notes?: string;
   invoiceId?: string;
@@ -298,7 +423,14 @@ export const getStaffFacilities = () => apiGet<StaffFacility[]>('/Facility/getFa
 
 /** Leases & Tenants */
 export const getStaffLeases = () => apiGet<StaffLease[]>('/Lease/getLease');
+export const getStaffLease = (id: string) => apiGet<StaffLease>(`/Lease/getLease/${id}`);
 export const getStaffTenants = () => apiGet<StaffTenant[]>('/Tenant/getTenant');
+export const getStaffTenant = (id: string) => apiGet<StaffTenant>(`/Tenant/getTenant/${id}`);
+export const getStaffOccupants = () => apiGet<StaffOccupant[]>('/Occupant/getOccupant');
+export const getStaffTenantVehicles = () => apiGet<StaffTenantVehicle[]>('/TenantVehicle/getTenantVehicle');
+export const getStaffTenantDocuments = () => apiGet<StaffTenantDocument[]>('/TenantDocument/getTenantDocument');
+export const getStaffDeposits = () => apiGet<StaffDeposit[]>('/Deposit/getDeposit');
+export const getStaffLeaseCharges = () => apiGet<StaffLeaseCharge[]>('/LeaseCharge/getLeaseCharge');
 
 /**
  * Finance: loads the unpaged lists once and filters on the phone (showing 20 at a time with

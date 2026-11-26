@@ -1,32 +1,39 @@
 import { IconCheck } from '@tabler/icons-react-native';
 import { router } from 'expo-router';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Alert } from 'react-native';
 
 import {
   createStaffTicket,
   getStaffBuildings,
+  getStaffLeases,
   getStaffProperties,
   getStaffServiceCategories,
+  getStaffTenants,
   getStaffUnits,
   type StaffBuilding,
+  type StaffLease,
   type StaffProperty,
+  type StaffTenant,
   type StaffUnit,
 } from '@/api/staff';
 import type { ServiceCategoryOptionDto } from '@/api/types';
 import { useAppSession } from '@/auth/use-app-session';
 import { Page } from '@/components/page';
+import { PlacePicker } from '@/components/place-picker';
 import { Button, Card, Field, Select } from '@/components/ui';
 import { useLanguage } from '@/i18n';
 import { longDate, weekday } from '@/lib/format';
+import {
+  currentTenantForUnit,
+  formatStaffTenantOptionLabel,
+  tenantsForPlace,
+  type PlaceSelection,
+} from '@/lib/place-picker';
 import { DEFAULT_SERVICE_CATEGORIES, formatServiceCategoryLabel } from '@/lib/service-categories';
-import { byLang } from '@/lib/staff-helpers';
 import { dateDaysAgo } from '@/mock/clock';
 import { space } from '@/theme/tokens';
-
-/** The Building choice for units that sit under no building, such as villas. */
-const VILLAS = 'none';
 
 const PRIORITIES = ['Low', 'Medium', 'High', 'Emergency'] as const;
 
@@ -39,16 +46,21 @@ const VISIT_TIMES = Array.from({ length: 27 }, (_, i) => {
 export default function NewTicket() {
   const { t } = useTranslation();
   const { language } = useLanguage();
-  const { isDemo } = useAppSession();
+  const { isDemo, accessTo } = useAppSession();
+  const canSeeLeases = accessTo('/staff/lease') !== null;
 
   const [properties, setProperties] = useState<StaffProperty[]>([]);
   const [buildings, setBuildings] = useState<StaffBuilding[]>([]);
   const [units, setUnits] = useState<StaffUnit[]>([]);
+  const [tenants, setTenants] = useState<StaffTenant[]>([]);
+  const [leases, setLeases] = useState<StaffLease[]>([]);
   const [categories, setCategories] = useState<ServiceCategoryOptionDto[]>(DEFAULT_SERVICE_CATEGORIES);
-  const [propertyId, setPropertyId] = useState('');
-  // Narrows the unit list only; a ticket stores its unit, not its building.
-  const [buildingId, setBuildingId] = useState('');
-  const [unitId, setUnitId] = useState('');
+  const [place, setPlace] = useState<PlaceSelection>({
+    propertyId: '',
+    buildingId: '',
+    unitId: '',
+  });
+  const [tenantId, setTenantId] = useState('');
   const [category, setCategory] = useState(DEFAULT_SERVICE_CATEGORIES[0].nameEn);
   const [priority, setPriority] = useState<(typeof PRIORITIES)[number]>('Medium');
   const [description, setDescription] = useState('');
@@ -63,12 +75,16 @@ export default function NewTicket() {
       getStaffProperties().catch(() => []),
       getStaffBuildings().catch(() => []),
       getStaffUnits().catch(() => []),
+      getStaffTenants().catch(() => []),
+      canSeeLeases ? getStaffLeases().catch(() => []) : Promise.resolve([] as StaffLease[]),
       isDemo ? Promise.resolve(DEFAULT_SERVICE_CATEGORIES) : getStaffServiceCategories().catch(() => DEFAULT_SERVICE_CATEGORIES),
-    ]).then(([p, b, u, cats]) => {
+    ]).then(([p, b, u, tn, ls, cats]) => {
       if (!cancelled) {
         setProperties(p);
         setBuildings(b);
         setUnits(u);
+        setTenants(tn);
+        setLeases(ls);
         const list = cats.length > 0 ? cats : DEFAULT_SERVICE_CATEGORIES;
         setCategories(list);
         setCategory((prev) => (list.some((c) => c.nameEn === prev) ? prev : list[0].nameEn));
@@ -77,23 +93,23 @@ export default function NewTicket() {
     return () => {
       cancelled = true;
     };
-  }, [isDemo]);
+  }, [isDemo, canSeeLeases]);
 
-  // A change higher up clears the choices below it, so a unit from elsewhere can't be sent.
-  const handlePropertyChange = (val: string) => {
-    setPropertyId(val);
-    setBuildingId('');
-    setUnitId('');
-  };
-  const handleBuildingChange = (val: string) => {
-    setBuildingId(val);
-    setUnitId('');
+  const handlePlaceChange = (
+    nextPlace: PlaceSelection,
+    changedLevel: 'property' | 'building' | 'unit',
+  ) => {
+    setPlace(nextPlace);
+    if (changedLevel === 'unit') {
+      setTenantId(currentTenantForUnit(nextPlace.unitId || undefined, leases) ?? '');
+    } else {
+      setTenantId('');
+    }
   };
 
-  const propertyUnits = propertyId ? units.filter((u) => u.propertyId === propertyId) : units;
-  const availableBuildings = propertyId ? buildings.filter((b) => b.propertyId === propertyId) : buildings;
-  const availableUnits = propertyUnits.filter(
-    (u) => !buildingId || (buildingId === VILLAS ? !u.buildingId : u.buildingId === buildingId),
+  const availableTenants = useMemo(
+    () => tenantsForPlace(tenants, leases, units, place, tenantId || undefined),
+    [tenants, leases, units, place, tenantId],
   );
 
   const handleSubmit = async () => {
@@ -101,8 +117,9 @@ export default function NewTicket() {
     setSubmitting(true);
     try {
       await createStaffTicket({
-        propertyId: propertyId || undefined,
-        unitId: unitId || undefined,
+        propertyId: place.propertyId || undefined,
+        unitId: place.unitId || undefined,
+        tenantId: tenantId || undefined,
         category,
         priority,
         description: description.trim(),
@@ -130,42 +147,23 @@ export default function NewTicket() {
         />
       }>
       <Card style={{ gap: space.md }}>
-        <Select
-          label={t('staff.property')}
-          value={propertyId}
-          onChange={handlePropertyChange}
-          options={[
-            { label: `— ${t('common.all')} —`, value: '' },
-            ...properties.map((p) => ({
-              label: `${p.propertyNameEn} (${p.propertyCode})`,
-              value: p.id,
-            })),
-          ]}
+        <PlacePicker
+          properties={properties}
+          buildings={buildings}
+          units={units}
+          value={place}
+          onChange={handlePlaceChange}
         />
 
         <Select
-          label={t('staff.building')}
-          value={buildingId}
-          onChange={handleBuildingChange}
+          label={t('staff.tenant')}
+          value={tenantId}
+          onChange={setTenantId}
           options={[
-            { label: `— ${t('common.all')} —`, value: '' },
-            ...availableBuildings.map((b) => ({
-              label: byLang(language.code, b.buildingNameEn, b.buildingNameAr),
-              value: b.id,
-            })),
-            ...(propertyUnits.some((u) => !u.buildingId) ? [{ label: t('staff.villasOtherSpaces'), value: VILLAS }] : []),
-          ]}
-        />
-
-        <Select
-          label={t('staff.unit')}
-          value={unitId}
-          onChange={setUnitId}
-          options={[
-            { label: `— ${t('common.all')} —`, value: '' },
-            ...availableUnits.map((u) => ({
-              label: u.unitCode,
-              value: u.id,
+            { label: `— ${t('staff.none')} —`, value: '' },
+            ...availableTenants.map((item) => ({
+              label: formatStaffTenantOptionLabel(item, language.code),
+              value: item.id,
             })),
           ]}
         />

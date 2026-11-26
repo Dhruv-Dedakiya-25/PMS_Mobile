@@ -255,7 +255,7 @@ function joinPlaceParts(parts: (string | undefined | null)[]): string {
   return clean.filter((p, idx) => idx === 0 || p !== clean[idx - 1]).join(' • ');
 }
 
-function resolveBuildingOrVillaType(
+export function resolveBuildingOrVillaType(
   unit: StaffUnit | undefined,
   property: StaffProperty | undefined,
   ctx: PlaceLookupContext,
@@ -269,6 +269,158 @@ function resolveBuildingOrVillaType(
     (unit.propertyTypeId ? ctx.propertyTypeById?.get(unit.propertyTypeId) : undefined) ??
     (property?.propertyTypeId ? ctx.propertyTypeById?.get(property.propertyTypeId) : undefined);
   return pt ? byLang(ctx.code, pt.nameEn, pt.nameAr) : undefined;
+}
+
+/**
+ * Formats a unit's place trail as "Unit › Building (or villa type) › Property",
+ * deduplicating adjacent identical segments (e.g. an Individual structure property).
+ */
+export function formatUnitTrail(
+  unit: StaffUnit | undefined,
+  property: StaffProperty | undefined,
+  ctx: PlaceLookupContext,
+): string {
+  const prop = property ?? (unit ? ctx.propertyById.get(unit.propertyId) : undefined);
+  const propName = prop ? byLang(ctx.code, prop.propertyNameEn, prop.propertyNameAr) : undefined;
+  const bldOrType = resolveBuildingOrVillaType(unit, prop, ctx);
+  const parts = [unit?.unitCode, bldOrType, propName]
+    .map((p) => p?.trim())
+    .filter((p): p is string => Boolean(p));
+  return parts.filter((p, idx) => idx === 0 || p !== parts[idx - 1]).join(' › ');
+}
+
+export type StaffLeasePhase = 'current' | 'upcoming' | 'draft' | 'past';
+
+/** Mirrors the website's leasePhase in src/feature-module/leases/lease-phase.ts. */
+export function staffLeasePhase(l: StaffLease, today = new Date()): StaffLeasePhase | undefined {
+  if (l.status === 'Cancelled') return undefined;
+  if (l.status === 'Draft') return 'draft';
+  if (l.status === 'Expired' || l.status === 'Terminated' || l.status === 'Renewed') return 'past';
+  if (l.status === 'PendingApproval' || (l.startDate && new Date(l.startDate) > today)) return 'upcoming';
+  return 'current';
+}
+
+/** The last day a lease held its unit: the termination date when it ended early. */
+export function leaseEffectiveEnd(l: StaffLease): string | null {
+  if (l.terminationDate && l.endDate && new Date(l.terminationDate) < new Date(l.endDate)) {
+    return l.terminationDate;
+  }
+  return l.endDate;
+}
+
+/** True when a lease was terminated before its original end date. */
+export function wasEndedEarly(l: StaffLease): boolean {
+  return Boolean(l.terminationDate && l.endDate && new Date(l.terminationDate) < new Date(l.endDate));
+}
+
+const LEASE_PHASE_ORDER: Record<StaffLeasePhase, number> = {
+  current: 0,
+  upcoming: 1,
+  draft: 2,
+  past: 3,
+};
+
+/**
+ * Sorts a list of leases with current ones first, then upcoming/draft, then past ones,
+ * and newest startDate first within each phase (leaving out Cancelled leases).
+ */
+export function sortLeasesCurrentFirst(leases: StaffLease[], today = new Date()): StaffLease[] {
+  return leases
+    .filter((l) => staffLeasePhase(l, today) !== undefined)
+    .sort((a, b) => {
+      const pa = staffLeasePhase(a, today);
+      const pb = staffLeasePhase(b, today);
+      const rankDiff = (pa ? LEASE_PHASE_ORDER[pa] : 4) - (pb ? LEASE_PHASE_ORDER[pb] : 4);
+      if (rankDiff !== 0) return rankDiff;
+      const da = a.startDate ? new Date(a.startDate).getTime() : 0;
+      const db = b.startDate ? new Date(b.startDate).getTime() : 0;
+      return db - da;
+    });
+}
+
+/** Counts how many renewals precede this lease by walking previousLeaseId. */
+export function computeRenewalNumber(lease: StaffLease, allLeases: StaffLease[]): number {
+  const byId = new Map(allLeases.map((l) => [l.id, l]));
+  const visited = new Set<string>([lease.id]);
+  let count = 0;
+  let currentId = lease.previousLeaseId;
+  while (currentId && !visited.has(currentId)) {
+    visited.add(currentId);
+    count += 1;
+    const prev = byId.get(currentId);
+    currentId = prev?.previousLeaseId;
+  }
+  return count;
+}
+
+export function translateTenantType(t: TFunction, type?: string | null): string {
+  if (!type) return '—';
+  return t(`staff.tenantTypes.${type}`, { defaultValue: type });
+}
+
+export function translateOccupantType(t: TFunction, type?: string | null): string {
+  if (!type) return '—';
+  return t(`staff.occupantTypes.${type}`, { defaultValue: type });
+}
+
+export function translateVehicleType(t: TFunction, type?: string | null): string {
+  if (!type) return '—';
+  return t(`staff.vehicleTypes.${type}`, { defaultValue: type });
+}
+
+export function translateDocumentType(t: TFunction, type?: string | null): string {
+  if (!type) return '—';
+  return t(`staff.documentTypes.${type}`, { defaultValue: type });
+}
+
+export function translateVerificationStatus(t: TFunction, status?: string | null): string {
+  if (!status) return '—';
+  return t(`staff.verificationStatuses.${status}`, { defaultValue: status });
+}
+
+export function verificationStatusAccent(status?: string | null): Accent {
+  switch (status) {
+    case 'Verified':
+      return 'success';
+    case 'Pending':
+      return 'warning';
+    case 'Rejected':
+    case 'Expired':
+      return 'danger';
+    default:
+      return 'primary';
+  }
+}
+
+export function translateDepositType(t: TFunction, type?: string | null): string {
+  if (!type) return '—';
+  return t(`staff.depositTypes.${type}`, { defaultValue: type });
+}
+
+export function translateDepositStatus(t: TFunction, status?: string | null): string {
+  if (!status) return '—';
+  return t(`staff.depositStatuses.${status}`, { defaultValue: status });
+}
+
+export function depositStatusAccent(status?: string | null): Accent {
+  switch (status) {
+    case 'Held':
+      return 'teal';
+    case 'Refunded':
+      return 'success';
+    case 'PartRefunded':
+    case 'Pending':
+      return 'warning';
+    case 'Forfeited':
+      return 'danger';
+    default:
+      return 'primary';
+  }
+}
+
+export function translateChargeType(t: TFunction, type?: string | null): string {
+  if (!type) return '—';
+  return t(`staff.chargeTypes.${type}`, { defaultValue: type });
 }
 
 /**

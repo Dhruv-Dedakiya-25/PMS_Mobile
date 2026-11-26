@@ -766,7 +766,7 @@ export default function StaffProperties() {
                   return (
                     <Card
                       key={tn.id}
-                      onPress={curLease ? () => router.push(`/staff/lease/${curLease.id}` as any) : undefined}
+                      onPress={() => router.push(`/staff/tenant/${tn.id}` as any)}
                       style={{ gap: space.xs }}>
                       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: space.sm }}>
                         <AppText weight="bold" style={{ flex: 1 }}>
@@ -783,7 +783,7 @@ export default function StaffProperties() {
                         <AppText variant="caption" tone="muted" numberOfLines={1} style={{ flex: 1 }}>
                           {tn.primaryMobile}{tn.primaryEmail ? ` • ${tn.primaryEmail}` : ''}
                         </AppText>
-                        {curLease ? <Onward /> : null}
+                        <Onward />
                       </View>
                     </Card>
                   );
